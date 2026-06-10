@@ -1,0 +1,359 @@
+{
+  "meta": {
+    "title": "Pointers | Branding, Web Design & Digital Marketing Agency"
+  },
+  "nav": {
+    "about": "About",
+    "services": "Services",
+    "contact": "Contact",
+    "blog": "Blog",
+    "cta": "Let's talk!"
+  },
+  "hero": {
+    "title": "Creativity inspired by modern solutions.",
+    "subtitle": "We design digital ecosystems that elevate brands and create impact.",
+    "cta": "Let's talk!"
+  },
+  "services": {
+    "eyebrow": "Our Services",
+    "title": "Digital solutions that will take your business to the next level",
+    "subtitle": "We combine strategy, design and technology to build solutions that truly work.",
+    "items": [
+      {
+        "badge": "Branding & Visual Identity",
+        "title": "We design identities that inspire trust and create value.",
+        "description": "We define and develop brands that connect strategy, aesthetics and purpose to stand out in competitive environments.",
+        "tags": ["Visual identity design", "Digital branding", "Brand guidelines"]
+      },
+      {
+        "badge": "Web Design & Digital Experience",
+        "title": "Digital design focused on impact and performance.",
+        "description": "We create efficient, attractive web experiences designed to deliver unique value. Every project combines visual clarity, flow and purpose to connect brands with results.",
+        "tags": ["High-performance websites", "Strategic UX/UI design", "High-impact landing pages"]
+      },
+      {
+        "badge": "Content & Social Presence",
+        "title": "Content that drives connection and growth.",
+        "description": "We create content strategies and social management that strengthen your digital presence, connect with your audience and position your brand with authenticity and consistency.",
+        "tags": ["Content strategy", "Social media management", "Audiovisual production"]
+      },
+      {
+        "badge": "Digital Strategy & Advertising",
+        "title": "Digital strategies that convert.",
+        "description": "We design smart campaigns and automated systems that maximize reach, optimize resources and turn interactions into real results.",
+        "tags": ["Advertising campaigns (Meta / Google)", "Funnels & automation", "Digital consulting"]
+      }
+    ]
+  },
+  "aboutPage": {
+    "meta": {
+      "title": "Pointers | About us",
+      "description": "Strategy, design and technology working in harmony to take your brand further."
+    },
+    "hero": {
+      "eyebrow": "About us",
+      "title": "Where brands find their best digital version.",
+      "subtitle": "Strategy, design and technology working in harmony to take your brand further.",
+      "trust": "Over 50+ business trust us"
+    },
+    "missionVision": {
+      "eyebrow": "Mission & vision",
+      "title": "Mission & vision",
+      "mission": {
+        "title": "Mission",
+        "body": "We bring together strategy, design and technology to create digital ecosystems that empower brands."
+      },
+      "vision": {
+        "title": "Vision",
+        "body": "To be the go-to agency for high-impact digital ecosystems."
+      }
+    },
+    "pillars": {
+      "eyebrow": "Pillars",
+      "title": "Pillars",
+      "items": [
+        {
+          "title": "Strategy",
+          "description": "We build clear direction so each brand grows with purpose."
+        },
+        {
+          "title": "Efficiency",
+          "description": "We optimize every process to achieve more with less."
+        },
+        {
+          "title": "Impact",
+          "description": "We design experiences that deliver visible results."
+        }
+      ]
+    },
+    "values": {
+      "eyebrow": "Our values",
+      "title": "The principles behind Pointers",
+      "subtitle": "We believe in the power of well-executed ideas.\nWe unite strategy, creativity and innovation to create digital experiences that inspire, connect and endure.",
+      "items": [
+        {
+          "title": "Excellence",
+          "description": "Every delivery reflects our commitment to impeccable quality. We aim to exceed the standard in every detail."
+        },
+        {
+          "title": "Effectiveness",
+          "description": "We turn strategy and design into measurable results. We combine efficiency, efficacy and direction to reach our clients’ goals."
+        },
+        {
+          "title": "Creativity",
+          "description": "We explore new perspectives to create solutions that inspire, connect and endure."
+        },
+        {
+          "title": "Craft",
+          "description": "We master technology with precision and purpose, turning technical expertise into aesthetic and functional impact."
+        }
+      ]
+    },
+    "whyUs": {
+      "eyebrow": "Why us",
+      "title": "Behind every successful brand, there’s a clear direction.",
+      "subtitle": "We blend creative talent with strategic thinking to design digital experiences that leave a mark.",
+      "others": {
+        "title": "Other agencies",
+        "bullets": [
+          "Work in silos: branding, web design and marketing don’t talk to each other.",
+          "Focus on delivering pieces, not building direction.",
+          "Design dominates strategy, prioritizing form over purpose.",
+          "Decisions are made without data or a defined purpose."
+        ],
+        "result": "Result: a visually correct brand, but without impact or coherence."
+      },
+      "pointers": {
+        "title": "Pointers",
+        "bullets": [
+          "We integrate strategy, design and technology into a single coherent flow, aligning every phase to a shared purpose.",
+          "We build digital ecosystems with vision and purpose.",
+          "Design responds to strategic direction.",
+          "We make decisions guided by analysis and measurable goals."
+        ],
+        "result": "Result: brands with strong identity, performance and projection."
+      }
+    },
+    "team": {
+      "eyebrow": "Our team",
+      "title": "Where aesthetics meets strategy.",
+      "subtitle": "A team that combines creative vision and technical precision to build brands with direction and purpose.",
+      "members": [
+        { "name": "Luis Diego Medina", "role": "Strategic Director & Co-founder" },
+        { "name": "Sophia Nguyen", "role": "Head of Automation Engineering" },
+        { "name": "Ryan Mitchell", "role": "Lead Data Scientist" }
+      ]
+    },
+    "cta": {
+      "eyebrow": "Next step",
+      "title": "Your brand knows where it wants to go. We help you get there.",
+      "subtitle": "Book a meeting and let’s start building your next stage.",
+      "button": "Let’s talk!"
+    },
+    "faq": {
+      "eyebrow": "FAQ",
+      "title": "What we are, what we believe.",
+      "subtitle": "Every brand that trusts us gets more than a service: a team that thinks, designs and builds with direction and purpose.",
+      "questions": [
+        "How was Pointers born?",
+        "What kind of brands work with Pointers?",
+        "What makes Pointers different from other digital agencies?",
+        "What’s the philosophy behind each project?",
+        "How do you stay up to date with new digital trends?"
+      ]
+    }
+  },
+  "process": {
+    "eyebrow": "Process",
+    "title": "A clear, creative process focused on results.",
+    "subtitle": "We turn ideas into effective strategies through a modern, collaborative workflow.",
+    "steps": [
+      {
+        "step": "Step 1",
+        "title": "Discovery",
+        "description": "We analyze your business, competitors and opportunities to define a solid starting point."
+      },
+      {
+        "step": "Step 2",
+        "title": "Strategy & Concept",
+        "description": "We outline the plan and project identity."
+      },
+      {
+        "step": "Step 3",
+        "title": "Design & Development",
+        "description": "We turn strategy into visual and functional experiences."
+      },
+      {
+        "step": "Step 4",
+        "title": "Optimization & Growth",
+        "description": "We measure, adjust and scale results."
+      }
+    ],
+    "hints": [
+      ["System check", "Process check", "Speed check"],
+      ["Strategy", "Concept", "Plan"],
+      ["Our solution", "Your stack"],
+      ["Chatbot system", "Workflow system", "Sales system"]
+    ]
+  },
+  "why": {
+    "eyebrow": "Why Pointers?",
+    "title": "The difference is in how we think about design.",
+    "subtitle": "Every project combines analysis, creativity and precise execution to create real impact for your brand.",
+    "items": [
+      {
+        "title": "We drive your business",
+        "description": "Every creative decision is oriented toward growth, with momentum, direction and purpose."
+      },
+      {
+        "title": "We build lasting relationships",
+        "description": "We build bridges between your brand and those who choose it."
+      },
+      {
+        "title": "Limitless availability",
+        "description": "We make your brand present at all times, everywhere."
+      },
+      {
+        "title": "We grow your revenue",
+        "description": "We maximize your return with strategies that boost sales and opportunities."
+      },
+      {
+        "title": "Smart strategy",
+        "description": "We turn data into precise decisions that elevate your business performance."
+      },
+      {
+        "title": "Growth and scalability",
+        "description": "We design solutions ready to take your brand to the next level."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Modernize your digital presence",
+    "subtitle": "Tell us about your project and let's take the next step together.",
+    "button": "Let's talk!"
+  },
+  "contact": {
+    "eyebrow": "Contact",
+    "title": "Modernize your digital presence",
+    "subtitle": "Tell us about your project and let's take the next step together.",
+    "firstName": "First name",
+    "lastName": "Last name",
+    "email": "Email",
+    "phone": "Phone",
+    "phonePlaceholder": "+1 555 000 0000",
+    "message": "Message",
+    "submit": "Let's talk!",
+    "submitIdle": "Send message",
+    "submitSuccess": "Thank you! We'll get back to you soon.",
+    "submitError": "Oops... something went wrong, please try again.",
+    "retryHint": "Check your connection and try again.",
+    "errors": {
+      "firstName": "Name must be at least 2 characters",
+      "email": "Enter a valid email address",
+      "phoneRequired": "Phone number is required",
+      "phoneFormat": "Invalid number. Include country code (7–15 digits, e.g. +1 555 000 0000)",
+      "message": "Message must be at least 10 characters"
+    }
+  },
+  "faq": {
+    "eyebrow": "Frequently Asked Questions",
+    "title": "Before you start, this might interest you",
+    "subtitle": "We answer the most common questions so you have full clarity before working with us.",
+    "items": [
+      {
+        "question": "What are Pointers' main services?",
+        "answer": "Branding & Visual Identity, Web Design & Digital Experience, Content & Social Presence, and Digital Strategy & Advertising. We combine strategy, design and technology to build solutions that truly work."
+      },
+      {
+        "question": "What if I don't have a defined brand yet?",
+        "answer": "In the Discovery phase we analyze your business, competitors and opportunities to define a solid starting point. Then, in Strategy & Concept, we outline the plan and project identity."
+      },
+      {
+        "question": "How long does it take to develop a project?",
+        "answer": "Timing depends on scope: branding, web, content or campaigns. After Discovery we define a clear timeline in the Strategy & Concept stage."
+      },
+      {
+        "question": "Can I request changes during the project?",
+        "answer": "Yes. Our workflow is modern and collaborative: in Design & Development we turn strategy into visual and functional experiences, with room for revisions before Optimization & Growth."
+      },
+      {
+        "question": "How can I start working with you?",
+        "answer": "Tell us about your project and let's take the next step together. Reach out via the contact form or tap Let's talk! in any section."
+      }
+    ]
+  },
+  "footer": {
+    "newsletter": "Subscribe to receive ideas and news from Pointers.",
+    "emailPlaceholder": "Your email",
+    "subscribe": "Subscribe",
+    "links": "Links",
+    "pages": "Pages",
+    "socials": "Socials",
+    "designedBy": "Designed by Pointers",
+    "rights": "All rights reserved.",
+    "blog": "Blog",
+    "social": {
+      "instagram": "Instagram",
+      "facebook": "Facebook",
+      "linkedin": "Linkedin",
+      "twitter": "Twitter"
+    }
+  },
+  "anchors": {
+    "services": "Our Services",
+    "process": "Process",
+    "why": "Why Pointers?",
+    "talk": "Let's talk",
+    "faq": "FAQ"
+  },
+  "blog": {
+    "eyebrow": "Blog",
+    "title": "Ideas to elevate your digital brand",
+    "subtitle": "Strategy, design and marketing — practical content to help your business grow.",
+    "readMore": "Read article",
+    "posts": [
+      {
+        "slug": "branding-that-connects",
+        "tag": "Branding",
+        "date": "12 May 2026",
+        "title": "Branding that connects: beyond the logo",
+        "excerpt": "How to build a cohesive visual identity that conveys purpose and builds trust at every touchpoint."
+      },
+      {
+        "slug": "websites-that-convert",
+        "tag": "Web Design",
+        "date": "28 Apr 2026",
+        "title": "Websites that convert without sacrificing aesthetics",
+        "excerpt": "UX, speed and visual storytelling essentials to turn visitors into customers."
+      },
+      {
+        "slug": "social-content-2026",
+        "tag": "Content",
+        "date": "15 Apr 2026",
+        "title": "A social content strategy that actually works",
+        "excerpt": "Plan, create and measure posts that strengthen your brand and reach your audience."
+      }
+    ]
+  },
+  "mocks": {
+    "tabs": ["Draft", "Schedule", "Sent"],
+    "chatTitle": "What can I help with?",
+    "chatBody": "Whether you want help with customer handling or changes in your system, just give me a command.",
+    "chips": ["Add document", "Analyze", "Generate Image", "Research"],
+    "scheduleGreeting": "Hey David!",
+    "scheduleSubtitle": "Here is your custom project & schedule",
+    "ongoingLabel": "On going project:",
+    "ongoingProject": "Customer Support Chatbot",
+    "ongoingProgress": "90% Finished",
+    "days": ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"],
+    "events": [
+      { "label": "Discovery call · 10:00 am", "tone": "teal" },
+      { "label": "Custom automation · 06:00 pm", "tone": "purple" }
+    ],
+    "systems": [
+      { "name": "Chatbot system", "status": "Efficiency will increase by 20%", "ok": true },
+      { "name": "Workflow system", "status": "Update available..", "ok": false },
+      { "name": "Sales system", "status": "Up to date", "ok": true }
+    ]
+  }
+}

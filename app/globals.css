@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 0 0% 97%;
+  --foreground: 0 0% 8%;
+  --muted: 0 0% 94%;
+  --muted-foreground: 0 0% 40%;
+  --border: 0 0% 88%;
+  --accent: 338 72% 40%;
+  --brand: 338 72% 40%;
+  --brand-foreground: 0 0% 100%;
+  --teal: 174 58% 46%;
+  --purple: 262 52% 52%;
+}
+
+* { border-color: hsl(var(--border)); }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-feature-settings: "ss01", "cv11";
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.container-page { @apply mx-auto w-full max-w-[1280px] px-6 md:px-10; }
+.h-display { @apply font-display tracking-tightest leading-[1.05]; }

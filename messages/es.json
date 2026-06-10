@@ -1,0 +1,359 @@
+{
+  "meta": {
+    "title": "Pointers | Agencia de Branding, Diseño Web y Marketing Digital"
+  },
+  "nav": {
+    "about": "Nosotros",
+    "services": "Servicios",
+    "contact": "Contacto",
+    "blog": "Blog",
+    "cta": "¡Hablemos!"
+  },
+  "hero": {
+    "title": "Creatividad inspirada en soluciones modernas.",
+    "subtitle": "Diseñamos ecosistemas digitales que elevan marcas y generan impacto.",
+    "cta": "¡Hablemos!"
+  },
+  "services": {
+    "eyebrow": "Nuestros Servicios",
+    "title": "Soluciones digitales que llevarán tu negocio al siguiente nivel",
+    "subtitle": "Combinamos estrategia, diseño y tecnología para construir soluciones que realmente funcionan.",
+    "items": [
+      {
+        "badge": "Branding e Identidad Visual",
+        "title": "Diseñamos identidades que inspiran confianza y generan valor.",
+        "description": "Definimos y desarrollamos marcas que conectan estrategia, estética y propósito para destacar en entornos competitivos.",
+        "tags": ["Diseño de identidad visual", "Branding digital", "Manual de marca"]
+      },
+      {
+        "badge": "Diseño Web y Experiencia Digital",
+        "title": "Diseño digital centrado en impacto y rendimiento.",
+        "description": "Creamos experiencias web eficientes, atractivas y diseñadas para generar valor único. Cada proyecto combina claridad visual, fluidez y propósito para conectar marcas con resultados.",
+        "tags": ["Webs de alto rendimiento", "Diseño UX/UI estratégico", "Landing pages de impacto"]
+      },
+      {
+        "badge": "Contenido y Presencia en Redes",
+        "title": "Contenido que impulsa conexión y crecimiento.",
+        "description": "Creamos estrategias de contenido y gestión de redes que fortalecen tu presencia digital, conectan con tu audiencia y posicionan tu marca con autenticidad y consistencia.",
+        "tags": ["Estrategia de contenido", "Gestión de redes sociales", "Creación audiovisual"]
+      },
+      {
+        "badge": "Estrategia Digital y Publicidad",
+        "title": "Estrategias digitales que convierten.",
+        "description": "Diseñamos campañas inteligentes y sistemas automatizados que maximizan el alcance, optimizan recursos y convierten interacciones en resultados reales.",
+        "tags": ["Campañas publicitarias (Meta / Google)", "Embudos y automatización", "Consultoría digital"]
+      }
+    ]
+  },
+  "process": {
+    "eyebrow": "Proceso",
+    "title": "Un proceso claro, creativo y orientado a resultados.",
+    "subtitle": "Transformamos ideas en estrategias efectivas a través de un flujo de trabajo moderno y colaborativo.",
+    "steps": [
+      {
+        "step": "Paso 1",
+        "title": "Descubrimiento",
+        "description": "Analizamos tu negocio, competidores y oportunidades para definir un punto de partida sólido."
+      },
+      {
+        "step": "Paso 2",
+        "title": "Estrategia & Concepto",
+        "description": "Trazamos el plan y la identidad del proyecto."
+      },
+      {
+        "step": "Paso 3",
+        "title": "Diseño & Desarrollo",
+        "description": "Convertimos la estrategia en experiencias visuales y funcionales."
+      },
+      {
+        "step": "Paso 4",
+        "title": "Optimización & Crecimiento",
+        "description": "Medimos, ajustamos y escalamos resultados."
+      }
+    ],
+    "hints": [
+      ["Revisión del sistema", "Revisión de procesos", "Revisión de velocidad"],
+      ["Estrategia", "Concepto", "Plan"],
+      ["Nuestra solución", "Tu stack"],
+      ["Sistema chatbot", "Sistema de flujos", "Sistema de ventas"]
+    ]
+  },
+  "why": {
+    "eyebrow": "¿Por qué Pointers?",
+    "title": "La diferencia está en cómo pensamos el diseño.",
+    "subtitle": "Cada proyecto combina análisis, creatividad y ejecución precisa para generar impacto real en tu marca.",
+    "items": [
+      {
+        "title": "Impulsamos tu negocio",
+        "description": "Cada decisión creativa está orientada al crecimiento, con impulso, dirección y propósito."
+      },
+      {
+        "title": "Creamos relaciones duraderas",
+        "description": "Construimos puentes entre tu marca y quienes la eligen."
+      },
+      {
+        "title": "Disponibilidad sin límites",
+        "description": "Hacemos que tu marca esté presente en todo momento, en cualquier lugar."
+      },
+      {
+        "title": "Aumentamos tus ingresos",
+        "description": "Maximizamos tu retorno con estrategias que potencian ventas y oportunidades."
+      },
+      {
+        "title": "Estrategia inteligente",
+        "description": "Convertimos datos en decisiones precisas que elevan el rendimiento de tu negocio."
+      },
+      {
+        "title": "Crecimiento y escalabilidad",
+        "description": "Diseñamos soluciones preparadas para llevar tu marca al siguiente nivel."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Moderniza tu presencia digital",
+    "subtitle": "Cuéntanos sobre tu proyecto y demos juntos el siguiente paso.",
+    "button": "¡Hablemos!"
+  },
+  "contact": {
+    "eyebrow": "Contacto",
+    "title": "Moderniza tu presencia digital",
+    "subtitle": "Cuéntanos sobre tu proyecto y demos juntos el siguiente paso.",
+    "firstName": "Nombre",
+    "lastName": "Apellido",
+    "email": "Email",
+    "phone": "Teléfono",
+    "phonePlaceholder": "+00 000 000 000",
+    "message": "Mensaje",
+    "submit": "¡Hablemos!",
+    "submitIdle": "Enviar mensaje",
+    "submitSuccess": "¡Gracias! Te responderemos pronto.",
+    "submitError": "Ups... algo salió mal, inténtalo de nuevo.",
+    "retryHint": "Revisa tu conexión e inténtalo otra vez.",
+    "errors": {
+      "firstName": "El nombre debe tener al menos 2 caracteres",
+      "email": "Introduce un email válido",
+      "phoneRequired": "El teléfono es obligatorio",
+      "phoneFormat": "Número inválido. Usa código de país (7–15 dígitos, ej. +34 612 345 678)",
+      "message": "El mensaje debe tener al menos 10 caracteres"
+    }
+  },
+  "faq": {
+    "eyebrow": "Preguntas Frecuentes",
+    "title": "Antes de empezar, esto te puede interesar",
+    "subtitle": "Respondemos las preguntas más comunes para que tengas total claridad antes de trabajar con nosotros.",
+    "items": [
+      {
+        "question": "¿Cuáles son los servicios principales de Pointers?",
+        "answer": "Branding e Identidad Visual, Diseño Web y Experiencia Digital, Contenido y Presencia en Redes, y Estrategia Digital y Publicidad. Combinamos estrategia, diseño y tecnología para construir soluciones que realmente funcionan."
+      },
+      {
+        "question": "¿Qué pasa si aún no tengo una marca definida?",
+        "answer": "En la fase de Descubrimiento analizamos tu negocio, competidores y oportunidades para definir un punto de partida sólido. Luego, en Estrategia & Concepto, trazamos el plan y la identidad del proyecto."
+      },
+      {
+        "question": "¿Cuánto tiempo toma desarrollar un proyecto?",
+        "answer": "El tiempo depende del alcance: branding, web, contenido o campañas. Tras el Descubrimiento definimos un cronograma claro en la etapa de Estrategia & Concepto."
+      },
+      {
+        "question": "¿Puedo solicitar cambios durante el proyecto?",
+        "answer": "Sí. Nuestro flujo es moderno y colaborativo: en Diseño & Desarrollo convertimos la estrategia en experiencias visuales y funcionales, con espacio para revisiones antes de Optimización & Crecimiento."
+      },
+      {
+        "question": "¿Cómo puedo empezar a trabajar con ustedes?",
+        "answer": "Cuéntanos sobre tu proyecto y demos juntos el siguiente paso. Escríbenos desde el formulario de contacto o pulsa ¡Hablemos! en cualquier sección."
+      }
+    ]
+  },
+  "footer": {
+    "newsletter": "Suscríbete para recibir ideas y novedades de Pointers.",
+    "emailPlaceholder": "Tu email",
+    "subscribe": "Suscribirme",
+    "links": "Links",
+    "pages": "Pages",
+    "socials": "Socials",
+    "designedBy": "Diseñado por Pointers",
+    "rights": "Todos los derechos reservados.",
+    "blog": "Blog",
+    "social": {
+      "instagram": "Instagram",
+      "facebook": "Facebook",
+      "linkedin": "Linkedin",
+      "twitter": "Twitter"
+    }
+  },
+  "anchors": {
+    "services": "Nuestros Servicios",
+    "process": "Proceso",
+    "why": "¿Por qué Pointers?",
+    "talk": "Hablemos",
+    "faq": "Preguntas Frecuentes"
+  },
+  "blog": {
+    "eyebrow": "Blog",
+    "title": "Ideas para elevar tu marca digital",
+    "subtitle": "Estrategia, diseño y marketing: contenido práctico para hacer crecer tu negocio.",
+    "readMore": "Leer artículo",
+    "posts": [
+      {
+        "slug": "branding-que-conecta",
+        "tag": "Branding",
+        "date": "12 May 2026",
+        "title": "Branding que conecta: más allá del logo",
+        "excerpt": "Cómo construir una identidad visual coherente que transmita propósito y genere confianza en cada punto de contacto."
+      },
+      {
+        "slug": "webs-que-convierten",
+        "tag": "Diseño Web",
+        "date": "28 Abr 2026",
+        "title": "Webs que convierten sin sacrificar estética",
+        "excerpt": "Claves de UX, velocidad y narrativa visual para transformar visitantes en clientes."
+      },
+      {
+        "slug": "contenido-redes-2026",
+        "tag": "Contenido",
+        "date": "15 Abr 2026",
+        "title": "Estrategia de contenido en redes que sí funciona",
+        "excerpt": "Planifica, crea y mide publicaciones que refuercen tu marca y acerquen a tu audiencia."
+      }
+    ]
+  },
+  "aboutPage": {
+    "meta": {
+      "title": "Pointers | Sobre nosotros",
+      "description": "Estrategia, diseño y tecnología trabajando en armonía para llevar tu marca más lejos."
+    },
+    "hero": {
+      "eyebrow": "Sobre nosotros",
+      "title": "Donde las marcas encuentran su mejor versión digital.",
+      "subtitle": "Estrategia, diseño y tecnología trabajando en armonía para llevar tu marca más lejos.",
+      "trust": "Over 50+ business trust us"
+    },
+    "missionVision": {
+      "eyebrow": "Misión y visión",
+      "title": "Misión y visión",
+      "mission": {
+        "title": "Misión",
+        "body": "Unimos estrategia, diseño y tecnología para crear ecosistemas digitales que potencian marcas."
+      },
+      "vision": {
+        "title": "Visión",
+        "body": "Ser la agencia de referencia en ecosistemas digitales de alto impacto."
+      }
+    },
+    "pillars": {
+      "eyebrow": "Pilares",
+      "title": "Pilares",
+      "items": [
+        {
+          "title": "Estrategia",
+          "description": "Construimos direcciones claras para que cada marca crezca con propósito."
+        },
+        {
+          "title": "Eficiencia",
+          "description": "Optimizamos cada proceso para lograr más con menos."
+        },
+        {
+          "title": "Impacto",
+          "description": "Diseñamos experiencias que generan resultados visibles."
+        }
+      ]
+    },
+    "values": {
+      "eyebrow": "Nuestros valores",
+      "title": "Los principios detrás de Pointers",
+      "subtitle": "Creemos en el poder de las ideas bien ejecutadas.\nUnimos estrategia, creatividad y innovación para crear experiencias digitales que inspiran, conectan y perduran.",
+      "items": [
+        {
+          "title": "Excelencia",
+          "description": "Cada entrega refleja nuestro compromiso con lo impecable. Buscamos superar el estándar en cada detalle."
+        },
+        {
+          "title": "Efectividad",
+          "description": "Transformamos estrategia y diseño en resultados medibles. Combinamos eficiencia, eficacia y dirección para alcanzar los objetivos de nuestros clientes."
+        },
+        {
+          "title": "Creatividad",
+          "description": "Exploramos nuevas perspectivas para crear soluciones que inspiran, conectan y perduran."
+        },
+        {
+          "title": "Técnica",
+          "description": "Dominamos la tecnología con precisión y propósito, transformando conocimiento técnico en impacto estético y funcional."
+        }
+      ]
+    },
+    "whyUs": {
+      "eyebrow": "Porqué nosotros",
+      "title": "Detrás de cada marca exitosa, hay una dirección clara.",
+      "subtitle": "Unimos talento creativo y pensamiento estratégico para diseñar experiencias digitales que dejan huella.",
+      "others": {
+        "title": "Otras agencias",
+        "bullets": [
+          "Trabajan por separado: el branding, el diseño web y el marketing no se comunican.",
+          "Se enfocan en entregar piezas, no en construir dirección.",
+          "El diseño domina sobre la estrategia, priorizando la forma sobre el propósito.",
+          "Las decisiones se toman sin data ni propósito definido."
+        ],
+        "result": "Resultado: una marca visualmente correcta, pero sin impacto ni coherencia."
+      },
+      "pointers": {
+        "title": "Pointers",
+        "bullets": [
+          "Integramos estrategia, diseño y tecnología en un mismo flujo coherente, alineando cada fase hacia un propósito común.",
+          "Construimos ecosistemas digitales con visión y propósito.",
+          "El diseño responde a una dirección estratégica.",
+          "Tomamos decisiones guiadas por análisis y objetivos medibles."
+        ],
+        "result": "Resultado: marcas con identidad sólida, rendimiento y proyección."
+      }
+    },
+    "team": {
+      "eyebrow": "Nuestro Equipo",
+      "title": "Donde la estética se encuentra con la estrategia.",
+      "subtitle": "Un equipo que combina visión creativa y precisión técnica para construir marcas con dirección y propósito.",
+      "members": [
+        { "name": "Luis Diego Medina", "role": "Director Estratégico y Co-fundador" },
+        { "name": "Sophia Nguyen", "role": "Head of Automation Engineering" },
+        { "name": "Ryan Mitchell", "role": "Lead Data Scientist" }
+      ]
+    },
+    "cta": {
+      "eyebrow": "Siguiente paso",
+      "title": "Tu marca sabe a dónde quiere llegar. Nosotros te ayudamos a lograrlo.",
+      "subtitle": "Agenda una reunión y comencemos a construir su próxima etapa.",
+      "button": "¡Hablémos!"
+    },
+    "faq": {
+      "eyebrow": "Preguntas Frecuentes",
+      "title": "Lo que somos, lo que creemos.",
+      "subtitle": "Cada marca que confía en nosotros recibe más que un servicio: un equipo que piensa, diseña y construye con dirección y propósito.",
+      "questions": [
+        "¿Cómo nació Pointers?",
+        "¿Qué tipo de marcas trabajan con Pointers?",
+        "¿Qué hace diferente a Pointers de otras agencias digitales?",
+        "¿Cuál es la filosofía detrás de cada proyecto?",
+        "¿Cómo se mantienen actualizados frente a las nuevas tendencias digitales?"
+      ]
+    }
+  },
+  "mocks": {
+    "tabs": ["Borrador", "Programar", "Enviado"],
+    "chatTitle": "¿En qué puedo ayudarte?",
+    "chatBody": "Si necesitas ayuda con atención al cliente o cambios en tu sistema, solo dame un comando.",
+    "chips": ["Añadir documento", "Analizar", "Generar imagen", "Investigar"],
+    "scheduleGreeting": "¡Hola David!",
+    "scheduleSubtitle": "Aquí está tu proyecto y agenda personalizada",
+    "ongoingLabel": "Proyecto en curso:",
+    "ongoingProject": "Chatbot de soporte al cliente",
+    "ongoingProgress": "90% terminado",
+    "days": ["Lu", "Ma", "Mi", "Ju", "Vi", "Sa", "Do"],
+    "events": [
+      { "label": "Llamada de descubrimiento · 10:00 am", "tone": "teal" },
+      { "label": "Automatización personalizada · 06:00 pm", "tone": "purple" }
+    ],
+    "systems": [
+      { "name": "Sistema chatbot", "status": "La eficiencia aumentará un 20%", "ok": true },
+      { "name": "Sistema de flujos", "status": "Actualización disponible..", "ok": false },
+      { "name": "Sistema de ventas", "status": "Al día", "ok": true }
+    ]
+  }
+}
