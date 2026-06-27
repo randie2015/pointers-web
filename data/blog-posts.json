@@ -1,0 +1,38 @@
+[
+  {
+    "id": "post-1",
+    "slug": "branding-que-conecta",
+    "title": "Branding que conecta: más allá del logo",
+    "excerpt": "Cómo construir una identidad visual coherente que transmita propósito y genere confianza en cada punto de contacto.",
+    "content": "<p>Una marca sólida no se limita a un logotipo atractivo. Es un sistema visual y verbal que comunica propósito en cada interacción.</p><p>En Pointers ayudamos a las empresas a definir tono, paleta, tipografía y narrativa para construir confianza duradera.</p>",
+    "tag": "Branding",
+    "status": "published",
+    "publishedAt": "2026-05-12T10:00:00.000Z",
+    "createdAt": "2026-05-12T10:00:00.000Z",
+    "updatedAt": "2026-05-12T10:00:00.000Z"
+  },
+  {
+    "id": "post-2",
+    "slug": "webs-que-convierten",
+    "title": "Webs que convierten sin sacrificar estética",
+    "excerpt": "Claves de UX, velocidad y narrativa visual para transformar visitantes en clientes.",
+    "content": "<p>El diseño y el rendimiento no están en conflicto. Una web rápida, clara y visualmente memorable convierte mejor.</p><p>Prioriza jerarquía visual, mensajes directos y tiempos de carga óptimos.</p>",
+    "tag": "Diseño Web",
+    "status": "published",
+    "publishedAt": "2026-04-28T10:00:00.000Z",
+    "createdAt": "2026-04-28T10:00:00.000Z",
+    "updatedAt": "2026-04-28T10:00:00.000Z"
+  },
+  {
+    "id": "post-3",
+    "slug": "contenido-redes-2026",
+    "title": "Estrategia de contenido en redes que sí funciona",
+    "excerpt": "Planifica, crea y mide publicaciones que refuercen tu marca y acerquen a tu audiencia.",
+    "content": "<p>La consistencia y la estrategia superan a la viralidad accidental. Define pilares de contenido, calendario y métricas claras.</p><p>Mide engagement, alcance y conversiones para iterar con datos.</p>",
+    "tag": "Contenido",
+    "status": "published",
+    "publishedAt": "2026-04-15T10:00:00.000Z",
+    "createdAt": "2026-04-15T10:00:00.000Z",
+    "updatedAt": "2026-04-15T10:00:00.000Z"
+  }
+]

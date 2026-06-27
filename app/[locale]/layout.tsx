@@ -5,6 +5,9 @@ import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
+import { WhatsAppFloat } from '@/components/whatsapp-float';
+import { HashScrollHandler } from '@/components/hash-scroll-handler';
+import { AdminAccessIcon } from '@/components/admin/admin-access-icon';
 import { Inter } from 'next/font/google';
 import type { Metadata } from 'next';
 import '../globals.css';
@@ -52,9 +55,12 @@ export default async function LocaleLayout({
     <html lang={locale} className={inter.variable}>
       <body>
         <IntlProvider initialLocale={locale as AppLocale}>
+          <HashScrollHandler />
           <Header />
           <main>{children}</main>
           <Footer />
+          <WhatsAppFloat />
+          <AdminAccessIcon />
         </IntlProvider>
       </body>
     </html>

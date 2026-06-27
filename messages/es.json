@@ -9,6 +9,10 @@
     "blog": "Blog",
     "cta": "¡Hablemos!"
   },
+  "whatsapp": {
+    "label": "¡Escríbenos!",
+    "ariaLabel": "Contactar por WhatsApp"
+  },
   "hero": {
     "title": "Creatividad inspirada en soluciones modernas.",
     "subtitle": "Diseñamos ecosistemas digitales que elevan marcas y generan impacto.",
