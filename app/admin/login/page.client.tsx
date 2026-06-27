@@ -2,13 +2,14 @@
 
 import { FormEvent, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { KeyRound, Loader2, Lock, User } from 'lucide-react';
+import { Eye, EyeOff, Loader2, Lock, User } from 'lucide-react';
 
 export default function AdminLoginPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
@@ -41,32 +42,20 @@ export default function AdminLoginPage() {
   }
 
   return (
-    <div className="relative flex min-h-screen items-center justify-center overflow-hidden px-6 py-12">
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -left-24 top-0 h-72 w-72 rounded-full bg-[#BC2656]/20 blur-3xl"
-      />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -right-24 bottom-0 h-72 w-72 rounded-full bg-[#39B8AD]/20 blur-3xl"
-      />
-
-      <div className="relative w-full max-w-md">
+    <div className="flex min-h-[calc(100vh-5.5rem)] items-center justify-center px-6 pb-12">
+      <div className="w-full max-w-md">
         <div className="mb-8 text-center">
-          <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-brand text-white shadow-lg shadow-brand/30">
-            <KeyRound size={26} />
-          </div>
-          <h1 className="text-2xl font-bold tracking-tight text-gray-900">Panel de administración</h1>
-          <p className="mt-2 text-sm text-gray-600">Ingresa tus credenciales para continuar.</p>
+          <h1 className="text-2xl font-bold tracking-tight text-white">Panel de administración</h1>
+          <p className="mt-2 text-sm text-white/60">Ingresa tus credenciales para continuar.</p>
         </div>
 
         <form
           onSubmit={handleSubmit}
-          className="rounded-3xl border border-white/60 bg-white/90 p-8 shadow-xl shadow-gray-200/60 backdrop-blur"
+          className="rounded-3xl border border-white/10 bg-white/10 p-8 shadow-2xl shadow-black/20 backdrop-blur-md"
         >
           <div className="space-y-5">
             <label className="block">
-              <span className="mb-2 flex items-center gap-2 text-sm font-medium text-gray-700">
+              <span className="mb-2 flex items-center gap-2 text-sm font-medium text-white/80">
                 <User size={16} />
                 Usuario
               </span>
@@ -76,30 +65,40 @@ export default function AdminLoginPage() {
                 onChange={(e) => setUsername(e.target.value)}
                 autoComplete="username"
                 required
-                className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm outline-none transition focus:border-brand focus:ring-2 focus:ring-brand/20"
+                className="w-full rounded-xl border border-white/15 bg-black/30 px-4 py-3 text-sm text-white placeholder:text-white/35 outline-none transition focus:border-brand focus:ring-2 focus:ring-brand/30"
                 placeholder="admin"
               />
             </label>
 
             <label className="block">
-              <span className="mb-2 flex items-center gap-2 text-sm font-medium text-gray-700">
+              <span className="mb-2 flex items-center gap-2 text-sm font-medium text-white/80">
                 <Lock size={16} />
                 Contraseña
               </span>
-              <input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                autoComplete="current-password"
-                required
-                className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm outline-none transition focus:border-brand focus:ring-2 focus:ring-brand/20"
-                placeholder="••••••••"
-              />
+              <div className="relative">
+                <input
+                  type={showPassword ? 'text' : 'password'}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  autoComplete="current-password"
+                  required
+                  className="w-full rounded-xl border border-white/15 bg-black/30 py-3 pl-4 pr-11 text-sm text-white placeholder:text-white/35 outline-none transition focus:border-brand focus:ring-2 focus:ring-brand/30"
+                  placeholder="••••••••"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword((current) => !current)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 rounded-lg p-1 text-white/45 transition hover:text-white"
+                  aria-label={showPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'}
+                >
+                  {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                </button>
+              </div>
             </label>
           </div>
 
           {error && (
-            <p className="mt-4 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+            <p className="mt-4 rounded-xl border border-red-400/30 bg-red-500/10 px-4 py-3 text-sm text-red-200">
               {error}
             </p>
           )}

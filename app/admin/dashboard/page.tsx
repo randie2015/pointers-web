@@ -2,6 +2,9 @@ import Link from 'next/link';
 import { FileText, PenLine, Sparkles } from 'lucide-react';
 import { getAllPosts } from '@/lib/blog/store';
 
+const cardClass =
+  'rounded-2xl border border-white/10 bg-black/35 p-6 shadow-lg shadow-black/20 backdrop-blur-md';
+
 export default async function DashboardPage() {
   const posts = await getAllPosts();
   const published = posts.filter((post) => post.status === 'published').length;
@@ -10,57 +13,57 @@ export default async function DashboardPage() {
   return (
     <div className="mx-auto max-w-5xl">
       <div className="mb-8">
-        <p className="text-sm font-medium text-brand">Panel principal</p>
-        <h1 className="mt-1 text-3xl font-bold tracking-tight text-gray-900">Bienvenido al CMS</h1>
-        <p className="mt-2 text-gray-600">Gestiona el contenido del blog desde un solo lugar.</p>
+        <p className="text-sm font-medium text-[#39B8AD]">Panel principal</p>
+        <h1 className="mt-1 text-3xl font-bold tracking-tight text-white">Bienvenido al CMS</h1>
+        <p className="mt-2 text-white/60">Gestiona el contenido del blog desde un solo lugar.</p>
       </div>
 
       <div className="grid gap-4 sm:grid-cols-3">
-        <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
-          <p className="text-sm text-gray-500">Total artículos</p>
-          <p className="mt-2 text-3xl font-bold text-gray-900">{posts.length}</p>
+        <div className={cardClass}>
+          <p className="text-sm text-white/50">Total artículos</p>
+          <p className="mt-2 text-3xl font-bold text-white">{posts.length}</p>
         </div>
-        <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
-          <p className="text-sm text-gray-500">Publicados</p>
+        <div className={cardClass}>
+          <p className="text-sm text-white/50">Publicados</p>
           <p className="mt-2 text-3xl font-bold text-[#39B8AD]">{published}</p>
         </div>
-        <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
-          <p className="text-sm text-gray-500">Borradores</p>
-          <p className="mt-2 text-3xl font-bold text-amber-600">{drafts}</p>
+        <div className={cardClass}>
+          <p className="text-sm text-white/50">Borradores</p>
+          <p className="mt-2 text-3xl font-bold text-amber-400">{drafts}</p>
         </div>
       </div>
 
       <div className="mt-8 grid gap-4 md:grid-cols-2">
         <Link
           href="/admin/dashboard/blog"
-          className="group rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition hover:border-brand/30 hover:shadow-md"
+          className={`group transition hover:border-brand/40 hover:bg-black/45 ${cardClass}`}
         >
           <div className="flex items-center gap-3">
-            <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand/10 text-brand">
+            <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand/20 text-brand">
               <FileText size={22} />
             </span>
             <div>
-              <h2 className="font-semibold text-gray-900 group-hover:text-brand">Gestionar Blog</h2>
-              <p className="text-sm text-gray-600">Crear, editar y eliminar artículos.</p>
+              <h2 className="font-semibold text-white group-hover:text-brand">Gestionar Blog</h2>
+              <p className="text-sm text-white/55">Crear, editar y eliminar artículos.</p>
             </div>
           </div>
         </Link>
 
-        <div className="rounded-2xl border border-dashed border-gray-300 bg-white/60 p-6">
-          <div className="flex items-center gap-3 text-gray-500">
+        <div className="rounded-2xl border border-dashed border-white/15 bg-black/20 p-6 backdrop-blur-sm">
+          <div className="flex items-center gap-3 text-white/50">
             <Sparkles size={22} />
             <div>
-              <h2 className="font-semibold text-gray-700">Próximamente</h2>
+              <h2 className="font-semibold text-white/70">Próximamente</h2>
               <p className="text-sm">Más módulos del CMS en futuras versiones.</p>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="mt-8 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
+      <div className={`mt-8 ${cardClass}`}>
         <div className="mb-4 flex items-center gap-2">
           <PenLine size={18} className="text-brand" />
-          <h2 className="font-semibold text-gray-900">Acceso rápido</h2>
+          <h2 className="font-semibold text-white">Acceso rápido</h2>
         </div>
         <Link
           href="/admin/dashboard/blog"

@@ -21,10 +21,10 @@ export function AdminSidebar() {
   }
 
   return (
-    <aside className="flex w-full flex-col border-b border-gray-200 bg-white md:min-h-screen md:w-64 md:border-b-0 md:border-r">
-      <div className="border-b border-gray-100 px-6 py-5">
-        <p className="text-xs font-semibold uppercase tracking-wider text-brand">Pointers</p>
-        <h2 className="mt-1 text-lg font-bold text-gray-900">Administración</h2>
+    <aside className="flex w-full flex-col border-b border-white/10 bg-black/40 backdrop-blur-md md:min-h-[calc(100vh-5.5rem)] md:w-64 md:border-b-0 md:border-r">
+      <div className="border-b border-white/10 px-6 py-5">
+        <p className="text-xs font-semibold uppercase tracking-wider text-white/50">Panel</p>
+        <h2 className="mt-1 text-lg font-bold text-white">Administración</h2>
       </div>
 
       <nav className="flex flex-1 flex-col gap-1 p-4 md:p-3">
@@ -37,8 +37,8 @@ export function AdminSidebar() {
               className={cn(
                 'flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium transition',
                 active
-                  ? 'bg-brand text-white shadow-md shadow-brand/20'
-                  : 'text-gray-700 hover:bg-gray-100'
+                  ? 'bg-brand text-white shadow-md shadow-brand/30'
+                  : 'text-white/75 hover:bg-white/10 hover:text-white'
               )}
             >
               <Icon size={18} />
@@ -48,11 +48,11 @@ export function AdminSidebar() {
         })}
       </nav>
 
-      <div className="border-t border-gray-100 p-4">
+      <div className="border-t border-white/10 p-4">
         <button
           type="button"
           onClick={handleLogout}
-          className="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-gray-700 transition hover:bg-red-50 hover:text-red-600"
+          className="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-white/75 transition hover:bg-red-500/15 hover:text-red-200"
         >
           <LogOut size={18} />
           Cerrar sesión
