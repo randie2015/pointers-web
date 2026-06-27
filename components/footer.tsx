@@ -109,9 +109,18 @@ export function Footer() {
 
         <div className="mt-14 flex flex-col gap-2 border-t border-gray-300/50 pt-8 text-sm text-gray-700 md:flex-row md:items-center md:justify-between">
           <p>{t('designedBy')}</p>
-          <p className="text-gray-600">
-            © {year} Pointers. {t('rights')}
-          </p>
+          <div className="flex items-center gap-4">
+            <a
+              href="/admin/login"
+              className="text-xs text-gray-400 transition hover:text-brand"
+              aria-label="Acceso administración"
+            >
+              Admin
+            </a>
+            <p className="text-gray-600">
+              © {year} Pointers. {t('rights')}
+            </p>
+          </div>
         </div>
       </div>
     </footer>
