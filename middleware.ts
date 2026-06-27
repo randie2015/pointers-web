@@ -47,6 +47,11 @@ const intlMiddleware = createMiddleware(routing);
 export default async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
+  const localeAdminMatch = pathname.match(/^\/(es|en)(\/admin(?:\/.*)?)$/);
+  if (localeAdminMatch) {
+    return NextResponse.redirect(new URL(localeAdminMatch[2], request.url));
+  }
+
   if (pathname.startsWith('/admin')) {
     if (pathname === '/admin/login') {
       const session = await verifyAdminSession(request.cookies.get(SESSION_COOKIE)?.value);
