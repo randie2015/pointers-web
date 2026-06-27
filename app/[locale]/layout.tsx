@@ -30,6 +30,10 @@ export async function generateMetadata({
   return {
     title: t('title'),
     description: hero('subtitle'),
+    icons: {
+      icon: [{ url: '/icon.png', type: 'image/png' }],
+      apple: [{ url: '/apple-touch-icon.png', type: 'image/png' }]
+    },
     alternates: {
       canonical: `/${locale}`,
       languages: { es: '/es', en: '/en', 'x-default': '/es' }

@@ -7,7 +7,11 @@ const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'sw
 
 export const metadata: Metadata = {
   title: 'Admin | Pointers',
-  robots: { index: false, follow: false }
+  robots: { index: false, follow: false },
+  icons: {
+    icon: [{ url: '/icon.png', type: 'image/png' }],
+    apple: [{ url: '/apple-touch-icon.png', type: 'image/png' }]
+  }
 };
 
 export default function AdminRootLayout({ children }: { children: React.ReactNode }) {
