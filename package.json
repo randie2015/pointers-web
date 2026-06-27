@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "node --no-webstorage node_modules/next/dist/bin/next dev --turbo",
-    "build": "node --no-webstorage node_modules/next/dist/bin/next build",
-    "start": "node --no-webstorage node_modules/next/dist/bin/next start",
+    "build": "next build",
+    "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
