@@ -80,18 +80,6 @@ export function Hero() {
       />
 
       <div className="relative z-10 flex max-w-4xl flex-col items-center justify-center px-6 py-24 md:px-10">
-        <motion.div
-          initial={reduced ? false : { opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: reduced ? 0 : 0.45, ease: [0.22, 1, 0.36, 1] }}
-          className="mb-8 inline-flex items-stretch overflow-hidden rounded-full border border-gray-200/90 bg-white/95 shadow-sm"
-        >
-          <span className="flex items-center bg-brand px-4 py-2 text-xs font-semibold uppercase tracking-wide text-white">
-            {t('badge')}
-          </span>
-          <span className="flex items-center px-4 py-2 text-sm text-gray-700">{t('badgeText')}</span>
-        </motion.div>
-
         <motion.h1
           initial={reduced ? false : { opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}

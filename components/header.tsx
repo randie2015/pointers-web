@@ -35,7 +35,7 @@ export function Header() {
     <header className="sticky top-0 z-[100] bg-brand text-white">
       <div className="container-page flex h-[68px] items-center justify-between gap-8 md:h-[76px]">
         <Link href="/" prefetch className="flex shrink-0 items-center" aria-label="Pointers home">
-          <BrandLogo variant="horizontal-white" className="h-8 sm:h-9 md:h-10" priority />
+          <BrandLogo variant="horizontal-white" className="h-8 brightness-0 invert sm:h-9 md:h-10" priority />
         </Link>
 
         <div className="hidden items-center gap-1 md:flex">
