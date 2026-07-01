@@ -32,10 +32,10 @@ export function Header() {
   }, [pathname]);
 
   return (
-    <header className="sticky top-0 z-[100] bg-brand text-white">
+    <header className="sticky top-0 z-[100] bg-white text-foreground shadow-sm">
       <div className="container-page flex h-[68px] items-center justify-between gap-8 md:h-[76px]">
         <Link href="/" prefetch className="flex shrink-0 items-center" aria-label="Pointers home">
-          <BrandLogo variant="horizontal-white" className="h-8 sm:h-9 md:h-10" priority />
+          <BrandLogo variant="horizontal-dark" className="h-8 sm:h-9 md:h-10" priority />
         </Link>
 
         <div className="hidden items-center gap-1 md:flex">
@@ -44,7 +44,7 @@ export function Header() {
               <NavHoverLink key={l.href} href={l.href} label={l.label} />
             ))}
           </nav>
-          <div className="ml-4 flex items-center gap-3 border-l border-white/20 pl-4">
+          <div className="ml-4 flex items-center gap-3 border-l border-border pl-4">
             <LocaleSwitcher />
             <MaskUpButton href="/contact" label={t('cta')} size="compact" />
           </div>
@@ -54,7 +54,7 @@ export function Header() {
           <LocaleSwitcher />
           <button
             type="button"
-            className="text-white"
+            className="text-foreground"
             onClick={() => setOpen(!open)}
             aria-expanded={open}
             aria-label="Menu"
@@ -65,7 +65,7 @@ export function Header() {
       </div>
 
       {open && (
-        <div className="border-t border-white/15 bg-brand md:hidden">
+        <div className="border-t border-border bg-white md:hidden">
           <nav className="container-page flex flex-col gap-1 py-6" aria-label="Mobile">
             {links.map((l) => (
               <NavHoverLink
