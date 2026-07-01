@@ -12,11 +12,11 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
       <header className="relative z-20 flex justify-center px-6 pt-8 pb-4">
         <Link href="/" aria-label="Pointers — inicio">
           <Image
-            src="/logo.png"
+            src="/logo-white.png"
             alt="Pointers"
-            width={48}
-            height={48}
-            className="h-10 w-10 md:h-11 md:w-11"
+            width={167}
+            height={90}
+            className="h-8 w-auto md:h-9"
             priority
           />
         </Link>

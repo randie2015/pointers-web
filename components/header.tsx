@@ -36,11 +36,11 @@ export function Header() {
       <div className="container-page flex h-16 md:h-[72px] items-center justify-between gap-6">
         <Link href="/" prefetch className="flex shrink-0 items-center" aria-label="Pointers home">
           <Image
-            src="/logo.png"
+            src="/logo-white.png"
             alt="Pointers"
-            width={40}
-            height={40}
-            className="h-8 w-8 md:h-9 md:w-9"
+            width={148}
+            height={80}
+            className="h-7 w-auto md:h-8"
             priority
           />
         </Link>
