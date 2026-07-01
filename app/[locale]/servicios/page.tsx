@@ -50,7 +50,7 @@ export default async function ServiciosPage({ params }: { params: Promise<{ loca
       <BrandTrustSection />
       <ProcessSection namespace="servicesPage.process" sectionId="proceso" />
       <ServicesCta />
-      <FaqSection namespace="servicesPage.faq" sectionId="preguntas" />
+      <FaqSection namespace="servicesPage.faq" sectionId="faq" />
     </>
   );
 }

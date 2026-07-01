@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Link } from '@/i18n/routing';
+import type { AppRoute } from '@/lib/navigation';
 import type { ReactNode } from 'react';
 
 const SIZES = {
@@ -32,7 +33,7 @@ type BaseProps = {
 
 type LinkProps = BaseProps & {
   type?: 'link';
-  href: '/' | '/contact' | '/nosotros' | '/servicios' | '/blog' | `/servicios/${string}`;
+  href: AppRoute | `/servicios/${string}`;
 };
 
 type SubmitProps = BaseProps & {

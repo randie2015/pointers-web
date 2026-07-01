@@ -5,11 +5,12 @@ import { useTranslations } from 'next-intl';
 import { Link, usePathname, useRouter } from '@/i18n/routing';
 import { LocaleSwitcher } from '@/components/locale-switcher';
 import { NavHoverLink } from '@/components/nav-hover-link';
+import { MAIN_ROUTES } from '@/lib/navigation';
 import { Menu, X } from 'lucide-react';
 import Image from 'next/image';
 import { MaskUpButton } from '@/components/ui/mask-up-button';
 
-const PREFETCH_ROUTES = ['/', '/nosotros', '/servicios', '/contact', '/blog'] as const;
+const PREFETCH_ROUTES = ['/', ...MAIN_ROUTES.map((r) => r.href)] as const;
 
 export function Header() {
   const t = useTranslations('nav');
@@ -17,18 +18,14 @@ export function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
-  const links = [
-    { href: '/nosotros' as const, label: t('about') },
-    { href: '/servicios' as const, label: t('services') },
-    { href: '/contact' as const, label: t('contact') },
-    { href: '/blog' as const, label: t('blog') }
-  ];
+  const links = MAIN_ROUTES.map((route) => ({
+    href: route.href,
+    label: t(route.labelKey)
+  }));
 
   useEffect(() => {
-    PREFETCH_ROUTES.forEach((href) => {
-      router.prefetch(href);
-    });
-  }, []);
+    PREFETCH_ROUTES.forEach((href) => router.prefetch(href));
+  }, [router]);
 
   useEffect(() => {
     setOpen(false);
@@ -48,7 +45,7 @@ export function Header() {
           />
         </Link>
 
-        <nav className="hidden items-center gap-1 md:flex">
+        <nav className="hidden items-center gap-1 md:flex" aria-label="Main">
           {links.map((l) => (
             <NavHoverLink key={l.href} href={l.href} label={l.label} />
           ))}
@@ -65,6 +62,7 @@ export function Header() {
             type="button"
             className="text-white"
             onClick={() => setOpen(!open)}
+            aria-expanded={open}
             aria-label="Menu"
           >
             {open ? <X size={22} /> : <Menu size={22} />}
@@ -74,7 +72,7 @@ export function Header() {
 
       {open && (
         <div className="border-t border-white/15 bg-brand md:hidden">
-          <nav className="container-page flex flex-col gap-1 py-6">
+          <nav className="container-page flex flex-col gap-1 py-6" aria-label="Mobile">
             {links.map((l) => (
               <NavHoverLink
                 key={l.href}

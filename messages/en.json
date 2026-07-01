@@ -22,6 +22,8 @@
     "eyebrow": "Our Services",
     "title": "Digital solutions that will take your business to the next level",
     "subtitle": "We combine strategy, design and technology to build solutions that truly work.",
+    "previewLink": "View service",
+    "previewCta": "View all services",
     "items": [
       {
         "badge": "Branding & Visual Identity",

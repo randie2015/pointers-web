@@ -1,13 +1,16 @@
 import dynamic from 'next/dynamic';
 import { setRequestLocale } from 'next-intl/server';
 
+const ServicesHomePreview = dynamic(
+  () =>
+    import('@/components/sections/services-home-preview').then((m) => ({
+      default: m.ServicesHomePreview
+    }))
+);
+
 const Hero = dynamic(() => import('@/components/sections/hero').then((m) => ({ default: m.Hero })), {
   loading: () => <section className="min-h-screen bg-[#0a0a0b]" aria-hidden />
 });
-
-const ServicesSection = dynamic(
-  () => import('@/components/sections/services-section').then((m) => ({ default: m.ServicesSection }))
-);
 
 const BrandTrustSection = dynamic(
   () => import('@/components/workflow/BrandTrustSection').then((m) => ({ default: m.BrandTrustSection }))
@@ -35,7 +38,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   return (
     <>
       <Hero />
-      <ServicesSection />
+      <ServicesHomePreview />
       <BrandTrustSection />
       <ProcessSection />
       <WhySection />

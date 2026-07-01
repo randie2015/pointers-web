@@ -16,10 +16,19 @@ function scrollToHash(hash: string, behavior: ScrollBehavior = 'auto') {
 
   el.scrollIntoView({ behavior, block: 'start' });
   dispatchAnchorScroll();
-  if (behavior === 'smooth') {
-    window.setTimeout(dispatchAnchorScroll, 400);
-  }
   return true;
+}
+
+function scrollToHashWithRetry(hash: string, attempts = 12) {
+  if (scrollToHash(hash)) return;
+
+  let count = 0;
+  const timer = window.setInterval(() => {
+    count += 1;
+    if (scrollToHash(hash) || count >= attempts) {
+      window.clearInterval(timer);
+    }
+  }, 100);
 }
 
 function normalizePath(path: string) {
@@ -46,7 +55,7 @@ export function HashScrollHandler() {
       return;
     }
     if (!hash) return;
-    scrollToHash(hash);
+    scrollToHashWithRetry(hash);
   }, [pathname, router]);
 
   useEffect(() => {
@@ -69,7 +78,8 @@ export function HashScrollHandler() {
         return;
       }
 
-      scrollToHash(url.hash);
+      event.preventDefault();
+      scrollToHashWithRetry(url.hash);
     };
 
     document.addEventListener('click', handleClick);
@@ -82,7 +92,7 @@ export function HashScrollHandler() {
         router.replace('/servicios');
         return;
       }
-      scrollToHash(window.location.hash);
+      scrollToHashWithRetry(window.location.hash);
     };
 
     window.addEventListener('hashchange', onHashChange);

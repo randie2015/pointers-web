@@ -4,11 +4,11 @@ import type { Container, ISourceOptions } from 'tsparticles-engine';
 export const heroParticlesOptions: ISourceOptions = {
   fullScreen: { enable: false },
   background: { color: { value: 'transparent' } },
-  fpsLimit: 120,
+  fpsLimit: 60,
   particles: {
     number: {
-      value: 320,
-      density: { enable: true, value_area: 380 }
+      value: 100,
+      density: { enable: true, value_area: 480 }
     },
     color: { value: '#ffffff' },
     opacity: {

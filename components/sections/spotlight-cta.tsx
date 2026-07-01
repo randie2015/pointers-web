@@ -1,10 +1,12 @@
 'use client';
 
 import { useRef, useState } from 'react';
+import { useTranslations } from 'next-intl';
 import { motion, useMotionTemplate, useMotionValue, useReducedMotion } from 'framer-motion';
 import { MaskUpButton } from '@/components/ui/mask-up-button';
 
 export function SpotlightCTA() {
+  const t = useTranslations('aboutPage.cta');
   const reduced = useReducedMotion();
   const cardRef = useRef<HTMLDivElement | null>(null);
   const [active, setActive] = useState(false);
@@ -39,15 +41,10 @@ export function SpotlightCTA() {
           />
 
           <div className="relative z-10 mx-auto max-w-3xl">
-            <h2 className="text-4xl font-bold leading-tight text-white md:text-5xl">
-              Tu marca sabe a dónde quiere llegar. Nosotros te ayudamos a lograrlo.
-            </h2>
-            <p className="mt-6 text-lg leading-relaxed text-white/80">
-              Agenda una reunión y comencemos a construir su próxima etapa.
-            </p>
-
+            <h2 className="text-4xl font-bold leading-tight text-white md:text-5xl">{t('title')}</h2>
+            <p className="mt-6 text-lg leading-relaxed text-white/80">{t('subtitle')}</p>
             <div className="mt-8 flex justify-center">
-              <MaskUpButton href="/contact" label="¡Hablemos!" />
+              <MaskUpButton href="/contact" label={t('button')} />
             </div>
           </div>
         </div>
@@ -55,4 +52,3 @@ export function SpotlightCTA() {
     </section>
   );
 }
-

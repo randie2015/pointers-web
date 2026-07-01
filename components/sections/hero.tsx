@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useRef } from 'react';
 import { useTranslations } from 'next-intl';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import Particles from 'react-tsparticles';
 import { loadFull } from 'tsparticles';
 import type { Container, Engine } from 'tsparticles-engine';
@@ -14,6 +14,7 @@ const MAGENTA = '#BC2656';
 
 export function Hero() {
   const t = useTranslations('hero');
+  const reduced = useReducedMotion();
   const cleanupRef = useRef<(() => void) | null>(null);
 
   const particlesInit = useCallback(async (engine: Engine) => {
@@ -34,16 +35,18 @@ export function Hero() {
 
   return (
     <section
-      id="nosotros"
+      id="hero"
       className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-[#0a0a0b] text-center"
     >
-      <Particles
-        id="hero-particles"
-        className="absolute inset-0 z-0"
-        init={particlesInit}
-        loaded={particlesLoaded}
-        options={options}
-      />
+      {!reduced && (
+        <Particles
+          id="hero-particles"
+          className="absolute inset-0 z-0"
+          init={particlesInit}
+          loaded={particlesLoaded}
+          options={options}
+        />
+      )}
 
       <div
         aria-hidden
@@ -70,27 +73,27 @@ export function Hero() {
 
       <div className="relative z-10 flex max-w-4xl flex-col items-center justify-center px-6 py-24 md:px-10">
         <motion.h1
-          initial={{ opacity: 0, y: 24 }}
+          initial={reduced ? false : { opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: reduced ? 0 : 0.5, ease: [0.22, 1, 0.36, 1] }}
           className="max-w-4xl font-sans text-4xl font-bold leading-[1.08] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-[64px]"
         >
           {t('title')}
         </motion.h1>
 
         <motion.p
-          initial={{ opacity: 0, y: 16 }}
+          initial={reduced ? false : { opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.22, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: reduced ? 0 : 0.45, delay: reduced ? 0 : 0.08, ease: [0.22, 1, 0.36, 1] }}
           className="mt-6 max-w-2xl text-base leading-relaxed text-white/65 md:text-lg"
         >
           {t('subtitle')}
         </motion.p>
 
         <motion.div
-          initial={{ opacity: 0, y: 12 }}
+          initial={reduced ? false : { opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: reduced ? 0 : 0.4, delay: reduced ? 0 : 0.14, ease: [0.22, 1, 0.36, 1] }}
           className="mt-10"
         >
           <MaskUpButton href="/contact" label={t('cta')} />

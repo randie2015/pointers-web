@@ -3,6 +3,7 @@
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
 import Image from 'next/image';
+import { HOME_ANCHORS, MAIN_ROUTES } from '@/lib/navigation';
 
 const TEAL = '#39B8AD';
 
@@ -26,7 +27,6 @@ export function Footer() {
     <footer className="mt-20 bg-gradient-to-b from-transparent to-[#BC2656]/20 text-gray-800">
       <div className="container-page py-16 md:py-20">
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-10">
-          {/* Logo + newsletter */}
           <div className="lg:col-span-5">
             <Image
               src="/logo-brand.svg"
@@ -56,45 +56,28 @@ export function Footer() {
             </form>
           </div>
 
-          {/* Links */}
           <div className="lg:col-span-2 lg:col-start-7">
             <p className="mb-4 text-sm font-semibold text-gray-900">{t('links')}</p>
             <nav className="flex flex-col gap-2.5">
-              <Link href="/servicios" prefetch className={linkClass}>
-                {anchors('services')}
-              </Link>
-              <Link href="/#proceso" prefetch className={linkClass}>
-                {anchors('process')}
-              </Link>
-              <Link href="/#por-que" prefetch className={linkClass}>
-                {anchors('why')}
-              </Link>
-              <Link href="/#faq" prefetch className={linkClass}>
-                {anchors('faq')}
-              </Link>
+              {HOME_ANCHORS.map((item) => (
+                <Link key={item.href} href={item.href} prefetch className={linkClass}>
+                  {anchors(item.labelKey)}
+                </Link>
+              ))}
             </nav>
           </div>
 
-          {/* Pages */}
           <div className="lg:col-span-2">
             <p className="mb-4 text-sm font-semibold text-gray-900">{t('pages')}</p>
             <nav className="flex flex-col gap-2.5">
-              <Link href="/nosotros" prefetch className={linkClass}>
-                {nav('about')}
-              </Link>
-              <Link href="/servicios" prefetch className={linkClass}>
-                {nav('services')}
-              </Link>
-              <Link href="/contact" prefetch className={linkClass}>
-                {nav('contact')}
-              </Link>
-              <Link href="/blog" prefetch className={linkClass}>
-                {nav('blog')}
-              </Link>
+              {MAIN_ROUTES.map((item) => (
+                <Link key={item.href} href={item.href} prefetch className={linkClass}>
+                  {nav(item.labelKey)}
+                </Link>
+              ))}
             </nav>
           </div>
 
-          {/* Socials */}
           <div className="lg:col-span-2">
             <p className="mb-4 text-sm font-semibold text-gray-900">{t('socials')}</p>
             <nav className="flex flex-col gap-2.5">
@@ -107,20 +90,10 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-14 flex flex-col gap-2 border-t border-gray-300/50 pt-8 text-sm text-gray-700 md:flex-row md:items-center md:justify-between">
-          <p>{t('designedBy')}</p>
-          <div className="flex items-center gap-4">
-            <a
-              href="/admin/login"
-              className="text-xs text-gray-400 transition hover:text-brand"
-              aria-label="Acceso administración"
-            >
-              Admin
-            </a>
-            <p className="text-gray-600">
-              © {year} Pointers. {t('rights')}
-            </p>
-          </div>
+        <div className="mt-14 border-t border-gray-300/50 pt-8 text-sm text-gray-600">
+          <p>
+            © {year} Pointers. {t('rights')} · {t('designedBy')}
+          </p>
         </div>
       </div>
     </footer>
