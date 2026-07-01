@@ -85,13 +85,19 @@ function FaqItem({
   );
 }
 
-export function FaqSection() {
-  const t = useTranslations('faq');
+export function FaqSection({
+  namespace = 'faq',
+  sectionId = 'faq'
+}: {
+  namespace?: string;
+  sectionId?: string;
+}) {
+  const t = useTranslations(namespace);
   const items = t.raw('items') as { question: string; answer: string }[];
   const [open, setOpen] = useState<number | null>(null);
 
   return (
-    <section id="faq" className="scroll-mt-24 bg-zinc-50/90 py-20 md:py-28">
+    <section id={sectionId} className="scroll-mt-24 bg-zinc-50/90 py-20 md:py-28">
       <div className="container-page">
         <Reveal>
           <SectionHeader eyebrow={t('eyebrow')} title={t('title')} subtitle={t('subtitle')} />

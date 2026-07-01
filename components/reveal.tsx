@@ -12,7 +12,7 @@ export function Reveal({ children, delay = 0, y = 24 }: { children: ReactNode; d
       ref={ref}
       initial={reduced ? false : { opacity: 0, y }}
       animate={show ? { opacity: 1, y: 0 } : { opacity: 0, y }}
-      transition={{ duration: 0.8, delay, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.35, delay, ease: [0.22, 1, 0.36, 1] }}
     >
       {children}
     </motion.div>

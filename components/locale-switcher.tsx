@@ -1,24 +1,29 @@
 'use client';
 
-import { useTransition } from 'react';
+import { useLocale } from 'next-intl';
+import { usePathname, useRouter } from '@/i18n/routing';
 import { cn } from '@/lib/utils';
-import { useAppLocale, type AppLocale } from '@/components/providers/intl-provider';
+import type { AppLocale } from '@/i18n/routing';
 
 type LocaleSwitcherProps = {
   className?: string;
   onSwitch?: () => void;
 };
 
+function persistLocale(locale: AppLocale) {
+  document.cookie = `NEXT_LOCALE=${locale};path=/;max-age=31536000;SameSite=Lax`;
+}
+
 export function LocaleSwitcher({ className, onSwitch }: LocaleSwitcherProps) {
-  const { locale, setLocale } = useAppLocale();
-  const [, startTransition] = useTransition();
+  const locale = useLocale() as AppLocale;
+  const router = useRouter();
+  const pathname = usePathname();
   const otherLocale: AppLocale = locale === 'es' ? 'en' : 'es';
 
   const handleSwitch = () => {
-    startTransition(() => {
-      setLocale(otherLocale);
-      onSwitch?.();
-    });
+    persistLocale(otherLocale);
+    router.replace(pathname, { locale: otherLocale });
+    onSwitch?.();
   };
 
   return (
@@ -26,7 +31,7 @@ export function LocaleSwitcher({ className, onSwitch }: LocaleSwitcherProps) {
       type="button"
       onClick={handleSwitch}
       className={cn(
-        'text-xs uppercase tracking-widest text-white/70 transition-colors hover:text-white',
+        'text-xs uppercase tracking-widest text-white/70 hover:text-white',
         className
       )}
       aria-label={otherLocale === 'en' ? 'Switch to English' : 'Cambiar a español'}

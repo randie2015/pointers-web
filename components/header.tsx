@@ -1,36 +1,43 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { Link } from '@/i18n/routing';
+import { Link, usePathname, useRouter } from '@/i18n/routing';
 import { LocaleSwitcher } from '@/components/locale-switcher';
 import { NavHoverLink } from '@/components/nav-hover-link';
-import { motion } from 'framer-motion';
-import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import Image from 'next/image';
 import { MaskUpButton } from '@/components/ui/mask-up-button';
 
+const PREFETCH_ROUTES = ['/', '/nosotros', '/servicios', '/contact', '/blog'] as const;
+
 export function Header() {
   const t = useTranslations('nav');
+  const router = useRouter();
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  const [hoveredHref, setHoveredHref] = useState<string | null>(null);
 
   const links = [
-    { href: '/nosotros', label: t('about') },
-    { href: '/#servicios', label: t('services') },
-    { href: '/contact', label: t('contact') },
-    { href: '/blog', label: t('blog') }
+    { href: '/nosotros' as const, label: t('about') },
+    { href: '/servicios' as const, label: t('services') },
+    { href: '/contact' as const, label: t('contact') },
+    { href: '/blog' as const, label: t('blog') }
   ];
 
+  useEffect(() => {
+    PREFETCH_ROUTES.forEach((href) => {
+      router.prefetch(href);
+    });
+  }, []);
+
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
+
   return (
-    <motion.header
-      initial={{ y: -20, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-      className="sticky top-0 z-50 bg-brand text-brand-foreground shadow-md shadow-brand/20"
-    >
+    <header className="sticky top-0 z-[100] bg-brand text-brand-foreground shadow-md shadow-brand/20">
       <div className="container-page flex h-16 md:h-[72px] items-center justify-between gap-6">
-        <Link href="/" className="flex shrink-0 items-center gap-2">
+        <Link href="/" prefetch className="flex shrink-0 items-center gap-2" aria-label="Pointers home">
           <Image
             src="/logo.svg"
             alt="Pointers"
@@ -41,19 +48,9 @@ export function Header() {
           />
         </Link>
 
-        <nav
-          className="hidden items-center gap-1 md:flex"
-          onMouseLeave={() => setHoveredHref(null)}
-        >
+        <nav className="hidden items-center gap-1 md:flex">
           {links.map((l) => (
-            <NavHoverLink
-              key={l.href}
-              href={l.href}
-              label={l.label}
-              isActive={hoveredHref === l.href}
-              layoutId="navbar-hover"
-              onActivate={() => setHoveredHref(l.href)}
-            />
+            <NavHoverLink key={l.href} href={l.href} label={l.label} />
           ))}
         </nav>
 
@@ -62,36 +59,32 @@ export function Header() {
           <MaskUpButton href="/contact" label={t('cta')} size="compact" />
         </div>
 
-        <button
-          type="button"
-          className="text-white md:hidden"
-          onClick={() => setOpen(!open)}
-          aria-label="Menu"
-        >
-          {open ? <X size={22} /> : <Menu size={22} />}
-        </button>
+        <div className="flex items-center gap-3 md:hidden">
+          <LocaleSwitcher />
+          <button
+            type="button"
+            className="text-white"
+            onClick={() => setOpen(!open)}
+            aria-label="Menu"
+          >
+            {open ? <X size={22} /> : <Menu size={22} />}
+          </button>
+        </div>
       </div>
 
       {open && (
         <div className="border-t border-white/15 bg-brand md:hidden">
-          <nav
-            className="container-page flex flex-col gap-1 py-6"
-            onMouseLeave={() => setHoveredHref(null)}
-          >
+          <nav className="container-page flex flex-col gap-1 py-6">
             {links.map((l) => (
               <NavHoverLink
                 key={l.href}
                 href={l.href}
                 label={l.label}
-                isActive={hoveredHref === l.href}
-                layoutId="navbar-hover-mobile"
-                onActivate={() => setHoveredHref(l.href)}
                 onClick={() => setOpen(false)}
                 className="text-base"
               />
             ))}
-            <div className="mt-3 flex flex-col gap-4">
-              <LocaleSwitcher onSwitch={() => setOpen(false)} />
+            <div className="mt-3">
               <MaskUpButton
                 href="/contact"
                 label={t('cta')}
@@ -102,6 +95,6 @@ export function Header() {
           </nav>
         </div>
       )}
-    </motion.header>
+    </header>
   );
 }

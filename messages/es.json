@@ -339,6 +339,249 @@
       ]
     }
   },
+  "brandTrust": {
+    "title": "Más de 50 empresas confían en nosotros"
+  },
+  "servicesPage": {
+    "meta": {
+      "title": "Servicios | Pointers",
+      "description": "Estrategia, diseño y tecnología para marcas que buscan impacto."
+    },
+    "hero": {
+      "eyebrow": "Nuestros Servicios",
+      "title": "Estrategia, diseño y tecnología para marcas que buscan impacto.",
+      "subtitle": "Creamos identidades, sitios web y experiencias digitales que generan resultados reales.",
+      "cta": "Agendar asesoría gratuita"
+    },
+    "offerings": {
+      "cta": "Ver servicio",
+      "items": [
+        {
+          "badge": "Branding e Identidad Visual",
+          "title": "Diseñamos marcas que inspiran confianza y generan valor.",
+          "description": "Desde el concepto hasta la implementación digital, creamos identidades que conectan propósito, estética y estrategia.",
+          "tags": ["Diseño de identidad visual", "Branding digital", "Manual de marca"]
+        },
+        {
+          "badge": "Diseño Web y Experiencia Digital",
+          "title": "Desarrollo web, UX/UI estratégico y landing pages de alto rendimiento.",
+          "description": "Diseñamos experiencias digitales atractivas y eficientes, donde la forma y la función se alinean para maximizar conversiones.",
+          "tags": ["Webs de alto rendimiento", "Diseño UX/UI estratégico", "Landing pages de impacto"]
+        },
+        {
+          "badge": "Contenido y Presencia en Redes",
+          "title": "Estrategia de contenido, gestión de redes y creación audiovisual para fortalecer tu marca.",
+          "description": "Impulsamos la conexión entre marcas y audiencias con comunicación auténtica, consistente y visualmente atractiva.",
+          "tags": ["Estrategia de contenido", "Gestión de redes sociales", "Creación audiovisual"]
+        },
+        {
+          "badge": "Estrategia Digital y Publicidad",
+          "title": "Campañas publicitarias, embudos y automatización para escalar tus resultados.",
+          "description": "Diseñamos sistemas inteligentes que optimizan recursos, aumentan el alcance y convierten interacciones en resultados reales.",
+          "tags": ["Campañas publicitarias (Meta / Google)", "Embudos y automatización", "Consultoría digital"]
+        }
+      ]
+    },
+    "process": {
+      "eyebrow": "Proceso Pointers",
+      "title": "Un proceso claro, creativo y orientado a resultados.",
+      "subtitle": "Transformamos ideas en estrategias visuales y digitales que conectan marcas con resultados. Cada proyecto sigue una metodología que une estrategia, diseño y tecnología.",
+      "steps": [
+        {
+          "step": "Paso 1",
+          "title": "Descubrimiento y Análisis",
+          "description": "Analizamos tu negocio, competidores y público para entender el contexto real de tu marca. Definimos oportunidades y trazamos los fundamentos estratégicos que guiarán todo el proyecto."
+        },
+        {
+          "step": "Paso 2",
+          "title": "Estrategia y Concepto",
+          "description": "Trazamos la identidad conceptual y estratégica de tu marca. Definimos propósito, tono, arquitectura visual y experiencia digital antes de pasar al diseño."
+        },
+        {
+          "step": "Paso 3",
+          "title": "Diseño y Desarrollo",
+          "description": "Convertimos la estrategia en una experiencia visual coherente y funcional. Diseñamos sistemas de marca, sitios web de alto rendimiento y recursos que proyectan tu valor."
+        },
+        {
+          "step": "Paso 4",
+          "title": "Optimización y Crecimiento",
+          "description": "Medimos, ajustamos y escalamos. Optimizamos el rendimiento visual, técnico y publicitario para maximizar resultados y mejorar la conversión."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Tu marca merece estrategia, coherencia y presencia.",
+      "subtitle": "Agenda una reunión con nuestro equipo y descubre cómo transformar tu presencia digital con estrategia, diseño y tecnología.",
+      "button": "Agendar asesoría gratuita"
+    },
+    "faq": {
+      "eyebrow": "Preguntas Frecuentes",
+      "title": "Queremos que empieces con total claridad",
+      "subtitle": "Te contamos cómo funcionan nuestros servicios, plazos y dinámicas de trabajo para que tomes decisiones con confianza.",
+      "items": [
+        {
+          "question": "¿Cuáles son los servicios principales de Pointers?",
+          "answer": "Branding e Identidad Visual, Diseño Web y Experiencia Digital, Contenido y Presencia en Redes, y Estrategia Digital y Publicidad. Combinamos estrategia, diseño y tecnología para construir soluciones que realmente funcionan."
+        },
+        {
+          "question": "¿Qué pasa si aún no tengo una marca definida?",
+          "answer": "En la fase de Descubrimiento analizamos tu negocio, competidores y oportunidades para definir un punto de partida sólido. Luego, en Estrategia y Concepto, trazamos el plan y la identidad del proyecto."
+        },
+        {
+          "question": "¿Cuánto tiempo toma desarrollar un proyecto?",
+          "answer": "El tiempo depende del alcance: branding, web, contenido o campañas. Tras el Descubrimiento definimos un cronograma claro en la etapa de Estrategia y Concepto."
+        },
+        {
+          "question": "¿Puedo solicitar cambios durante el proyecto?",
+          "answer": "Sí. Nuestro flujo es moderno y colaborativo: en Diseño y Desarrollo convertimos la estrategia en experiencias visuales y funcionales, con espacio para revisiones antes de Optimización y Crecimiento."
+        },
+        {
+          "question": "¿Cómo puedo empezar a trabajar con ustedes?",
+          "answer": "Agenda una asesoría gratuita o escríbenos desde el formulario de contacto. Te guiamos desde el primer paso con total claridad."
+        }
+      ]
+    }
+  },
+  "serviceDetail": {
+    "pricingEyebrow": "Planes",
+    "pricingTitle": "Elige el plan ideal para tu marca",
+    "pricingSubtitle": "Tres propuestas diseñadas para distintas etapas de crecimiento: Pro, Premium y Pointers.",
+    "pricingCta": "Agendar asesoría",
+    "customNote": "¿Necesitas un plan a medida? Escríbenos y armamos una propuesta personalizada.",
+    "tiers": {
+      "pro": { "name": "Pro", "tagline": "Para empezar con solidez" },
+      "premium": { "name": "Premium", "tagline": "Para marcas en expansión" },
+      "pointers": { "name": "Pointers", "tagline": "La experiencia completa" }
+    },
+    "branding": {
+      "badge": "Branding e Identidad Visual",
+      "title": "Diseñamos marcas que inspiran confianza y generan valor.",
+      "subtitle": "Desde el concepto hasta la implementación digital, creamos identidades que conectan propósito, estética y estrategia.",
+      "overview": [
+        "Construimos sistemas de marca coherentes que funcionan en todos los puntos de contacto: digital, impreso y experiencial.",
+        "Cada identidad nace de un análisis estratégico que define propósito, tono y diferenciación frente a tu competencia."
+      ],
+      "highlights": [
+        "Diseño de identidad visual completa",
+        "Manual de marca y guías de uso",
+        "Aplicaciones digitales y piezas clave",
+        "Estrategia de marca y posicionamiento"
+      ],
+      "pricing": {
+        "pro": {
+          "price": "S/ 2,800",
+          "description": "Identidad esencial para marcas que están dando sus primeros pasos.",
+          "features": ["Logo principal y variantes", "Paleta de color y tipografías", "Aplicaciones básicas (redes y web)", "1 ronda de revisiones", "Entrega en 3 semanas"]
+        },
+        "premium": {
+          "price": "S/ 5,500",
+          "description": "Sistema de marca robusto para negocios en crecimiento.",
+          "features": ["Identidad visual completa", "Manual de marca digital", "Piezas gráficas para redes y web", "Estrategia de tono y voz", "3 rondas de revisiones", "Entrega en 5 semanas"]
+        },
+        "pointers": {
+          "price": "S/ 9,800",
+          "description": "Branding integral con dirección estratégica de punta a punta.",
+          "features": ["Arquitectura de marca y naming", "Manual de marca impreso y digital", "Kit completo de aplicaciones", "Workshop de marca con tu equipo", "Revisiones ilimitadas en fase de diseño", "Soporte post-lanzamiento 30 días"]
+        }
+      }
+    },
+    "diseno-web": {
+      "badge": "Diseño Web y Experiencia Digital",
+      "title": "Desarrollo web, UX/UI estratégico y landing pages de alto rendimiento.",
+      "subtitle": "Diseñamos experiencias digitales atractivas y eficientes, donde la forma y la función se alinean para maximizar conversiones.",
+      "overview": [
+        "Creamos sitios web y landing pages que combinan estética premium con rendimiento técnico y claridad en la conversión.",
+        "Cada interfaz se diseña desde la estrategia: entendemos a tu usuario, definimos el recorrido y construimos experiencias que generan resultados."
+      ],
+      "highlights": [
+        "Diseño UX/UI estratégico",
+        "Desarrollo web de alto rendimiento",
+        "Landing pages orientadas a conversión",
+        "Optimización mobile-first"
+      ],
+      "pricing": {
+        "pro": {
+          "price": "S/ 3,500",
+          "description": "Landing page profesional para lanzar o validar tu propuesta.",
+          "features": ["1 landing page responsive", "Diseño UX/UI personalizado", "Formulario de contacto", "Optimización básica SEO", "Entrega en 4 semanas"]
+        },
+        "premium": {
+          "price": "S/ 7,200",
+          "description": "Sitio web completo para marcas que necesitan presencia sólida.",
+          "features": ["Hasta 6 secciones/páginas", "Diseño UX/UI estratégico", "Animaciones y microinteracciones", "SEO on-page", "Integración con analytics", "Entrega en 6 semanas"]
+        },
+        "pointers": {
+          "price": "S/ 14,500",
+          "description": "Experiencia digital premium con desarrollo avanzado y optimización total.",
+          "features": ["Sitio web a medida sin límite de secciones", "CMS para autogestión de contenido", "Animaciones avanzadas", "SEO técnico y performance", "Integraciones personalizadas", "Soporte y mantenimiento 60 días"]
+        }
+      }
+    },
+    "contenido": {
+      "badge": "Contenido y Presencia en Redes",
+      "title": "Estrategia de contenido, gestión de redes y creación audiovisual para fortalecer tu marca.",
+      "subtitle": "Impulsamos la conexión entre marcas y audiencias con comunicación auténtica, consistente y visualmente atractiva.",
+      "overview": [
+        "Diseñamos estrategias de contenido que alinean tu mensaje con los objetivos de negocio y las necesidades de tu audiencia.",
+        "Gestionamos tu presencia en redes con piezas visuales, copy y formatos que refuerzan la identidad de tu marca."
+      ],
+      "highlights": [
+        "Estrategia de contenido mensual",
+        "Gestión de redes sociales",
+        "Creación de piezas gráficas y reels",
+        "Calendario editorial y reportes"
+      ],
+      "pricing": {
+        "pro": {
+          "price": "S/ 1,800/mes",
+          "description": "Presencia constante en redes con contenido de calidad.",
+          "features": ["2 redes sociales", "8 publicaciones al mes", "Diseño gráfico básico", "Calendario editorial", "Reporte mensual"]
+        },
+        "premium": {
+          "price": "S/ 3,400/mes",
+          "description": "Estrategia de contenido integral con mayor alcance.",
+          "features": ["3 redes sociales", "16 publicaciones al mes", "Reels y stories editados", "Copywriting estratégico", "Community management", "Reporte quincenal"]
+        },
+        "pointers": {
+          "price": "S/ 5,900/mes",
+          "description": "Gestión completa con producción audiovisual y estrategia avanzada.",
+          "features": ["Todas tus redes activas", "24+ publicaciones al mes", "Producción audiovisual mensual", "Estrategia de crecimiento", "Campañas orgánicas coordinadas", "Reuniones estratégicas mensuales"]
+        }
+      }
+    },
+    "estrategia-digital": {
+      "badge": "Estrategia Digital y Publicidad",
+      "title": "Campañas publicitarias, embudos y automatización para escalar tus resultados.",
+      "subtitle": "Diseñamos sistemas inteligentes que optimizan recursos, aumentan el alcance y convierten interacciones en resultados reales.",
+      "overview": [
+        "Planificamos y ejecutamos campañas en Meta y Google alineadas a objetivos medibles de conversión y crecimiento.",
+        "Construimos embudos y automatizaciones que convierten tráfico en oportunidades reales para tu negocio."
+      ],
+      "highlights": [
+        "Campañas Meta Ads y Google Ads",
+        "Embudos de conversión",
+        "Automatización de marketing",
+        "Consultoría y optimización continua"
+      ],
+      "pricing": {
+        "pro": {
+          "price": "S/ 2,200/mes",
+          "description": "Publicidad digital esencial para empezar a generar leads.",
+          "features": ["1 plataforma (Meta o Google)", "Hasta S/ 2,000 en pauta", "3 creativos al mes", "Configuración de campañas", "Reporte mensual"]
+        },
+        "premium": {
+          "price": "S/ 4,500/mes",
+          "description": "Estrategia multicanal con embudos y optimización activa.",
+          "features": ["Meta + Google Ads", "Hasta S/ 5,000 en pauta", "Embudo de conversión básico", "A/B testing de creativos", "Optimización semanal", "Dashboard de resultados"]
+        },
+        "pointers": {
+          "price": "S/ 8,500/mes",
+          "description": "Sistema de growth completo con automatización y consultoría estratégica.",
+          "features": ["Estrategia multicanal avanzada", "Pauta sin límite gestionada", "Embudos y automatizaciones", "Landing pages de campaña", "Consultoría estratégica quincenal", "Optimización y escalado continuo"]
+        }
+      }
+    }
+  },
   "mocks": {
     "tabs": ["Borrador", "Programar", "Enviado"],
     "chatTitle": "¿En qué puedo ayudarte?",

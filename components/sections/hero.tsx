@@ -8,6 +8,7 @@ import { loadFull } from 'tsparticles';
 import type { Container, Engine } from 'tsparticles-engine';
 import { bindCenterAttractor, heroParticlesOptions } from '@/lib/hero-particles';
 import { MaskUpButton } from '@/components/ui/mask-up-button';
+import { AdminAccessIcon } from '@/components/admin/admin-access-icon';
 
 const MAGENTA = '#BC2656';
 
@@ -95,6 +96,8 @@ export function Hero() {
           <MaskUpButton href="/contact" label={t('cta')} />
         </motion.div>
       </div>
+
+      <AdminAccessIcon />
     </section>
   );
 }

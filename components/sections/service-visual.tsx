@@ -1,27 +1,42 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { BrandingPainter } from '@/components/services/BrandingPainter';
-import { WebBuilderSimulator } from '@/components/services/WebBuilderSimulator';
-import { SocialViralSimulator } from '@/components/services/SocialViralSimulator';
-import { StrategyDashboard } from '@/components/services/StrategyDashboard';
+import dynamic from 'next/dynamic';
 import { useMotionReveal } from '@/lib/use-motion-reveal';
 
 type Variant = 'branding' | 'web' | 'content' | 'ads';
+
+const BrandingPainter = dynamic(
+  () => import('@/components/services/BrandingPainter').then((m) => ({ default: m.BrandingPainter })),
+  { loading: () => <VisualSkeleton /> }
+);
+const WebBuilderSimulator = dynamic(
+  () => import('@/components/services/WebBuilderSimulator').then((m) => ({ default: m.WebBuilderSimulator })),
+  { loading: () => <VisualSkeleton /> }
+);
+const SocialViralSimulator = dynamic(
+  () => import('@/components/services/SocialViralSimulator').then((m) => ({ default: m.SocialViralSimulator })),
+  { loading: () => <VisualSkeleton /> }
+);
+const StrategyDashboard = dynamic(
+  () => import('@/components/services/StrategyDashboard').then((m) => ({ default: m.StrategyDashboard })),
+  { loading: () => <VisualSkeleton /> }
+);
+
+function VisualSkeleton() {
+  return <div className="min-h-[280px] animate-pulse rounded-2xl bg-muted/60 md:min-h-[340px]" />;
+}
 
 function VisualFrame({ children }: { children: React.ReactNode }) {
   const { ref, show, reduced } = useMotionReveal({ margin: -60, amount: 0 });
 
   return (
-    <motion.div
+    <div
       ref={ref}
-      initial={reduced ? false : { opacity: 0, scale: 0.98 }}
-      animate={show ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.98 }}
-      transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-      className="min-h-[280px] md:min-h-[340px]"
+      className="min-h-[280px] transition-opacity duration-300 md:min-h-[340px]"
+      style={{ opacity: reduced || show ? 1 : 0 }}
     >
       {children}
-    </motion.div>
+    </div>
   );
 }
 

@@ -339,6 +339,249 @@
       }
     ]
   },
+  "brandTrust": {
+    "title": "Over 50+ businesses trust us"
+  },
+  "servicesPage": {
+    "meta": {
+      "title": "Services | Pointers",
+      "description": "Strategy, design and technology for brands seeking impact."
+    },
+    "hero": {
+      "eyebrow": "Our Services",
+      "title": "Strategy, design and technology for brands seeking impact.",
+      "subtitle": "We create identities, websites and digital experiences that deliver real results.",
+      "cta": "Book a free consultation"
+    },
+    "offerings": {
+      "cta": "View service",
+      "items": [
+        {
+          "badge": "Branding & Visual Identity",
+          "title": "We design brands that inspire trust and create value.",
+          "description": "From concept to digital implementation, we create identities that connect purpose, aesthetics and strategy.",
+          "tags": ["Visual identity design", "Digital branding", "Brand guidelines"]
+        },
+        {
+          "badge": "Web Design & Digital Experience",
+          "title": "Web development, strategic UX/UI and high-performance landing pages.",
+          "description": "We design attractive, efficient digital experiences where form and function align to maximize conversions.",
+          "tags": ["High-performance websites", "Strategic UX/UI design", "High-impact landing pages"]
+        },
+        {
+          "badge": "Content & Social Presence",
+          "title": "Content strategy, social management and audiovisual production to strengthen your brand.",
+          "description": "We drive the connection between brands and audiences with authentic, consistent and visually compelling communication.",
+          "tags": ["Content strategy", "Social media management", "Audiovisual production"]
+        },
+        {
+          "badge": "Digital Strategy & Advertising",
+          "title": "Ad campaigns, funnels and automation to scale your results.",
+          "description": "We design smart systems that optimize resources, increase reach and turn interactions into real results.",
+          "tags": ["Advertising campaigns (Meta / Google)", "Funnels & automation", "Digital consulting"]
+        }
+      ]
+    },
+    "process": {
+      "eyebrow": "Pointers Process",
+      "title": "A clear, creative process focused on results.",
+      "subtitle": "We turn ideas into visual and digital strategies that connect brands with results. Every project follows a methodology that unites strategy, design and technology.",
+      "steps": [
+        {
+          "step": "Step 1",
+          "title": "Discovery & Analysis",
+          "description": "We analyze your business, competitors and audience to understand your brand's real context. We define opportunities and lay the strategic foundations that will guide the entire project."
+        },
+        {
+          "step": "Step 2",
+          "title": "Strategy & Concept",
+          "description": "We outline your brand's conceptual and strategic identity. We define purpose, tone, visual architecture and digital experience before moving to design."
+        },
+        {
+          "step": "Step 3",
+          "title": "Design & Development",
+          "description": "We turn strategy into a coherent, functional visual experience. We design brand systems, high-performance websites and assets that project your value."
+        },
+        {
+          "step": "Step 4",
+          "title": "Optimization & Growth",
+          "description": "We measure, adjust and scale. We optimize visual, technical and advertising performance to maximize results and improve conversion."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Your brand deserves strategy, coherence and presence.",
+      "subtitle": "Book a meeting with our team and discover how to transform your digital presence with strategy, design and technology.",
+      "button": "Book a free consultation"
+    },
+    "faq": {
+      "eyebrow": "Frequently Asked Questions",
+      "title": "We want you to start with complete clarity",
+      "subtitle": "We explain how our services, timelines and workflows operate so you can make confident decisions.",
+      "items": [
+        {
+          "question": "What are Pointers' main services?",
+          "answer": "Branding & Visual Identity, Web Design & Digital Experience, Content & Social Presence, and Digital Strategy & Advertising. We combine strategy, design and technology to build solutions that truly work."
+        },
+        {
+          "question": "What if I don't have a defined brand yet?",
+          "answer": "In the Discovery phase we analyze your business, competitors and opportunities to define a solid starting point. Then, in Strategy & Concept, we outline the plan and project identity."
+        },
+        {
+          "question": "How long does it take to develop a project?",
+          "answer": "Timing depends on scope: branding, web, content or campaigns. After Discovery we define a clear timeline in the Strategy & Concept stage."
+        },
+        {
+          "question": "Can I request changes during the project?",
+          "answer": "Yes. Our workflow is modern and collaborative: in Design & Development we turn strategy into visual and functional experiences, with room for revisions before Optimization & Growth."
+        },
+        {
+          "question": "How can I start working with you?",
+          "answer": "Book a free consultation or reach out via the contact form. We'll guide you from the first step with complete clarity."
+        }
+      ]
+    }
+  },
+  "serviceDetail": {
+    "pricingEyebrow": "Plans",
+    "pricingTitle": "Choose the ideal plan for your brand",
+    "pricingSubtitle": "Three proposals designed for different growth stages: Pro, Premium and Pointers.",
+    "pricingCta": "Book a consultation",
+    "customNote": "Need a custom plan? Contact us and we'll build a tailored proposal.",
+    "tiers": {
+      "pro": { "name": "Pro", "tagline": "Start with a solid foundation" },
+      "premium": { "name": "Premium", "tagline": "For brands in expansion" },
+      "pointers": { "name": "Pointers", "tagline": "The complete experience" }
+    },
+    "branding": {
+      "badge": "Branding & Visual Identity",
+      "title": "We design brands that inspire trust and create value.",
+      "subtitle": "From concept to digital implementation, we create identities that connect purpose, aesthetics and strategy.",
+      "overview": [
+        "We build coherent brand systems that work across every touchpoint: digital, print and experiential.",
+        "Every identity starts from strategic analysis that defines purpose, tone and differentiation from your competition."
+      ],
+      "highlights": [
+        "Complete visual identity design",
+        "Brand guidelines and usage manuals",
+        "Digital applications and key assets",
+        "Brand strategy and positioning"
+      ],
+      "pricing": {
+        "pro": {
+          "price": "$750",
+          "description": "Essential identity for brands taking their first steps.",
+          "features": ["Primary logo and variants", "Color palette and typography", "Basic applications (social & web)", "1 revision round", "Delivery in 3 weeks"]
+        },
+        "premium": {
+          "price": "$1,450",
+          "description": "Robust brand system for growing businesses.",
+          "features": ["Complete visual identity", "Digital brand guidelines", "Graphic assets for social and web", "Tone and voice strategy", "3 revision rounds", "Delivery in 5 weeks"]
+        },
+        "pointers": {
+          "price": "$2,600",
+          "description": "Full branding with end-to-end strategic direction.",
+          "features": ["Brand architecture and naming", "Print and digital brand manual", "Full application kit", "Brand workshop with your team", "Unlimited revisions in design phase", "30-day post-launch support"]
+        }
+      }
+    },
+    "diseno-web": {
+      "badge": "Web Design & Digital Experience",
+      "title": "Web development, strategic UX/UI and high-performance landing pages.",
+      "subtitle": "We design attractive, efficient digital experiences where form and function align to maximize conversions.",
+      "overview": [
+        "We create websites and landing pages that combine premium aesthetics with technical performance and conversion clarity.",
+        "Every interface is designed from strategy: we understand your user, define the journey and build experiences that deliver results."
+      ],
+      "highlights": [
+        "Strategic UX/UI design",
+        "High-performance web development",
+        "Conversion-focused landing pages",
+        "Mobile-first optimization"
+      ],
+      "pricing": {
+        "pro": {
+          "price": "$950",
+          "description": "Professional landing page to launch or validate your offer.",
+          "features": ["1 responsive landing page", "Custom UX/UI design", "Contact form", "Basic SEO optimization", "Delivery in 4 weeks"]
+        },
+        "premium": {
+          "price": "$1,900",
+          "description": "Complete website for brands that need a solid presence.",
+          "features": ["Up to 6 sections/pages", "Strategic UX/UI design", "Animations and micro-interactions", "On-page SEO", "Analytics integration", "Delivery in 6 weeks"]
+        },
+        "pointers": {
+          "price": "$3,800",
+          "description": "Premium digital experience with advanced development and full optimization.",
+          "features": ["Custom website, unlimited sections", "CMS for content self-management", "Advanced animations", "Technical SEO and performance", "Custom integrations", "60-day support and maintenance"]
+        }
+      }
+    },
+    "contenido": {
+      "badge": "Content & Social Presence",
+      "title": "Content strategy, social management and audiovisual production to strengthen your brand.",
+      "subtitle": "We drive the connection between brands and audiences with authentic, consistent and visually compelling communication.",
+      "overview": [
+        "We design content strategies that align your message with business goals and audience needs.",
+        "We manage your social presence with visuals, copy and formats that reinforce your brand identity."
+      ],
+      "highlights": [
+        "Monthly content strategy",
+        "Social media management",
+        "Graphic and reel production",
+        "Editorial calendar and reports"
+      ],
+      "pricing": {
+        "pro": {
+          "price": "$480/mo",
+          "description": "Consistent social presence with quality content.",
+          "features": ["2 social networks", "8 posts per month", "Basic graphic design", "Editorial calendar", "Monthly report"]
+        },
+        "premium": {
+          "price": "$900/mo",
+          "description": "Full content strategy with greater reach.",
+          "features": ["3 social networks", "16 posts per month", "Edited reels and stories", "Strategic copywriting", "Community management", "Bi-weekly report"]
+        },
+        "pointers": {
+          "price": "$1,550/mo",
+          "description": "Full management with audiovisual production and advanced strategy.",
+          "features": ["All active networks", "24+ posts per month", "Monthly audiovisual production", "Growth strategy", "Coordinated organic campaigns", "Monthly strategy meetings"]
+        }
+      }
+    },
+    "estrategia-digital": {
+      "badge": "Digital Strategy & Advertising",
+      "title": "Ad campaigns, funnels and automation to scale your results.",
+      "subtitle": "We design smart systems that optimize resources, increase reach and turn interactions into real results.",
+      "overview": [
+        "We plan and execute Meta and Google campaigns aligned to measurable conversion and growth goals.",
+        "We build funnels and automations that turn traffic into real opportunities for your business."
+      ],
+      "highlights": [
+        "Meta Ads and Google Ads campaigns",
+        "Conversion funnels",
+        "Marketing automation",
+        "Consulting and continuous optimization"
+      ],
+      "pricing": {
+        "pro": {
+          "price": "$580/mo",
+          "description": "Essential digital advertising to start generating leads.",
+          "features": ["1 platform (Meta or Google)", "Up to $500 ad spend", "3 creatives per month", "Campaign setup", "Monthly report"]
+        },
+        "premium": {
+          "price": "$1,200/mo",
+          "description": "Multi-channel strategy with funnels and active optimization.",
+          "features": ["Meta + Google Ads", "Up to $1,200 ad spend", "Basic conversion funnel", "Creative A/B testing", "Weekly optimization", "Results dashboard"]
+        },
+        "pointers": {
+          "price": "$2,250/mo",
+          "description": "Complete growth system with automation and strategic consulting.",
+          "features": ["Advanced multi-channel strategy", "Unlimited managed ad spend", "Funnels and automations", "Campaign landing pages", "Bi-weekly strategic consulting", "Continuous optimization and scaling"]
+        }
+      }
+    }
+  },
   "mocks": {
     "tabs": ["Draft", "Schedule", "Sent"],
     "chatTitle": "What can I help with?",

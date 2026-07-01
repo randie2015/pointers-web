@@ -60,16 +60,16 @@ export function Footer() {
           <div className="lg:col-span-2 lg:col-start-7">
             <p className="mb-4 text-sm font-semibold text-gray-900">{t('links')}</p>
             <nav className="flex flex-col gap-2.5">
-              <Link href="/#servicios" className={linkClass}>
+              <Link href="/#servicios" prefetch className={linkClass}>
                 {anchors('services')}
               </Link>
-              <Link href="/#proceso" className={linkClass}>
+              <Link href="/#proceso" prefetch className={linkClass}>
                 {anchors('process')}
               </Link>
-              <Link href="/#por-que" className={linkClass}>
+              <Link href="/#por-que" prefetch className={linkClass}>
                 {anchors('why')}
               </Link>
-              <Link href="/#faq" className={linkClass}>
+              <Link href="/#faq" prefetch className={linkClass}>
                 {anchors('faq')}
               </Link>
             </nav>
@@ -79,16 +79,16 @@ export function Footer() {
           <div className="lg:col-span-2">
             <p className="mb-4 text-sm font-semibold text-gray-900">{t('pages')}</p>
             <nav className="flex flex-col gap-2.5">
-              <Link href="/" className={linkClass}>
+              <Link href="/" prefetch className={linkClass}>
                 {nav('about')}
               </Link>
-              <Link href="/services" className={linkClass}>
+              <Link href="/servicios" prefetch className={linkClass}>
                 {nav('services')}
               </Link>
-              <Link href="/contact" className={linkClass}>
+              <Link href="/contact" prefetch className={linkClass}>
                 {nav('contact')}
               </Link>
-              <Link href="/blog" className={linkClass}>
+              <Link href="/blog" prefetch className={linkClass}>
                 {nav('blog')}
               </Link>
             </nav>

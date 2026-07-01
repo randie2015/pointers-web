@@ -1,7 +1,8 @@
 'use client';
 
+import { useLayoutEffect, useRef, useState } from 'react';
 import { useInView, useReducedMotion } from 'framer-motion';
-import { useEffect, useRef, useState } from 'react';
+import { useLocale } from 'next-intl';
 
 type Options = {
   margin?: number;
@@ -16,11 +17,12 @@ function isElementInView(el: Element, margin: number) {
 
 export function useMotionReveal({ margin = -80, amount = 0 }: Options = {}) {
   const reduced = useReducedMotion();
+  const locale = useLocale();
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: `${margin}px`, amount });
   const [forced, setForced] = useState(false);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const el = ref.current;
     if (!el) return;
 
@@ -29,19 +31,16 @@ export function useMotionReveal({ margin = -80, amount = 0 }: Options = {}) {
     };
 
     sync();
-    const timers = [0, 100, 300, 600].map((ms) => window.setTimeout(sync, ms));
-
     window.addEventListener('hashchange', sync);
     window.addEventListener('scroll', sync, { passive: true });
     window.addEventListener('anchorscroll', sync);
 
     return () => {
-      timers.forEach(window.clearTimeout);
       window.removeEventListener('hashchange', sync);
       window.removeEventListener('scroll', sync);
       window.removeEventListener('anchorscroll', sync);
     };
-  }, [margin]);
+  }, [margin, locale]);
 
   return {
     ref,

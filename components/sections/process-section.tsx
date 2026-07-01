@@ -125,12 +125,18 @@ const VISUALS = [
   <LaunchRocket key="launch" />
 ];
 
-export function ProcessSection() {
-  const t = useTranslations('process');
+export function ProcessSection({
+  namespace = 'process',
+  sectionId = 'proceso'
+}: {
+  namespace?: string;
+  sectionId?: string;
+}) {
+  const t = useTranslations(namespace);
   const steps = t.raw('steps') as { step: string; title: string; description: string }[];
 
   return (
-    <section id="proceso" className="scroll-mt-24 bg-white py-20 md:py-28">
+    <section id={sectionId} className="scroll-mt-24 bg-white py-20 md:py-28">
       <div className="container-page">
         <Reveal>
           <SectionHeader eyebrow={t('eyebrow')} title={t('title')} subtitle={t('subtitle')} />

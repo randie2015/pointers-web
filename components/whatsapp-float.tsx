@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
-import { useAppLocale } from '@/components/providers/intl-provider';
+import { useLocale } from 'next-intl';
 import { getWhatsAppUrl } from '@/lib/site-config';
 
 function WhatsAppIcon({ className }: { className?: string }) {
@@ -15,7 +15,7 @@ function WhatsAppIcon({ className }: { className?: string }) {
 
 export function WhatsAppFloat() {
   const t = useTranslations('whatsapp');
-  const { locale } = useAppLocale();
+  const locale = useLocale() as 'es' | 'en';
 
   return (
     <motion.a

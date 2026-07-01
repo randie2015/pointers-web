@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Link } from '@/i18n/routing';
-import type { ComponentProps, ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 const SIZES = {
   default: { row: '3rem', px: 'px-6' },
@@ -26,14 +26,13 @@ type BaseProps = {
   className?: string;
   size?: keyof typeof SIZES;
   onClick?: () => void;
-  /** Sin animación (p. ej. estado enviado con ✓) */
   hideSlide?: boolean;
   disabled?: boolean;
 };
 
 type LinkProps = BaseProps & {
   type?: 'link';
-  href: ComponentProps<typeof Link>['href'];
+  href: '/' | '/contact' | '/nosotros' | '/servicios' | '/blog' | `/servicios/${string}`;
 };
 
 type SubmitProps = BaseProps & {
@@ -117,7 +116,7 @@ function Wrapper({
   children: ReactNode;
   className: string;
   type?: 'link' | 'submit';
-  href?: ComponentProps<typeof Link>['href'];
+  href?: LinkProps['href'];
   onClick?: () => void;
   disabled?: boolean;
   label: string;
@@ -137,7 +136,7 @@ function Wrapper({
   }
 
   return (
-    <Link href={href!} onClick={onClick} className={className} aria-label={label}>
+    <Link href={href!} prefetch onClick={onClick} className={className} aria-label={label}>
       {children}
     </Link>
   );

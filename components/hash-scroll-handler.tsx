@@ -7,7 +7,7 @@ function dispatchAnchorScroll() {
   window.dispatchEvent(new CustomEvent('anchorscroll'));
 }
 
-function scrollToHash(hash: string, behavior: ScrollBehavior = 'smooth') {
+function scrollToHash(hash: string, behavior: ScrollBehavior = 'auto') {
   const id = decodeURIComponent(hash.replace(/^#/, ''));
   if (!id) return false;
 
@@ -16,7 +16,9 @@ function scrollToHash(hash: string, behavior: ScrollBehavior = 'smooth') {
 
   el.scrollIntoView({ behavior, block: 'start' });
   dispatchAnchorScroll();
-  window.setTimeout(dispatchAnchorScroll, 400);
+  if (behavior === 'smooth') {
+    window.setTimeout(dispatchAnchorScroll, 400);
+  }
   return true;
 }
 
@@ -30,10 +32,7 @@ export function HashScrollHandler() {
   useEffect(() => {
     const hash = window.location.hash;
     if (!hash) return;
-
-    requestAnimationFrame(() => {
-      window.setTimeout(() => scrollToHash(hash), 50);
-    });
+    scrollToHash(hash);
   }, [pathname]);
 
   useEffect(() => {
@@ -50,13 +49,11 @@ export function HashScrollHandler() {
 
       if (!samePath || !url.hash) return;
 
-      window.setTimeout(() => {
-        scrollToHash(url.hash);
-      }, 0);
+      scrollToHash(url.hash);
     };
 
-    document.addEventListener('click', handleClick, true);
-    return () => document.removeEventListener('click', handleClick, true);
+    document.addEventListener('click', handleClick);
+    return () => document.removeEventListener('click', handleClick);
   }, []);
 
   useEffect(() => {
