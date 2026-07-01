@@ -60,7 +60,7 @@ export function Footer() {
           <div className="lg:col-span-2 lg:col-start-7">
             <p className="mb-4 text-sm font-semibold text-gray-900">{t('links')}</p>
             <nav className="flex flex-col gap-2.5">
-              <Link href="/#servicios" prefetch className={linkClass}>
+              <Link href="/servicios" prefetch className={linkClass}>
                 {anchors('services')}
               </Link>
               <Link href="/#proceso" prefetch className={linkClass}>
@@ -79,7 +79,7 @@ export function Footer() {
           <div className="lg:col-span-2">
             <p className="mb-4 text-sm font-semibold text-gray-900">{t('pages')}</p>
             <nav className="flex flex-col gap-2.5">
-              <Link href="/" prefetch className={linkClass}>
+              <Link href="/nosotros" prefetch className={linkClass}>
                 {nav('about')}
               </Link>
               <Link href="/servicios" prefetch className={linkClass}>
