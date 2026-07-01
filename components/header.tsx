@@ -7,7 +7,7 @@ import { LocaleSwitcher } from '@/components/locale-switcher';
 import { NavHoverLink } from '@/components/nav-hover-link';
 import { MAIN_ROUTES } from '@/lib/navigation';
 import { Menu, X } from 'lucide-react';
-import Image from 'next/image';
+import { BrandLogo } from '@/components/brand-logo';
 import { MaskUpButton } from '@/components/ui/mask-up-button';
 
 const PREFETCH_ROUTES = ['/', ...MAIN_ROUTES.map((r) => r.href)] as const;
@@ -35,14 +35,7 @@ export function Header() {
     <header className="sticky top-0 z-[100] bg-brand text-white">
       <div className="container-page flex h-[68px] items-center justify-between gap-8 md:h-[76px]">
         <Link href="/" prefetch className="flex shrink-0 items-center" aria-label="Pointers home">
-          <Image
-            src="/logo-horizontal-white.png"
-            alt="Pointers"
-            width={1024}
-            height={211}
-            className="h-8 w-auto sm:h-9 md:h-10"
-            priority
-          />
+          <BrandLogo variant="horizontal-white" className="h-8 sm:h-9 md:h-10" priority />
         </Link>
 
         <div className="hidden items-center gap-1 md:flex">

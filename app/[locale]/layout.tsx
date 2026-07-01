@@ -41,7 +41,7 @@ export async function generateMetadata({
       description: hero('subtitle'),
       locale: locale === 'es' ? 'es_PE' : 'en_US',
       alternateLocale: locale === 'es' ? ['en_US'] : ['es_PE'],
-      images: [{ url: '/logo-vertical-dark.png', width: 1000, height: 540, alt: 'Pointers' }]
+      images: [{ url: '/brand/logo-vertical-dark.png', width: 1000, height: 540, alt: 'Pointers' }]
     }
   };
 }

@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
-import Image from 'next/image';
+import { BrandLogo } from '@/components/brand-logo';
 import { HOME_ANCHORS, MAIN_ROUTES } from '@/lib/navigation';
 
 const TEAL = '#39B8AD';
@@ -28,13 +28,7 @@ export function Footer() {
       <div className="container-page py-16 md:py-20">
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-10">
           <div className="lg:col-span-5">
-            <Image
-              src="/logo-vertical-dark.png"
-              alt="Pointers"
-              width={1000}
-              height={540}
-              className="h-20 w-auto md:h-24"
-            />
+            <BrandLogo variant="vertical-dark" className="h-20 md:h-24" />
             <p className="mt-6 max-w-sm text-sm leading-relaxed text-gray-700">{t('newsletter')}</p>
 
             <form
