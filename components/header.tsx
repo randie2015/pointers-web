@@ -34,13 +34,13 @@ export function Header() {
   return (
     <header className="sticky top-0 z-[100] bg-brand text-brand-foreground shadow-md shadow-brand/20">
       <div className="container-page flex h-16 md:h-[72px] items-center justify-between gap-6">
-        <Link href="/" prefetch className="flex shrink-0 items-center gap-2" aria-label="Pointers home">
+        <Link href="/" prefetch className="flex shrink-0 items-center" aria-label="Pointers home">
           <Image
-            src="/logo.svg"
+            src="/logo.png"
             alt="Pointers"
-            width={140}
-            height={32}
-            className="h-7 w-auto brightness-0 invert md:h-8"
+            width={40}
+            height={40}
+            className="h-8 w-8 md:h-9 md:w-9"
             priority
           />
         </Link>

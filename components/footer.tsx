@@ -29,11 +29,11 @@ export function Footer() {
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-10">
           <div className="lg:col-span-5">
             <Image
-              src="/logo-brand.svg"
+              src="/logo.png"
               alt="Pointers"
-              width={160}
-              height={36}
-              className="h-8 w-auto md:h-9"
+              width={80}
+              height={80}
+              className="h-16 w-16 md:h-20 md:w-20"
             />
             <p className="mt-6 max-w-sm text-sm leading-relaxed text-gray-700">{t('newsletter')}</p>
 

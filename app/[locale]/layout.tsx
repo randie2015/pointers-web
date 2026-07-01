@@ -40,7 +40,8 @@ export async function generateMetadata({
       title: t('title'),
       description: hero('subtitle'),
       locale: locale === 'es' ? 'es_PE' : 'en_US',
-      alternateLocale: locale === 'es' ? ['en_US'] : ['es_PE']
+      alternateLocale: locale === 'es' ? ['en_US'] : ['es_PE'],
+      images: [{ url: '/logo.png', width: 1024, height: 1024, alt: 'Pointers' }]
     }
   };
 }
