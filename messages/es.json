@@ -14,6 +14,8 @@
     "ariaLabel": "Contactar por WhatsApp"
   },
   "hero": {
+    "badge": "Update",
+    "badgeText": "Innovación, Estrategia & Tecnología en un solo lugar",
     "title": "Creatividad inspirada en soluciones modernas.",
     "subtitle": "Diseñamos ecosistemas digitales que elevan marcas y generan impacto.",
     "cta": "¡Hablemos!"

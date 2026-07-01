@@ -10,9 +10,9 @@ export const heroParticlesOptions: ISourceOptions = {
       value: 100,
       density: { enable: true, value_area: 480 }
     },
-    color: { value: '#ffffff' },
+    color: { value: ['#BC2656', '#1a1a1a'] },
     opacity: {
-      value: { min: 0.1, max: 0.5 },
+      value: { min: 0.06, max: 0.22 },
       animation: {
         enable: true,
         speed: 0.4,

@@ -32,28 +32,29 @@ export function Header() {
   }, [pathname]);
 
   return (
-    <header className="sticky top-0 z-[100] bg-brand text-brand-foreground shadow-md shadow-brand/20">
-      <div className="container-page flex h-16 md:h-[72px] items-center justify-between gap-6">
+    <header className="sticky top-0 z-[100] bg-brand text-white">
+      <div className="container-page flex h-[68px] items-center justify-between gap-8 md:h-[76px]">
         <Link href="/" prefetch className="flex shrink-0 items-center" aria-label="Pointers home">
           <Image
-            src="/logo-white.png"
+            src="/logo-horizontal-white.png"
             alt="Pointers"
-            width={148}
-            height={80}
-            className="h-7 w-auto md:h-8"
+            width={1024}
+            height={211}
+            className="h-8 w-auto sm:h-9 md:h-10"
             priority
           />
         </Link>
 
-        <nav className="hidden items-center gap-1 md:flex" aria-label="Main">
-          {links.map((l) => (
-            <NavHoverLink key={l.href} href={l.href} label={l.label} />
-          ))}
-        </nav>
-
-        <div className="hidden items-center gap-4 md:flex">
-          <LocaleSwitcher />
-          <MaskUpButton href="/contact" label={t('cta')} size="compact" />
+        <div className="hidden items-center gap-1 md:flex">
+          <nav className="flex items-center gap-1" aria-label="Main">
+            {links.map((l) => (
+              <NavHoverLink key={l.href} href={l.href} label={l.label} />
+            ))}
+          </nav>
+          <div className="ml-4 flex items-center gap-3 border-l border-white/20 pl-4">
+            <LocaleSwitcher />
+            <MaskUpButton href="/contact" label={t('cta')} size="compact" />
+          </div>
         </div>
 
         <div className="flex items-center gap-3 md:hidden">
