@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { motion, useReducedMotion } from 'framer-motion';
+import { Reveal } from '@/components/reveal';
 import { getBrandTrustCarouselLogos, type BrandLogo } from '@/lib/brand-trust';
 
 function BrandLogo({ brand }: { brand: BrandLogo }) {
@@ -28,12 +29,15 @@ export function BrandTrustSection() {
   return (
     <section className="bg-white py-20 md:py-28">
       <div className="container-page">
-        <div className="mx-auto max-w-6xl rounded-3xl bg-white px-6 py-14 shadow-md md:px-10 md:py-16">
-          <p className="mb-10 text-center text-2xl font-semibold tracking-tight text-gray-900 md:text-3xl">
-            {t('title')}
-          </p>
+        <div className="mobile-surface mx-auto max-w-6xl rounded-3xl bg-white px-6 py-14 shadow-md max-md:shadow-lg max-md:shadow-black/[0.08] md:px-10 md:py-16">
+          <Reveal>
+            <p className="mb-10 text-center text-2xl font-semibold tracking-tight text-gray-900 md:text-3xl">
+              {t('title')}
+            </p>
+          </Reveal>
 
-          <div className="flex w-full items-center overflow-hidden">
+          <Reveal delay={0.08}>
+            <div className="flex w-full items-center overflow-hidden">
             <motion.div
               className="flex w-max items-center"
               animate={reduced ? undefined : { x: ['0%', '-50%'] }}
@@ -51,7 +55,8 @@ export function BrandTrustSection() {
                 <BrandLogo key={`${brand.name}-${idx}`} brand={brand} />
               ))}
             </motion.div>
-          </div>
+            </div>
+          </Reveal>
         </div>
       </div>
     </section>

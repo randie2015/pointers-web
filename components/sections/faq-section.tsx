@@ -30,14 +30,14 @@ function FaqItem({
   return (
     <div
       className={cn(
-        'overflow-hidden rounded-2xl bg-white shadow-sm shadow-black/[0.04] ring-1 ring-black/[0.05] transition-shadow duration-300',
+        'mobile-surface overflow-hidden rounded-2xl bg-white shadow-sm shadow-black/[0.04] ring-1 ring-black/[0.05] transition-shadow duration-300 max-md:rounded-2xl',
         isOpen && 'shadow-md shadow-black/[0.06] ring-brand/10'
       )}
     >
       <button
         type="button"
         onClick={onToggle}
-        className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left md:px-7 md:py-6"
+        className="touch-press flex w-full items-center justify-between gap-4 rounded-2xl px-6 py-5 text-left active:bg-zinc-50 md:px-7 md:py-6"
         aria-expanded={isOpen}
       >
         <span className="pr-2 text-base font-medium leading-snug text-foreground md:text-lg">

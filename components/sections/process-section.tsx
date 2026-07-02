@@ -103,9 +103,10 @@ function ProcessCard({
   return (
     <Reveal delay={index * 0.08}>
       <motion.article
-        className="flex h-full flex-col items-center rounded-2xl border border-border/60 bg-white p-6 text-center md:p-7"
+        className="mobile-surface flex h-full flex-col items-center rounded-2xl border border-border/60 bg-white p-6 text-center md:p-7"
         initial="rest"
         whileHover="hover"
+        whileTap={{ scale: 0.97, transition: { duration: 0.2 } }}
         variants={{
           rest: cardVariants.rest,
           hover: cardVariants.hover(theme)

@@ -8,6 +8,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Loader2 } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { cn } from '@/lib/utils';
+import { Reveal } from '@/components/reveal';
 import { SectionBadge } from '@/components/ui/section-badge';
 
 const TEAL = '#39B8AD';
@@ -43,7 +44,7 @@ type ContactFormValues = z.infer<ReturnType<typeof createContactSchema>>;
 type FormStatus = 'idle' | 'loading' | 'success' | 'error';
 
 const inputClass =
-  'w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-sm text-gray-900 outline-none transition placeholder:text-gray-400 focus:border-[#39B8AD] focus:ring-2 focus:ring-[#39B8AD]/25';
+  'w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm text-gray-900 shadow-sm outline-none transition placeholder:text-gray-400 focus:border-[#39B8AD] focus:ring-2 focus:ring-[#39B8AD]/25 max-md:shadow-md max-md:shadow-black/[0.04]';
 
 function Field({
   label,
@@ -117,15 +118,18 @@ export function ContactForm({ id }: { id?: string }) {
       style={{ background: 'linear-gradient(135deg, #BC2656 0%, #5E549D 100%)' }}
     >
       <div className="container-page relative z-10">
-        <div className="mx-auto max-w-3xl text-center text-white">
-          <SectionBadge text={t('eyebrow')} />
-          <h1 className="mt-3 font-display text-3xl tracking-tight md:text-4xl lg:text-5xl">{t('title')}</h1>
-          <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-white/85 md:text-base">
-            {t('subtitle')}
-          </p>
-        </div>
+        <Reveal>
+          <div className="mx-auto max-w-3xl text-center text-white">
+            <SectionBadge text={t('eyebrow')} />
+            <h1 className="mt-3 font-display text-3xl tracking-tight md:text-4xl lg:text-5xl">{t('title')}</h1>
+            <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-white/85 md:text-base">
+              {t('subtitle')}
+            </p>
+          </div>
+        </Reveal>
 
-        <div className="mx-auto mt-10 max-w-2xl rounded-2xl bg-white p-8 shadow-2xl md:mt-12 md:p-10">
+        <Reveal delay={0.08}>
+          <div className="mobile-surface mx-auto mt-10 max-w-2xl rounded-2xl bg-white p-8 shadow-2xl max-md:shadow-xl max-md:shadow-black/10 md:mt-12 md:p-10">
           <form onSubmit={handleSubmit(onSubmit)} className="grid gap-5" noValidate>
             <div className="grid gap-5 sm:grid-cols-2">
               <Field label={t('firstName')} error={errors.firstName?.message}>
@@ -181,7 +185,7 @@ export function ContactForm({ id }: { id?: string }) {
               type="submit"
               disabled={submitDisabled}
               className={cn(
-                'relative mt-2 flex h-12 w-full items-center justify-center overflow-hidden rounded-xl text-sm font-semibold text-white transition-colors',
+                'mobile-btn-surface relative mt-2 flex h-12 w-full items-center justify-center overflow-hidden rounded-xl text-sm font-semibold text-white transition-colors',
                 formStatus === 'error' && 'bg-red-800 hover:bg-red-900',
                 formStatus === 'success' && 'cursor-default',
                 formStatus !== 'error' && formStatus !== 'success' && 'hover:brightness-105',
@@ -194,7 +198,7 @@ export function ContactForm({ id }: { id?: string }) {
                     ? { backgroundColor: '#2d9d92' }
                     : undefined
               }
-              whileTap={submitDisabled ? undefined : { scale: 0.99 }}
+              whileTap={submitDisabled ? undefined : { scale: 0.95 }}
             >
               <AnimatePresence mode="wait">
                 {formStatus === 'loading' ? (
@@ -233,7 +237,8 @@ export function ContactForm({ id }: { id?: string }) {
               </motion.p>
             )}
           </form>
-        </div>
+          </div>
+        </Reveal>
       </div>
     </section>
   );

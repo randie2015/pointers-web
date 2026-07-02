@@ -34,7 +34,7 @@ export function Header() {
   return (
     <header className="sticky top-0 z-[100] bg-brand text-white">
       <div className="container-page flex h-[68px] items-center justify-between gap-8 md:h-[76px]">
-        <Link href="/" prefetch className="flex shrink-0 items-center text-white" aria-label="Pointers home">
+        <Link href="/" prefetch className="touch-press flex shrink-0 items-center text-white active:opacity-90" aria-label="Pointers home">
           <HeaderLogo priority />
         </Link>
 
@@ -54,7 +54,7 @@ export function Header() {
           <LocaleSwitcher />
           <button
             type="button"
-            className="text-white"
+            className="touch-press rounded-xl p-2 text-white active:bg-white/15"
             onClick={() => setOpen(!open)}
             aria-expanded={open}
             aria-label="Menu"

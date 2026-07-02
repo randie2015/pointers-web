@@ -31,7 +31,7 @@ export function LocaleSwitcher({ className, onSwitch }: LocaleSwitcherProps) {
       type="button"
       onClick={handleSwitch}
       className={cn(
-        'text-xs uppercase tracking-widest text-white/70 hover:text-white',
+        'touch-press rounded-lg px-2 py-1 text-xs uppercase tracking-widest text-white/70 transition-all duration-200 hover:text-white active:bg-white/15 active:text-white',
         className
       )}
       aria-label={otherLocale === 'en' ? 'Switch to English' : 'Cambiar a español'}

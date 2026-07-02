@@ -59,7 +59,7 @@ function MaskUpFace({
   if (hideSlide) {
     return (
       <span
-        className="relative block overflow-hidden rounded-full bg-[#39B8AD] text-sm font-semibold text-white"
+        className={`relative block overflow-hidden rounded-full bg-[#39B8AD] text-sm font-semibold text-white mobile-btn-surface ${disabled ? 'opacity-70' : ''}`}
         style={{ height: row }}
       >
         <span
@@ -74,11 +74,12 @@ function MaskUpFace({
 
   return (
     <motion.span
-      className="relative block overflow-hidden rounded-full bg-[#39B8AD] text-sm font-semibold text-white"
+      className="relative block overflow-hidden rounded-full bg-[#39B8AD] text-sm font-semibold text-white mobile-btn-surface"
       style={{ height: row }}
       variants={maskVariants}
       initial="rest"
       whileHover={disabled ? undefined : 'hover'}
+      whileTap={disabled ? undefined : { scale: 0.95 }}
       aria-hidden={disabled}
     >
       <motion.span className="flex flex-col" variants={slideVariants} transition={slideTransition}>
@@ -164,7 +165,7 @@ export function MaskUpButton(props: MaskUpButtonProps) {
       onClick={onClick}
       disabled={disabled}
       label={label}
-      className={`inline-block ${className}`}
+      className={`inline-block touch-press ${className}`}
     >
       <MaskUpFace label={label} row={row} px={px} hideSlide={hideSlide} disabled={disabled} />
     </Wrapper>

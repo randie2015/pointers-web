@@ -28,9 +28,9 @@ export function ServicesHomePreview() {
               <Link
                 href={`/servicios/${SERVICE_SLUGS[i]}`}
                 prefetch
-                className="group block h-full rounded-2xl border border-border/60 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-md md:p-8"
+                className="group mobile-card-interactive block h-full rounded-2xl border border-border/60 bg-white p-6 shadow-sm md:p-8 md:shadow-sm md:hover:-translate-y-1 md:hover:shadow-md"
               >
-                <span className="inline-block rounded-lg bg-purple px-3 py-1 text-xs font-semibold text-white">
+                <span className="inline-block rounded-xl bg-purple px-3 py-1 text-xs font-semibold text-white">
                   {item.badge}
                 </span>
                 <h3 className="h-display mt-4 text-xl md:text-2xl">{item.title}</h3>

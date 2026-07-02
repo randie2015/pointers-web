@@ -35,3 +35,21 @@ body {
 
 .container-page { @apply mx-auto w-full max-w-[1280px] px-6 md:px-10; }
 .h-display { @apply font-display tracking-tightest leading-[1.05]; }
+
+@layer components {
+  .touch-press {
+    @apply transition-transform duration-200 ease-out active:scale-95;
+  }
+
+  .mobile-surface {
+    @apply max-md:rounded-2xl max-md:shadow-lg max-md:shadow-black/[0.08];
+  }
+
+  .mobile-card-interactive {
+    @apply mobile-surface touch-press max-md:transition-all max-md:duration-200 max-md:active:shadow-md;
+  }
+
+  .mobile-btn-surface {
+    @apply max-md:shadow-lg max-md:shadow-black/10 touch-press;
+  }
+}

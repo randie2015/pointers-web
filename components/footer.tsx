@@ -8,7 +8,7 @@ import { HOME_ANCHORS, MAIN_ROUTES } from '@/lib/navigation';
 const TEAL = '#39B8AD';
 
 const linkClass =
-  'text-sm text-gray-800 transition-colors hover:text-[#39B8AD]';
+  'text-sm text-gray-800 transition-all duration-200 hover:text-[#39B8AD] active:scale-95 active:text-[#39B8AD]';
 
 export function Footer() {
   const t = useTranslations('footer');
@@ -28,7 +28,7 @@ export function Footer() {
       <div className="container-page py-16 md:py-20">
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-10">
           <div className="lg:col-span-5">
-            <BrandLogo variant="vertical-dark" className="h-20 md:h-24" />
+            <BrandLogo variant="vertical-magenta" className="h-20 md:h-24" />
             <p className="mt-6 max-w-sm text-sm leading-relaxed text-gray-700">{t('newsletter')}</p>
 
             <form
@@ -42,7 +42,7 @@ export function Footer() {
               />
               <button
                 type="submit"
-                className="shrink-0 rounded-md px-4 py-2.5 text-sm font-medium text-white transition hover:brightness-105"
+                className="touch-press shrink-0 rounded-xl px-4 py-2.5 text-sm font-medium text-white shadow-md transition active:shadow-sm max-md:shadow-lg max-md:shadow-black/10 hover:brightness-105"
                 style={{ backgroundColor: TEAL }}
               >
                 {t('subscribe')}

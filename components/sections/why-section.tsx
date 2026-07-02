@@ -98,9 +98,10 @@ function WhyCard({
   return (
     <Reveal delay={index * 0.08}>
       <motion.article
-        className="h-full rounded-2xl bg-white p-7 shadow-md md:p-8"
+        className="mobile-surface h-full rounded-2xl bg-white p-7 shadow-md md:p-8"
         initial="rest"
         whileHover="hover"
+        whileTap={{ scale: 0.97, transition: { duration: 0.2 } }}
         variants={{
           rest: cardVariants.rest,
           hover: cardVariants.hover(theme)
