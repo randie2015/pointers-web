@@ -1,26 +1,24 @@
-import { DOG_PATHS, DOG_VIEWBOX } from '@/components/services/dog-path';
+import Image from 'next/image';
 import { cn } from '@/lib/utils';
+
+const LOGO_WIDTH = 1024;
+const LOGO_HEIGHT = 211;
 
 type HeaderLogoProps = {
   className?: string;
+  priority?: boolean;
 };
 
-export function HeaderLogo({ className }: HeaderLogoProps) {
+export function HeaderLogo({ className, priority }: HeaderLogoProps) {
   return (
-    <span className={cn('inline-flex flex-row items-center gap-2 text-white', className)}>
-      <svg
-        viewBox={DOG_VIEWBOX}
-        className="h-7 w-auto shrink-0 sm:h-8 md:h-9"
-        aria-hidden
-        focusable="false"
-      >
-        {DOG_PATHS.map((path, index) => (
-          <path key={index} d={path} fill="currentColor" />
-        ))}
-      </svg>
-      <span className="select-none text-[1.05rem] font-bold uppercase leading-none tracking-[0.14em] sm:text-[1.1rem] md:text-[1.2rem]">
-        POINTERS
-      </span>
-    </span>
+    <Image
+      src="/brand/logo-navbar.png"
+      alt="Pointers"
+      width={LOGO_WIDTH}
+      height={LOGO_HEIGHT}
+      unoptimized
+      priority={priority}
+      className={cn('block h-8 w-auto shrink-0 brightness-0 invert sm:h-9 md:h-10', className)}
+    />
   );
 }
