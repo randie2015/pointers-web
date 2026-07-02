@@ -9,6 +9,7 @@ import { HashScrollHandler } from '@/components/hash-scroll-handler';
 import { Inter } from 'next/font/google';
 import type { Metadata } from 'next';
 import '../globals.css';
+import { siteIconMetadata } from '@/lib/site-icons';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' });
 
@@ -28,10 +29,7 @@ export async function generateMetadata({
   return {
     title: t('title'),
     description: hero('subtitle'),
-    icons: {
-      icon: [{ url: '/icon.png', type: 'image/png' }],
-      apple: [{ url: '/apple-touch-icon.png', type: 'image/png' }]
-    },
+    ...siteIconMetadata(),
     alternates: {
       canonical: `/${locale}`,
       languages: { es: '/es', en: '/en', 'x-default': '/es' }

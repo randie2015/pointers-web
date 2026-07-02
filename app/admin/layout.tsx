@@ -2,16 +2,14 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { AdminShell } from '@/components/admin/admin-shell';
 import '../globals.css';
+import { siteIconMetadata } from '@/lib/site-icons';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' });
 
 export const metadata: Metadata = {
   title: 'Admin | Pointers',
   robots: { index: false, follow: false },
-  icons: {
-    icon: [{ url: '/icon.png', type: 'image/png' }],
-    apple: [{ url: '/apple-touch-icon.png', type: 'image/png' }]
-  }
+  ...siteIconMetadata()
 };
 
 export default function AdminRootLayout({ children }: { children: React.ReactNode }) {
