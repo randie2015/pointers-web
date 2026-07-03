@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { Link } from '@/i18n/routing';
 import type { AppRoute } from '@/lib/navigation';
+import { cn } from '@/lib/utils';
 import type { ReactNode } from 'react';
 
 const SIZES = {
@@ -195,7 +196,7 @@ export function MaskUpButton(props: MaskUpButtonProps) {
       onClick={onClick}
       disabled={disabled}
       label={label}
-      className={`inline-block touch-press ${className}`}
+      className={cn('touch-press', className.includes('w-full') ? 'block w-full' : 'inline-block', className)}
     >
       <MaskUpFace label={label} row={row} px={px} hideSlide={hideSlide} disabled={disabled} tone={tone} />
     </Wrapper>

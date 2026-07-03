@@ -15,7 +15,7 @@ function isElementInView(el: Element, margin: number) {
   return rect.top < window.innerHeight - offset && rect.bottom > offset;
 }
 
-export function useMotionReveal({ margin = -40, amount = 0.12 }: Options = {}) {
+export function useMotionReveal({ margin = -32, amount = 0.05 }: Options = {}) {
   const reduced = useReducedMotion();
   const locale = useLocale();
   const ref = useRef<HTMLDivElement>(null);
@@ -31,16 +31,22 @@ export function useMotionReveal({ margin = -40, amount = 0.12 }: Options = {}) {
     };
 
     sync();
-    requestAnimationFrame(sync);
+
+    const raf = requestAnimationFrame(sync);
+    const t = window.setTimeout(sync, 80);
 
     window.addEventListener('hashchange', sync);
     window.addEventListener('scroll', sync, { passive: true });
     window.addEventListener('anchorscroll', sync);
+    window.addEventListener('resize', sync, { passive: true });
 
     return () => {
+      cancelAnimationFrame(raf);
+      window.clearTimeout(t);
       window.removeEventListener('hashchange', sync);
       window.removeEventListener('scroll', sync);
       window.removeEventListener('anchorscroll', sync);
+      window.removeEventListener('resize', sync);
     };
   }, [margin, locale]);
 

@@ -25,9 +25,14 @@ export function SectionHeader({
           <SectionBadge text={eyebrow} />
         </div>
       )}
-      <h2 className={cn('h-display mt-4 text-3xl md:text-5xl lg:text-6xl', titleClassName)}>{title}</h2>
+      <h2 className={cn('h-display mt-4 text-2xl sm:text-3xl md:text-5xl lg:text-6xl', titleClassName)}>{title}</h2>
       {subtitle && (
-        <p className={cn('mt-5 mx-auto max-w-2xl text-muted-foreground text-lg leading-relaxed', subtitleClassName)}>
+        <p
+          className={cn(
+            'mx-auto mt-4 max-w-2xl text-base leading-relaxed text-muted-foreground md:mt-5 md:text-lg',
+            subtitleClassName
+          )}
+        >
           {subtitle}
         </p>
       )}

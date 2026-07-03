@@ -17,8 +17,8 @@ export function ContactCTA({ id = 'hablemos' }: { id?: string }) {
     <section
       id={id}
       className={cn(
-        'relative overflow-hidden py-16 md:py-24 max-md:bg-[#BC2656]',
-        'md:bg-gradient-to-br md:from-[#BC2656] md:to-[#5E549D]',
+        'relative overflow-hidden py-12 sm:py-16 md:py-24',
+        'bg-gradient-to-br from-[#BC2656] to-[#5E549D]',
         'scroll-mt-24'
       )}
     >
@@ -33,7 +33,7 @@ export function ContactCTA({ id = 'hablemos' }: { id?: string }) {
               {t('subtitle')}
             </p>
             <div className="mt-10 flex justify-center">
-              <MaskUpButton href={getWhatsAppUrl(locale)} label={t('submit')} />
+              <MaskUpButton href={getWhatsAppUrl(locale)} label={t('submit')} className="w-full max-w-sm sm:w-auto" />
             </div>
           </div>
         </Reveal>
