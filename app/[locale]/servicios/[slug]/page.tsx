@@ -3,8 +3,7 @@ import { notFound } from 'next/navigation';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { routing } from '@/i18n/routing';
 import { SERVICE_SLUGS, isServiceSlug } from '@/lib/services';
-import { ServiceDetailView } from '@/components/sections/service-detail-view';
-import { ContactCTA } from '@/components/sections/contact-cta';
+import { ServicePageTemplate } from '@/components/services/service-page-template';
 
 export function generateStaticParams() {
   return routing.locales.flatMap((locale) =>
@@ -37,10 +36,5 @@ export default async function ServiceDetailPage({
 
   setRequestLocale(locale);
 
-  return (
-    <>
-      <ServiceDetailView slug={slug} />
-      <ContactCTA />
-    </>
-  );
+  return <ServicePageTemplate slug={slug} />;
 }

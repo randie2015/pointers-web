@@ -1,12 +1,14 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { Reveal } from '@/components/reveal';
 import { SectionBadge } from '@/components/ui/section-badge';
 import { MaskUpButton } from '@/components/ui/mask-up-button';
+import { getWhatsAppUrl } from '@/lib/site-config';
 
 export function ServicesPageHero() {
   const t = useTranslations('servicesPage.hero');
+  const locale = useLocale() as 'es' | 'en';
 
   return (
     <section className="relative overflow-hidden bg-white pt-14 md:pt-20">
@@ -21,7 +23,7 @@ export function ServicesPageHero() {
               {t('subtitle')}
             </p>
             <div className="mt-8 flex justify-center">
-              <MaskUpButton href="/contact" label={t('cta')} />
+              <MaskUpButton href={getWhatsAppUrl(locale)} label={t('cta')} />
             </div>
           </div>
         </Reveal>

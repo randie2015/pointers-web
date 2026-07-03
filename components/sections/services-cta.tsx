@@ -1,12 +1,14 @@
 'use client';
 
 import { useRef, useState } from 'react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { motion, useMotionTemplate, useMotionValue, useReducedMotion } from 'framer-motion';
 import { MaskUpButton } from '@/components/ui/mask-up-button';
+import { getWhatsAppUrl } from '@/lib/site-config';
 
 export function ServicesCta() {
   const t = useTranslations('servicesPage.cta');
+  const locale = useLocale() as 'es' | 'en';
   const reduced = useReducedMotion();
   const cardRef = useRef<HTMLDivElement | null>(null);
   const [active, setActive] = useState(false);
@@ -44,7 +46,7 @@ export function ServicesCta() {
             <h2 className="text-4xl font-bold leading-tight text-white md:text-5xl">{t('title')}</h2>
             <p className="mt-6 text-lg leading-relaxed text-white/80">{t('subtitle')}</p>
             <div className="mt-8 flex justify-center">
-              <MaskUpButton href="/contact" label={t('button')} />
+              <MaskUpButton href={getWhatsAppUrl(locale)} label={t('button')} />
             </div>
           </div>
         </div>

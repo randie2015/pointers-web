@@ -447,6 +447,18 @@
     }
   },
   "serviceDetail": {
+    "heroCta": "Agendar asesoría",
+    "problemSolutionEyebrow": "Problema y solución",
+    "problemSolutionTitle": "Entendemos tu reto antes de diseñar",
+    "problemSolutionSubtitle": "Cada servicio parte de un diagnóstico claro y una propuesta concreta para tu marca.",
+    "problemLabel": "El problema",
+    "solutionLabel": "Nuestra solución",
+    "deliverablesEyebrow": "Entregables",
+    "deliverablesTitle": "Lo que recibes con Pointers",
+    "deliverablesSubtitle": "Recursos tangibles, listos para aplicar y escalar tu marca.",
+    "faqEyebrow": "FAQ",
+    "faqTitle": "Preguntas frecuentes",
+    "faqSubtitle": "Resolvemos las dudas más comunes sobre este servicio.",
     "pricingEyebrow": "Planes",
     "pricingTitle": "Elige el plan ideal para tu marca",
     "pricingSubtitle": "Tres propuestas diseñadas para distintas etapas de crecimiento: Pro, Premium y Pointers.",
@@ -461,15 +473,29 @@
       "badge": "Branding e Identidad Visual",
       "title": "Diseñamos marcas que inspiran confianza y generan valor.",
       "subtitle": "Desde el concepto hasta la implementación digital, creamos identidades que conectan propósito, estética y estrategia.",
-      "overview": [
-        "Construimos sistemas de marca coherentes que funcionan en todos los puntos de contacto: digital, impreso y experiencial.",
-        "Cada identidad nace de un análisis estratégico que define propósito, tono y diferenciación frente a tu competencia."
+      "problem": {
+        "title": "Tu marca se ve inconsistente y no transmite confianza",
+        "body": "Logos improvisados, colores mezclados y mensajes dispersos hacen que tu negocio compita sin diferenciación real frente a la competencia."
+      },
+      "solution": {
+        "title": "Un sistema de marca estratégico y coherente",
+        "body": "Definimos propósito, tono y identidad visual para que cada punto de contacto refuerce tu valor y genere reconocimiento inmediato."
+      },
+      "deliverables": [
+        { "title": "Identidad visual completa", "description": "Logo, variantes, paleta cromática y tipografías aplicadas a tu ecosistema." },
+        { "title": "Manual de marca", "description": "Guías de uso digital e impreso para mantener coherencia en todo tu equipo." },
+        { "title": "Kit de aplicaciones", "description": "Piezas clave para redes, web, presentaciones y materiales comerciales." },
+        { "title": "Dirección estratégica", "description": "Posicionamiento, tono de voz y arquitectura de marca alineados a tus objetivos." }
       ],
-      "highlights": [
-        "Diseño de identidad visual completa",
-        "Manual de marca y guías de uso",
-        "Aplicaciones digitales y piezas clave",
-        "Estrategia de marca y posicionamiento"
+      "cta": {
+        "title": "¿Listo para una marca que inspire confianza?",
+        "subtitle": "Agenda una asesoría y descubre el plan de branding ideal para tu negocio."
+      },
+      "faq": [
+        { "question": "¿Cuánto tiempo toma un proyecto de branding?", "answer": "Entre 3 y 6 semanas según el plan. Pro incluye identidad esencial; Pointers cubre arquitectura de marca completa con workshop." },
+        { "question": "¿Incluyen revisiones?", "answer": "Sí. Pro incluye 1 ronda, Premium 3 rondas y Pointers revisiones ilimitadas durante la fase de diseño." },
+        { "question": "¿Entregan archivos editables?", "answer": "Sí. Recibes logo en formatos vectoriales, manual de marca y assets listos para web e impresión." },
+        { "question": "¿Pueden trabajar con una marca existente?", "answer": "Claro. Podemos evolucionar tu identidad actual o construir una nueva desde cero según tu etapa de negocio." }
       ],
       "pricing": {
         "pro": {
@@ -493,15 +519,29 @@
       "badge": "Diseño Web y Experiencia Digital",
       "title": "Desarrollo web, UX/UI estratégico y landing pages de alto rendimiento.",
       "subtitle": "Diseñamos experiencias digitales atractivas y eficientes, donde la forma y la función se alinean para maximizar conversiones.",
-      "overview": [
-        "Creamos sitios web y landing pages que combinan estética premium con rendimiento técnico y claridad en la conversión.",
-        "Cada interfaz se diseña desde la estrategia: entendemos a tu usuario, definimos el recorrido y construimos experiencias que generan resultados."
+      "problem": {
+        "title": "Tu web no convierte ni refleja el valor de tu marca",
+        "body": "Sitios lentos, diseños genéricos y recorridos confusos alejan visitantes y frenan el crecimiento de tu negocio digital."
+      },
+      "solution": {
+        "title": "Experiencias digitales rápidas, claras y orientadas a resultados",
+        "body": "Combinamos UX/UI estratégico con desarrollo de alto rendimiento para guiar al usuario hacia la acción con fluidez y confianza."
+      },
+      "deliverables": [
+        { "title": "Diseño UX/UI", "description": "Wireframes, interfaces y sistemas visuales pensados para tu audiencia y objetivos." },
+        { "title": "Desarrollo responsive", "description": "Sitios y landings optimizados para móvil, tablet y desktop." },
+        { "title": "Optimización de conversión", "description": "Estructura, CTAs y formularios diseñados para generar leads y ventas." },
+        { "title": "Performance y SEO base", "description": "Carga rápida, buenas prácticas técnicas y visibilidad en buscadores." }
       ],
-      "highlights": [
-        "Diseño UX/UI estratégico",
-        "Desarrollo web de alto rendimiento",
-        "Landing pages orientadas a conversión",
-        "Optimización mobile-first"
+      "cta": {
+        "title": "¿Tu web está frenando tu crecimiento?",
+        "subtitle": "Conversemos sobre la experiencia digital que tu marca necesita para convertir más."
+      },
+      "faq": [
+        { "question": "¿Desarrollan en WordPress u otras plataformas?", "answer": "Trabajamos con Next.js y stacks modernos para máximo rendimiento. En plan Pointers incluimos CMS para autogestión." },
+        { "question": "¿Incluyen hosting y dominio?", "answer": "No incluidos en el precio base, pero te guiamos en la configuración y despliegue en Vercel u otra plataforma." },
+        { "question": "¿Pueden rediseñar mi sitio actual?", "answer": "Sí. Auditamos tu web existente y proponemos mejoras de UX, diseño y performance según el plan elegido." },
+        { "question": "¿Cuánto tarda un proyecto web?", "answer": "De 4 a 8 semanas según alcance: landing en Pro, sitio completo en Premium y experiencia a medida en Pointers." }
       ],
       "pricing": {
         "pro": {
@@ -525,15 +565,29 @@
       "badge": "Contenido y Presencia en Redes",
       "title": "Estrategia de contenido, gestión de redes y creación audiovisual para fortalecer tu marca.",
       "subtitle": "Impulsamos la conexión entre marcas y audiencias con comunicación auténtica, consistente y visualmente atractiva.",
-      "overview": [
-        "Diseñamos estrategias de contenido que alinean tu mensaje con los objetivos de negocio y las necesidades de tu audiencia.",
-        "Gestionamos tu presencia en redes con piezas visuales, copy y formatos que refuerzan la identidad de tu marca."
+      "problem": {
+        "title": "Publicas sin estrategia y tu audiencia no crece",
+        "body": "Contenido irregular, mensajes desalineados y baja interacción debilitan tu presencia y no generan oportunidades comerciales."
+      },
+      "solution": {
+        "title": "Comunicación coherente que conecta y convierte",
+        "body": "Planificamos, producimos y gestionamos contenido alineado a tu marca para construir comunidad y generar demanda constante."
+      },
+      "deliverables": [
+        { "title": "Calendario editorial", "description": "Plan mensual de publicaciones alineado a objetivos y fechas clave." },
+        { "title": "Piezas audiovisuales", "description": "Reels, stories y gráficos con la identidad visual de tu marca." },
+        { "title": "Community management", "description": "Gestión de interacciones, respuestas y tono de voz en tus redes." },
+        { "title": "Reportes de desempeño", "description": "Métricas claras de alcance, engagement y aprendizajes mensuales." }
       ],
-      "highlights": [
-        "Estrategia de contenido mensual",
-        "Gestión de redes sociales",
-        "Creación de piezas gráficas y reels",
-        "Calendario editorial y reportes"
+      "cta": {
+        "title": "¿Tu marca necesita presencia constante en redes?",
+        "subtitle": "Escríbenos y armamos la estrategia de contenido ideal para tu audiencia."
+      },
+      "faq": [
+        { "question": "¿En qué redes trabajan?", "answer": "Instagram, Facebook, LinkedIn y TikTok según tu audiencia. El plan define cuántas redes activamos." },
+        { "question": "¿Producen el contenido in situ?", "answer": "Sí, en planes Premium y Pointers incluimos producción audiovisual y sesiones de contenido según tu rubro." },
+        { "question": "¿Necesito tener branding previo?", "answer": "Recomendable pero no obligatorio. Adaptamos piezas a tu identidad existente o te proponemos branding si lo necesitas." },
+        { "question": "¿Hay contrato mínimo?", "answer": "Trabajamos por suscripción mensual. Recomendamos mínimo 3 meses para ver resultados consistentes." }
       ],
       "pricing": {
         "pro": {
@@ -557,15 +611,29 @@
       "badge": "Estrategia Digital y Publicidad",
       "title": "Campañas publicitarias, embudos y automatización para escalar tus resultados.",
       "subtitle": "Diseñamos sistemas inteligentes que optimizan recursos, aumentan el alcance y convierten interacciones en resultados reales.",
-      "overview": [
-        "Planificamos y ejecutamos campañas en Meta y Google alineadas a objetivos medibles de conversión y crecimiento.",
-        "Construimos embudos y automatizaciones que convierten tráfico en oportunidades reales para tu negocio."
+      "problem": {
+        "title": "Inviertes en publicidad pero no ves retorno claro",
+        "body": "Campañas sin estrategia, segmentación deficiente y falta de seguimiento convierten tu inversión en gasto sin resultados medibles."
+      },
+      "solution": {
+        "title": "Sistemas de growth con data, embudos y optimización continua",
+        "body": "Planificamos, ejecutamos y optimizamos campañas en Meta y Google con embudos que convierten tráfico en leads calificados."
+      },
+      "deliverables": [
+        { "title": "Campañas Meta y Google", "description": "Configuración, creativos y gestión de pauta según tu presupuesto." },
+        { "title": "Embudos de conversión", "description": "Recorridos diseñados para captar, nutrir y convertir prospectos." },
+        { "title": "Automatizaciones", "description": "Flujos de email, remarketing y seguimiento de leads automatizado." },
+        { "title": "Dashboard de resultados", "description": "Reportes con KPIs claros: CPL, ROAS, conversiones y recomendaciones." }
       ],
-      "highlights": [
-        "Campañas Meta Ads y Google Ads",
-        "Embudos de conversión",
-        "Automatización de marketing",
-        "Consultoría y optimización continua"
+      "cta": {
+        "title": "¿Quieres escalar con publicidad que sí rinde?",
+        "subtitle": "Agenda una asesoría y diseñemos la estrategia digital para tus objetivos de negocio."
+      },
+      "faq": [
+        { "question": "¿La pauta publicitaria está incluida?", "answer": "No. Gestionamos la inversión que tú defines. Cada plan indica el rango de pauta recomendado que administramos." },
+        { "question": "¿Trabajan con Meta Ads y Google Ads?", "answer": "Sí. Pro cubre una plataforma; Premium y Pointers incluyen estrategia multicanal coordinada." },
+        { "question": "¿Cuándo se ven resultados?", "answer": "Primeros datos en 2–3 semanas. Optimización significativa entre el mes 1 y 2 según industria y presupuesto." },
+        { "question": "¿Necesito landing page propia?", "answer": "Recomendable. Podemos crear landings de campaña en plan Pointers o conectar con tu sitio existente." }
       ],
       "pricing": {
         "pro": {

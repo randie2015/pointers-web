@@ -1,11 +1,11 @@
 'use client';
 
-import { ContactForm } from '@/components/ContactForm';
+import { ContactCTA } from '@/components/sections/contact-cta';
 
 export default function ContactPage() {
   return (
     <div className="pt-20">
-      <ContactForm id="contacto" />
+      <ContactCTA id="contacto" />
     </div>
   );
 }

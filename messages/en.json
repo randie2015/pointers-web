@@ -447,6 +447,18 @@
     }
   },
   "serviceDetail": {
+    "heroCta": "Book a consultation",
+    "problemSolutionEyebrow": "Problem & solution",
+    "problemSolutionTitle": "We understand your challenge before we design",
+    "problemSolutionSubtitle": "Every service starts with a clear diagnosis and a concrete proposal for your brand.",
+    "problemLabel": "The problem",
+    "solutionLabel": "Our solution",
+    "deliverablesEyebrow": "Deliverables",
+    "deliverablesTitle": "What you get with Pointers",
+    "deliverablesSubtitle": "Tangible assets, ready to apply and scale your brand.",
+    "faqEyebrow": "FAQ",
+    "faqTitle": "Frequently asked questions",
+    "faqSubtitle": "We answer the most common questions about this service.",
     "pricingEyebrow": "Plans",
     "pricingTitle": "Choose the ideal plan for your brand",
     "pricingSubtitle": "Three proposals designed for different growth stages: Pro, Premium and Pointers.",
@@ -461,15 +473,29 @@
       "badge": "Branding & Visual Identity",
       "title": "We design brands that inspire trust and create value.",
       "subtitle": "From concept to digital implementation, we create identities that connect purpose, aesthetics and strategy.",
-      "overview": [
-        "We build coherent brand systems that work across every touchpoint: digital, print and experiential.",
-        "Every identity starts from strategic analysis that defines purpose, tone and differentiation from your competition."
+      "problem": {
+        "title": "Your brand looks inconsistent and fails to build trust",
+        "body": "Improvised logos, mixed colors and scattered messaging make your business compete without real differentiation."
+      },
+      "solution": {
+        "title": "A strategic, coherent brand system",
+        "body": "We define purpose, tone and visual identity so every touchpoint reinforces your value and builds instant recognition."
+      },
+      "deliverables": [
+        { "title": "Complete visual identity", "description": "Logo, variants, color palette and typography applied across your ecosystem." },
+        { "title": "Brand guidelines", "description": "Digital and print usage guides to keep your team aligned." },
+        { "title": "Application kit", "description": "Key assets for social, web, presentations and sales materials." },
+        { "title": "Strategic direction", "description": "Positioning, tone of voice and brand architecture aligned to your goals." }
       ],
-      "highlights": [
-        "Complete visual identity design",
-        "Brand guidelines and usage manuals",
-        "Digital applications and key assets",
-        "Brand strategy and positioning"
+      "cta": {
+        "title": "Ready for a brand that inspires trust?",
+        "subtitle": "Book a consultation and discover the ideal branding plan for your business."
+      },
+      "faq": [
+        { "question": "How long does a branding project take?", "answer": "Between 3 and 6 weeks depending on the plan. Pro covers essential identity; Pointers includes full brand architecture with workshop." },
+        { "question": "Do you include revisions?", "answer": "Yes. Pro includes 1 round, Premium 3 rounds and Pointers unlimited revisions during the design phase." },
+        { "question": "Do you deliver editable files?", "answer": "Yes. You receive vector logos, brand guidelines and assets ready for web and print." },
+        { "question": "Can you work with an existing brand?", "answer": "Absolutely. We can evolve your current identity or build a new one from scratch based on your business stage." }
       ],
       "pricing": {
         "pro": {
@@ -493,15 +519,29 @@
       "badge": "Web Design & Digital Experience",
       "title": "Web development, strategic UX/UI and high-performance landing pages.",
       "subtitle": "We design attractive, efficient digital experiences where form and function align to maximize conversions.",
-      "overview": [
-        "We create websites and landing pages that combine premium aesthetics with technical performance and conversion clarity.",
-        "Every interface is designed from strategy: we understand your user, define the journey and build experiences that deliver results."
+      "problem": {
+        "title": "Your website doesn't convert or reflect your brand's value",
+        "body": "Slow sites, generic designs and confusing journeys push visitors away and stall your digital growth."
+      },
+      "solution": {
+        "title": "Fast, clear, results-driven digital experiences",
+        "body": "We combine strategic UX/UI with high-performance development to guide users toward action with clarity and confidence."
+      },
+      "deliverables": [
+        { "title": "UX/UI design", "description": "Wireframes, interfaces and visual systems built for your audience and goals." },
+        { "title": "Responsive development", "description": "Sites and landings optimized for mobile, tablet and desktop." },
+        { "title": "Conversion optimization", "description": "Structure, CTAs and forms designed to generate leads and sales." },
+        { "title": "Performance & base SEO", "description": "Fast load times, technical best practices and search visibility." }
       ],
-      "highlights": [
-        "Strategic UX/UI design",
-        "High-performance web development",
-        "Conversion-focused landing pages",
-        "Mobile-first optimization"
+      "cta": {
+        "title": "Is your website holding back your growth?",
+        "subtitle": "Let's talk about the digital experience your brand needs to convert more."
+      },
+      "faq": [
+        { "question": "Do you build on WordPress or other platforms?", "answer": "We work with Next.js and modern stacks for maximum performance. The Pointers plan includes a CMS for self-management." },
+        { "question": "Is hosting and domain included?", "answer": "Not included in the base price, but we guide you through setup and deployment on Vercel or another platform." },
+        { "question": "Can you redesign my current site?", "answer": "Yes. We audit your existing site and propose UX, design and performance improvements based on the chosen plan." },
+        { "question": "How long does a web project take?", "answer": "4 to 8 weeks depending on scope: landing in Pro, full site in Premium and custom experience in Pointers." }
       ],
       "pricing": {
         "pro": {
@@ -525,15 +565,29 @@
       "badge": "Content & Social Presence",
       "title": "Content strategy, social management and audiovisual production to strengthen your brand.",
       "subtitle": "We drive the connection between brands and audiences with authentic, consistent and visually compelling communication.",
-      "overview": [
-        "We design content strategies that align your message with business goals and audience needs.",
-        "We manage your social presence with visuals, copy and formats that reinforce your brand identity."
+      "problem": {
+        "title": "You post without strategy and your audience doesn't grow",
+        "body": "Irregular content, misaligned messaging and low engagement weaken your presence and fail to generate business opportunities."
+      },
+      "solution": {
+        "title": "Coherent communication that connects and converts",
+        "body": "We plan, produce and manage content aligned to your brand to build community and generate steady demand."
+      },
+      "deliverables": [
+        { "title": "Editorial calendar", "description": "Monthly publishing plan aligned to goals and key dates." },
+        { "title": "Audiovisual assets", "description": "Reels, stories and graphics with your brand's visual identity." },
+        { "title": "Community management", "description": "Interaction handling, replies and tone of voice on your channels." },
+        { "title": "Performance reports", "description": "Clear metrics on reach, engagement and monthly learnings." }
       ],
-      "highlights": [
-        "Monthly content strategy",
-        "Social media management",
-        "Graphic and reel production",
-        "Editorial calendar and reports"
+      "cta": {
+        "title": "Does your brand need consistent social presence?",
+        "subtitle": "Contact us and we'll build the ideal content strategy for your audience."
+      },
+      "faq": [
+        { "question": "Which social networks do you work with?", "answer": "Instagram, Facebook, LinkedIn and TikTok depending on your audience. The plan defines how many channels we manage." },
+        { "question": "Do you produce content on-site?", "answer": "Yes, Premium and Pointers plans include audiovisual production and content sessions for your industry." },
+        { "question": "Do I need existing branding?", "answer": "Recommended but not required. We adapt assets to your current identity or propose branding if needed." },
+        { "question": "Is there a minimum contract?", "answer": "We work on monthly subscription. We recommend at least 3 months to see consistent results." }
       ],
       "pricing": {
         "pro": {
@@ -557,15 +611,29 @@
       "badge": "Digital Strategy & Advertising",
       "title": "Ad campaigns, funnels and automation to scale your results.",
       "subtitle": "We design smart systems that optimize resources, increase reach and turn interactions into real results.",
-      "overview": [
-        "We plan and execute Meta and Google campaigns aligned to measurable conversion and growth goals.",
-        "We build funnels and automations that turn traffic into real opportunities for your business."
+      "problem": {
+        "title": "You invest in ads but don't see clear returns",
+        "body": "Campaigns without strategy, poor targeting and lack of tracking turn your investment into spend without measurable results."
+      },
+      "solution": {
+        "title": "Growth systems with data, funnels and continuous optimization",
+        "body": "We plan, execute and optimize Meta and Google campaigns with funnels that convert traffic into qualified leads."
+      },
+      "deliverables": [
+        { "title": "Meta & Google campaigns", "description": "Setup, creatives and ad spend management within your budget." },
+        { "title": "Conversion funnels", "description": "Journeys designed to capture, nurture and convert prospects." },
+        { "title": "Automations", "description": "Email flows, remarketing and automated lead follow-up." },
+        { "title": "Results dashboard", "description": "Reports with clear KPIs: CPL, ROAS, conversions and recommendations." }
       ],
-      "highlights": [
-        "Meta Ads and Google Ads campaigns",
-        "Conversion funnels",
-        "Marketing automation",
-        "Consulting and continuous optimization"
+      "cta": {
+        "title": "Ready to scale with advertising that performs?",
+        "subtitle": "Book a consultation and we'll design the digital strategy for your business goals."
+      },
+      "faq": [
+        { "question": "Is ad spend included?", "answer": "No. We manage the budget you define. Each plan indicates the recommended ad spend range we administer." },
+        { "question": "Do you work with Meta Ads and Google Ads?", "answer": "Yes. Pro covers one platform; Premium and Pointers include coordinated multi-channel strategy." },
+        { "question": "When will I see results?", "answer": "First data in 2–3 weeks. Significant optimization between months 1 and 2 depending on industry and budget." },
+        { "question": "Do I need a dedicated landing page?", "answer": "Recommended. We can create campaign landings on the Pointers plan or connect with your existing site." }
       ],
       "pricing": {
         "pro": {

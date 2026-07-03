@@ -10,6 +10,11 @@ const SIZES = {
   compact: { row: '2.5rem', px: 'px-5' }
 } as const;
 
+const TONES = {
+  teal: '#39B8AD',
+  brand: '#BC2656'
+} as const;
+
 const maskVariants = {
   rest: {},
   hover: {}
@@ -26,6 +31,7 @@ type BaseProps = {
   label: string;
   className?: string;
   size?: keyof typeof SIZES;
+  tone?: keyof typeof TONES;
   onClick?: () => void;
   hideSlide?: boolean;
   disabled?: boolean;
@@ -48,19 +54,23 @@ function MaskUpFace({
   row,
   px,
   hideSlide,
-  disabled
+  disabled,
+  tone = 'teal'
 }: {
   label: string;
   row: string;
   px: string;
   hideSlide?: boolean;
   disabled?: boolean;
+  tone?: keyof typeof TONES;
 }) {
+  const bg = TONES[tone];
+
   if (hideSlide) {
     return (
       <span
-        className={`relative block overflow-hidden rounded-full bg-[#39B8AD] text-sm font-semibold text-white mobile-btn-surface ${disabled ? 'opacity-70' : ''}`}
-        style={{ height: row }}
+        className={`relative block overflow-hidden rounded-full text-sm font-semibold text-white mobile-btn-surface ${disabled ? 'opacity-70' : ''}`}
+        style={{ height: row, backgroundColor: bg }}
       >
         <span
           className={`flex items-center justify-center whitespace-nowrap ${px} ${disabled ? 'opacity-70' : ''}`}
@@ -74,8 +84,8 @@ function MaskUpFace({
 
   return (
     <motion.span
-      className="relative block overflow-hidden rounded-full bg-[#39B8AD] text-sm font-semibold text-white mobile-btn-surface"
-      style={{ height: row }}
+      className="relative block overflow-hidden rounded-full text-sm font-semibold text-white mobile-btn-surface"
+      style={{ height: row, backgroundColor: bg }}
       variants={maskVariants}
       initial="rest"
       whileHover={disabled ? undefined : 'hover'}
@@ -168,6 +178,7 @@ export function MaskUpButton(props: MaskUpButtonProps) {
     label,
     className = '',
     size = 'default',
+    tone = 'teal',
     onClick,
     hideSlide = false,
     disabled = false
@@ -186,7 +197,7 @@ export function MaskUpButton(props: MaskUpButtonProps) {
       label={label}
       className={`inline-block touch-press ${className}`}
     >
-      <MaskUpFace label={label} row={row} px={px} hideSlide={hideSlide} disabled={disabled} />
+      <MaskUpFace label={label} row={row} px={px} hideSlide={hideSlide} disabled={disabled} tone={tone} />
     </Wrapper>
   );
 }
