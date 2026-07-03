@@ -1,7 +1,7 @@
 'use client';
 
-import { useCallback, useState } from 'react';
-import { motion, AnimatePresence, type PanInfo } from 'framer-motion';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { motion, type PanInfo } from 'framer-motion';
 import { Check, ChevronLeft, ChevronRight } from 'lucide-react';
 import { MaskUpButton } from '@/components/ui/mask-up-button';
 import { cn } from '@/lib/utils';
@@ -30,7 +30,6 @@ type ServicePricingCarouselProps = {
 };
 
 const SWIPE_THRESHOLD = 40;
-
 const cardSpring = { type: 'spring' as const, stiffness: 340, damping: 32 };
 
 function PlanCard({
@@ -41,7 +40,8 @@ function PlanCard({
   onSelect,
   ctaLabel,
   whatsappUrl,
-  compact
+  compact,
+  expanded
 }: {
   tier: PricingTierKey;
   meta: PricingTierMeta;
@@ -51,7 +51,10 @@ function PlanCard({
   ctaLabel: string;
   whatsappUrl: string;
   compact?: boolean;
+  expanded?: boolean;
 }) {
+  const showDetails = expanded || isActive;
+
   return (
     <motion.article
       layout
@@ -68,7 +71,7 @@ function PlanCard({
       aria-pressed={compact ? isActive : undefined}
       aria-label={`${meta.name} — ${plan.price}`}
       className={cn(
-        'relative flex w-full min-w-0 flex-col rounded-2xl border p-5 text-left shadow-sm sm:rounded-3xl sm:p-6 md:p-8',
+        'relative flex h-full w-full min-w-0 flex-col rounded-2xl border p-5 text-left shadow-sm sm:rounded-3xl sm:p-6 md:p-8',
         isActive
           ? 'border-[#BC2656] bg-[#BC2656] text-white shadow-lg shadow-[#BC2656]/25'
           : compact
@@ -99,46 +102,40 @@ function PlanCard({
         </p>
       </div>
 
-      <AnimatePresence initial={false}>
-        {isActive && (
-          <motion.div
-            key={`details-${tier}`}
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="overflow-hidden"
+      {showDetails ? (
+        <div className="mt-3 sm:mt-4">
+          <p className={cn('text-sm leading-relaxed', isActive ? 'text-white/85' : 'text-muted-foreground')}>
+            {plan.description}
+          </p>
+
+          <ul className="mt-5 flex flex-col gap-2 sm:mt-6 sm:gap-2.5">
+            {plan.features.map((feature) => (
+              <li key={feature} className="flex items-start gap-2 text-sm sm:gap-2.5">
+                <Check
+                  className={cn('mt-0.5 h-4 w-4 shrink-0', isActive ? 'text-white' : 'text-[#39B8AD]')}
+                  aria-hidden
+                />
+                <span className={isActive ? 'text-white/90' : 'text-gray-700'}>{feature}</span>
+              </li>
+            ))}
+          </ul>
+
+          <div
+            className="mt-6 w-full sm:mt-8"
+            onClick={(e) => e.stopPropagation()}
+            onKeyDown={(e) => e.stopPropagation()}
           >
-            <p className="mt-3 text-sm leading-relaxed text-white/85 sm:mt-4">{plan.description}</p>
-
-            <ul className="mt-5 flex flex-col gap-2 sm:mt-6 sm:gap-2.5">
-              {plan.features.map((feature, i) => (
-                <motion.li
-                  key={feature}
-                  initial={{ opacity: 0, x: -6 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.03, duration: 0.22 }}
-                  className="flex items-start gap-2 text-sm sm:gap-2.5"
-                >
-                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-white" aria-hidden />
-                  <span className="text-white/90">{feature}</span>
-                </motion.li>
-              ))}
-            </ul>
-
-            <div className="mt-6 w-full sm:mt-8" onClick={(e) => e.stopPropagation()} onKeyDown={(e) => e.stopPropagation()}>
-              <MaskUpButton
-                href={whatsappUrl}
-                label={ctaLabel}
-                className="block w-full sm:inline-block sm:w-auto"
-              />
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {!isActive && compact && (
-        <p className="mt-3 text-xs font-medium text-[#BC2656] sm:mt-4 sm:text-sm">Toca para ver detalles</p>
+            <MaskUpButton
+              href={whatsappUrl}
+              label={ctaLabel}
+              className="block w-full sm:inline-block sm:w-auto"
+            />
+          </div>
+        </div>
+      ) : (
+        compact && (
+          <p className="mt-3 text-xs font-medium text-[#BC2656] sm:mt-4 sm:text-sm">Toca para ver detalles</p>
+        )
       )}
     </motion.article>
   );
@@ -152,56 +149,96 @@ export function ServicePricingCarousel({
   customNote
 }: ServicePricingCarouselProps) {
   const [activeIndex, setActiveIndex] = useState(1);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const slideRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const goTo = useCallback((index: number) => {
-    setActiveIndex(Math.max(0, Math.min(TIERS.length - 1, index)));
+    const next = Math.max(0, Math.min(TIERS.length - 1, index));
+    setActiveIndex(next);
+    slideRefs.current[next]?.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
   }, []);
 
   const goNext = useCallback(() => {
-    setActiveIndex((i) => (i + 1) % TIERS.length);
-  }, []);
+    goTo((activeIndex + 1) % TIERS.length);
+  }, [activeIndex, goTo]);
 
   const goPrev = useCallback(() => {
-    setActiveIndex((i) => (i - 1 + TIERS.length) % TIERS.length);
-  }, []);
+    goTo((activeIndex - 1 + TIERS.length) % TIERS.length);
+  }, [activeIndex, goTo]);
 
   const handleDragEnd = (_: unknown, info: PanInfo) => {
     if (info.offset.x < -SWIPE_THRESHOLD) goNext();
     else if (info.offset.x > SWIPE_THRESHOLD) goPrev();
   };
 
+  useEffect(() => {
+    const root = scrollRef.current;
+    if (!root) return;
+
+    const syncActiveFromScroll = () => {
+      const center = root.scrollLeft + root.clientWidth / 2;
+      let closest = activeIndex;
+      let minDistance = Number.POSITIVE_INFINITY;
+
+      slideRefs.current.forEach((slide, index) => {
+        if (!slide) return;
+        const slideCenter = slide.offsetLeft + slide.offsetWidth / 2;
+        const distance = Math.abs(center - slideCenter);
+        if (distance < minDistance) {
+          minDistance = distance;
+          closest = index;
+        }
+      });
+
+      setActiveIndex(closest);
+    };
+
+    root.addEventListener('scroll', syncActiveFromScroll, { passive: true });
+    return () => root.removeEventListener('scroll', syncActiveFromScroll);
+  }, [activeIndex]);
+
+  useEffect(() => {
+    const root = scrollRef.current;
+    const slide = slideRefs.current[1];
+    if (!root || !slide) return;
+
+    const id = window.requestAnimationFrame(() => {
+      slide.scrollIntoView({ behavior: 'auto', inline: 'center', block: 'nearest' });
+    });
+
+    return () => window.cancelAnimationFrame(id);
+  }, []);
+
   return (
     <div className="mt-8 sm:mt-10 md:mt-14">
-      {/* Mobile + tablet: single plan slider */}
+      {/* Mobile + tablet: horizontal scroll carousel */}
       <div className="lg:hidden">
-        <motion.div
-          drag="x"
-          dragConstraints={{ left: 0, right: 0 }}
-          dragElastic={0.18}
-          onDragEnd={handleDragEnd}
-          className="touch-pan-y cursor-grab active:cursor-grabbing"
+        <div
+          ref={scrollRef}
+          className="-mx-6 flex snap-x snap-mandatory gap-4 overflow-x-auto overscroll-x-contain scroll-smooth px-6 pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          aria-label="Planes de precios"
         >
-          <AnimatePresence mode="wait" initial={false}>
-            <motion.div
-              key={TIERS[activeIndex]}
-              initial={{ opacity: 0, x: 32 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -32 }}
-              transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-              className="w-full"
+          {TIERS.map((tier, i) => (
+            <div
+              key={tier}
+              ref={(el) => {
+                slideRefs.current[i] = el;
+              }}
+              className="w-[min(88vw,360px)] shrink-0 snap-center"
             >
               <PlanCard
-                tier={TIERS[activeIndex]}
-                meta={tierMeta[TIERS[activeIndex]]}
-                plan={pricing[TIERS[activeIndex]]}
+                tier={tier}
+                meta={tierMeta[tier]}
+                plan={pricing[tier]}
                 isActive
-                onSelect={() => undefined}
+                expanded
+                onSelect={() => goTo(i)}
                 ctaLabel={ctaLabel}
                 whatsappUrl={whatsappUrl}
               />
-            </motion.div>
-          </AnimatePresence>
-        </motion.div>
+            </div>
+          ))}
+        </div>
 
         <div className="mt-5 flex items-center justify-between gap-2 sm:mt-6 sm:justify-center sm:gap-4">
           <button
@@ -240,10 +277,12 @@ export function ServicePricingCarousel({
           </button>
         </div>
 
-        <p className="mt-3 text-center text-xs text-muted-foreground sm:text-sm">Desliza o usa las flechas para cambiar de plan</p>
+        <p className="mt-3 text-center text-xs text-muted-foreground sm:text-sm">
+          Desliza horizontalmente para ver los 3 planes
+        </p>
       </div>
 
-      {/* Desktop: three cards */}
+      {/* Desktop: three cards with center focus */}
       <div className="hidden items-stretch justify-center gap-3 lg:flex xl:gap-6">
         {TIERS.map((tier, i) => {
           const isActive = i === activeIndex;
@@ -252,6 +291,10 @@ export function ServicePricingCarousel({
             <motion.div
               key={tier}
               layout
+              drag="x"
+              dragConstraints={{ left: 0, right: 0 }}
+              dragElastic={0.12}
+              onDragEnd={handleDragEnd}
               className={cn(
                 'w-full min-w-0 flex-shrink-0',
                 isActive ? 'z-10 max-w-md xl:max-w-lg' : 'z-0 max-w-[220px] xl:max-w-xs'

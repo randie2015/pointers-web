@@ -1,8 +1,19 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import type { LucideIcon } from 'lucide-react';
+import {
+  ArrowRight,
+  Briefcase,
+  ChartNoAxesCombined,
+  Sparkles,
+  Target,
+  Zap,
+  type LucideIcon
+} from 'lucide-react';
 import { Reveal } from '@/components/reveal';
+
+const PILLAR_ICONS: LucideIcon[] = [Target, Zap, ChartNoAxesCombined];
+const VALUE_ICONS: LucideIcon[] = [Sparkles, ArrowRight, Briefcase, Target];
 
 export function MissionVisionCards({
   missionTitle,
@@ -44,16 +55,16 @@ export function MissionVisionCards({
 export function PillarCard({
   title,
   description,
-  Icon,
   color,
   index
 }: {
   title: string;
   description: string;
-  Icon: LucideIcon;
   color: string;
   index: number;
 }) {
+  const Icon = PILLAR_ICONS[index] ?? Target;
+
   return (
     <Reveal delay={index * 0.04}>
       <motion.article
@@ -92,16 +103,16 @@ export function PillarCard({
 export function ValueCard({
   title,
   description,
-  Icon,
   color,
   index
 }: {
   title: string;
   description: string;
-  Icon: LucideIcon;
   color: string;
   index: number;
 }) {
+  const Icon = VALUE_ICONS[index] ?? Sparkles;
+
   return (
     <Reveal delay={index * 0.06} y={20}>
       <motion.article

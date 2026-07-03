@@ -5,7 +5,7 @@ import { SectionHeader } from '@/components/ui/section-header';
 import { SectionBadge } from '@/components/ui/section-badge';
 import { Link } from '@/i18n/routing';
 import Image from 'next/image';
-import { ArrowRight, Briefcase, ChartNoAxesCombined, Check, Linkedin, Sparkles, Target, X, Zap } from 'lucide-react';
+import { Check, Linkedin, X } from 'lucide-react';
 import { BrandTrustSection } from '@/components/workflow/BrandTrustSection';
 import { SpotlightCTA } from '@/components/sections/spotlight-cta';
 import { AboutFaqAccordion } from '@/components/sections/about-faq-accordion';
@@ -28,16 +28,16 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
   const t = await getTranslations({ locale, namespace: 'aboutPage' });
 
   const pillars = [
-    { title: t('pillars.items.0.title'), description: t('pillars.items.0.description'), Icon: Target, color: '#BC2656' },
-    { title: t('pillars.items.1.title'), description: t('pillars.items.1.description'), Icon: Zap, color: '#39B8AD' },
-    { title: t('pillars.items.2.title'), description: t('pillars.items.2.description'), Icon: ChartNoAxesCombined, color: '#5E549D' }
+    { title: t('pillars.items.0.title'), description: t('pillars.items.0.description'), color: '#BC2656' },
+    { title: t('pillars.items.1.title'), description: t('pillars.items.1.description'), color: '#39B8AD' },
+    { title: t('pillars.items.2.title'), description: t('pillars.items.2.description'), color: '#5E549D' }
   ];
 
   const values = [
-    { title: t('values.items.0.title'), description: t('values.items.0.description'), Icon: Sparkles, color: '#BC2656' },
-    { title: t('values.items.1.title'), description: t('values.items.1.description'), Icon: ArrowRight, color: '#39B8AD' },
-    { title: t('values.items.2.title'), description: t('values.items.2.description'), Icon: Briefcase, color: '#5E549D' },
-    { title: t('values.items.3.title'), description: t('values.items.3.description'), Icon: Target, color: '#BC2656' }
+    { title: t('values.items.0.title'), description: t('values.items.0.description'), color: '#BC2656' },
+    { title: t('values.items.1.title'), description: t('values.items.1.description'), color: '#39B8AD' },
+    { title: t('values.items.2.title'), description: t('values.items.2.description'), color: '#5E549D' },
+    { title: t('values.items.3.title'), description: t('values.items.3.description'), color: '#BC2656' }
   ];
 
   const faq = [
@@ -108,14 +108,7 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
 
           <div className="mt-14 grid gap-8 md:grid-cols-3">
             {pillars.map((p, i) => (
-              <PillarCard
-                key={p.title}
-                title={p.title}
-                description={p.description}
-                Icon={p.Icon}
-                color={p.color}
-                index={i}
-              />
+              <PillarCard key={p.title} title={p.title} description={p.description} color={p.color} index={i} />
             ))}
           </div>
         </div>
@@ -130,14 +123,7 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
 
           <div className="mt-14 grid gap-8 md:grid-cols-2">
             {values.map((v, i) => (
-              <ValueCard
-                key={v.title}
-                title={v.title}
-                description={v.description}
-                Icon={v.Icon}
-                color={v.color}
-                index={i}
-              />
+              <ValueCard key={v.title} title={v.title} description={v.description} color={v.color} index={i} />
             ))}
           </div>
         </div>

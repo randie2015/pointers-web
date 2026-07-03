@@ -21,6 +21,7 @@ export function useMotionReveal({ margin = -32, amount = 0.05 }: Options = {}) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: `${margin}px`, amount });
   const [forced, setForced] = useState(false);
+  const [timedOut, setTimedOut] = useState(false);
 
   useLayoutEffect(() => {
     const el = ref.current;
@@ -34,6 +35,7 @@ export function useMotionReveal({ margin = -32, amount = 0.05 }: Options = {}) {
 
     const raf = requestAnimationFrame(sync);
     const t = window.setTimeout(sync, 80);
+    const fallback = window.setTimeout(() => setTimedOut(true), 450);
 
     window.addEventListener('hashchange', sync);
     window.addEventListener('scroll', sync, { passive: true });
@@ -43,6 +45,7 @@ export function useMotionReveal({ margin = -32, amount = 0.05 }: Options = {}) {
     return () => {
       cancelAnimationFrame(raf);
       window.clearTimeout(t);
+      window.clearTimeout(fallback);
       window.removeEventListener('hashchange', sync);
       window.removeEventListener('scroll', sync);
       window.removeEventListener('anchorscroll', sync);
@@ -52,7 +55,7 @@ export function useMotionReveal({ margin = -32, amount = 0.05 }: Options = {}) {
 
   return {
     ref,
-    show: Boolean(reduced) || inView || forced,
+    show: Boolean(reduced) || inView || forced || timedOut,
     reduced: Boolean(reduced)
   };
 }
