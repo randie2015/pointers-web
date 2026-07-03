@@ -30,6 +30,19 @@ export function getServiceWhatsAppUrl(slug: ServiceWhatsAppSlug) {
   return buildWhatsAppUrl(SERVICE_MESSAGES[slug]);
 }
 
+const PLAN_LABELS = {
+  pro: 'Pro',
+  premium: 'Premium',
+  pointers: 'Pointers'
+} as const;
+
+export type ServicePlanKey = keyof typeof PLAN_LABELS;
+
+export function getServicePlanWhatsAppUrl(slug: ServiceWhatsAppSlug, plan: ServicePlanKey) {
+  const message = `${SERVICE_MESSAGES[slug]}. Me interesa el plan ${PLAN_LABELS[plan]}.`;
+  return buildWhatsAppUrl(message);
+}
+
 /** @deprecated Use getServiceWhatsAppUrl(slug) */
 export const SERVICE_WHATSAPP_URLS = {
   branding: buildWhatsAppUrl(SERVICE_MESSAGES.branding),

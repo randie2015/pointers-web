@@ -3,6 +3,8 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Check, ChevronLeft, ChevronRight } from 'lucide-react';
 import { MaskUpButton } from '@/components/ui/mask-up-button';
+import { SERVICE_TEAL } from '@/lib/service-brand';
+import { getServicePlanWhatsAppUrl, type ServiceWhatsAppSlug } from '@/lib/site-config';
 import { cn } from '@/lib/utils';
 
 const TIERS = ['pro', 'premium', 'pointers'] as const;
@@ -21,9 +23,9 @@ export type PricingTierMeta = {
 };
 
 type ServicePricingCarouselProps = {
+  slug: ServiceWhatsAppSlug;
   pricing: Record<PricingTierKey, PricingTierData>;
   tierMeta: Record<PricingTierKey, PricingTierMeta>;
-  whatsappUrl: string;
   ctaLabel: string;
   customNote: string;
 };
@@ -33,13 +35,15 @@ function PlanCard({
   meta,
   plan,
   ctaLabel,
-  whatsappUrl
+  whatsappUrl,
+  interactive
 }: {
   tier: PricingTierKey;
   meta: PricingTierMeta;
   plan: PricingTierData;
   ctaLabel: string;
   whatsappUrl: string;
+  interactive?: boolean;
 }) {
   const featured = tier === 'pointers';
 
@@ -48,16 +52,21 @@ function PlanCard({
       aria-label={`${meta.name} — ${plan.price}`}
       className={cn(
         'relative flex h-full w-full min-w-0 flex-col rounded-2xl border p-5 text-left shadow-sm sm:rounded-3xl sm:p-6 md:p-8',
+        'transition-all duration-500 ease-in-out',
+        interactive && 'hover:-translate-y-2 hover:shadow-xl',
         featured
-          ? 'border-[#BC2656] bg-[#BC2656] text-white shadow-lg shadow-[#BC2656]/25'
-          : 'border-border/70 bg-white'
+          ? 'border-[#5E549D] bg-[#5E549D] text-white shadow-lg shadow-[#5E549D]/25'
+          : cn(
+              'border-border/70 bg-white',
+              interactive && 'hover:border-[#5E549D]/40'
+            )
       )}
     >
       <div>
         <p
           className={cn(
             'text-xs font-semibold uppercase tracking-widest sm:text-sm',
-            featured ? 'text-white/90' : 'text-[#BC2656]'
+            featured ? 'text-white/90' : 'text-[#5E549D]'
           )}
         >
           {meta.name}
@@ -85,6 +94,7 @@ function PlanCard({
             <li key={feature} className="flex items-start gap-2 text-sm sm:gap-2.5">
               <Check
                 className={cn('mt-0.5 h-4 w-4 shrink-0', featured ? 'text-white' : 'text-[#39B8AD]')}
+                style={featured ? undefined : { color: SERVICE_TEAL }}
                 aria-hidden
               />
               <span className={featured ? 'text-white/90' : 'text-gray-700'}>{feature}</span>
@@ -101,9 +111,9 @@ function PlanCard({
 }
 
 export function ServicePricingCarousel({
+  slug,
   pricing,
   tierMeta,
-  whatsappUrl,
   ctaLabel,
   customNote
 }: ServicePricingCarouselProps) {
@@ -164,11 +174,11 @@ export function ServicePricingCarousel({
 
   return (
     <div className="mt-8 sm:mt-10 md:mt-14">
-      {/* Mobile: horizontal carousel */}
+      {/* Mobile: slider */}
       <div className="md:hidden">
         <div
           ref={scrollRef}
-          className="-mx-6 flex snap-x snap-mandatory gap-4 overflow-x-auto overscroll-x-contain scroll-smooth px-6 pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          className="-mx-6 flex snap-x snap-mandatory gap-4 overflow-x-auto overscroll-x-contain scroll-smooth px-6 pb-1 transition-all duration-500 ease-in-out [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
           aria-label="Planes de precios"
         >
           {TIERS.map((tier, i) => (
@@ -177,14 +187,14 @@ export function ServicePricingCarousel({
               ref={(el) => {
                 slideRefs.current[i] = el;
               }}
-              className="w-[min(88vw,360px)] shrink-0 snap-center"
+              className="w-[min(88vw,360px)] shrink-0 snap-center transition-all duration-500 ease-in-out"
             >
               <PlanCard
                 tier={tier}
                 meta={tierMeta[tier]}
                 plan={pricing[tier]}
                 ctaLabel={ctaLabel}
-                whatsappUrl={whatsappUrl}
+                whatsappUrl={getServicePlanWhatsAppUrl(slug, tier)}
               />
             </div>
           ))}
@@ -194,7 +204,7 @@ export function ServicePricingCarousel({
           <button
             type="button"
             onClick={goPrev}
-            className="touch-press flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[#BC2656]/25 text-[#BC2656] active:bg-[#BC2656]/10"
+            className="touch-press flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[#5E549D]/25 text-[#5E549D] transition-all duration-500 ease-in-out active:bg-[#5E549D]/10"
             aria-label="Plan anterior"
           >
             <ChevronLeft size={20} />
@@ -209,8 +219,8 @@ export function ServicePricingCarousel({
                 aria-selected={i === activeIndex}
                 onClick={() => goTo(i)}
                 className={cn(
-                  'h-2.5 rounded-full transition-all duration-300',
-                  i === activeIndex ? 'w-8 bg-[#BC2656]' : 'w-2.5 bg-[#BC2656]/30'
+                  'h-2.5 rounded-full transition-all duration-500 ease-in-out',
+                  i === activeIndex ? 'w-8 bg-[#5E549D]' : 'w-2.5 bg-[#5E549D]/30'
                 )}
                 aria-label={tierMeta[tier].name}
               />
@@ -220,7 +230,7 @@ export function ServicePricingCarousel({
           <button
             type="button"
             onClick={goNext}
-            className="touch-press flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[#BC2656]/25 text-[#BC2656] active:bg-[#BC2656]/10"
+            className="touch-press flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[#5E549D]/25 text-[#5E549D] transition-all duration-500 ease-in-out active:bg-[#5E549D]/10"
             aria-label="Plan siguiente"
           >
             <ChevronRight size={20} />
@@ -232,7 +242,7 @@ export function ServicePricingCarousel({
         </p>
       </div>
 
-      {/* Desktop: three plans side by side */}
+      {/* Desktop: three expanded plans */}
       <div className="hidden md:grid md:grid-cols-3 md:items-stretch md:gap-5 lg:gap-8">
         {TIERS.map((tier) => (
           <PlanCard
@@ -241,7 +251,8 @@ export function ServicePricingCarousel({
             meta={tierMeta[tier]}
             plan={pricing[tier]}
             ctaLabel={ctaLabel}
-            whatsappUrl={whatsappUrl}
+            whatsappUrl={getServicePlanWhatsAppUrl(slug, tier)}
+            interactive
           />
         ))}
       </div>
