@@ -448,22 +448,20 @@
   },
   "serviceDetail": {
     "heroCta": "Book a consultation",
-    "problemSolutionEyebrow": "Problem & solution",
-    "problemSolutionTitle": "We understand your challenge before we design",
-    "problemSolutionSubtitle": "Every service starts with a clear diagnosis and a concrete proposal for your brand.",
-    "problemLabel": "The problem",
-    "solutionLabel": "Our solution",
-    "deliverablesEyebrow": "Deliverables",
-    "deliverablesTitle": "What you get with Pointers",
-    "deliverablesSubtitle": "Tangible assets, ready to apply and scale your brand.",
+    "problemEyebrow": "The problem",
+    "problemTitle": "We get it",
+    "solutionEyebrow": "The solution",
     "faqEyebrow": "FAQ",
     "faqTitle": "Frequently asked questions",
-    "faqSubtitle": "We answer the most common questions about this service.",
+    "faqSubtitle": "We answer the questions we're asked most often.",
     "pricingEyebrow": "Plans",
     "pricingTitle": "Choose the ideal plan for your brand",
-    "pricingSubtitle": "Three proposals designed for different growth stages: Pro, Premium and Pointers.",
+    "pricingSubtitle": "Pro, Premium and Pointers: three scalable tiers. Pointers is the most complete experience.",
     "pricingCta": "Book a consultation",
     "customNote": "Need a custom plan? Contact us and we'll build a tailored proposal.",
+    "midCtaEyebrow": "Let's talk",
+    "closingTitle": "Ready to take your brand to the next level?",
+    "closingSubtitle": "Book a no-obligation consultation and discover the ideal plan for your business.",
     "tiers": {
       "pro": { "name": "Pro", "tagline": "Start with a solid foundation" },
       "premium": { "name": "Premium", "tagline": "For brands in expansion" },
@@ -471,15 +469,15 @@
     },
     "branding": {
       "badge": "Branding & Visual Identity",
-      "title": "We design brands that inspire trust and create value.",
-      "subtitle": "From concept to digital implementation, we create identities that connect purpose, aesthetics and strategy.",
+      "title": "We turn your business into an unforgettable brand.",
+      "subtitle": "Strategic visual identity that builds trust and value.",
       "problem": {
-        "title": "Your brand looks inconsistent and fails to build trust",
-        "body": "Improvised logos, mixed colors and scattered messaging make your business compete without real differentiation."
+        "title": "",
+        "body": "Your brand looks inconsistent and fails to build trust. Improvised logos, mixed colors and scattered messaging make you compete without real differentiation."
       },
       "solution": {
         "title": "A strategic, coherent brand system",
-        "body": "We define purpose, tone and visual identity so every touchpoint reinforces your value and builds instant recognition."
+        "body": "We define purpose, tone and visual identity so every touchpoint reinforces your value."
       },
       "deliverables": [
         { "title": "Complete visual identity", "description": "Logo, variants, color palette and typography applied across your ecosystem." },
@@ -488,8 +486,8 @@
         { "title": "Strategic direction", "description": "Positioning, tone of voice and brand architecture aligned to your goals." }
       ],
       "cta": {
-        "title": "Ready for a brand that inspires trust?",
-        "subtitle": "Book a consultation and discover the ideal branding plan for your business."
+        "title": "Does your brand need to look professional now?",
+        "subtitle": "Let's talk about the ideal branding plan for your business stage."
       },
       "faq": [
         { "question": "How long does a branding project take?", "answer": "Between 3 and 6 weeks depending on the plan. Pro covers essential identity; Pointers includes full brand architecture with workshop." },
@@ -517,15 +515,15 @@
     },
     "diseno-web": {
       "badge": "Web Design & Digital Experience",
-      "title": "Web development, strategic UX/UI and high-performance landing pages.",
-      "subtitle": "We design attractive, efficient digital experiences where form and function align to maximize conversions.",
+      "title": "Fast websites, optimized for Google and built to convert.",
+      "subtitle": "Web design and UX/UI focused on results.",
       "problem": {
-        "title": "Your website doesn't convert or reflect your brand's value",
-        "body": "Slow sites, generic designs and confusing journeys push visitors away and stall your digital growth."
+        "title": "",
+        "body": "Does your website fail to turn visits into customers? Slow sites, generic designs and confusing journeys push away people who already found you."
       },
       "solution": {
-        "title": "Fast, clear, results-driven digital experiences",
-        "body": "We combine strategic UX/UI with high-performance development to guide users toward action with clarity and confidence."
+        "title": "Digital experiences that convert",
+        "body": "Fast websites, optimized for Google and ready to turn visits into customers."
       },
       "deliverables": [
         { "title": "UX/UI design", "description": "Wireframes, interfaces and visual systems built for your audience and goals." },
@@ -535,7 +533,7 @@
       ],
       "cta": {
         "title": "Is your website holding back your growth?",
-        "subtitle": "Let's talk about the digital experience your brand needs to convert more."
+        "subtitle": "Book a consultation and let's design the digital experience your brand needs."
       },
       "faq": [
         { "question": "Do you build on WordPress or other platforms?", "answer": "We work with Next.js and modern stacks for maximum performance. The Pointers plan includes a CMS for self-management." },
@@ -563,15 +561,15 @@
     },
     "contenido": {
       "badge": "Content & Social Presence",
-      "title": "Content strategy, social management and audiovisual production to strengthen your brand.",
-      "subtitle": "We drive the connection between brands and audiences with authentic, consistent and visually compelling communication.",
+      "title": "Strategic content that connects and grows your audience.",
+      "subtitle": "Strategy, production and social media management.",
       "problem": {
-        "title": "You post without strategy and your audience doesn't grow",
-        "body": "Irregular content, misaligned messaging and low engagement weaken your presence and fail to generate business opportunities."
+        "title": "",
+        "body": "Tired of posting content nobody sees? Social media isn't just posting — it's strategy."
       },
       "solution": {
         "title": "Coherent communication that connects and converts",
-        "body": "We plan, produce and manage content aligned to your brand to build community and generate steady demand."
+        "body": "We plan, produce and manage content aligned to your brand to generate steady demand."
       },
       "deliverables": [
         { "title": "Editorial calendar", "description": "Monthly publishing plan aligned to goals and key dates." },
@@ -609,15 +607,15 @@
     },
     "estrategia-digital": {
       "badge": "Digital Strategy & Advertising",
-      "title": "Ad campaigns, funnels and automation to scale your results.",
-      "subtitle": "We design smart systems that optimize resources, increase reach and turn interactions into real results.",
+      "title": "Advertising that performs: more leads, less wasted spend.",
+      "subtitle": "Campaigns, funnels and data-driven automation.",
       "problem": {
-        "title": "You invest in ads but don't see clear returns",
-        "body": "Campaigns without strategy, poor targeting and lack of tracking turn your investment into spend without measurable results."
+        "title": "",
+        "body": "Do you invest in ads but don't see clear returns? Without strategy, targeting and tracking, your investment becomes pure spend."
       },
       "solution": {
-        "title": "Growth systems with data, funnels and continuous optimization",
-        "body": "We plan, execute and optimize Meta and Google campaigns with funnels that convert traffic into qualified leads."
+        "title": "Growth systems with data and continuous optimization",
+        "body": "Meta and Google campaigns with funnels that turn traffic into qualified leads."
       },
       "deliverables": [
         { "title": "Meta & Google campaigns", "description": "Setup, creatives and ad spend management within your budget." },
@@ -627,7 +625,7 @@
       ],
       "cta": {
         "title": "Ready to scale with advertising that performs?",
-        "subtitle": "Book a consultation and we'll design the digital strategy for your business goals."
+        "subtitle": "Book a consultation and we'll design the digital strategy for your goals."
       },
       "faq": [
         { "question": "Is ad spend included?", "answer": "No. We manage the budget you define. Each plan indicates the recommended ad spend range we administer." },
