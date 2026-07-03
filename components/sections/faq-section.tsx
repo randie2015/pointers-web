@@ -120,7 +120,7 @@ export function FaqSection({
 
           <div className="relative space-y-3 md:space-y-3.5">
             {items.map((item, i) => (
-              <Reveal key={item.question} delay={i * 0.05}>
+              <Reveal key={item.question} delay={i * 0.03}>
                 <FaqItem
                   question={item.question}
                   answer={item.answer}

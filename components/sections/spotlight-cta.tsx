@@ -4,9 +4,13 @@ import { useRef, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { motion, useMotionTemplate, useMotionValue, useReducedMotion } from 'framer-motion';
 import { MaskUpButton } from '@/components/ui/mask-up-button';
+import { MobileGradientBg } from '@/components/ui/mobile-gradient-bg';
+import { getWhatsAppUrl } from '@/lib/site-config';
+import { useLocale } from 'next-intl';
 
 export function SpotlightCTA() {
   const t = useTranslations('aboutPage.cta');
+  const locale = useLocale() as 'es' | 'en';
   const reduced = useReducedMotion();
   const cardRef = useRef<HTMLDivElement | null>(null);
   const [active, setActive] = useState(false);
@@ -21,7 +25,7 @@ export function SpotlightCTA() {
       <div className="container-page">
         <div
           ref={cardRef}
-          className="relative overflow-hidden rounded-3xl bg-[#BC2656] px-6 py-20 text-center"
+          className="relative overflow-hidden rounded-3xl bg-[#BC2656] px-6 py-20 text-center max-md:bg-transparent md:px-8"
           onMouseEnter={() => setActive(true)}
           onMouseLeave={() => setActive(false)}
           onMouseMove={(e) => {
@@ -32,8 +36,10 @@ export function SpotlightCTA() {
             y.set(e.clientY - rect.top);
           }}
         >
+          <MobileGradientBg />
+
           <motion.div
-            className="pointer-events-none absolute inset-0"
+            className="pointer-events-none absolute inset-0 hidden md:block"
             style={{ background }}
             initial={false}
             animate={{ opacity: active && !reduced ? 1 : 0 }}
@@ -44,7 +50,7 @@ export function SpotlightCTA() {
             <h2 className="text-4xl font-bold leading-tight text-white md:text-5xl">{t('title')}</h2>
             <p className="mt-6 text-lg leading-relaxed text-white/80">{t('subtitle')}</p>
             <div className="mt-8 flex justify-center">
-              <MaskUpButton href="/contact" label={t('button')} />
+              <MaskUpButton href={getWhatsAppUrl(locale)} label={t('button')} />
             </div>
           </div>
         </div>

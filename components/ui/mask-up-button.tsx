@@ -33,7 +33,7 @@ type BaseProps = {
 
 type LinkProps = BaseProps & {
   type?: 'link';
-  href: AppRoute | `/servicios/${string}`;
+  href: AppRoute | `/servicios/${string}` | (string & {});
 };
 
 type SubmitProps = BaseProps & {
@@ -106,6 +106,10 @@ function MaskUpFace({
   );
 }
 
+function isExternalHref(href: string) {
+  return href.startsWith('http://') || href.startsWith('https://');
+}
+
 function Wrapper({
   children,
   className,
@@ -134,6 +138,21 @@ function Wrapper({
       >
         {children}
       </button>
+    );
+  }
+
+  if (href && isExternalHref(href)) {
+    return (
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={onClick}
+        className={className}
+        aria-label={label}
+      >
+        {children}
+      </a>
     );
   }
 

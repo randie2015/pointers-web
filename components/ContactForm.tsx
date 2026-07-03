@@ -3,43 +3,19 @@
 import { useMemo, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Loader2 } from 'lucide-react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { cn } from '@/lib/utils';
 import { Reveal } from '@/components/reveal';
 import { SectionBadge } from '@/components/ui/section-badge';
+import { MobileGradientBg } from '@/components/ui/mobile-gradient-bg';
+import { contactFormSchema, createContactFormSchema, type ContactFormData } from '@/lib/contact/schema';
 
 const TEAL = '#39B8AD';
 
 /** Cambiar a `true` para probar el estado de error del botón */
 const SIMULATE_ERROR = false;
-
-/** Acepta formatos internacionales: +, espacios, guiones, paréntesis (E.164: 7–15 dígitos) */
-const PHONE_REGEX = /^\+?[\d\s().-]+$/;
-
-function isValidInternationalPhone(value: string) {
-  const digits = value.replace(/\D/g, '').length;
-  return digits >= 7 && digits <= 15;
-}
-
-function createContactSchema(t: (key: string) => string) {
-  return z.object({
-    firstName: z.string().trim().min(2, t('errors.firstName')),
-    lastName: z.string().trim().max(80).optional(),
-    email: z.string().trim().email(t('errors.email')),
-    phone: z
-      .string()
-      .trim()
-      .min(1, t('errors.phoneRequired'))
-      .regex(PHONE_REGEX, t('errors.phoneFormat'))
-      .refine(isValidInternationalPhone, t('errors.phoneFormat')),
-    message: z.string().trim().min(10, t('errors.message'))
-  });
-}
-
-type ContactFormValues = z.infer<ReturnType<typeof createContactSchema>>;
 
 type FormStatus = 'idle' | 'loading' | 'success' | 'error';
 
@@ -66,7 +42,8 @@ function Field({
 
 export function ContactForm({ id }: { id?: string }) {
   const t = useTranslations('contact');
-  const schema = useMemo(() => createContactSchema(t), [t]);
+  const locale = useLocale();
+  const schema = useMemo(() => createContactFormSchema(t), [t]);
   const [formStatus, setFormStatus] = useState<FormStatus>('idle');
 
   const {
@@ -74,7 +51,7 @@ export function ContactForm({ id }: { id?: string }) {
     handleSubmit,
     reset,
     formState: { errors, isValid }
-  } = useForm<ContactFormValues>({
+  } = useForm<ContactFormData>({
     resolver: zodResolver(schema),
     mode: 'onChange',
     defaultValues: {
@@ -90,18 +67,41 @@ export function ContactForm({ id }: { id?: string }) {
   const isDone = formStatus === 'success';
   const submitDisabled = isBusy || isDone || (formStatus === 'idle' && !isValid);
 
-  const onSubmit = async (_data: ContactFormValues) => {
+  const onSubmit = async (data: ContactFormData) => {
     setFormStatus('loading');
-    await new Promise((resolve) => setTimeout(resolve, 2000));
 
     if (SIMULATE_ERROR) {
+      await new Promise((resolve) => setTimeout(resolve, 800));
       setFormStatus('error');
       return;
     }
 
-    setFormStatus('success');
-    reset();
-    setTimeout(() => setFormStatus('idle'), 4000);
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          data,
+          metadata: {
+            locale,
+            pageUrl: typeof window !== 'undefined' ? window.location.href : undefined,
+            referrer: typeof document !== 'undefined' ? document.referrer || undefined : undefined,
+            source: id ? `contact-form:${id}` : 'contact-form'
+          }
+        })
+      });
+
+      if (!response.ok) {
+        setFormStatus('error');
+        return;
+      }
+
+      setFormStatus('success');
+      reset();
+      setTimeout(() => setFormStatus('idle'), 4000);
+    } catch {
+      setFormStatus('error');
+    }
   };
 
   const buttonLabel = {
@@ -114,9 +114,13 @@ export function ContactForm({ id }: { id?: string }) {
   return (
     <section
       id={id}
-      className={cn('relative overflow-hidden py-16 md:py-24', id && 'scroll-mt-24')}
-      style={{ background: 'linear-gradient(135deg, #BC2656 0%, #5E549D 100%)' }}
+      className={cn(
+        'relative overflow-hidden py-16 md:py-24 max-md:bg-[#BC2656]',
+        'md:bg-gradient-to-br md:from-[#BC2656] md:to-[#5E549D]',
+        id && 'scroll-mt-24'
+      )}
     >
+      <MobileGradientBg />
       <div className="container-page relative z-10">
         <Reveal>
           <div className="mx-auto max-w-3xl text-center text-white">

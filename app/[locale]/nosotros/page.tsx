@@ -9,6 +9,7 @@ import { ArrowRight, Briefcase, ChartNoAxesCombined, Check, Linkedin, Sparkles, 
 import { BrandTrustSection } from '@/components/workflow/BrandTrustSection';
 import { SpotlightCTA } from '@/components/sections/spotlight-cta';
 import { AboutFaqAccordion } from '@/components/sections/about-faq-accordion';
+import { MissionVisionCards, PillarCard, ValueCard } from '@/components/nosotros/about-cards';
 
 export async function generateMetadata({
   params
@@ -89,24 +90,12 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
             <SectionHeader eyebrow={t('missionVision.eyebrow')} title={t('missionVision.title')} />
           </Reveal>
 
-          <div className="mt-14 grid gap-8 md:grid-cols-2">
-            <Reveal delay={0.05}>
-              <article className="group rounded-3xl border border-border/70 bg-gray-50 p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:border-[#BC2656]/25 md:p-10">
-                <p className="text-sm font-semibold text-[#BC2656] transition-colors duration-300 group-hover:text-[#BC2656]">
-                  {t('missionVision.mission.title')}
-                </p>
-                <p className="mt-4 text-lg leading-relaxed text-gray-700 md:text-xl">{t('missionVision.mission.body')}</p>
-              </article>
-            </Reveal>
-            <Reveal delay={0.1}>
-              <article className="group rounded-3xl border border-border/70 bg-gray-50 p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:border-[#5E549D]/25 md:p-10">
-                <p className="text-sm font-semibold text-[#5E549D] transition-colors duration-300 group-hover:text-[#5E549D]">
-                  {t('missionVision.vision.title')}
-                </p>
-                <p className="mt-4 text-lg leading-relaxed text-gray-700 md:text-xl">{t('missionVision.vision.body')}</p>
-              </article>
-            </Reveal>
-          </div>
+          <MissionVisionCards
+            missionTitle={t('missionVision.mission.title')}
+            missionBody={t('missionVision.mission.body')}
+            visionTitle={t('missionVision.vision.title')}
+            visionBody={t('missionVision.vision.body')}
+          />
         </div>
       </section>
 
@@ -119,18 +108,14 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
 
           <div className="mt-14 grid gap-8 md:grid-cols-3">
             {pillars.map((p, i) => (
-              <Reveal key={p.title} delay={i * 0.06}>
-                <article className="group rounded-3xl border border-border/70 bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
-                  <div
-                    className="flex h-12 w-12 items-center justify-center rounded-2xl"
-                    style={{ backgroundColor: `${p.color}1F`, color: p.color }}
-                  >
-                    <p.Icon className="h-6 w-6" aria-hidden />
-                  </div>
-                  <h3 className="mt-6 font-display text-2xl font-semibold tracking-tight text-gray-900">{p.title}</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-gray-600 md:text-base">{p.description}</p>
-                </article>
-              </Reveal>
+              <PillarCard
+                key={p.title}
+                title={p.title}
+                description={p.description}
+                Icon={p.Icon}
+                color={p.color}
+                index={i}
+              />
             ))}
           </div>
         </div>
@@ -145,20 +130,14 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
 
           <div className="mt-14 grid gap-8 md:grid-cols-2">
             {values.map((v, i) => (
-              <Reveal key={v.title} delay={i * 0.06}>
-                <article className="rounded-3xl border border-border/70 bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
-                  <div className="flex items-center gap-4">
-                    <div
-                      className="flex h-11 w-11 items-center justify-center rounded-2xl"
-                      style={{ backgroundColor: `${v.color}1F`, color: v.color }}
-                    >
-                      <v.Icon className="h-5 w-5" aria-hidden />
-                    </div>
-                    <h3 className="font-display text-xl font-semibold tracking-tight text-gray-900 md:text-2xl">{v.title}</h3>
-                  </div>
-                  <p className="mt-4 text-sm leading-relaxed text-gray-600 md:text-base">{v.description}</p>
-                </article>
-              </Reveal>
+              <ValueCard
+                key={v.title}
+                title={v.title}
+                description={v.description}
+                Icon={v.Icon}
+                color={v.color}
+                index={i}
+              />
             ))}
           </div>
         </div>

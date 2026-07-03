@@ -1,5 +1,5 @@
 /** Bump when favicon assets change to bust browser and PWA caches. */
-export const SITE_ICON_VERSION = '2';
+export const SITE_ICON_VERSION = '3';
 
 const v = `?v=${SITE_ICON_VERSION}`;
 

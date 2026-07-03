@@ -1,80 +1,48 @@
 import type { Container, ISourceOptions } from 'tsparticles-engine';
 
-/** Puntos blancos con emisión continua, atraídos al centro (glow magenta). */
+const MAGENTA = '#BC2656';
+
+/** Fluid particles drawn inward to a magenta void at center. */
 export const heroParticlesOptions: ISourceOptions = {
   fullScreen: { enable: false },
   background: { color: { value: 'transparent' } },
   fpsLimit: 60,
+  detectRetina: true,
   particles: {
     number: {
-      value: 100,
-      density: { enable: true, value_area: 480 }
+      value: 72,
+      density: { enable: true, value_area: 520 }
     },
-    color: { value: ['#BC2656', '#1a1a1a'] },
+    color: { value: ['#ffffff', MAGENTA, '#2a2a2a'] },
     opacity: {
-      value: { min: 0.06, max: 0.22 },
+      value: { min: 0.08, max: 0.42 },
       animation: {
         enable: true,
-        speed: 0.4,
-        minimumValue: 0.05,
+        speed: 0.6,
+        minimumValue: 0.06,
         sync: false
       }
     },
     size: {
-      value: { min: 1, max: 2.5 }
+      value: { min: 1, max: 3.2 },
+      animation: {
+        enable: true,
+        speed: 1,
+        minimumValue: 0.8,
+        sync: false
+      }
     },
     links: { enable: false },
-    life: {
-      count: 0,
-      duration: { value: { min: 8, max: 20 } },
-      delay: { value: 0 }
-    },
     move: {
       enable: true,
-      speed: 0.5,
+      speed: { min: 0.4, max: 1.6 },
       direction: 'none',
       random: true,
       straight: false,
-      outModes: { default: 'destroy' },
+      outModes: { default: 'out' },
       attract: {
         enable: true,
-        rotate: { x: 600, y: 1200 }
-      }
-    }
-  },
-  emitters: {
-    autoPlay: true,
-    fill: true,
-    life: {
-      count: 0,
-      duration: 0.1,
-      delay: 0.1
-    },
-    rate: {
-      delay: 0.06,
-      quantity: 5
-    },
-    size: {
-      width: 100,
-      height: 100,
-      mode: 'percent'
-    },
-    position: {
-      x: 50,
-      y: 50,
-      mode: 'percent'
-    },
-    particles: {
-      color: { value: '#ffffff' },
-      opacity: { value: { min: 0.12, max: 0.45 } },
-      size: { value: { min: 1, max: 2.5 } },
-      move: {
-        speed: 0.5,
-        outModes: { default: 'destroy' },
-        attract: {
-          enable: true,
-          rotate: { x: 600, y: 1200 }
-        }
+        rotate: { x: 800, y: 1600 }
       }
     }
   },
@@ -90,18 +58,16 @@ export const heroParticlesOptions: ISourceOptions = {
     },
     modes: {
       attract: {
-        distance: 600,
-        duration: 0.4,
+        distance: 480,
+        duration: 0.35,
         easing: 'ease-out-quad',
-        factor: 3,
-        maxSpeed: 40
+        factor: 4.5,
+        maxSpeed: 55
       }
     }
-  },
-  detectRetina: true
+  }
 };
 
-/** Fija el attractor en el centro del canvas (efecto “agujero” hacia el glow). */
 export function bindCenterAttractor(container: Container): () => void {
   const update = () => {
     const { width, height } = container.canvas.size;
@@ -110,7 +76,7 @@ export function bindCenterAttractor(container: Container): () => void {
   };
 
   update();
-  const interval = window.setInterval(update, 100);
+  const interval = window.setInterval(update, 50);
   window.addEventListener('resize', update);
 
   return () => {

@@ -1,28 +1,14 @@
 'use client';
 
-import dynamic from 'next/dynamic';
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import { Reveal } from '@/components/reveal';
 import { SectionHeader } from '@/components/ui/section-header';
+import { DiscoveryScanner } from '@/components/workflow/DiscoveryScanner';
+import { StrategyBullseye } from '@/components/workflow/StrategyBullseye';
+import { DesignDevSketch } from '@/components/workflow/DesignDevSketch';
+import { LaunchRocket } from '@/components/workflow/LaunchRocket';
 import type { ReactNode } from 'react';
-
-const DiscoveryScanner = dynamic(
-  () => import('@/components/workflow/DiscoveryScanner').then((m) => ({ default: m.DiscoveryScanner })),
-  { loading: () => <div className="mt-6 h-28 animate-pulse rounded-xl bg-muted/50" /> }
-);
-const StrategyBullseye = dynamic(
-  () => import('@/components/workflow/StrategyBullseye').then((m) => ({ default: m.StrategyBullseye })),
-  { loading: () => <div className="mt-6 h-28 animate-pulse rounded-xl bg-muted/50" /> }
-);
-const DesignDevSketch = dynamic(
-  () => import('@/components/workflow/DesignDevSketch').then((m) => ({ default: m.DesignDevSketch })),
-  { loading: () => <div className="mt-6 h-28 animate-pulse rounded-xl bg-muted/50" /> }
-);
-const LaunchRocket = dynamic(
-  () => import('@/components/workflow/LaunchRocket').then((m) => ({ default: m.LaunchRocket })),
-  { loading: () => <div className="mt-6 h-28 animate-pulse rounded-xl bg-muted/50" /> }
-);
 
 const MAGENTA = '#BC2656';
 const TEAL = '#39B8AD';
@@ -101,7 +87,7 @@ function ProcessCard({
   index: number;
 }) {
   return (
-    <Reveal delay={index * 0.08}>
+    <Reveal delay={index * 0.04}>
       <motion.article
         className="mobile-surface flex h-full flex-col items-center rounded-2xl border border-border/60 bg-white p-6 text-center md:p-7"
         initial="rest"
@@ -127,7 +113,7 @@ function ProcessCard({
           {title}
         </h3>
         <p className="mt-3 w-full text-sm leading-relaxed text-gray-600">{description}</p>
-        {visual}
+        <div className="mt-5 w-full">{visual}</div>
       </motion.article>
     </Reveal>
   );

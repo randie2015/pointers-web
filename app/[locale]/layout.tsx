@@ -1,5 +1,5 @@
-import { hasLocale, NextIntlClientProvider } from 'next-intl';
-import { getMessages, setRequestLocale, getTranslations } from 'next-intl/server';
+import { hasLocale } from 'next-intl';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import { Header } from '@/components/header';
@@ -10,6 +10,7 @@ import { Inter } from 'next/font/google';
 import type { Metadata } from 'next';
 import '../globals.css';
 import { siteIconMetadata } from '@/lib/site-icons';
+import { ClientIntlProvider } from '@/i18n/client-intl-provider';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' });
 
@@ -51,18 +52,17 @@ export default async function LocaleLayout({
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) notFound();
   setRequestLocale(locale);
-  const messages = await getMessages();
 
   return (
     <html lang={locale} className={inter.variable}>
       <body>
-        <NextIntlClientProvider locale={locale} messages={messages} timeZone="UTC">
+        <ClientIntlProvider initialLocale={locale as 'es' | 'en'}>
           <HashScrollHandler />
           <Header />
           <main>{children}</main>
           <Footer />
           <WhatsAppFloat />
-        </NextIntlClientProvider>
+        </ClientIntlProvider>
       </body>
     </html>
   );

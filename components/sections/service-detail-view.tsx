@@ -8,6 +8,7 @@ import { SectionHeader } from '@/components/ui/section-header';
 import { ServiceVisual } from '@/components/sections/service-visual';
 import { MaskUpButton } from '@/components/ui/mask-up-button';
 import { serviceSlugToVariant, type ServiceSlug } from '@/lib/services';
+import { SERVICE_WHATSAPP_URLS } from '@/lib/site-config';
 import { cn } from '@/lib/utils';
 
 const TIERS = ['pro', 'premium', 'pointers'] as const;
@@ -33,6 +34,7 @@ export function ServiceDetailView({ slug }: { slug: ServiceSlug }) {
   const t = useTranslations('serviceDetail');
   const service = t.raw(slug) as ServiceData;
   const variant = serviceSlugToVariant(slug);
+  const whatsappUrl = SERVICE_WHATSAPP_URLS[slug];
 
   return (
     <>
@@ -155,7 +157,7 @@ export function ServiceDetailView({ slug }: { slug: ServiceSlug }) {
                     </ul>
 
                     <div className="mt-8">
-                      <MaskUpButton href="/contact" label={t('pricingCta')} />
+                      <MaskUpButton href={whatsappUrl} label={t('pricingCta')} />
                     </div>
                   </article>
                 </Reveal>

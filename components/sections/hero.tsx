@@ -4,21 +4,24 @@ import { useCallback, useEffect, useMemo, useRef } from 'react';
 import { useTranslations } from 'next-intl';
 import { motion, useReducedMotion } from 'framer-motion';
 import Particles from 'react-tsparticles';
-import { loadFull } from 'tsparticles';
+import { loadBasic } from 'tsparticles-basic';
 import type { Container, Engine } from 'tsparticles-engine';
 import { bindCenterAttractor, heroParticlesOptions } from '@/lib/hero-particles';
 import { MaskUpButton } from '@/components/ui/mask-up-button';
 import { AdminAccessIcon } from '@/components/admin/admin-access-icon';
+import { getWhatsAppUrl } from '@/lib/site-config';
+import { useLocale } from 'next-intl';
 
 const MAGENTA = '#BC2656';
 
 export function Hero() {
   const t = useTranslations('hero');
+  const locale = useLocale() as 'es' | 'en';
   const reduced = useReducedMotion();
   const cleanupRef = useRef<(() => void) | null>(null);
 
   const particlesInit = useCallback(async (engine: Engine) => {
-    await loadFull(engine);
+    await loadBasic(engine);
   }, []);
 
   const particlesLoaded = useCallback(async (container?: Container) => {
@@ -40,7 +43,7 @@ export function Hero() {
     >
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 z-[2] opacity-[0.045]"
+        className="pointer-events-none absolute inset-0 z-[2] opacity-[0.04]"
         style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`
         }}
@@ -56,26 +59,27 @@ export function Hero() {
         />
       )}
 
+      {/* Outer glow */}
       <div
         aria-hidden
         className="pointer-events-none absolute left-1/2 top-1/2 z-[1] -translate-x-1/2 -translate-y-1/2 rounded-full"
         style={{
-          width: 'min(110vw, 720px)',
-          height: 'min(110vw, 720px)',
-          backgroundColor: MAGENTA,
-          filter: 'blur(180px)',
-          opacity: 0.28
+          width: 'min(90vw, 560px)',
+          height: 'min(90vw, 560px)',
+          background: `radial-gradient(circle, ${MAGENTA}55 0%, ${MAGENTA}22 45%, transparent 70%)`,
+          filter: 'blur(40px)'
         }}
       />
+
+      {/* Magenta void — solid core */}
       <div
         aria-hidden
         className="pointer-events-none absolute left-1/2 top-1/2 z-[1] -translate-x-1/2 -translate-y-1/2 rounded-full"
         style={{
-          width: 'min(70vw, 420px)',
-          height: 'min(70vw, 420px)',
-          backgroundColor: MAGENTA,
-          filter: 'blur(80px)',
-          opacity: 0.38
+          width: 'min(22vw, 140px)',
+          height: 'min(22vw, 140px)',
+          background: MAGENTA,
+          boxShadow: `0 0 60px 28px ${MAGENTA}99, 0 0 120px 60px ${MAGENTA}44`
         }}
       />
 
@@ -83,7 +87,7 @@ export function Hero() {
         <motion.h1
           initial={reduced ? false : { opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: reduced ? 0 : 0.5, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: reduced ? 0 : 0.45, ease: [0.22, 1, 0.36, 1] }}
           className="max-w-4xl font-sans text-4xl font-bold leading-[1.08] tracking-tight text-gray-900 sm:text-5xl md:text-6xl lg:text-[64px]"
         >
           {t('title')}
@@ -92,7 +96,7 @@ export function Hero() {
         <motion.p
           initial={reduced ? false : { opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: reduced ? 0 : 0.45, delay: reduced ? 0 : 0.08, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: reduced ? 0 : 0.4, delay: reduced ? 0 : 0.06, ease: [0.22, 1, 0.36, 1] }}
           className="mt-6 max-w-2xl text-base leading-relaxed text-gray-600 md:text-lg"
         >
           {t('subtitle')}
@@ -101,10 +105,10 @@ export function Hero() {
         <motion.div
           initial={reduced ? false : { opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: reduced ? 0 : 0.4, delay: reduced ? 0 : 0.14, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: reduced ? 0 : 0.35, delay: reduced ? 0 : 0.1, ease: [0.22, 1, 0.36, 1] }}
           className="mt-10"
         >
-          <MaskUpButton href="/contact" label={t('cta')} />
+          <MaskUpButton href={getWhatsAppUrl(locale)} label={t('cta')} />
         </motion.div>
       </div>
 

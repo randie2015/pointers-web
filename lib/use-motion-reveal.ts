@@ -15,7 +15,7 @@ function isElementInView(el: Element, margin: number) {
   return rect.top < window.innerHeight - offset && rect.bottom > offset;
 }
 
-export function useMotionReveal({ margin = -80, amount = 0 }: Options = {}) {
+export function useMotionReveal({ margin = -40, amount = 0.12 }: Options = {}) {
   const reduced = useReducedMotion();
   const locale = useLocale();
   const ref = useRef<HTMLDivElement>(null);
@@ -31,6 +31,8 @@ export function useMotionReveal({ margin = -80, amount = 0 }: Options = {}) {
     };
 
     sync();
+    requestAnimationFrame(sync);
+
     window.addEventListener('hashchange', sync);
     window.addEventListener('scroll', sync, { passive: true });
     window.addEventListener('anchorscroll', sync);
