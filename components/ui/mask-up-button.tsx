@@ -33,6 +33,7 @@ type BaseProps = {
   className?: string;
   size?: keyof typeof SIZES;
   tone?: keyof typeof TONES;
+  variant?: 'solid' | 'light';
   onClick?: () => void;
   hideSlide?: boolean;
   disabled?: boolean;
@@ -56,7 +57,8 @@ function MaskUpFace({
   px,
   hideSlide,
   disabled,
-  tone = 'teal'
+  tone = 'teal',
+  variant = 'light'
 }: {
   label: string;
   row: string;
@@ -64,17 +66,24 @@ function MaskUpFace({
   hideSlide?: boolean;
   disabled?: boolean;
   tone?: keyof typeof TONES;
+  variant?: 'solid' | 'light';
 }) {
-  const bg = TONES[tone];
+  const accent = TONES[tone];
+  const isLight = variant === 'light';
+  const faceClass = cn(
+    'relative block overflow-hidden rounded-full text-sm font-semibold mobile-btn-surface',
+    isLight
+      ? 'border border-[#39B8AD]/20 bg-white text-[#39B8AD] shadow-md shadow-black/[0.06]'
+      : 'text-white',
+    disabled && 'opacity-70'
+  );
+  const faceStyle = isLight ? { height: row } : { height: row, backgroundColor: accent };
 
   if (hideSlide) {
     return (
-      <span
-        className={`relative block overflow-hidden rounded-full text-sm font-semibold text-white mobile-btn-surface ${disabled ? 'opacity-70' : ''}`}
-        style={{ height: row, backgroundColor: bg }}
-      >
+      <span className={faceClass} style={faceStyle}>
         <span
-          className={`flex items-center justify-center whitespace-nowrap ${px} ${disabled ? 'opacity-70' : ''}`}
+          className={cn('flex items-center justify-center whitespace-nowrap', px, disabled && 'opacity-70')}
           style={{ height: row }}
         >
           {label}
@@ -85,8 +94,8 @@ function MaskUpFace({
 
   return (
     <motion.span
-      className="relative block overflow-hidden rounded-full text-sm font-semibold text-white mobile-btn-surface"
-      style={{ height: row, backgroundColor: bg }}
+      className={faceClass}
+      style={faceStyle}
       variants={maskVariants}
       initial="rest"
       whileHover={disabled ? undefined : 'hover'}
@@ -95,7 +104,7 @@ function MaskUpFace({
     >
       <motion.span className="flex flex-col" variants={slideVariants} transition={slideTransition}>
         <span
-          className={`flex shrink-0 items-center justify-center gap-1.5 whitespace-nowrap ${px}`}
+          className={cn('flex shrink-0 items-center justify-center gap-1.5 whitespace-nowrap', px)}
           style={{ height: row }}
         >
           {label}
@@ -104,7 +113,7 @@ function MaskUpFace({
           </span>
         </span>
         <span
-          className={`flex shrink-0 items-center justify-center gap-1.5 whitespace-nowrap ${px}`}
+          className={cn('flex shrink-0 items-center justify-center gap-1.5 whitespace-nowrap', px)}
           style={{ height: row }}
         >
           {label}
@@ -180,6 +189,7 @@ export function MaskUpButton(props: MaskUpButtonProps) {
     className = '',
     size = 'default',
     tone = 'teal',
+    variant = 'light',
     onClick,
     hideSlide = false,
     disabled = false
@@ -198,7 +208,15 @@ export function MaskUpButton(props: MaskUpButtonProps) {
       label={label}
       className={cn('touch-press', className.includes('w-full') ? 'block w-full' : 'inline-block', className)}
     >
-      <MaskUpFace label={label} row={row} px={px} hideSlide={hideSlide} disabled={disabled} tone={tone} />
+      <MaskUpFace
+        label={label}
+        row={row}
+        px={px}
+        hideSlide={hideSlide}
+        disabled={disabled}
+        tone={tone}
+        variant={variant}
+      />
     </Wrapper>
   );
 }

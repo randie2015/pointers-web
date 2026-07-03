@@ -49,12 +49,7 @@ export function ServicePageTemplate({ slug }: ServicePageTemplateProps) {
                 {content.subtitle}
               </p>
               <div className="mt-7 flex justify-center sm:mt-8">
-                <MaskUpButton
-                  href={whatsappUrl}
-                  label={t('heroCta')}
-                  tone="brand"
-                  className="w-full max-w-sm sm:w-auto"
-                />
+                <MaskUpButton href={whatsappUrl} label={t('heroCta')} className="w-full max-w-sm sm:w-auto" />
               </div>
             </div>
           </Reveal>
@@ -156,12 +151,7 @@ export function ServicePageTemplate({ slug }: ServicePageTemplateProps) {
                   {content.cta.subtitle}
                 </p>
                 <div className="mt-7 flex justify-center sm:mt-8">
-                  <MaskUpButton
-                    href={whatsappUrl}
-                    label={t('heroCta')}
-                    tone="brand"
-                    className="w-full max-w-sm sm:w-auto"
-                  />
+                  <MaskUpButton href={whatsappUrl} label={t('heroCta')} className="w-full max-w-sm sm:w-auto" />
                 </div>
               </div>
             </Reveal>
@@ -191,12 +181,7 @@ export function ServicePageTemplate({ slug }: ServicePageTemplateProps) {
                 {t('closingSubtitle')}
               </p>
               <div className="mt-8 flex justify-center sm:mt-10">
-                <MaskUpButton
-                  href={whatsappUrl}
-                  label={t('heroCta')}
-                  tone="brand"
-                  className="w-full max-w-sm sm:w-auto"
-                />
+                <MaskUpButton href={whatsappUrl} label={t('heroCta')} className="w-full max-w-sm sm:w-auto" />
               </div>
             </div>
           </Reveal>
