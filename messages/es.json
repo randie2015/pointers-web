@@ -361,12 +361,27 @@
       "eyebrow": "Preguntas Frecuentes",
       "title": "Lo que somos, lo que creemos.",
       "subtitle": "Cada marca que confía en nosotros recibe más que un servicio: un equipo que piensa, diseña y construye con dirección y propósito.",
-      "questions": [
-        "¿Cómo nació Pointers?",
-        "¿Qué tipo de marcas trabajan con Pointers?",
-        "¿Qué hace diferente a Pointers de otras agencias digitales?",
-        "¿Cuál es la filosofía detrás de cada proyecto?",
-        "¿Cómo se mantienen actualizados frente a las nuevas tendencias digitales?"
+      "items": [
+        {
+          "question": "¿Cómo nació Pointers?",
+          "answer": "Pointers nació con una intención clara: unir la creatividad con la estrategia. Queríamos construir marcas que no solo se vean bien, sino que funcionen con dirección, coherencia y resultados reales."
+        },
+        {
+          "question": "¿Qué tipo de marcas trabajan con Pointers?",
+          "answer": "Colaboramos con marcas que buscan crecer con propósito. Desde startups con visión sólida hasta empresas consolidadas que quieren actualizar su presencia digital sin perder esencia."
+        },
+        {
+          "question": "¿Qué hace diferente a Pointers de otras agencias digitales?",
+          "answer": "En lugar de dividir branding, web y marketing, los integramos en un mismo flujo. Esto nos permite construir ecosistemas digitales coherentes, donde cada decisión tiene un propósito y cada entrega un impacto medible."
+        },
+        {
+          "question": "¿Cuál es la filosofía detrás de cada proyecto?",
+          "answer": "Creemos que la excelencia no está en hacer más, sino en hacer mejor. Cada proyecto refleja atención al detalle, claridad estratégica y compromiso con resultados que perduren en el tiempo."
+        },
+        {
+          "question": "¿Cómo se mantienen actualizados frente a las nuevas tendencias digitales?",
+          "answer": "El aprendizaje continuo forma parte de nuestra cultura. Combinamos investigación, análisis de datos y exploración constante en diseño, UX y automatización para mantenernos siempre un paso adelante."
+        }
       ]
     }
   },

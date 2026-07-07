@@ -40,19 +40,10 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
     { title: t('values.items.3.title'), description: t('values.items.3.description'), color: '#BC2656' }
   ];
 
-  const faq = [
-    t('faq.questions.0'),
-    t('faq.questions.1'),
-    t('faq.questions.2'),
-    t('faq.questions.3'),
-    t('faq.questions.4')
-  ];
-
-  const team = [
-    { name: 'Luis Diego Medina', role: 'Director Estratégico y Fundador', imageSrc: '/diego.png' },
-    { name: 'Nicoll', role: 'Directora Creativa' },
-    { name: 'Cesar Belan', role: 'Asesor Estratégico' }
-  ] as const;
+  const team = (t.raw('team.members') as Array<{ name: string; role: string }>).map((member, index) => ({
+    ...member,
+    ...(index === 0 ? { imageSrc: '/diego.png' as const } : {})
+  }));
 
   return (
     <main>

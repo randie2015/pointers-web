@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import { usePathname, useRouter } from '@/i18n/routing';
 
 function dispatchAnchorScroll() {
@@ -51,7 +51,6 @@ function isServiciosHash(hash: string) {
 export function HashScrollHandler() {
   const pathname = usePathname();
   const router = useRouter();
-  const localeSwitchRef = useRef(false);
 
   useEffect(() => {
     if ('scrollRestoration' in history) {
@@ -60,20 +59,6 @@ export function HashScrollHandler() {
   }, []);
 
   useEffect(() => {
-    const onLocaleSwitch = () => {
-      localeSwitchRef.current = true;
-      window.setTimeout(() => {
-        localeSwitchRef.current = false;
-      }, 300);
-    };
-
-    window.addEventListener('localeswitch', onLocaleSwitch);
-    return () => window.removeEventListener('localeswitch', onLocaleSwitch);
-  }, []);
-
-  useEffect(() => {
-    if (localeSwitchRef.current) return;
-
     const hash = window.location.hash;
     if (hash && isServiciosHash(hash) && isHomePath(window.location.pathname)) {
       router.replace('/servicios');

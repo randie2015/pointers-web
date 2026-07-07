@@ -162,12 +162,27 @@
       "eyebrow": "FAQ",
       "title": "What we are, what we believe.",
       "subtitle": "Every brand that trusts us gets more than a service: a team that thinks, designs and builds with direction and purpose.",
-      "questions": [
-        "How was Pointers born?",
-        "What kind of brands work with Pointers?",
-        "What makes Pointers different from other digital agencies?",
-        "What’s the philosophy behind each project?",
-        "How do you stay up to date with new digital trends?"
+      "items": [
+        {
+          "question": "How was Pointers born?",
+          "answer": "Pointers was born with a clear intention: to unite creativity with strategy. We wanted to build brands that not only look good, but work with direction, coherence and real results."
+        },
+        {
+          "question": "What kind of brands work with Pointers?",
+          "answer": "We collaborate with brands looking to grow with purpose — from startups with a solid vision to established companies updating their digital presence without losing their essence."
+        },
+        {
+          "question": "What makes Pointers different from other digital agencies?",
+          "answer": "Instead of separating branding, web and marketing, we integrate them into one flow. This lets us build coherent digital ecosystems where every decision has purpose and every delivery measurable impact."
+        },
+        {
+          "question": "What's the philosophy behind each project?",
+          "answer": "We believe excellence isn't about doing more, but doing better. Every project reflects attention to detail, strategic clarity and commitment to results that last."
+        },
+        {
+          "question": "How do you stay up to date with new digital trends?",
+          "answer": "Continuous learning is part of our culture. We combine research, data analysis and constant exploration in design, UX and automation to stay one step ahead."
+        }
       ]
     }
   },
