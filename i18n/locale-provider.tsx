@@ -8,7 +8,9 @@ import {
   useMemo,
   useState,
   startTransition,
-  type ReactNode
+  type Dispatch,
+  type ReactNode,
+  type SetStateAction
 } from 'react';
 import { NextIntlClientProvider } from 'next-intl';
 import { usePathname, useRouter } from '@/i18n/routing';
@@ -38,21 +40,24 @@ export function useLocaleSwitch() {
   return context;
 }
 
-export function LocaleProvider({
+function LocaleNavigationBridge({
+  locale,
+  setLocale,
   initialLocale,
   children
 }: {
+  locale: AppLocale;
+  setLocale: Dispatch<SetStateAction<AppLocale>>;
   initialLocale: AppLocale;
   children: ReactNode;
 }) {
-  const [locale, setLocale] = useState<AppLocale>(initialLocale);
   const pathname = usePathname();
   const router = useRouter();
 
   useEffect(() => {
     setLocale(initialLocale);
     document.documentElement.lang = initialLocale;
-  }, [initialLocale]);
+  }, [initialLocale, setLocale]);
 
   useEffect(() => {
     const onPopState = () => {
@@ -65,7 +70,7 @@ export function LocaleProvider({
 
     window.addEventListener('popstate', onPopState);
     return () => window.removeEventListener('popstate', onPopState);
-  }, []);
+  }, [setLocale]);
 
   const switchLocale = useCallback(
     (nextLocale: AppLocale) => {
@@ -83,7 +88,7 @@ export function LocaleProvider({
         window.scrollTo({ top: scrollY, left: 0, behavior: 'instant' });
       });
     },
-    [locale, pathname, router]
+    [locale, pathname, router, setLocale]
   );
 
   const contextValue = useMemo(
@@ -94,11 +99,23 @@ export function LocaleProvider({
     [locale, switchLocale]
   );
 
+  return <LocaleContext.Provider value={contextValue}>{children}</LocaleContext.Provider>;
+}
+
+export function LocaleProvider({
+  initialLocale,
+  children
+}: {
+  initialLocale: AppLocale;
+  children: ReactNode;
+}) {
+  const [locale, setLocale] = useState<AppLocale>(initialLocale);
+
   return (
-    <LocaleContext.Provider value={contextValue}>
-      <NextIntlClientProvider locale={locale} messages={MESSAGE_BUNDLES[locale]} timeZone="UTC">
+    <NextIntlClientProvider locale={locale} messages={MESSAGE_BUNDLES[locale]} timeZone="UTC">
+      <LocaleNavigationBridge locale={locale} setLocale={setLocale} initialLocale={initialLocale}>
         {children}
-      </NextIntlClientProvider>
-    </LocaleContext.Provider>
+      </LocaleNavigationBridge>
+    </NextIntlClientProvider>
   );
 }
