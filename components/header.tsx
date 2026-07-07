@@ -1,12 +1,11 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useTranslations, useLocale } from 'next-intl';
+import { useTranslations } from 'next-intl';
 import { Link, usePathname, useRouter } from '@/i18n/routing';
 import { LocaleSwitcher } from '@/components/locale-switcher';
 import { NavHoverLink } from '@/components/nav-hover-link';
 import { MAIN_ROUTES } from '@/lib/navigation';
-import { getWhatsAppUrl } from '@/lib/site-config';
 import { Menu, X } from 'lucide-react';
 import { HeaderLogo } from '@/components/header-logo';
 import { MaskUpButton } from '@/components/ui/mask-up-button';
@@ -15,7 +14,6 @@ const PREFETCH_ROUTES = ['/', ...MAIN_ROUTES.map((r) => r.href)] as const;
 
 export function Header() {
   const t = useTranslations('nav');
-  const locale = useLocale() as 'es' | 'en';
   const router = useRouter();
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
@@ -48,7 +46,7 @@ export function Header() {
           </nav>
           <div className="ml-4 flex items-center gap-3 border-l border-white/20 pl-4">
             <LocaleSwitcher />
-            <MaskUpButton href={getWhatsAppUrl(locale)} label={t('cta')} size="compact" />
+            <MaskUpButton href="/contact" label={t('cta')} size="compact" />
           </div>
         </div>
 
@@ -80,7 +78,7 @@ export function Header() {
             ))}
             <div className="mt-3">
               <MaskUpButton
-                href={getWhatsAppUrl(locale)}
+                href="/contact"
                 label={t('cta')}
                 size="compact"
                 onClick={() => setOpen(false)}

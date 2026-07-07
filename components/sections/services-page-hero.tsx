@@ -1,17 +1,17 @@
 'use client';
 
-import { useTranslations, useLocale } from 'next-intl';
+import { useTranslations } from 'next-intl';
 import { Reveal } from '@/components/reveal';
 import { SectionBadge } from '@/components/ui/section-badge';
 import { MaskUpButton } from '@/components/ui/mask-up-button';
-import { getWhatsAppUrl } from '@/lib/site-config';
+import { WhiteParticlesSection } from '@/components/hero/white-particles-section';
+import { SERVICE_PURPLE, SERVICE_TEAL } from '@/lib/service-brand';
 
 export function ServicesPageHero() {
   const t = useTranslations('servicesPage.hero');
-  const locale = useLocale() as 'es' | 'en';
 
   return (
-    <section className="relative overflow-hidden bg-white pt-14 md:pt-20">
+    <WhiteParticlesSection className="pt-14 md:pt-20" particlesId="services-page-hero-particles">
       <div className="container-page">
         <Reveal>
           <div className="mx-auto max-w-4xl text-center">
@@ -23,7 +23,7 @@ export function ServicesPageHero() {
               {t('subtitle')}
             </p>
             <div className="mt-8 flex justify-center">
-              <MaskUpButton href={getWhatsAppUrl(locale)} label={t('cta')} />
+              <MaskUpButton href="/contact" label={t('cta')} className="w-full max-w-sm sm:w-auto" />
             </div>
           </div>
         </Reveal>
@@ -32,10 +32,9 @@ export function ServicesPageHero() {
       <div
         className="pointer-events-none absolute inset-x-0 -top-32 mx-auto h-72 w-[min(900px,92vw)] rounded-full blur-3xl"
         style={{
-          background:
-            'radial-gradient(circle at 30% 40%, rgba(188,38,86,0.22), transparent 55%), radial-gradient(circle at 70% 55%, rgba(57,184,173,0.18), transparent 55%), radial-gradient(circle at 55% 20%, rgba(94,84,157,0.18), transparent 55%)'
+          background: `radial-gradient(circle at 30% 40%, ${SERVICE_PURPLE}33, transparent 55%), radial-gradient(circle at 70% 55%, ${SERVICE_TEAL}24, transparent 55%)`
         }}
       />
-    </section>
+    </WhiteParticlesSection>
   );
 }

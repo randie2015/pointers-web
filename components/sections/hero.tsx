@@ -1,40 +1,16 @@
 'use client';
 
-import { useCallback, useEffect, useMemo, useRef } from 'react';
 import { useTranslations } from 'next-intl';
 import { motion, useReducedMotion } from 'framer-motion';
-import Particles from 'react-tsparticles';
-import { loadBasic } from 'tsparticles-basic';
-import type { Container, Engine } from 'tsparticles-engine';
-import { bindCenterAttractor, heroParticlesOptions } from '@/lib/hero-particles';
 import { MaskUpButton } from '@/components/ui/mask-up-button';
 import { AdminAccessIcon } from '@/components/admin/admin-access-icon';
-import { getWhatsAppUrl } from '@/lib/site-config';
-import { useLocale } from 'next-intl';
+import { HeroParticlesBackground } from '@/components/hero/hero-particles-background';
 
 const MAGENTA = '#BC2656';
 
 export function Hero() {
   const t = useTranslations('hero');
-  const locale = useLocale() as 'es' | 'en';
   const reduced = useReducedMotion();
-  const cleanupRef = useRef<(() => void) | null>(null);
-
-  const particlesInit = useCallback(async (engine: Engine) => {
-    await loadBasic(engine);
-  }, []);
-
-  const particlesLoaded = useCallback(async (container?: Container) => {
-    if (!container) return;
-    cleanupRef.current?.();
-    cleanupRef.current = bindCenterAttractor(container);
-  }, []);
-
-  useEffect(() => {
-    return () => cleanupRef.current?.();
-  }, []);
-
-  const options = useMemo(() => heroParticlesOptions, []);
 
   return (
     <section
@@ -49,15 +25,7 @@ export function Hero() {
         }}
       />
 
-      {!reduced && (
-        <Particles
-          id="hero-particles"
-          className="absolute inset-0 z-0"
-          init={particlesInit}
-          loaded={particlesLoaded}
-          options={options}
-        />
-      )}
+      <HeroParticlesBackground />
 
       {/* Outer glow */}
       <div
@@ -108,7 +76,7 @@ export function Hero() {
           transition={{ duration: reduced ? 0 : 0.35, delay: reduced ? 0 : 0.1, ease: [0.22, 1, 0.36, 1] }}
           className="mt-10"
         >
-          <MaskUpButton href={getWhatsAppUrl(locale)} label={t('cta')} />
+          <MaskUpButton href="/contact" label={t('cta')} />
         </motion.div>
       </div>
 

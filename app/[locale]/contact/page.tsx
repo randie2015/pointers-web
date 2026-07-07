@@ -1,11 +1,14 @@
 'use client';
 
-import { ContactCTA } from '@/components/sections/contact-cta';
+import { Suspense } from 'react';
+import { ContactPageContent } from '@/components/contact/contact-page-content';
 
 export default function ContactPage() {
   return (
     <div className="pt-20">
-      <ContactCTA id="contacto" />
+      <Suspense fallback={<div className="min-h-[60vh]" />}>
+        <ContactPageContent />
+      </Suspense>
     </div>
   );
 }

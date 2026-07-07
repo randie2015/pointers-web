@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { motion, useReducedMotion } from 'framer-motion';
 import { Reveal } from '@/components/reveal';
+import { WhiteParticlesSection } from '@/components/hero/white-particles-section';
 import { getBrandTrustCarouselLogos, type BrandLogo } from '@/lib/brand-trust';
 
 function BrandLogo({ brand }: { brand: BrandLogo }) {
@@ -27,7 +28,7 @@ export function BrandTrustSection() {
   const brands = getBrandTrustCarouselLogos();
 
   return (
-    <section className="bg-white py-20 md:py-28">
+    <WhiteParticlesSection className="py-20 md:py-28" particlesId="brand-trust-particles">
       <div className="container-page">
         <div className="mobile-surface mx-auto max-w-6xl rounded-3xl bg-white px-6 py-14 shadow-md max-md:shadow-lg max-md:shadow-black/[0.08] md:px-10 md:py-16">
           <Reveal>
@@ -59,6 +60,6 @@ export function BrandTrustSection() {
           </Reveal>
         </div>
       </div>
-    </section>
+    </WhiteParticlesSection>
   );
 }

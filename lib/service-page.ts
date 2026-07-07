@@ -33,6 +33,7 @@ export type ServicePageContent = {
   problem: { title: string; body: string };
   solution: { title: string; body: string };
   deliverables: { title: string; description: string }[];
+  tiers?: Partial<Record<PricingTierKey, { name?: string; tagline?: string }>>;
   pricing: Record<PricingTierKey, PricingTierData>;
   cta: { title: string; subtitle: string };
   faq: { question: string; answer: string }[];

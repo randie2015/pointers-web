@@ -52,4 +52,17 @@ body {
   .mobile-btn-surface {
     @apply max-md:shadow-lg max-md:shadow-black/10 touch-press;
   }
+
+  .cta-button {
+    @apply border-2 border-transparent bg-teal text-white transition-colors duration-300;
+  }
+
+  .group:hover .cta-button:not(:disabled) {
+    @apply border-teal bg-white text-teal;
+  }
+
+  .group:disabled .cta-button,
+  .cta-button:disabled {
+    @apply opacity-70;
+  }
 }

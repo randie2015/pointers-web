@@ -244,22 +244,54 @@
     "eyebrow": "Contact",
     "title": "Modernize your digital presence",
     "subtitle": "Tell us about your project and let's take the next step together.",
-    "firstName": "First name",
-    "lastName": "Last name",
-    "email": "Email",
-    "phone": "Phone",
-    "phonePlaceholder": "+1 555 000 0000",
+    "pageTitle": "Let's talk about your next project",
+    "pageSubtitle": "Fill out the form and we'll reply with a proposal aligned to your goals.",
+    "formTitle": "Qualification form",
+    "formSubtitle": "Tell us about your business so we can prepare a relevant consultation.",
+    "locationTitle": "Arequipa, Peru",
+    "locationBody": "Digital agency based in Arequipa. We work with brands across Peru and Latin America.",
+    "trustItems": [
+      {
+        "title": "Transparent process",
+        "body": "Clear diagnosis, concrete proposal and scalable plans without fine print."
+      },
+      {
+        "title": "Strategy + execution",
+        "body": "Branding, web, content and advertising in one team to grow with consistency."
+      }
+    ],
+    "whatsappHint": "Prefer an immediate reply? Use the floating WhatsApp button:",
+    "name": "Name",
+    "company": "Company",
+    "service": "Service of interest",
+    "servicePlaceholder": "Select a service",
+    "budget": "Estimated budget",
+    "budgetPlaceholder": "Select a range",
     "message": "Message",
+    "ctaButton": "Go to contact form",
     "submit": "Let's talk!",
-    "submitIdle": "Send message",
+    "submitIdle": "Send request",
     "submitSuccess": "Thank you! We'll get back to you soon.",
     "submitError": "Oops... something went wrong, please try again.",
     "retryHint": "Check your connection and try again.",
+    "serviceOptions": {
+      "branding": "Branding & Visual Identity",
+      "diseno-web": "Web Design & Digital Experience",
+      "contenido": "Content & Social Presence",
+      "estrategia-digital": "Digital Strategy & Advertising",
+      "otro": "Other / Not sure yet"
+    },
+    "budgetOptions": {
+      "under-500": "Under USD 500",
+      "500-1500": "USD 500 – 1,500",
+      "1500-5000": "USD 1,500 – 5,000",
+      "over-5000": "Over USD 5,000"
+    },
     "errors": {
-      "firstName": "Name must be at least 2 characters",
-      "email": "Enter a valid email address",
-      "phoneRequired": "Phone number is required",
-      "phoneFormat": "Invalid number. Include country code (7–15 digits, e.g. +1 555 000 0000)",
+      "name": "Name must be at least 2 characters",
+      "company": "Company must be at least 2 characters",
+      "service": "Please select a service",
+      "budget": "Please select a budget range",
       "message": "Message must be at least 10 characters"
     }
   },
@@ -505,20 +537,43 @@
       ],
       "pricing": {
         "pro": {
-          "price": "$750",
-          "description": "Essential identity for brands taking their first steps.",
-          "features": ["Primary logo and variants", "Color palette and typography", "Basic applications (social & web)", "1 revision round", "Delivery in 3 weeks"]
+          "price": "From $300 USD",
+          "description": "",
+          "features": [
+            "Primary logo design and variants (Responsive).",
+            "Corporate color palette and typography selection.",
+            "Basic visual identity guide (Brandboard).",
+            "Vector files and export formats ready to use.",
+            "3 revision rounds."
+          ]
         },
         "premium": {
-          "price": "$1,450",
-          "description": "Robust brand system for growing businesses.",
-          "features": ["Complete visual identity", "Digital brand guidelines", "Graphic assets for social and web", "Tone and voice strategy", "3 revision rounds", "Delivery in 5 weeks"]
+          "price": "From $600 USD",
+          "description": "",
+          "features": [
+            "Everything included in the PRO plan.",
+            "Detailed Corporate Brand Manual (Guidelines and usage rules).",
+            "Basic application design (Business cards, email signatures, stationery).",
+            "Master template set for Social Media.",
+            "4 revision rounds."
+          ]
         },
         "pointers": {
-          "price": "$2,600",
-          "description": "Full branding with end-to-end strategic direction.",
-          "features": ["Brand architecture and naming", "Print and digital brand manual", "Full application kit", "Brand workshop with your team", "Unlimited revisions in design phase", "30-day post-launch support"]
+          "price": "From $1,200 USD",
+          "description": "",
+          "features": [
+            "Everything included in the PREMIUM plan.",
+            "Naming and Brand Architecture (Name creation and structure).",
+            "Voice, tone and brand personality definition.",
+            "High-complexity application design (Packaging, merchandising, etc.).",
+            "Strategic brand workshop with the leadership team."
+          ]
         }
+      },
+      "tiers": {
+        "pro": { "tagline": "Essential identity to get started" },
+        "premium": { "tagline": "The complete visual ecosystem" },
+        "pointers": { "tagline": "End-to-end strategic direction" }
       }
     },
     "diseno-web": {
@@ -551,20 +606,45 @@
       ],
       "pricing": {
         "pro": {
-          "price": "$950",
-          "description": "Professional landing page to launch or validate your offer.",
-          "features": ["1 responsive landing page", "Custom UX/UI design", "Contact form", "Basic SEO optimization", "Delivery in 4 weeks"]
+          "price": "From $500 USD",
+          "description": "",
+          "features": [
+            "Agile Frontend stack (Vite + React): Ultra-fast interactive rendering with no dead load times.",
+            "Custom design with Tailwind CSS: Clean, minimal code that guarantees a 100% responsive, premium-looking website.",
+            "Multi-page corporate website (Static).",
+            "Direct WhatsApp button and basic contact form.",
+            "High-performance cloud hosting and SSL certificate included.",
+            "3 revision rounds."
+          ]
         },
         "premium": {
-          "price": "$1,900",
-          "description": "Complete website for brands that need a solid presence.",
-          "features": ["Up to 6 sections/pages", "Strategic UX/UI design", "Animations and micro-interactions", "On-page SEO", "Analytics integration", "Delivery in 6 weeks"]
+          "price": "From $800 USD",
+          "description": "",
+          "features": [
+            "Everything included in the PRO plan.",
+            "Fullstack architecture (Next.js + React): Server-side rendering (SSR) for perfect indexing and top-tier SEO.",
+            "Self-managed admin panel connected to a real-time database.",
+            "E-commerce or interactive catalog with integrated payment gateway.",
+            "5 revision rounds."
+          ]
         },
         "pointers": {
-          "price": "$3,800",
-          "description": "Premium digital experience with advanced development and full optimization.",
-          "features": ["Custom website, unlimited sections", "CMS for content self-management", "Advanced animations", "Technical SEO and performance", "Custom integrations", "60-day support and maintenance"]
+          "price": "From $1,200 USD",
+          "description": "",
+          "features": [
+            "Everything included in the PREMIUM plan.",
+            "Advanced Headless ecosystem: Decoupled frontend (Next.js/React) and backend for robust e-commerce or massively scalable SaaS platforms.",
+            "100% custom software and web application development.",
+            "Complex transactional logic and deep relational databases.",
+            "Full integration with external systems and corporate APIs (CRM/ERP).",
+            "Priority post-launch technical support."
+          ]
         }
+      },
+      "tiers": {
+        "pro": { "tagline": "Start with a solid foundation" },
+        "premium": { "tagline": "The dynamic ecosystem" },
+        "pointers": { "tagline": "Complete custom infrastructure" }
       }
     },
     "contenido": {
@@ -597,20 +677,43 @@
       ],
       "pricing": {
         "pro": {
-          "price": "$480/mo",
-          "description": "Consistent social presence with quality content.",
-          "features": ["2 social networks", "8 posts per month", "Basic graphic design", "Editorial calendar", "Monthly report"]
+          "price": "From $400 USD / month",
+          "description": "",
+          "features": [
+            "Strategic profile optimization (Commercial bio structure and link setup).",
+            "Premium feed design aligned with brand identity.",
+            "8 monthly content pieces (Mix of static images and carousels).",
+            "4 short vertical videos (Dynamic editing for Reels / TikToks).",
+            "Monthly growth, reach and visual performance report."
+          ]
         },
         "premium": {
-          "price": "$900/mo",
-          "description": "Full content strategy with greater reach.",
-          "features": ["3 social networks", "16 posts per month", "Edited reels and stories", "Strategic copywriting", "Community management", "Bi-weekly report"]
+          "price": "From $800 USD / month",
+          "description": "",
+          "features": [
+            "Everything included in the PRO plan.",
+            "Increased volume to 12 content pieces and 8 short videos per month.",
+            "Active community management (Professional moderation of messages and comments).",
+            "Initial DM automation for instant replies and data capture.",
+            "Analytics report focused on engagement and traffic referral."
+          ]
         },
         "pointers": {
-          "price": "$1,550/mo",
-          "description": "Full management with audiovisual production and advanced strategy.",
-          "features": ["All active networks", "24+ posts per month", "Monthly audiovisual production", "Growth strategy", "Coordinated organic campaigns", "Monthly strategy meetings"]
+          "price": "From $1,500 USD / month",
+          "description": "",
+          "features": [
+            "Everything included in the PREMIUM plan.",
+            "Content strategy adapted to multiple platforms (Omnichannel presence).",
+            "Conversational automation systems to qualify prospects 24/7.",
+            "Lead capture strategy design (Value assets for database building).",
+            "Bi-weekly executive advisory for funnel analysis and commercial optimization."
+          ]
         }
+      },
+      "tiers": {
+        "pro": { "tagline": "Solid presence and positioning" },
+        "premium": { "tagline": "The engagement and acquisition engine" },
+        "pointers": { "tagline": "Sales ecosystem and automation" }
       }
     },
     "estrategia-digital": {
@@ -643,20 +746,43 @@
       ],
       "pricing": {
         "pro": {
-          "price": "$580/mo",
-          "description": "Essential digital advertising to start generating leads.",
-          "features": ["1 platform (Meta or Google)", "Up to $500 ad spend", "3 creatives per month", "Campaign setup", "Monthly report"]
+          "price": "From $300 USD / month",
+          "description": "",
+          "features": [
+            "Ad strategy focused on 1 high-impact channel (Meta Ads or Google Ads).",
+            "Ad creation and persuasive copywriting.",
+            "Technical setup and WhatsApp results tracking.",
+            "Daily budget optimization for maximum efficiency.",
+            "Detailed monthly report of leads obtained."
+          ]
         },
         "premium": {
-          "price": "$1,200/mo",
-          "description": "Multi-channel strategy with funnels and active optimization.",
-          "features": ["Meta + Google Ads", "Up to $1,200 ad spend", "Basic conversion funnel", "Creative A/B testing", "Weekly optimization", "Results dashboard"]
+          "price": "From $600 USD / month",
+          "description": "",
+          "features": [
+            "Everything included in the PRO plan.",
+            "Strategic management across 2 platforms (Meta + Google).",
+            "Retargeting campaigns to close undecided prospects.",
+            "Continuous A/B testing to reduce acquisition costs.",
+            "Interactive real-time metrics dashboard."
+          ]
         },
         "pointers": {
-          "price": "$2,250/mo",
-          "description": "Complete growth system with automation and strategic consulting.",
-          "features": ["Advanced multi-channel strategy", "Unlimited managed ad spend", "Funnels and automations", "Campaign landing pages", "Bi-weekly strategic consulting", "Continuous optimization and scaling"]
+          "price": "From $1,200 USD / month",
+          "description": "",
+          "features": [
+            "Everything included in the PREMIUM plan.",
+            "Expansion to viral channels (TikTok Ads or LinkedIn Ads).",
+            "Direct CRM integration to measure exact return (ROI).",
+            "Conversion rate optimization (CRO) audit on your website.",
+            "Bi-weekly executive strategy meeting and aggressive scaling."
+          ]
         }
+      },
+      "tiers": {
+        "pro": { "tagline": "Traction and direct lead capture" },
+        "premium": { "tagline": "Growth and active retention" },
+        "pointers": { "tagline": "Scaling and funnel architecture" }
       }
     }
   },

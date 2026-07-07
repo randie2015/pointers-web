@@ -9,10 +9,11 @@ import { MaskUpButton } from '@/components/ui/mask-up-button';
 import { ServicePricingCarousel, type PricingTierKey } from '@/components/services/service-pricing-carousel';
 import { FaqSection } from '@/components/sections/faq-section';
 import { MobileGradientBg } from '@/components/ui/mobile-gradient-bg';
-import { SERVICE_GRADIENT, SERVICE_PURPLE, SERVICE_TEAL } from '@/lib/service-brand';
+import { WhiteParticlesSection } from '@/components/hero/white-particles-section';
+import { SERVICE_GRADIENT, SERVICE_MAGENTA, SERVICE_PURPLE, SERVICE_TEAL } from '@/lib/service-brand';
 import { SERVICE_DELIVERABLE_ICONS, type ServicePageContent } from '@/lib/service-page';
 import type { ServiceSlug } from '@/lib/services';
-import { getServiceWhatsAppUrl } from '@/lib/site-config';
+import { getContactUrl } from '@/lib/site-config';
 
 const TIERS: PricingTierKey[] = ['pro', 'premium', 'pointers'];
 
@@ -23,21 +24,28 @@ type ServicePageTemplateProps = {
 export function ServicePageTemplate({ slug }: ServicePageTemplateProps) {
   const t = useTranslations('serviceDetail');
   const content = t.raw(slug) as ServicePageContent;
-  const whatsappUrl = getServiceWhatsAppUrl(slug);
+  const contactUrl = getContactUrl({ service: slug });
   const DeliverableIcons = SERVICE_DELIVERABLE_ICONS[slug];
 
   const tierMeta = useMemo(
     () =>
       Object.fromEntries(
-        TIERS.map((tier) => [tier, t.raw(`tiers.${tier}`) as { name: string; tagline: string }])
+        TIERS.map((tier) => {
+          const base = t.raw(`tiers.${tier}`) as { name: string; tagline: string };
+          const override = content.tiers?.[tier];
+          return [tier, { ...base, ...override }];
+        })
       ) as Record<PricingTierKey, { name: string; tagline: string }>,
-    [t]
+    [t, content.tiers]
   );
 
   return (
     <>
-      {/* 1. Hero */}
-      <section className="relative overflow-hidden bg-white px-1 pt-12 sm:pt-14 md:pt-20">
+      {/* 1. Hero — blanco + partículas */}
+      <WhiteParticlesSection
+        className="px-1 pt-12 sm:pt-14 md:pt-20"
+        particlesId={`service-${slug}-hero-particles`}
+      >
         <div className="container-page">
           <Reveal>
             <div className="mx-auto max-w-4xl text-center">
@@ -49,7 +57,7 @@ export function ServicePageTemplate({ slug }: ServicePageTemplateProps) {
                 {content.subtitle}
               </p>
               <div className="mt-7 flex justify-center sm:mt-8">
-                <MaskUpButton href={whatsappUrl} label={t('heroCta')} className="w-full max-w-sm sm:w-auto" />
+                <MaskUpButton href={contactUrl} label={t('heroCta')} className="w-full max-w-sm sm:w-auto" />
               </div>
             </div>
           </Reveal>
@@ -60,52 +68,60 @@ export function ServicePageTemplate({ slug }: ServicePageTemplateProps) {
             background: `radial-gradient(circle at 30% 40%, ${SERVICE_PURPLE}33, transparent 55%), radial-gradient(circle at 70% 55%, ${SERVICE_TEAL}24, transparent 55%)`
           }}
         />
-      </section>
+      </WhiteParticlesSection>
 
-      {/* 2. Problema y Solución — lado a lado en desktop */}
-      <section className="bg-muted/40 py-12 sm:py-16 md:py-24">
+      {/* 2. El problema */}
+      <section className="bg-muted/40 py-14 sm:py-16 md:py-24">
         <div className="container-page">
           <Reveal>
             <SectionHeader
-              eyebrow={t('problemSolutionEyebrow')}
-              title={t('problemSolutionTitle')}
+              eyebrow={t('problemEyebrow')}
+              title={t('problemTitle')}
               subtitle={t('problemSolutionSubtitle')}
             />
           </Reveal>
 
-          <div className="mt-8 grid grid-cols-1 items-stretch gap-4 sm:mt-10 sm:gap-6 md:grid-cols-2 md:gap-8">
-            <Reveal delay={0.05}>
-              <article className="mobile-surface h-full rounded-2xl border border-border/60 bg-white p-5 sm:rounded-3xl sm:p-7 md:p-9">
-                <p className="text-xs font-semibold uppercase tracking-widest text-gray-500">{t('problemLabel')}</p>
-                {content.problem.title ? (
-                  <h3 className="mt-3 font-display text-xl font-semibold text-gray-900 sm:text-2xl">
-                    {content.problem.title}
-                  </h3>
-                ) : null}
-                <p className="mt-3 text-sm leading-relaxed text-gray-600 sm:mt-4 md:text-base">
-                  {content.problem.body}
-                </p>
-              </article>
-            </Reveal>
-
-            <Reveal delay={0.1}>
-              <article
-                className="mobile-surface h-full rounded-2xl border border-[#5E549D]/20 p-5 text-white sm:rounded-3xl sm:p-7 md:p-9"
-                style={{ backgroundColor: SERVICE_PURPLE }}
+          <Reveal delay={0.05}>
+            <article className="mobile-surface mx-auto mt-8 max-w-3xl rounded-2xl border border-border/60 bg-white p-6 sm:mt-10 sm:rounded-3xl sm:p-8 md:p-10">
+              {content.problem.title ? (
+                <h3 className="font-display text-xl font-semibold text-gray-900 sm:text-2xl">
+                  {content.problem.title}
+                </h3>
+              ) : null}
+              <p
+                className={`text-sm leading-relaxed text-gray-600 sm:text-base md:text-lg md:leading-relaxed ${content.problem.title ? 'mt-3 sm:mt-4' : ''}`}
               >
-                <p className="text-xs font-semibold uppercase tracking-widest text-white/75">{t('solutionLabel')}</p>
-                <h3 className="mt-3 font-display text-xl font-semibold sm:text-2xl">{content.solution.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-white/90 sm:mt-4 md:text-base">
-                  {content.solution.body}
-                </p>
-              </article>
-            </Reveal>
-          </div>
+                {content.problem.body}
+              </p>
+            </article>
+          </Reveal>
         </div>
       </section>
 
-      {/* 3. Qué incluye */}
-      <section className="bg-white py-12 sm:py-16 md:py-28">
+      {/* 3. Nuestra solución — magenta sólido */}
+      <section className="py-14 sm:py-16 md:py-24" style={{ backgroundColor: SERVICE_MAGENTA }}>
+        <div className="container-page">
+          <Reveal>
+            <div className="mx-auto max-w-3xl text-center">
+              <p className="text-xs font-semibold uppercase tracking-widest text-white/80 sm:text-sm">
+                {t('solutionLabel')}
+              </p>
+              <h2 className="mt-4 font-display text-2xl font-bold leading-tight text-white sm:text-3xl md:text-4xl">
+                {content.solution.title}
+              </h2>
+              <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-white/90 sm:mt-5 sm:text-base md:text-lg">
+                {content.solution.body}
+              </p>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* 4. Qué incluye — blanco + partículas */}
+      <WhiteParticlesSection
+        className="py-14 sm:py-16 md:py-28"
+        particlesId={`service-${slug}-deliverables-particles`}
+      >
         <div className="container-page">
           <Reveal>
             <SectionHeader
@@ -123,7 +139,7 @@ export function ServicePageTemplate({ slug }: ServicePageTemplateProps) {
                   <article className="mobile-surface group h-full rounded-2xl border border-border/60 bg-white p-5 transition-all duration-500 ease-in-out active:shadow-md sm:p-6 md:p-7 md:hover:-translate-y-1 md:hover:shadow-lg">
                     <div
                       className="flex h-11 w-11 items-center justify-center rounded-2xl sm:h-12 sm:w-12"
-                      style={{ backgroundColor: `${SERVICE_PURPLE}14`, color: SERVICE_PURPLE }}
+                      style={{ backgroundColor: `${SERVICE_MAGENTA}14`, color: SERVICE_MAGENTA }}
                     >
                       <Icon className="h-5 w-5 sm:h-6 sm:w-6" aria-hidden />
                     </div>
@@ -137,10 +153,10 @@ export function ServicePageTemplate({ slug }: ServicePageTemplateProps) {
             })}
           </div>
         </div>
-      </section>
+      </WhiteParticlesSection>
 
-      {/* 4. Planes */}
-      <section className="overflow-hidden bg-muted/30 py-12 sm:py-16 md:py-28">
+      {/* 5. Planes */}
+      <section className="overflow-hidden bg-muted/30 py-14 sm:py-16 md:py-28">
         <div className="container-page">
           <Reveal>
             <SectionHeader
@@ -161,31 +177,6 @@ export function ServicePageTemplate({ slug }: ServicePageTemplateProps) {
         </div>
       </section>
 
-      {/* 5. CTA intermedio */}
-      <section className="bg-white py-12 sm:py-16 md:py-24">
-        <div className="container-page">
-          <div
-            className={`relative overflow-hidden rounded-2xl px-5 py-12 text-center sm:rounded-3xl sm:px-6 sm:py-16 md:px-10 md:py-20 ${SERVICE_GRADIENT}`}
-          >
-            <MobileGradientBg className="opacity-80 mix-blend-soft-light md:hidden" />
-            <Reveal>
-              <div className="relative z-10 mx-auto max-w-3xl">
-                <p className="text-xs font-semibold uppercase tracking-widest text-white/80">{t('midCtaEyebrow')}</p>
-                <h2 className="mt-4 text-2xl font-bold leading-tight text-white sm:text-3xl md:text-4xl">
-                  {content.cta.title}
-                </h2>
-                <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-white/90 sm:mt-5 sm:text-base md:text-lg">
-                  {content.cta.subtitle}
-                </p>
-                <div className="mt-7 flex justify-center sm:mt-8">
-                  <MaskUpButton href={whatsappUrl} label={t('heroCta')} className="w-full max-w-sm sm:w-auto" />
-                </div>
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
       {/* 6. FAQ */}
       <FaqSection
         sectionId={`faq-${slug}`}
@@ -195,20 +186,24 @@ export function ServicePageTemplate({ slug }: ServicePageTemplateProps) {
         items={content.faq}
       />
 
-      {/* 7. Footer de acción */}
-      <section className={`relative overflow-hidden py-12 sm:py-16 md:py-24 ${SERVICE_GRADIENT}`}>
+      {/* 7. CTA final único */}
+      <section className={`relative overflow-hidden py-14 sm:py-16 md:py-24 ${SERVICE_GRADIENT}`}>
         <MobileGradientBg className="opacity-70 mix-blend-soft-light md:hidden" />
         <div className="container-page relative z-10">
           <Reveal>
-            <div className="mx-auto max-w-3xl text-center">
+            <div className="mx-auto max-w-3xl px-2 text-center sm:px-0">
               <h2 className="text-2xl font-bold leading-tight text-white sm:text-3xl md:text-4xl lg:text-5xl">
-                {t('closingTitle')}
+                {content.cta.title}
               </h2>
               <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-white/90 sm:mt-5 sm:text-base md:text-lg">
-                {t('closingSubtitle')}
+                {content.cta.subtitle}
               </p>
               <div className="mt-8 flex justify-center sm:mt-10">
-                <MaskUpButton href={whatsappUrl} label={t('heroCta')} className="w-full max-w-sm sm:w-auto" />
+                <MaskUpButton
+                  href={contactUrl}
+                  label={t('heroCta')}
+                  className="w-full max-w-sm sm:w-auto"
+                />
               </div>
             </div>
           </Reveal>

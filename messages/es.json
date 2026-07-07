@@ -126,22 +126,54 @@
     "eyebrow": "Contacto",
     "title": "Moderniza tu presencia digital",
     "subtitle": "Cuéntanos sobre tu proyecto y demos juntos el siguiente paso.",
-    "firstName": "Nombre",
-    "lastName": "Apellido",
-    "email": "Email",
-    "phone": "Teléfono",
-    "phonePlaceholder": "+00 000 000 000",
+    "pageTitle": "Hablemos de tu próximo proyecto",
+    "pageSubtitle": "Completa el formulario y te responderemos con una propuesta alineada a tus objetivos.",
+    "formTitle": "Formulario de calificación",
+    "formSubtitle": "Cuéntanos sobre tu negocio para preparar una asesoría relevante.",
+    "locationTitle": "Arequipa, Perú",
+    "locationBody": "Agencia digital con base en Arequipa. Trabajamos con marcas en todo el Perú y Latinoamérica.",
+    "trustItems": [
+      {
+        "title": "Proceso transparente",
+        "body": "Diagnóstico claro, propuesta concreta y planes escalables sin letra pequeña."
+      },
+      {
+        "title": "Estrategia + ejecución",
+        "body": "Branding, web, contenido y publicidad en un solo equipo para crecer con coherencia."
+      }
+    ],
+    "whatsappHint": "¿Prefieres respuesta inmediata? Usa el botón flotante de WhatsApp:",
+    "name": "Nombre",
+    "company": "Empresa",
+    "service": "Servicio de interés",
+    "servicePlaceholder": "Selecciona un servicio",
+    "budget": "Presupuesto estimado",
+    "budgetPlaceholder": "Selecciona un rango",
     "message": "Mensaje",
+    "ctaButton": "Ir al formulario de contacto",
     "submit": "¡Hablemos!",
-    "submitIdle": "Enviar mensaje",
+    "submitIdle": "Enviar solicitud",
     "submitSuccess": "¡Gracias! Te responderemos pronto.",
     "submitError": "Ups... algo salió mal, inténtalo de nuevo.",
     "retryHint": "Revisa tu conexión e inténtalo otra vez.",
+    "serviceOptions": {
+      "branding": "Branding e Identidad Visual",
+      "diseno-web": "Diseño Web y Experiencia Digital",
+      "contenido": "Contenido y Presencia en Redes",
+      "estrategia-digital": "Estrategia Digital y Publicidad",
+      "otro": "Otro / Aún no lo tengo claro"
+    },
+    "budgetOptions": {
+      "under-500": "Menos de USD 500",
+      "500-1500": "USD 500 – 1,500",
+      "1500-5000": "USD 1,500 – 5,000",
+      "over-5000": "Más de USD 5,000"
+    },
     "errors": {
-      "firstName": "El nombre debe tener al menos 2 caracteres",
-      "email": "Introduce un email válido",
-      "phoneRequired": "El teléfono es obligatorio",
-      "phoneFormat": "Número inválido. Usa código de país (7–15 dígitos, ej. +34 612 345 678)",
+      "name": "El nombre debe tener al menos 2 caracteres",
+      "company": "La empresa debe tener al menos 2 caracteres",
+      "service": "Selecciona un servicio",
+      "budget": "Selecciona un rango de presupuesto",
       "message": "El mensaje debe tener al menos 10 caracteres"
     }
   },
@@ -505,20 +537,43 @@
       ],
       "pricing": {
         "pro": {
-          "price": "S/ 2,800",
-          "description": "Identidad esencial para marcas que están dando sus primeros pasos.",
-          "features": ["Logo principal y variantes", "Paleta de color y tipografías", "Aplicaciones básicas (redes y web)", "1 ronda de revisiones", "Entrega en 3 semanas"]
+          "price": "Desde $300 USD",
+          "description": "",
+          "features": [
+            "Diseño de Logotipo principal y variantes (Responsive).",
+            "Selección de paleta de colores y tipografías corporativas.",
+            "Guía básica de identidad visual (Brandboard).",
+            "Archivos vectoriales y formatos de exportación listos para usar.",
+            "3 rondas de revisiones."
+          ]
         },
         "premium": {
-          "price": "S/ 5,500",
-          "description": "Sistema de marca robusto para negocios en crecimiento.",
-          "features": ["Identidad visual completa", "Manual de marca digital", "Piezas gráficas para redes y web", "Estrategia de tono y voz", "3 rondas de revisiones", "Entrega en 5 semanas"]
+          "price": "Desde $600 USD",
+          "description": "",
+          "features": [
+            "Todo lo incluido en el Plan PRO.",
+            "Manual de Marca Corporativo detallado (Normativas y usos).",
+            "Diseño de aplicaciones básicas (Tarjetas de presentación, firmas, papelería).",
+            "Set de plantillas maestras para Redes Sociales.",
+            "4 rondas de revisiones."
+          ]
         },
         "pointers": {
-          "price": "S/ 9,800",
-          "description": "Branding integral con dirección estratégica de punta a punta.",
-          "features": ["Arquitectura de marca y naming", "Manual de marca impreso y digital", "Kit completo de aplicaciones", "Workshop de marca con tu equipo", "Revisiones ilimitadas en fase de diseño", "Soporte post-lanzamiento 30 días"]
+          "price": "Desde $1,200 USD",
+          "description": "",
+          "features": [
+            "Todo lo incluido en el Plan PREMIUM.",
+            "Naming y Arquitectura de Marca (Creación del nombre y estructura).",
+            "Definición de voz, tono y personalidad de marca.",
+            "Diseño de aplicaciones de alta complejidad (Packaging, merchandising, etc.).",
+            "Workshop estratégico de marca con el equipo directivo."
+          ]
         }
+      },
+      "tiers": {
+        "pro": { "tagline": "La identidad esencial para arrancar" },
+        "premium": { "tagline": "El ecosistema visual completo" },
+        "pointers": { "tagline": "Dirección estratégica de punta a punta" }
       }
     },
     "diseno-web": {
@@ -551,20 +606,45 @@
       ],
       "pricing": {
         "pro": {
-          "price": "S/ 3,500",
-          "description": "Landing page profesional para lanzar o validar tu propuesta.",
-          "features": ["1 landing page responsive", "Diseño UX/UI personalizado", "Formulario de contacto", "Optimización básica SEO", "Entrega en 4 semanas"]
+          "price": "Desde $500 USD",
+          "description": "",
+          "features": [
+            "Stack Frontend ágil (Vite + React): Interfaz interactiva de renderizado ultrarrápido sin tiempos de carga muertos.",
+            "Diseño a medida con Tailwind CSS: Código limpio y minimalista que garantiza una web 100% responsiva y visualmente premium.",
+            "Página web corporativa multipágina (Estática).",
+            "Botón directo a WhatsApp y formulario básico.",
+            "Hosting de alto rendimiento en la nube y certificado SSL incluido.",
+            "3 rondas de revisiones."
+          ]
         },
         "premium": {
-          "price": "S/ 7,200",
-          "description": "Sitio web completo para marcas que necesitan presencia sólida.",
-          "features": ["Hasta 6 secciones/páginas", "Diseño UX/UI estratégico", "Animaciones y microinteracciones", "SEO on-page", "Integración con analytics", "Entrega en 6 semanas"]
+          "price": "Desde $800 USD",
+          "description": "",
+          "features": [
+            "Todo lo incluido en el Plan PRO.",
+            "Arquitectura Fullstack (Next.js + React): Renderizado del lado del servidor (SSR) que garantiza una indexación perfecta y vuela en SEO.",
+            "Panel de control autogestionable conectado a base de datos en tiempo real.",
+            "E-commerce o Catálogo interactivo con pasarela de pagos integrada.",
+            "5 rondas de revisiones."
+          ]
         },
         "pointers": {
-          "price": "S/ 14,500",
-          "description": "Experiencia digital premium con desarrollo avanzado y optimización total.",
-          "features": ["Sitio web a medida sin límite de secciones", "CMS para autogestión de contenido", "Animaciones avanzadas", "SEO técnico y performance", "Integraciones personalizadas", "Soporte y mantenimiento 60 días"]
+          "price": "Desde $1,200 USD",
+          "description": "",
+          "features": [
+            "Todo lo incluido en el Plan PREMIUM.",
+            "Ecosistema Headless Avanzado: Desacople del frontend (Next.js/React) y backend para e-commerce robustos o plataformas SaaS de escalabilidad masiva.",
+            "Desarrollo de software y aplicaciones web 100% a medida.",
+            "Lógica transaccional compleja y bases de datos relacionales profundas.",
+            "Integración total con sistemas externos y APIs corporativas (CRM/ERP).",
+            "Soporte técnico prioritario post-lanzamiento."
+          ]
         }
+      },
+      "tiers": {
+        "pro": { "tagline": "Para empezar con solidez" },
+        "premium": { "tagline": "El ecosistema dinámico" },
+        "pointers": { "tagline": "La infraestructura completa a medida" }
       }
     },
     "contenido": {
@@ -597,20 +677,43 @@
       ],
       "pricing": {
         "pro": {
-          "price": "S/ 1,800/mes",
-          "description": "Presencia constante en redes con contenido de calidad.",
-          "features": ["2 redes sociales", "8 publicaciones al mes", "Diseño gráfico básico", "Calendario editorial", "Reporte mensual"]
+          "price": "Desde $400 USD / mes",
+          "description": "",
+          "features": [
+            "Optimización estratégica de perfiles (Estructuración comercial de biografía y enlaces).",
+            "Diseño de feed con estética premium, alineada a la identidad de la marca.",
+            "8 piezas de contenido mensual (Mix de imágenes estáticas y carruseles).",
+            "4 videos cortos en formato vertical (Edición dinámica para Reels / TikToks).",
+            "Reporte mensual de crecimiento, alcance y rendimiento visual."
+          ]
         },
         "premium": {
-          "price": "S/ 3,400/mes",
-          "description": "Estrategia de contenido integral con mayor alcance.",
-          "features": ["3 redes sociales", "16 publicaciones al mes", "Reels y stories editados", "Copywriting estratégico", "Community management", "Reporte quincenal"]
+          "price": "Desde $800 USD / mes",
+          "description": "",
+          "features": [
+            "Todo lo incluido en el Plan PRO.",
+            "Aumento de volumen a 12 piezas de contenido y 8 videos cortos mensuales.",
+            "Gestión activa de comunidad (Moderación profesional de mensajes y comentarios).",
+            "Automatización inicial en DMs para respuestas inmediatas y captura de datos.",
+            "Reporte analítico enfocado en interacción y derivación de tráfico."
+          ]
         },
         "pointers": {
-          "price": "S/ 5,900/mes",
-          "description": "Gestión completa con producción audiovisual y estrategia avanzada.",
-          "features": ["Todas tus redes activas", "24+ publicaciones al mes", "Producción audiovisual mensual", "Estrategia de crecimiento", "Campañas orgánicas coordinadas", "Reuniones estratégicas mensuales"]
+          "price": "Desde $1,500 USD / mes",
+          "description": "",
+          "features": [
+            "Todo lo incluido en el Plan PREMIUM.",
+            "Estrategia de contenido adaptada a múltiples plataformas (Presencia omnicanal).",
+            "Sistemas de automatización conversacional para perfilar prospectos 24/7.",
+            "Diseño de estrategias de captura de leads (Material de valor para bases de datos).",
+            "Asesoría quincenal ejecutiva para análisis de embudos y optimización comercial."
+          ]
         }
+      },
+      "tiers": {
+        "pro": { "tagline": "Presencia sólida y posicionamiento" },
+        "premium": { "tagline": "El motor de captación e interacción" },
+        "pointers": { "tagline": "Ecosistema de ventas y automatización" }
       }
     },
     "estrategia-digital": {
@@ -643,20 +746,43 @@
       ],
       "pricing": {
         "pro": {
-          "price": "S/ 2,200/mes",
-          "description": "Publicidad digital esencial para empezar a generar leads.",
-          "features": ["1 plataforma (Meta o Google)", "Hasta S/ 2,000 en pauta", "3 creativos al mes", "Configuración de campañas", "Reporte mensual"]
+          "price": "Desde $300 USD / mes",
+          "description": "",
+          "features": [
+            "Estrategia de pauta enfocada en 1 canal de alto impacto (Meta Ads o Google Ads).",
+            "Creación de anuncios y copy persuasivo.",
+            "Configuración técnica y medición de resultados al WhatsApp.",
+            "Optimización diaria del presupuesto para máxima eficiencia.",
+            "Reporte mensual detallado de prospectos obtenidos."
+          ]
         },
         "premium": {
-          "price": "S/ 4,500/mes",
-          "description": "Estrategia multicanal con embudos y optimización activa.",
-          "features": ["Meta + Google Ads", "Hasta S/ 5,000 en pauta", "Embudo de conversión básico", "A/B testing de creativos", "Optimización semanal", "Dashboard de resultados"]
+          "price": "Desde $600 USD / mes",
+          "description": "",
+          "features": [
+            "Todo lo incluido en el Plan PRO.",
+            "Gestión estratégica en 2 plataformas (Meta + Google).",
+            "Campañas de retargeting para cerrar prospectos indecisos.",
+            "Pruebas A/B continuas para reducir costos de adquisición.",
+            "Dashboard interactivo de métricas en tiempo real."
+          ]
         },
         "pointers": {
-          "price": "S/ 8,500/mes",
-          "description": "Sistema de growth completo con automatización y consultoría estratégica.",
-          "features": ["Estrategia multicanal avanzada", "Pauta sin límite gestionada", "Embudos y automatizaciones", "Landing pages de campaña", "Consultoría estratégica quincenal", "Optimización y escalado continuo"]
+          "price": "Desde $1,200 USD / mes",
+          "description": "",
+          "features": [
+            "Todo lo incluido en el Plan PREMIUM.",
+            "Expansión a canales virales (TikTok Ads o LinkedIn Ads).",
+            "Integración directa con CRM para medir el retorno (ROI) exacto.",
+            "Auditoría y optimización de conversión (CRO) en tu web.",
+            "Reunión ejecutiva quincenal de estrategia y escalamiento agresivo."
+          ]
         }
+      },
+      "tiers": {
+        "pro": { "tagline": "Tracción y captación directa" },
+        "premium": { "tagline": "Crecimiento y retención activa" },
+        "pointers": { "tagline": "Escalamiento y arquitectura de embudos" }
       }
     }
   },

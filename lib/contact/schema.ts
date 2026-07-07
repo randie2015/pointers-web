@@ -1,24 +1,15 @@
 import { z } from 'zod';
+import { SERVICE_SLUGS } from '@/lib/services';
 
-const PHONE_REGEX = /^\+?[\d\s().-]+$/;
-
-function isValidInternationalPhone(value: string) {
-  const digits = value.replace(/\D/g, '').length;
-  return digits >= 7 && digits <= 15;
-}
+export const CONTACT_SERVICE_VALUES = [...SERVICE_SLUGS, 'otro'] as const;
+export const CONTACT_BUDGET_VALUES = ['under-500', '500-1500', '1500-5000', 'over-5000'] as const;
 
 export function createContactFormSchema(t: (key: string) => string) {
   return z.object({
-    firstName: z.string().trim().min(2, t('errors.firstName')).max(80),
-    lastName: z.string().trim().max(80).optional(),
-    email: z.string().trim().email(t('errors.email')).max(254),
-    phone: z
-      .string()
-      .trim()
-      .min(1, t('errors.phoneRequired'))
-      .max(30)
-      .regex(PHONE_REGEX, t('errors.phoneFormat'))
-      .refine(isValidInternationalPhone, t('errors.phoneFormat')),
+    name: z.string().trim().min(2, t('errors.name')).max(120),
+    company: z.string().trim().min(2, t('errors.company')).max(120),
+    service: z.enum(CONTACT_SERVICE_VALUES, { message: t('errors.service') }),
+    budget: z.enum(CONTACT_BUDGET_VALUES, { message: t('errors.budget') }),
     message: z.string().trim().min(10, t('errors.message')).max(5000)
   });
 }

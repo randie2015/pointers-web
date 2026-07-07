@@ -1,10 +1,6 @@
 import type { ContactFormData } from './schema';
 import type { RequestMetadata } from './metadata';
 
-function fullName(data: ContactFormData) {
-  return [data.firstName, data.lastName].filter(Boolean).join(' ').trim();
-}
-
 function metadataLines(meta: RequestMetadata) {
   return [
     `Fecha: ${meta.submittedAt}`,
@@ -21,17 +17,18 @@ function metadataLines(meta: RequestMetadata) {
 }
 
 export function formatContactSubject(data: ContactFormData) {
-  return `Nuevo contacto: ${fullName(data)} — pointers.marketing`;
+  return `Nuevo lead: ${data.name} (${data.company}) — pointers.marketing`;
 }
 
 export function formatContactPlainText(data: ContactFormData, meta: RequestMetadata) {
   const lines = [
-    'Nuevo mensaje desde el formulario de contacto',
+    'Nuevo mensaje desde el formulario de calificación',
     '',
     '--- Datos del cliente ---',
-    `Nombre: ${fullName(data)}`,
-    `Email: ${data.email}`,
-    `Teléfono: ${data.phone}`,
+    `Nombre: ${data.name}`,
+    `Empresa: ${data.company}`,
+    `Servicio: ${data.service}`,
+    `Presupuesto: ${data.budget}`,
     '',
     'Mensaje:',
     data.message,
@@ -61,11 +58,12 @@ export function formatContactHtml(data: ContactFormData, meta: RequestMetadata) 
   return `<!DOCTYPE html>
 <html>
 <body style="font-family:system-ui,sans-serif;color:#111;line-height:1.5">
-  <h2 style="color:#BC2656;margin:0 0 16px">Nuevo contacto — pointers.marketing</h2>
+  <h2 style="color:#BC2656;margin:0 0 16px">Nuevo lead — pointers.marketing</h2>
   <table style="border-collapse:collapse;margin-bottom:24px">
-    <tr><td style="padding:4px 12px 4px 0;color:#666">Nombre</td><td style="padding:4px 0"><strong>${escape(fullName(data))}</strong></td></tr>
-    <tr><td style="padding:4px 12px 4px 0;color:#666">Email</td><td style="padding:4px 0"><a href="mailto:${escape(data.email)}">${escape(data.email)}</a></td></tr>
-    <tr><td style="padding:4px 12px 4px 0;color:#666">Teléfono</td><td style="padding:4px 0">${escape(data.phone)}</td></tr>
+    <tr><td style="padding:4px 12px 4px 0;color:#666">Nombre</td><td style="padding:4px 0"><strong>${escape(data.name)}</strong></td></tr>
+    <tr><td style="padding:4px 12px 4px 0;color:#666">Empresa</td><td style="padding:4px 0">${escape(data.company)}</td></tr>
+    <tr><td style="padding:4px 12px 4px 0;color:#666">Servicio</td><td style="padding:4px 0">${escape(data.service)}</td></tr>
+    <tr><td style="padding:4px 12px 4px 0;color:#666">Presupuesto</td><td style="padding:4px 0">${escape(data.budget)}</td></tr>
   </table>
   <h3 style="margin:0 0 8px;font-size:14px;text-transform:uppercase;letter-spacing:.05em;color:#666">Mensaje</h3>
   <p style="margin:0 0 24px;white-space:pre-wrap;background:#f8f8f8;padding:16px;border-radius:8px">${escape(data.message)}</p>
@@ -77,11 +75,12 @@ export function formatContactHtml(data: ContactFormData, meta: RequestMetadata) 
 
 export function formatWhatsAppText(data: ContactFormData, meta: RequestMetadata) {
   const lines = [
-    '📩 *Nuevo contacto — Pointers*',
+    '📩 *Nuevo lead — Pointers*',
     '',
-    `*Nombre:* ${fullName(data)}`,
-    `*Email:* ${data.email}`,
-    `*Teléfono:* ${data.phone}`,
+    `*Nombre:* ${data.name}`,
+    `*Empresa:* ${data.company}`,
+    `*Servicio:* ${data.service}`,
+    `*Presupuesto:* ${data.budget}`,
     '',
     `*Mensaje:*`,
     data.message,

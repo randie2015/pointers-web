@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import { Reveal } from '@/components/reveal';
 import { SectionHeader } from '@/components/ui/section-header';
+import { WhiteParticlesSection } from '@/components/hero/white-particles-section';
 import {
   Sparkles,
   Heart,
@@ -132,7 +133,7 @@ export function WhySection() {
   const items = t.raw('items') as { title: string; description: string }[];
 
   return (
-    <section id="por-que" className="scroll-mt-24 bg-white py-20 md:py-28">
+    <WhiteParticlesSection id="por-que" className="scroll-mt-24 py-20 md:py-28" particlesId="why-section-particles">
       <div className="container-page">
         <Reveal>
           <SectionHeader
@@ -157,6 +158,6 @@ export function WhySection() {
           ))}
         </div>
       </div>
-    </section>
+    </WhiteParticlesSection>
   );
 }

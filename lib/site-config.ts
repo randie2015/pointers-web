@@ -54,3 +54,11 @@ export const SERVICE_WHATSAPP_URLS = {
 export function getWhatsAppDisplayNumber() {
   return process.env.NEXT_PUBLIC_WHATSAPP_DISPLAY ?? '+51 908 553 032';
 }
+
+export function getContactUrl(options?: { service?: ServiceWhatsAppSlug; plan?: ServicePlanKey }) {
+  const params = new URLSearchParams();
+  if (options?.service) params.set('servicio', options.service);
+  if (options?.plan) params.set('plan', options.plan);
+  const query = params.toString();
+  return query ? (`/contact?${query}` as const) : '/contact';
+}

@@ -2,9 +2,11 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Check, ChevronLeft, ChevronRight } from 'lucide-react';
+import { useLocale } from 'next-intl';
 import { MaskUpButton } from '@/components/ui/mask-up-button';
 import { SERVICE_TEAL } from '@/lib/service-brand';
-import { getServicePlanWhatsAppUrl, type ServiceWhatsAppSlug } from '@/lib/site-config';
+import { formatPricingDual } from '@/lib/pricing-currency';
+import { getContactUrl, type ServiceWhatsAppSlug } from '@/lib/site-config';
 import { cn } from '@/lib/utils';
 
 const TIERS = ['pro', 'premium', 'pointers'] as const;
@@ -35,23 +37,25 @@ function PlanCard({
   meta,
   plan,
   ctaLabel,
-  whatsappUrl,
+  dualPrice,
+  contactUrl,
   interactive
 }: {
   tier: PricingTierKey;
   meta: PricingTierMeta;
   plan: PricingTierData;
   ctaLabel: string;
-  whatsappUrl: string;
+  dualPrice: { usd: string; pen: string } | null;
+  contactUrl: string;
   interactive?: boolean;
 }) {
   const featured = tier === 'pointers';
 
   return (
     <article
-      aria-label={`${meta.name} — ${plan.price}`}
+      aria-label={`${meta.name} — ${dualPrice?.usd ?? plan.price}`}
       className={cn(
-        'relative flex h-full w-full min-w-0 flex-col rounded-2xl border p-5 text-left shadow-sm sm:rounded-3xl sm:p-6 md:p-8',
+        'relative flex h-full w-full min-w-0 flex-col rounded-2xl border p-5 text-left shadow-sm sm:rounded-3xl sm:p-6 md:p-6 lg:p-7',
         'transition-all duration-500 ease-in-out',
         interactive && 'hover:-translate-y-2 hover:shadow-xl',
         featured
@@ -76,34 +80,53 @@ function PlanCard({
         </p>
         <p
           className={cn(
-            'mt-4 font-display text-2xl font-bold tracking-tight sm:mt-5 sm:text-3xl md:text-4xl',
+            'mt-3 font-display text-lg font-bold leading-tight tracking-tight sm:mt-4 sm:text-xl md:text-2xl lg:text-[1.65rem]',
             featured ? 'text-white' : 'text-gray-900'
           )}
         >
-          {plan.price}
+          {dualPrice?.usd ?? plan.price}
         </p>
+        {dualPrice ? (
+          <p className={cn('mt-1 text-sm font-medium sm:text-base', featured ? 'text-white/75' : 'text-muted-foreground')}>
+            {dualPrice.pen}
+          </p>
+        ) : null}
       </div>
 
-      <div className="mt-3 flex flex-1 flex-col sm:mt-4">
-        <p className={cn('text-sm leading-relaxed', featured ? 'text-white/85' : 'text-muted-foreground')}>
-          {plan.description}
-        </p>
+      <div className="mt-3 flex min-h-0 flex-1 flex-col sm:mt-4">
+        {plan.description ? (
+          <p className={cn('text-sm leading-relaxed', featured ? 'text-white/85' : 'text-muted-foreground')}>
+            {plan.description}
+          </p>
+        ) : null}
 
-        <ul className="mt-5 flex flex-col gap-2 sm:mt-6 sm:gap-2.5">
-          {plan.features.map((feature) => (
-            <li key={feature} className="flex items-start gap-2 text-sm sm:gap-2.5">
+        <ul
+          className={cn(
+            'flex flex-col gap-2.5 sm:gap-3',
+            plan.description ? 'mt-4 sm:mt-5' : 'mt-1'
+          )}
+        >
+          {plan.features.map((feature, index) => (
+            <li key={`${tier}-${index}`} className="flex items-start gap-2.5 sm:gap-3">
               <Check
                 className={cn('mt-0.5 h-4 w-4 shrink-0', featured ? 'text-white' : 'text-[#39B8AD]')}
                 style={featured ? undefined : { color: SERVICE_TEAL }}
                 aria-hidden
               />
-              <span className={featured ? 'text-white/90' : 'text-gray-700'}>{feature}</span>
+              <span
+                className={cn(
+                  'text-xs leading-snug sm:text-sm sm:leading-relaxed',
+                  featured ? 'text-white/90' : 'text-gray-700'
+                )}
+              >
+                {feature}
+              </span>
             </li>
           ))}
         </ul>
 
-        <div className="mt-6 w-full sm:mt-8">
-          <MaskUpButton href={whatsappUrl} label={ctaLabel} className="block w-full sm:inline-block sm:w-auto" />
+        <div className="mt-auto w-full pt-6 sm:pt-8">
+          <MaskUpButton href={contactUrl} label={ctaLabel} className="block w-full sm:inline-block sm:w-auto" />
         </div>
       </div>
     </article>
@@ -117,9 +140,15 @@ export function ServicePricingCarousel({
   ctaLabel,
   customNote
 }: ServicePricingCarouselProps) {
+  const locale = useLocale() as 'es' | 'en';
   const [activeIndex, setActiveIndex] = useState(1);
   const scrollRef = useRef<HTMLDivElement>(null);
   const slideRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  const dualPriceFor = useCallback(
+    (priceString: string) => formatPricingDual(priceString, locale),
+    [locale]
+  );
 
   const goTo = useCallback((index: number) => {
     const next = Math.max(0, Math.min(TIERS.length - 1, index));
@@ -173,7 +202,13 @@ export function ServicePricingCarousel({
   }, []);
 
   return (
-    <div className="mt-8 sm:mt-10 md:mt-14">
+      <div className="mt-8 sm:mt-10 md:mt-14">
+      <p className="mb-6 text-center text-xs text-muted-foreground sm:mb-8 sm:text-sm">
+        {locale === 'es'
+          ? 'Precios base en USD con equivalente en soles (tipo de cambio referencial × 3.4, redondeo a S/ 50).'
+          : 'Base prices in USD with PEN equivalent (reference rate × 3.4, rounded to S/ 50).'}
+      </p>
+
       {/* Mobile: slider */}
       <div className="md:hidden">
         <div
@@ -187,14 +222,15 @@ export function ServicePricingCarousel({
               ref={(el) => {
                 slideRefs.current[i] = el;
               }}
-              className="w-[min(88vw,360px)] shrink-0 snap-center transition-all duration-500 ease-in-out"
+              className="w-[min(92vw,400px)] shrink-0 snap-center transition-all duration-500 ease-in-out"
             >
               <PlanCard
                 tier={tier}
                 meta={tierMeta[tier]}
                 plan={pricing[tier]}
                 ctaLabel={ctaLabel}
-                whatsappUrl={getServicePlanWhatsAppUrl(slug, tier)}
+                contactUrl={getContactUrl({ service: slug, plan: tier })}
+                dualPrice={dualPriceFor(pricing[tier].price)}
               />
             </div>
           ))}
@@ -251,7 +287,8 @@ export function ServicePricingCarousel({
             meta={tierMeta[tier]}
             plan={pricing[tier]}
             ctaLabel={ctaLabel}
-            whatsappUrl={getServicePlanWhatsAppUrl(slug, tier)}
+            contactUrl={getContactUrl({ service: slug, plan: tier })}
+            dualPrice={dualPriceFor(pricing[tier].price)}
             interactive
           />
         ))}

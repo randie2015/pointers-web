@@ -52,6 +52,15 @@ export default async function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL(localeAdminMatch[2], request.url));
   }
 
+  if (pathname === '/contacto' || pathname === '/contacto/') {
+    return NextResponse.redirect(new URL('/es/contact', request.url));
+  }
+
+  const localizedContactoMatch = pathname.match(/^\/(es|en)\/contacto\/?$/);
+  if (localizedContactoMatch) {
+    return NextResponse.redirect(new URL(`/${localizedContactoMatch[1]}/contact`, request.url));
+  }
+
   if (pathname.startsWith('/admin')) {
     if (pathname === '/admin/login') {
       const session = await verifyAdminSession(request.cookies.get(SESSION_COOKIE)?.value);

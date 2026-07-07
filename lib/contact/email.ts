@@ -22,7 +22,6 @@ export async function sendContactEmail(data: ContactFormData, meta: RequestMetad
     from,
     to,
     bcc,
-    replyTo: data.email,
     subject: formatContactSubject(data),
     text: formatContactPlainText(data, meta),
     html: formatContactHtml(data, meta)

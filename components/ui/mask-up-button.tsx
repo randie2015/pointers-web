@@ -6,14 +6,12 @@ import type { AppRoute } from '@/lib/navigation';
 import { cn } from '@/lib/utils';
 import type { ReactNode } from 'react';
 
+/** Turquesa Pointers — hsl(174 58% 46%) / #39B8AD */
+export const POINTERS_TEAL = '#39B8AD';
+
 const SIZES = {
   default: { row: '3rem', px: 'px-6' },
   compact: { row: '2.5rem', px: 'px-5' }
-} as const;
-
-const TONES = {
-  teal: '#39B8AD',
-  brand: '#BC2656'
 } as const;
 
 const maskVariants = {
@@ -32,8 +30,6 @@ type BaseProps = {
   label: string;
   className?: string;
   size?: keyof typeof SIZES;
-  tone?: keyof typeof TONES;
-  variant?: 'solid' | 'light';
   onClick?: () => void;
   hideSlide?: boolean;
   disabled?: boolean;
@@ -56,28 +52,19 @@ function MaskUpFace({
   row,
   px,
   hideSlide,
-  disabled,
-  tone = 'teal',
-  variant = 'light'
+  disabled
 }: {
   label: string;
   row: string;
   px: string;
   hideSlide?: boolean;
   disabled?: boolean;
-  tone?: keyof typeof TONES;
-  variant?: 'solid' | 'light';
 }) {
-  const accent = TONES[tone];
-  const isLight = variant === 'light';
   const faceClass = cn(
-    'relative block overflow-hidden rounded-full text-sm font-semibold mobile-btn-surface',
-    isLight
-      ? 'border border-[#39B8AD]/20 bg-white text-[#39B8AD] shadow-md shadow-black/[0.06]'
-      : 'text-white',
+    'cta-button relative block overflow-hidden rounded-full text-sm font-semibold mobile-btn-surface',
     disabled && 'opacity-70'
   );
-  const faceStyle = isLight ? { height: row } : { height: row, backgroundColor: accent };
+  const faceStyle = { height: row };
 
   if (hideSlide) {
     return (
@@ -188,8 +175,6 @@ export function MaskUpButton(props: MaskUpButtonProps) {
     label,
     className = '',
     size = 'default',
-    tone = 'teal',
-    variant = 'light',
     onClick,
     hideSlide = false,
     disabled = false
@@ -206,17 +191,14 @@ export function MaskUpButton(props: MaskUpButtonProps) {
       onClick={onClick}
       disabled={disabled}
       label={label}
-      className={cn('touch-press', className.includes('w-full') ? 'block w-full' : 'inline-block', className)}
+      className={cn(
+        'group touch-press',
+        className.includes('w-full') ? 'block w-full' : 'inline-block',
+        disabled && 'pointer-events-none',
+        className
+      )}
     >
-      <MaskUpFace
-        label={label}
-        row={row}
-        px={px}
-        hideSlide={hideSlide}
-        disabled={disabled}
-        tone={tone}
-        variant={variant}
-      />
+      <MaskUpFace label={label} row={row} px={px} hideSlide={hideSlide} disabled={disabled} />
     </Wrapper>
   );
 }
