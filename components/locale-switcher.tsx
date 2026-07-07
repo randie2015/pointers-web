@@ -1,8 +1,7 @@
 'use client';
 
 import { useLocale } from 'next-intl';
-import { usePathname, useRouter } from '@/i18n/routing';
-import { startTransition } from 'react';
+import { getPathname, usePathname } from '@/i18n/routing';
 import { cn } from '@/lib/utils';
 import type { AppLocale } from '@/i18n/routing';
 
@@ -18,20 +17,17 @@ function persistLocale(locale: AppLocale) {
 
 export function LocaleSwitcher({ className, onSwitch }: LocaleSwitcherProps) {
   const locale = useLocale() as AppLocale;
-  const router = useRouter();
   const pathname = usePathname();
   const otherLocale: AppLocale = locale === 'es' ? 'en' : 'es';
 
   const handleSwitch = () => {
     if (otherLocale === locale) return;
+
     persistLocale(otherLocale);
-
-    startTransition(() => {
-      router.replace(pathname, { locale: otherLocale });
-      router.refresh();
-    });
-
     onSwitch?.();
+
+    const nextPath = getPathname({ href: pathname, locale: otherLocale });
+    window.location.assign(nextPath);
   };
 
   return (

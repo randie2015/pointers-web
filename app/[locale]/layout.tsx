@@ -57,7 +57,7 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} className={inter.variable}>
       <body>
-        <ClientIntlProvider initialLocale={locale as 'es' | 'en'}>
+        <ClientIntlProvider key={locale} locale={locale as 'es' | 'en'}>
           <SiteParticlesLayer />
           <div className="site-content-layer">
             <HashScrollHandler />
