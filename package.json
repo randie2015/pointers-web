@@ -8,10 +8,12 @@
     "start": "next start",
     "lint": "next lint",
     "generate:qr": "node scripts/generate-qr.cjs",
-    "generate:favicons": "node scripts/generate-favicons.cjs"
+    "generate:favicons": "node scripts/generate-favicons.cjs",
+    "seed:blog": "node scripts/seed-blog-supabase.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.4.0",
+    "@supabase/supabase-js": "^2.110.1",
     "clsx": "^2.1.1",
     "framer-motion": "^11.11.17",
     "lucide-react": "^0.460.0",

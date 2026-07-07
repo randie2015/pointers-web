@@ -1,7 +1,13 @@
+import { revalidatePath } from 'next/cache';
 import { NextResponse } from 'next/server';
 import { verifySessionToken } from '@/lib/auth/session';
 import { deletePost, getPostById, updatePost } from '@/lib/blog/store';
 import type { UpdateBlogPostInput } from '@/lib/blog/types';
+
+function revalidateBlogPages() {
+  revalidatePath('/es/blog');
+  revalidatePath('/en/blog');
+}
 
 type RouteContext = { params: Promise<{ id: string }> };
 
@@ -42,6 +48,7 @@ export async function PUT(request: Request, { params }: RouteContext) {
     return NextResponse.json({ error: 'Artículo no encontrado.' }, { status: 404 });
   }
 
+  revalidateBlogPages();
   return NextResponse.json(post);
 }
 
@@ -55,5 +62,6 @@ export async function DELETE(request: Request, { params }: RouteContext) {
     return NextResponse.json({ error: 'Artículo no encontrado.' }, { status: 404 });
   }
 
+  revalidateBlogPages();
   return NextResponse.json({ ok: true });
 }

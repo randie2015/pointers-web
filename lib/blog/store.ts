@@ -1,20 +1,31 @@
 /**
  * Blog persistence layer.
  *
- * Local dev: reads/writes `data/blog-posts.json`.
- * Serverless (Vercel): falls back to in-memory storage (resets on cold start).
- *
- * To connect a real database, replace the read/write helpers below with your
- * Prisma / Supabase / MongoDB client calls. Keep the exported function signatures.
+ * Uses Supabase when NEXT_PUBLIC_SUPABASE_URL + SUPABASE_SECRET_KEY are set.
+ * Falls back to data/blog-posts.json for local dev without Supabase.
  */
 
 import { promises as fs } from 'fs';
 import path from 'path';
 import { randomUUID } from 'crypto';
-import type { BlogPost, CreateBlogPostInput, UpdateBlogPostInput } from './types';
+import { createAdminClient, isSupabaseConfigured } from '@/lib/supabase/server';
+import type { BlogPost, CreateBlogPostInput, PostStatus, UpdateBlogPostInput } from './types';
 import { excerptFromContent, slugify } from './utils';
 
 const DATA_FILE = path.join(process.cwd(), 'data', 'blog-posts.json');
+
+type BlogPostRow = {
+  id: string;
+  slug: string;
+  title: string;
+  excerpt: string;
+  content: string;
+  tag: string;
+  status: PostStatus;
+  published_at: string;
+  created_at: string;
+  updated_at: string;
+};
 
 const SEED_POSTS: BlogPost[] = [
   {
@@ -63,7 +74,37 @@ const SEED_POSTS: BlogPost[] = [
 
 let memoryStore: BlogPost[] | null = null;
 
-async function readPosts(): Promise<BlogPost[]> {
+function rowToPost(row: BlogPostRow): BlogPost {
+  return {
+    id: row.id,
+    slug: row.slug,
+    title: row.title,
+    excerpt: row.excerpt,
+    content: row.content,
+    tag: row.tag,
+    status: row.status,
+    publishedAt: row.published_at,
+    createdAt: row.created_at,
+    updatedAt: row.updated_at
+  };
+}
+
+function postToRow(post: BlogPost) {
+  return {
+    id: post.id,
+    slug: post.slug,
+    title: post.title,
+    excerpt: post.excerpt,
+    content: post.content,
+    tag: post.tag,
+    status: post.status,
+    published_at: post.publishedAt,
+    created_at: post.createdAt,
+    updated_at: post.updatedAt
+  };
+}
+
+async function readPostsFromFile(): Promise<BlogPost[]> {
   if (memoryStore) return memoryStore;
 
   try {
@@ -73,12 +114,12 @@ async function readPosts(): Promise<BlogPost[]> {
     return parsed;
   } catch {
     memoryStore = [...SEED_POSTS];
-    await writePosts(memoryStore);
+    await writePostsToFile(memoryStore);
     return memoryStore;
   }
 }
 
-async function writePosts(posts: BlogPost[]) {
+async function writePostsToFile(posts: BlogPost[]) {
   memoryStore = posts;
 
   try {
@@ -89,7 +130,37 @@ async function writePosts(posts: BlogPost[]) {
   }
 }
 
-function uniqueSlug(base: string, posts: BlogPost[], excludeId?: string) {
+async function readPostsFromSupabase(): Promise<BlogPost[]> {
+  const supabase = createAdminClient();
+  const { data, error } = await supabase
+    .from('blog_posts')
+    .select('*')
+    .order('updated_at', { ascending: false });
+
+  if (error) {
+    throw new Error(`Supabase read failed: ${error.message}`);
+  }
+
+  return (data as BlogPostRow[]).map(rowToPost);
+}
+
+async function readPosts(): Promise<BlogPost[]> {
+  if (isSupabaseConfigured()) {
+    return readPostsFromSupabase();
+  }
+
+  return readPostsFromFile();
+}
+
+async function writePosts(posts: BlogPost[]) {
+  if (isSupabaseConfigured()) {
+    return;
+  }
+
+  await writePostsToFile(posts);
+}
+
+async function uniqueSlug(base: string, posts: BlogPost[], excludeId?: string) {
   let slug = base;
   let counter = 1;
 
@@ -114,28 +185,54 @@ export async function getPublishedPosts() {
 }
 
 export async function getPostById(id: string) {
-  const posts = await readPosts();
+  if (isSupabaseConfigured()) {
+    const supabase = createAdminClient();
+    const { data, error } = await supabase.from('blog_posts').select('*').eq('id', id).maybeSingle();
+
+    if (error) {
+      throw new Error(`Supabase read failed: ${error.message}`);
+    }
+
+    return data ? rowToPost(data as BlogPostRow) : null;
+  }
+
+  const posts = await readPostsFromFile();
   return posts.find((post) => post.id === id) ?? null;
 }
 
 export async function createPost(input: CreateBlogPostInput) {
-  const posts = await readPosts();
   const now = new Date().toISOString();
+  const posts = await readPosts();
   const baseSlug = slugify(input.title) || `post-${Date.now()}`;
   const excerpt = input.excerpt?.trim() || excerptFromContent(input.content);
 
   const post: BlogPost = {
     id: randomUUID(),
-    slug: uniqueSlug(baseSlug, posts),
+    slug: await uniqueSlug(baseSlug, posts),
     title: input.title.trim(),
     excerpt,
     content: input.content,
     tag: input.tag?.trim() || 'General',
     status: input.status ?? 'draft',
-    publishedAt: input.status === 'published' ? now : now,
+    publishedAt: now,
     createdAt: now,
     updatedAt: now
   };
+
+  if (isSupabaseConfigured()) {
+    const supabase = createAdminClient();
+    const { data, error } = await supabase
+      .from('blog_posts')
+      .insert(postToRow(post))
+      .select('*')
+      .single();
+
+    if (error) {
+      throw new Error(`Supabase create failed: ${error.message}`);
+    }
+
+    return rowToPost(data as BlogPostRow);
+  }
 
   posts.unshift(post);
   await writePosts(posts);
@@ -161,7 +258,7 @@ export async function updatePost(id: string, input: UpdateBlogPostInput) {
     tag: input.tag?.trim() ?? current.tag,
     slug:
       input.title !== undefined
-        ? uniqueSlug(slugify(nextTitle) || current.slug, posts, id)
+        ? await uniqueSlug(slugify(nextTitle) || current.slug, posts, id)
         : current.slug,
     status: input.status ?? current.status,
     updatedAt: now,
@@ -169,13 +266,40 @@ export async function updatePost(id: string, input: UpdateBlogPostInput) {
       input.status === 'published' && current.status !== 'published' ? now : current.publishedAt
   };
 
+  if (isSupabaseConfigured()) {
+    const supabase = createAdminClient();
+    const { data, error } = await supabase
+      .from('blog_posts')
+      .update(postToRow(updated))
+      .eq('id', id)
+      .select('*')
+      .maybeSingle();
+
+    if (error) {
+      throw new Error(`Supabase update failed: ${error.message}`);
+    }
+
+    return data ? rowToPost(data as BlogPostRow) : null;
+  }
+
   posts[index] = updated;
   await writePosts(posts);
   return updated;
 }
 
 export async function deletePost(id: string) {
-  const posts = await readPosts();
+  if (isSupabaseConfigured()) {
+    const supabase = createAdminClient();
+    const { data, error } = await supabase.from('blog_posts').delete().eq('id', id).select('id');
+
+    if (error) {
+      throw new Error(`Supabase delete failed: ${error.message}`);
+    }
+
+    return (data?.length ?? 0) > 0;
+  }
+
+  const posts = await readPostsFromFile();
   const next = posts.filter((post) => post.id !== id);
   if (next.length === posts.length) return false;
 

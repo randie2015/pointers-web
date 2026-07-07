@@ -5,6 +5,7 @@ import { Loader2, Pencil, Plus, RefreshCw, Trash2 } from 'lucide-react';
 import type { BlogPost } from '@/lib/blog/types';
 import { formatPostDate } from '@/lib/blog/utils';
 import { BlogFormModal } from '@/components/admin/blog-form-modal';
+import { BlogAdmin } from '@/components/admin/blog-admin';
 import { DeleteConfirmDialog } from '@/components/admin/delete-confirm-dialog';
 
 export function BlogManager() {
@@ -12,6 +13,7 @@ export function BlogManager() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [modalOpen, setModalOpen] = useState(false);
+  const [showCreateForm, setShowCreateForm] = useState(false);
   const [editingPost, setEditingPost] = useState<BlogPost | null>(null);
   const [deleteTarget, setDeleteTarget] = useState<BlogPost | null>(null);
   const [deleting, setDeleting] = useState(false);
@@ -38,7 +40,7 @@ export function BlogManager() {
 
   function openCreate() {
     setEditingPost(null);
-    setModalOpen(true);
+    setShowCreateForm(true);
   }
 
   function openEdit(post: BlogPost) {
@@ -60,6 +62,18 @@ export function BlogManager() {
     } finally {
       setDeleting(false);
     }
+  }
+
+  if (showCreateForm) {
+    return (
+      <BlogAdmin
+        onCancel={() => setShowCreateForm(false)}
+        onPublished={() => {
+          setShowCreateForm(false);
+          void loadPosts();
+        }}
+      />
+    );
   }
 
   return (

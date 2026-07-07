@@ -1,7 +1,13 @@
+import { revalidatePath } from 'next/cache';
 import { NextResponse } from 'next/server';
 import { verifySessionToken } from '@/lib/auth/session';
 import { createPost, getAllPosts } from '@/lib/blog/store';
 import type { CreateBlogPostInput } from '@/lib/blog/types';
+
+function revalidateBlogPages() {
+  revalidatePath('/es/blog');
+  revalidatePath('/en/blog');
+}
 
 function getSessionToken(request: Request) {
   return request.headers.get('cookie')?.match(/admin_session=([^;]+)/)?.[1];
@@ -28,5 +34,6 @@ export async function POST(request: Request) {
   }
 
   const post = await createPost(body);
+  revalidateBlogPages();
   return NextResponse.json(post, { status: 201 });
 }
