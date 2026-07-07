@@ -6,6 +6,8 @@ import { siteIconMetadata } from '@/lib/site-icons';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' });
 
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title: 'Admin | Pointers',
   robots: { index: false, follow: false },

@@ -138,6 +138,15 @@ async function readPostsFromSupabase(): Promise<BlogPost[]> {
     .order('updated_at', { ascending: false });
 
   if (error) {
+    const missingTable =
+      error.code === 'PGRST205' ||
+      error.message.includes('blog_posts') ||
+      error.message.includes('schema cache');
+
+    if (missingTable) {
+      return readPostsFromFile();
+    }
+
     throw new Error(`Supabase read failed: ${error.message}`);
   }
 
