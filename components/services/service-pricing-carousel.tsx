@@ -2,7 +2,7 @@
 
 import { useMemo } from 'react';
 import { Check } from 'lucide-react';
-import { useLocale } from 'next-intl';
+import { useInstantLocale } from '@/i18n/client-intl-provider';
 import { MaskUpButton } from '@/components/ui/mask-up-button';
 import { SERVICE_MAGENTA, SERVICE_TEAL } from '@/lib/service-brand';
 import { formatPricingDual } from '@/lib/pricing-currency';
@@ -130,7 +130,7 @@ export function ServicePricingCarousel({
   ctaLabel,
   customNote
 }: ServicePricingCarouselProps) {
-  const locale = useLocale() as 'es' | 'en';
+  const { locale } = useInstantLocale();
 
   const dualPriceFor = useMemo(
     () => (priceString: string) => formatPricingDual(priceString, locale),
