@@ -8,9 +8,9 @@ import { SectionHeader } from '@/components/ui/section-header';
 import { MaskUpButton } from '@/components/ui/mask-up-button';
 import { ServicePricingCarousel, type PricingTierKey } from '@/components/services/service-pricing-carousel';
 import { FaqSection } from '@/components/sections/faq-section';
-import { MobileGradientBg } from '@/components/ui/mobile-gradient-bg';
+import { ServiceClosingGradient } from '@/components/services/service-closing-gradient';
 import { WhiteParticlesSection } from '@/components/hero/white-particles-section';
-import { SERVICE_GRADIENT, SERVICE_MAGENTA, SERVICE_PURPLE, SERVICE_TEAL } from '@/lib/service-brand';
+import { SERVICE_MAGENTA, SERVICE_PURPLE, SERVICE_TEAL } from '@/lib/service-brand';
 import { SERVICE_DELIVERABLE_ICONS, type ServicePageContent } from '@/lib/service-page';
 import type { ServiceSlug } from '@/lib/services';
 import { getContactUrl } from '@/lib/site-config';
@@ -186,9 +186,19 @@ export function ServicePageTemplate({ slug }: ServicePageTemplateProps) {
         items={content.faq}
       />
 
-      {/* 7. CTA final único */}
-      <section className={`relative overflow-hidden py-14 sm:py-16 md:py-24 ${SERVICE_GRADIENT}`}>
-        <MobileGradientBg className="opacity-70 mix-blend-soft-light md:hidden" />
+      {/* 7. CTA final único — magenta / turquesa dinámico */}
+      <section
+        className="relative overflow-hidden py-14 sm:py-16 md:py-24"
+        style={{ backgroundColor: SERVICE_MAGENTA }}
+      >
+        <ServiceClosingGradient />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-40"
+          style={{
+            background: `radial-gradient(ellipse 80% 60% at 20% 80%, ${SERVICE_TEAL}55 0%, transparent 55%), radial-gradient(ellipse 70% 50% at 85% 20%, ${SERVICE_PURPLE}44 0%, transparent 50%)`
+          }}
+        />
         <div className="container-page relative z-10">
           <Reveal>
             <div className="mx-auto max-w-3xl px-2 text-center sm:px-0">

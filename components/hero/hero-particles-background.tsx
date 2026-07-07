@@ -18,11 +18,13 @@ import { cn } from '@/lib/utils';
 type HeroParticlesBackgroundProps = {
   className?: string;
   id?: string;
+  preset?: 'hero' | 'ambient';
 };
 
 export function HeroParticlesBackground({
   className,
-  id = 'hero-particles'
+  id = 'hero-particles',
+  preset = 'ambient'
 }: HeroParticlesBackgroundProps) {
   const reducedMotion = useReducedMotion();
   const isMobile = useMediaQuery('(max-width: 767px)');
@@ -31,7 +33,7 @@ export function HeroParticlesBackground({
   const [gyroEnabled, setGyroEnabled] = useState(false);
   const [gyroPermissionRequested, setGyroPermissionRequested] = useState(false);
 
-  const options = useMemo(() => createHeroParticlesOptions(isMobile), [isMobile]);
+  const options = useMemo(() => createHeroParticlesOptions(isMobile, preset), [isMobile, preset]);
 
   const particlesInit = useCallback(async (engine: Engine) => {
     await loadHeroParticlesEngine(engine);
@@ -48,9 +50,12 @@ export function HeroParticlesBackground({
         !isEnergySaverActive() &&
         !reducedMotion;
 
-      cleanupRef.current = bindHeroParticlePhysics(container, { enableGyro });
+      cleanupRef.current = bindHeroParticlePhysics(container, {
+        enableGyro,
+        mode: preset
+      });
     },
-    [gyroEnabled, isMobile, reducedMotion]
+    [gyroEnabled, isMobile, preset, reducedMotion]
   );
 
   const particlesLoaded = useCallback(
@@ -149,7 +154,7 @@ export function HeroParticlesBackground({
     <Particles
       id={id}
       key={isMobile ? 'hero-particles-mobile' : 'hero-particles-desktop'}
-      className={cn('absolute inset-0 z-0 touch-none', className)}
+      className={cn('absolute inset-0 touch-none', preset === 'hero' ? 'z-[3]' : 'z-0', className)}
       init={particlesInit}
       loaded={particlesLoaded}
       options={options}

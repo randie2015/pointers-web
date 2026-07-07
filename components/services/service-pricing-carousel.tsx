@@ -4,7 +4,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { Check, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useLocale } from 'next-intl';
 import { MaskUpButton } from '@/components/ui/mask-up-button';
-import { SERVICE_TEAL } from '@/lib/service-brand';
+import { SERVICE_MAGENTA, SERVICE_TEAL } from '@/lib/service-brand';
 import { formatPricingDual } from '@/lib/pricing-currency';
 import { getContactUrl, type ServiceWhatsAppSlug } from '@/lib/site-config';
 import { cn } from '@/lib/utils';
@@ -54,12 +54,13 @@ function PlanCard({
   return (
     <article
       aria-label={`${meta.name} — ${dualPrice?.usd ?? plan.price}`}
+      style={featured ? { backgroundColor: SERVICE_MAGENTA, borderColor: SERVICE_MAGENTA, boxShadow: `0 10px 40px ${SERVICE_MAGENTA}4d` } : undefined}
       className={cn(
         'relative flex h-full w-full min-w-0 flex-col rounded-2xl border p-5 text-left shadow-sm sm:rounded-3xl sm:p-6 md:p-6 lg:p-7',
         'transition-all duration-500 ease-in-out',
         interactive && 'hover:-translate-y-2 hover:shadow-xl',
         featured
-          ? 'border-[#5E549D] bg-[#5E549D] text-white shadow-lg shadow-[#5E549D]/25'
+          ? 'text-white shadow-lg'
           : cn(
               'border-border/70 bg-white',
               interactive && 'hover:border-[#5E549D]/40'
