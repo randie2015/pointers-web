@@ -1,7 +1,7 @@
 'use client';
 
-import { useLocale } from 'next-intl';
 import { getPathname, usePathname } from '@/i18n/routing';
+import { useLocale } from 'next-intl';
 import { cn } from '@/lib/utils';
 import type { AppLocale } from '@/i18n/routing';
 
@@ -10,11 +10,6 @@ type LocaleSwitcherProps = {
   onSwitch?: () => void;
 };
 
-function persistLocale(locale: AppLocale) {
-  document.cookie = `NEXT_LOCALE=${locale};path=/;max-age=31536000;SameSite=Lax`;
-  document.documentElement.lang = locale;
-}
-
 export function LocaleSwitcher({ className, onSwitch }: LocaleSwitcherProps) {
   const locale = useLocale() as AppLocale;
   const pathname = usePathname();
@@ -22,12 +17,8 @@ export function LocaleSwitcher({ className, onSwitch }: LocaleSwitcherProps) {
 
   const handleSwitch = () => {
     if (otherLocale === locale) return;
-
-    persistLocale(otherLocale);
     onSwitch?.();
-
-    const nextPath = getPathname({ href: pathname, locale: otherLocale });
-    window.location.assign(nextPath);
+    window.location.assign(getPathname({ href: pathname, locale: otherLocale }));
   };
 
   return (

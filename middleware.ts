@@ -82,7 +82,10 @@ export default async function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  return intlMiddleware(request);
+  const response = intlMiddleware(request);
+  response.headers.set('Cache-Control', 'private, no-cache, no-store, must-revalidate');
+  response.headers.set('Vary', 'Accept-Language');
+  return response;
 }
 
 export const config = {

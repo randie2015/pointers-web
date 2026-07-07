@@ -18,5 +18,5 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
   const { locale } = await params;
   setRequestLocale(locale);
 
-  return <AboutPageContent />;
+  return <AboutPageContent key={locale} />;
 }
