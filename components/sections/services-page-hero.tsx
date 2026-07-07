@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl';
 import { Reveal } from '@/components/reveal';
 import { SectionBadge } from '@/components/ui/section-badge';
 import { MaskUpButton } from '@/components/ui/mask-up-button';
+import { getContactUrl } from '@/lib/site-config';
 import { SERVICE_PURPLE, SERVICE_TEAL } from '@/lib/service-brand';
 
 export function ServicesPageHero() {
@@ -22,7 +23,7 @@ export function ServicesPageHero() {
               {t('subtitle')}
             </p>
             <div className="mt-8 flex justify-center">
-              <MaskUpButton href="/contact" label={t('cta')} className="w-full max-w-sm sm:w-auto" />
+              <MaskUpButton href={getContactUrl()} label={t('cta')} className="w-full max-w-sm sm:w-auto" />
             </div>
           </div>
         </Reveal>

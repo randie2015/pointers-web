@@ -55,12 +55,16 @@ export function getWhatsAppDisplayNumber() {
   return process.env.NEXT_PUBLIC_WHATSAPP_DISPLAY ?? '+51 908 553 032';
 }
 
+/** Anchor id del bloque de formulario en /contact */
+export const CONTACT_FORM_SECTION_ID = 'formulario';
+
 export function getContactUrl(options?: { service?: ServiceWhatsAppSlug; plan?: ServicePlanKey }) {
   const params = new URLSearchParams();
   if (options?.service) params.set('servicio', options.service);
   if (options?.plan) params.set('plan', options.plan);
   const query = params.toString();
-  return query ? (`/contact?${query}` as const) : '/contact';
+  const base = query ? `/contact?${query}` : '/contact';
+  return `${base}#${CONTACT_FORM_SECTION_ID}`;
 }
 
 export function getContactEmail() {

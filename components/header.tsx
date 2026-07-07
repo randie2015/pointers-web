@@ -9,8 +9,9 @@ import { MAIN_ROUTES } from '@/lib/navigation';
 import { Menu, X } from 'lucide-react';
 import { HeaderLogo } from '@/components/header-logo';
 import { MaskUpButton } from '@/components/ui/mask-up-button';
+import { getContactUrl } from '@/lib/site-config';
 
-const PREFETCH_ROUTES = ['/', ...MAIN_ROUTES.map((r) => r.href)] as const;
+const PREFETCH_ROUTES = ['/', ...MAIN_ROUTES.map((r) => r.href.split('#')[0])] as const;
 
 export function Header() {
   const t = useTranslations('nav');
@@ -46,7 +47,7 @@ export function Header() {
           </nav>
           <div className="ml-4 flex items-center gap-3 border-l border-white/20 pl-4">
             <LocaleSwitcher />
-            <MaskUpButton href="/contact" label={t('cta')} size="compact" />
+            <MaskUpButton href={getContactUrl()} label={t('cta')} size="compact" />
           </div>
         </div>
 
@@ -78,7 +79,7 @@ export function Header() {
             ))}
             <div className="mt-3">
               <MaskUpButton
-                href="/contact"
+                href={getContactUrl()}
                 label={t('cta')}
                 size="compact"
                 onClick={() => setOpen(false)}

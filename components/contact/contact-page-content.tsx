@@ -76,7 +76,10 @@ export function ContactPageContent() {
         </Reveal>
 
         <Reveal delay={0.1}>
-          <div className="relative mx-auto mt-10 max-w-3xl overflow-hidden rounded-3xl px-6 py-8 shadow-lg shadow-[#5E549D]/20 sm:mt-12 sm:p-10 md:p-12">
+          <div
+            id="formulario"
+            className="relative mx-auto mt-10 max-w-3xl scroll-mt-28 overflow-hidden rounded-3xl px-6 py-8 shadow-lg shadow-[#5E549D]/20 sm:mt-12 sm:p-10 md:p-12"
+          >
             <VioletMagentaGradientBg />
             <div className="relative z-10">
               <h2 className="text-center font-display text-xl font-semibold text-white sm:text-2xl">

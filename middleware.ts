@@ -53,12 +53,14 @@ export default async function middleware(request: NextRequest) {
   }
 
   if (pathname === '/contacto' || pathname === '/contacto/') {
-    return NextResponse.redirect(new URL('/es/contact', request.url));
+    return NextResponse.redirect(new URL('/es/contact#formulario', request.url));
   }
 
   const localizedContactoMatch = pathname.match(/^\/(es|en)\/contacto\/?$/);
   if (localizedContactoMatch) {
-    return NextResponse.redirect(new URL(`/${localizedContactoMatch[1]}/contact`, request.url));
+    return NextResponse.redirect(
+      new URL(`/${localizedContactoMatch[1]}/contact#formulario`, request.url)
+    );
   }
 
   if (pathname.startsWith('/admin')) {
