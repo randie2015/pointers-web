@@ -4,6 +4,7 @@ import { FormEvent, useEffect, useState } from 'react';
 import { Loader2, X } from 'lucide-react';
 import type { BlogPost, PostStatus } from '@/lib/blog/types';
 import { RichTextEditor } from '@/components/admin/rich-text-editor';
+import { CmsBackButton } from '@/components/admin/cms-back-button';
 
 type BlogFormModalProps = {
   open: boolean;
@@ -111,7 +112,8 @@ export function BlogFormModal({ open, post, onClose, onSaved }: BlogFormModalPro
         </div>
 
         <form onSubmit={handleSubmit} className="flex min-h-0 flex-1 flex-col overflow-hidden">
-          <div className="flex-1 space-y-5 overflow-y-auto px-4 pb-6 pt-6 sm:px-6 sm:py-5 md:pt-5">
+          <div className="flex-1 space-y-5 overflow-y-auto px-4 pb-6 pt-4 sm:px-6 sm:py-5 md:pt-5">
+            <CmsBackButton label="Volver al listado" onClick={onClose} className="mb-2" />
             <label className="block">
               <span className="mb-2 block text-sm font-medium text-gray-700">Título</span>
               <input

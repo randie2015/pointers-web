@@ -362,6 +362,7 @@
     "readMore": "Read article",
     "empty": "No published articles yet.",
     "backToBlog": "Back to blog",
+    "newPost": "+ New post",
     "posts": [
       {
         "slug": "branding-that-connects",

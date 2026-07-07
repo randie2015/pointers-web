@@ -13,6 +13,7 @@ import { isPublishFormReady, validatePublishForm } from '@/lib/cms/validation';
 import { validateImageFile } from '@/lib/cms/upload-cover';
 import { slugify } from '@/lib/blog/utils';
 import { RichTextEditor } from '@/components/admin/rich-text-editor';
+import { CmsBackButton } from '@/components/admin/cms-back-button';
 import { ReviewStatusIndicator } from '@/components/admin/blog-admin/review-status-indicator';
 
 type BlogAdminProps = {
@@ -195,7 +196,14 @@ export function BlogAdmin({
 
   return (
     <section className="mx-auto w-full max-w-4xl">
-      <header className="mb-5 flex flex-col gap-3 sm:mb-6 sm:flex-row sm:items-start sm:justify-between">
+      <CmsBackButton
+        variant="dark"
+        label="Volver al listado"
+        onClick={onCancel}
+        href={onCancel ? undefined : '/admin/dashboard/blog'}
+      />
+
+      <header className="mb-5 sm:mb-6">
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#39B8AD] sm:text-sm">
             CMS · Blog
@@ -209,17 +217,6 @@ export function BlogAdmin({
               : 'Redacta tu artículo y envíalo a revisión del equipo editorial.'}
           </p>
         </div>
-
-        {onCancel ? (
-          <button
-            type="button"
-            onClick={onCancel}
-            className="inline-flex items-center justify-center gap-2 self-start rounded-xl border border-white/15 bg-black/30 px-4 py-2.5 text-sm font-medium text-white/80 transition hover:bg-white/10"
-          >
-            <X size={16} />
-            Volver
-          </button>
-        ) : null}
       </header>
 
       <div className="overflow-hidden rounded-2xl border border-white/10 bg-black/35 shadow-lg shadow-black/20 backdrop-blur-md">

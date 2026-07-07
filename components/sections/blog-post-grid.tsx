@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, Plus } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
 import type { PublicBlogPost } from '@/lib/cms/public-post';
@@ -12,9 +12,10 @@ import { SectionHeader } from '@/components/ui/section-header';
 
 type BlogPostGridProps = {
   posts: PublicBlogPost[];
+  showNewPostCta?: boolean;
 };
 
-export function BlogPostGrid({ posts }: BlogPostGridProps) {
+export function BlogPostGrid({ posts, showNewPostCta = false }: BlogPostGridProps) {
   const t = useTranslations('blog');
   const locale = useLocale();
 
@@ -26,7 +27,18 @@ export function BlogPostGrid({ posts }: BlogPostGridProps) {
         transition={{ duration: 0.7 }}
         className="mx-auto max-w-3xl"
       >
-        <SectionHeader eyebrow={t('eyebrow')} title={t('title')} subtitle={t('subtitle')} />
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+          <SectionHeader eyebrow={t('eyebrow')} title={t('title')} subtitle={t('subtitle')} />
+          {showNewPostCta ? (
+            <Link
+              href="/admin/dashboard/blog?create=1"
+              className="inline-flex shrink-0 items-center gap-2 self-start rounded-xl bg-brand px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:brightness-105"
+            >
+              <Plus size={16} aria-hidden />
+              {t('newPost')}
+            </Link>
+          ) : null}
+        </div>
       </motion.div>
 
       {posts.length === 0 ? (
@@ -60,10 +72,10 @@ export function BlogPostGrid({ posts }: BlogPostGridProps) {
                       {formatPostDate(post.publishedAt, locale)}
                     </time>
                   </div>
-                  <h2 className="mt-5 font-display text-xl md:text-2xl tracking-tight leading-snug group-hover:text-brand transition-colors">
+                  <h2 className="mt-5 font-display text-xl leading-snug tracking-tight transition-colors group-hover:text-brand md:text-2xl">
                     {post.title}
                   </h2>
-                  <p className="mt-3 flex-1 text-sm text-muted-foreground leading-relaxed">
+                  <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">
                     {post.excerpt}
                   </p>
                   <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-brand">

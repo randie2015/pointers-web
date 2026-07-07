@@ -1,6 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { ChevronDown, ChevronUp, Loader2, Pencil, Plus, RefreshCw, Trash2 } from 'lucide-react';
 import type { BlogPost } from '@/lib/blog/types';
 import { formatPostDate } from '@/lib/blog/utils';
@@ -53,6 +54,7 @@ function SortableHeader({
 }
 
 export function BlogManager() {
+  const searchParams = useSearchParams();
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -83,6 +85,12 @@ export function BlogManager() {
   useEffect(() => {
     void loadPosts();
   }, [loadPosts]);
+
+  useEffect(() => {
+    if (searchParams.get('create') === '1') {
+      setShowCreateForm(true);
+    }
+  }, [searchParams]);
 
   function handleSort(field: SortField) {
     if (sortField === field) {

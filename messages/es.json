@@ -229,6 +229,7 @@
     "readMore": "Leer artículo",
     "empty": "No hay artículos publicados aún.",
     "backToBlog": "Volver al blog",
+    "newPost": "+ Nueva entrada",
     "posts": [
       {
         "slug": "branding-que-conecta",
