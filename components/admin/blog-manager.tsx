@@ -1,12 +1,56 @@
 'use client';
 
-import { useCallback, useEffect, useState } from 'react';
-import { Loader2, Pencil, Plus, RefreshCw, Trash2 } from 'lucide-react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
+import { ChevronDown, ChevronUp, Loader2, Pencil, Plus, RefreshCw, Trash2 } from 'lucide-react';
 import type { BlogPost } from '@/lib/blog/types';
 import { formatPostDate } from '@/lib/blog/utils';
 import { BlogFormModal } from '@/components/admin/blog-form-modal';
 import { BlogAdmin } from '@/components/admin/blog-admin';
 import { DeleteConfirmDialog } from '@/components/admin/delete-confirm-dialog';
+
+type SortField = 'title' | 'date';
+type SortDirection = 'asc' | 'desc';
+
+function SortableHeader({
+  label,
+  field,
+  sortField,
+  sortDirection,
+  onSort
+}: {
+  label: string;
+  field: SortField;
+  sortField: SortField;
+  sortDirection: SortDirection;
+  onSort: (field: SortField) => void;
+}) {
+  const isActive = sortField === field;
+
+  return (
+    <th
+      className="cursor-pointer select-none px-6 py-4 font-semibold transition-colors hover:text-white/70"
+      onClick={() => onSort(field)}
+    >
+      <span className="relative inline-block pr-3.5">
+        {label}
+        <span className="pointer-events-none absolute -right-0.5 -top-1 flex flex-col items-center leading-none">
+          <ChevronUp
+            className={`h-3 w-3 ${
+              isActive && sortDirection === 'asc' ? 'text-white/80' : 'text-white/25'
+            }`}
+            strokeWidth={1.75}
+          />
+          <ChevronDown
+            className={`-mt-1 h-3 w-3 ${
+              isActive && sortDirection === 'desc' ? 'text-white/80' : 'text-white/25'
+            }`}
+            strokeWidth={1.75}
+          />
+        </span>
+      </span>
+    </th>
+  );
+}
 
 export function BlogManager() {
   const [posts, setPosts] = useState<BlogPost[]>([]);
@@ -17,6 +61,8 @@ export function BlogManager() {
   const [editingPost, setEditingPost] = useState<BlogPost | null>(null);
   const [deleteTarget, setDeleteTarget] = useState<BlogPost | null>(null);
   const [deleting, setDeleting] = useState(false);
+  const [sortField, setSortField] = useState<SortField>('date');
+  const [sortDirection, setSortDirection] = useState<SortDirection>('desc');
 
   const loadPosts = useCallback(async () => {
     setLoading(true);
@@ -37,6 +83,27 @@ export function BlogManager() {
   useEffect(() => {
     void loadPosts();
   }, [loadPosts]);
+
+  function handleSort(field: SortField) {
+    if (sortField === field) {
+      setSortDirection((current) => (current === 'asc' ? 'desc' : 'asc'));
+      return;
+    }
+
+    setSortField(field);
+    setSortDirection(field === 'title' ? 'asc' : 'desc');
+  }
+
+  const sortedPosts = useMemo(() => {
+    return [...posts].sort((a, b) => {
+      const comparison =
+        sortField === 'title'
+          ? a.title.localeCompare(b.title, 'es', { sensitivity: 'base' })
+          : new Date(a.publishedAt).getTime() - new Date(b.publishedAt).getTime();
+
+      return sortDirection === 'asc' ? comparison : -comparison;
+    });
+  }, [posts, sortField, sortDirection]);
 
   function openCreate() {
     setEditingPost(null);
@@ -126,22 +193,35 @@ export function BlogManager() {
             <table className="min-w-full text-left text-sm">
               <thead className="border-b border-white/10 bg-white/5 text-xs uppercase tracking-wide text-white/45">
                 <tr>
-                  <th className="px-6 py-4 font-semibold">Título</th>
-                  <th className="px-6 py-4 font-semibold">Fecha</th>
+                  <SortableHeader
+                    label="Título"
+                    field="title"
+                    sortField={sortField}
+                    sortDirection={sortDirection}
+                    onSort={handleSort}
+                  />
+                  <SortableHeader
+                    label="Fecha"
+                    field="date"
+                    sortField={sortField}
+                    sortDirection={sortDirection}
+                    onSort={handleSort}
+                  />
+                  <th className="px-6 py-4 font-semibold">Categoría</th>
                   <th className="px-6 py-4 font-semibold">Estado</th>
-                  <th className="px-6 py-4 font-semibold text-right">Acciones</th>
+                  <th className="px-6 py-4 text-right font-semibold">Acciones</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-white/10">
-                {posts.map((post) => (
+                {sortedPosts.map((post) => (
                   <tr key={post.id} className="transition hover:bg-white/5">
                     <td className="px-6 py-4">
                       <p className="font-medium text-white">{post.title}</p>
-                      <p className="mt-1 text-xs text-white/45">{post.tag}</p>
                     </td>
                     <td className="px-6 py-4 text-white/65">
                       {formatPostDate(post.publishedAt)}
                     </td>
+                    <td className="px-6 py-4 text-white/55">{post.tag || '—'}</td>
                     <td className="px-6 py-4">
                       {post.status === 'draft' ? (
                         <span className="inline-flex rounded-full bg-amber-500/20 px-2.5 py-1 text-xs font-semibold text-amber-300">
