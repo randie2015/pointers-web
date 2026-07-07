@@ -13,9 +13,14 @@ function unauthorized() {
   return NextResponse.json({ error: 'No autorizado.' }, { status: 401 });
 }
 
-function revalidateBlogPages() {
-  revalidatePath('/es/blog');
-  revalidatePath('/en/blog');
+function revalidateBlogPages(slug?: string) {
+  revalidatePath('/es/blog', 'layout');
+  revalidatePath('/en/blog', 'layout');
+
+  if (slug) {
+    revalidatePath(`/es/blog/${slug}`);
+    revalidatePath(`/en/blog/${slug}`);
+  }
 }
 
 function parseFormState(formData: FormData): BlogPostFormState {
@@ -51,7 +56,7 @@ export async function POST(request: Request) {
       imageFile
     });
 
-    revalidateBlogPages();
+    revalidateBlogPages(result.slug);
 
     return NextResponse.json(result, { status: 201 });
   } catch (error) {

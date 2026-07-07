@@ -44,7 +44,7 @@ export async function publishPost({ form, authorId, imageFile }: PublishPostInpu
       ...payload,
       image_url: imageUrl
     })
-    .select('id, status, reviewed_by')
+    .select('id, slug, status, reviewed_by')
     .single();
 
   if (error) {

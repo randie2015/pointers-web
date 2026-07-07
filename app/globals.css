@@ -115,4 +115,45 @@ body {
       0 2px 4px rgba(255, 255, 255, 0.5),
       0 3px 10px rgba(0, 0, 0, 0.18);
   }
+
+  .blog-content {
+    @apply text-base leading-relaxed text-foreground;
+  }
+
+  .blog-content h2 {
+    @apply mt-10 mb-4 font-display text-2xl tracking-tight md:text-3xl;
+  }
+
+  .blog-content h3 {
+    @apply mt-8 mb-3 font-display text-xl tracking-tight md:text-2xl;
+  }
+
+  .blog-content p {
+    @apply mt-4 text-muted-foreground;
+  }
+
+  .blog-content ul,
+  .blog-content ol {
+    @apply mt-4 space-y-2 pl-6 text-muted-foreground;
+  }
+
+  .blog-content ul {
+    @apply list-disc;
+  }
+
+  .blog-content ol {
+    @apply list-decimal;
+  }
+
+  .blog-content blockquote {
+    @apply mt-6 border-l-4 border-brand/40 pl-4 italic text-muted-foreground;
+  }
+
+  .blog-content a {
+    @apply font-medium text-brand underline-offset-2 hover:underline;
+  }
+
+  .blog-content strong {
+    @apply font-semibold text-foreground;
+  }
 }

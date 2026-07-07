@@ -1,5 +1,5 @@
 import { setRequestLocale, getTranslations } from 'next-intl/server';
-import { getPublishedPosts } from '@/lib/blog/store';
+import { getPublicPosts } from '@/lib/cms/posts-reader';
 import { BlogPostGrid } from '@/components/sections/blog-post-grid';
 
 export default async function BlogPage({ params }: { params: Promise<{ locale: string }> }) {
@@ -7,7 +7,7 @@ export default async function BlogPage({ params }: { params: Promise<{ locale: s
   setRequestLocale(locale);
 
   const t = await getTranslations({ locale, namespace: 'blog' });
-  const posts = await getPublishedPosts();
+  const posts = await getPublicPosts();
 
   return (
     <BlogPostGrid

@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
-import { getPublishedPosts } from '@/lib/blog/store';
+import { getPublicPosts } from '@/lib/cms/posts-reader';
 
 export async function GET() {
-  const posts = await getPublishedPosts();
+  const posts = await getPublicPosts();
   return NextResponse.json(posts);
 }
