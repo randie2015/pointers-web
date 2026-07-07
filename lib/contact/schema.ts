@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { isValidInternationalPhone } from './phone';
 
 export function createContactFormSchema(t: (key: string) => string) {
   return z.object({
@@ -9,7 +10,10 @@ export function createContactFormSchema(t: (key: string) => string) {
       .trim()
       .max(200)
       .refine((v) => v === '' || z.string().email().safeParse(v).success, t('errors.email')),
-    phone: z.string().trim().min(15, t('errors.phone')).max(30),
+    phone: z
+      .string()
+      .trim()
+      .refine(isValidInternationalPhone, t('errors.phone')),
     message: z.string().trim().min(15, t('errors.message')).max(5000)
   });
 }

@@ -1,7 +1,7 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { motion } from 'framer-motion';
 import { Loader2 } from 'lucide-react';
@@ -9,6 +9,7 @@ import { useTranslations, useLocale } from 'next-intl';
 import { cn } from '@/lib/utils';
 import { MaskUpButton } from '@/components/ui/mask-up-button';
 import { createContactFormSchema, type ContactFormData } from '@/lib/contact/schema';
+import { InternationalPhoneInput } from '@/components/contact/international-phone-input';
 import { isServiceSlug } from '@/lib/services';
 
 const inputClass =
@@ -60,6 +61,7 @@ export function ContactQualificationForm({ initialService, initialPlan }: Contac
 
   const {
     register,
+    control,
     handleSubmit,
     reset,
     formState: { errors, isValid }
@@ -156,14 +158,18 @@ export function ContactQualificationForm({ initialService, initialPlan }: Contac
       </Field>
 
       <Field label={t('phone')} required error={errors.phone?.message}>
-        <input
-          {...register('phone')}
-          type="tel"
-          autoComplete="tel"
-          inputMode="tel"
-          placeholder={t('placeholders.phone')}
-          className={inputClass}
-          disabled={isBusy || isDone}
+        <Controller
+          name="phone"
+          control={control}
+          render={({ field }) => (
+            <InternationalPhoneInput
+              value={field.value}
+              onChange={field.onChange}
+              onBlur={field.onBlur}
+              disabled={isBusy || isDone}
+              placeholder={t('placeholders.phone')}
+            />
+          )}
         />
       </Field>
 

@@ -300,7 +300,7 @@
     "errors": {
       "name": "Name must be at least 2 characters",
       "email": "Please enter a valid email address",
-      "phone": "Phone number must be at least 15 characters",
+      "phone": "Please enter a valid phone number",
       "message": "Message must be at least 15 characters"
     }
   },

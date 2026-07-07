@@ -167,7 +167,7 @@
     "errors": {
       "name": "El nombre debe tener al menos 2 caracteres",
       "email": "Ingresa un correo electrónico válido",
-      "phone": "El número debe tener al menos 15 caracteres",
+      "phone": "Ingresa un número de teléfono válido",
       "message": "El mensaje debe tener al menos 15 caracteres"
     }
   },
