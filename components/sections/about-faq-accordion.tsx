@@ -1,9 +1,9 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 
 type FaqItem = {
   question: string;
@@ -11,9 +11,14 @@ type FaqItem = {
 };
 
 export function AboutFaqAccordion() {
+  const locale = useLocale();
   const t = useTranslations('aboutPage.faq');
   const items = t.raw('items') as FaqItem[];
   const [activeIndex, setActiveIndex] = useState<number | null>(0);
+
+  useEffect(() => {
+    setActiveIndex(0);
+  }, [locale]);
 
   return (
     <div className="mx-auto flex max-w-3xl flex-col gap-4">

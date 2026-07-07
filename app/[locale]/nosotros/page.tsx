@@ -11,6 +11,8 @@ import { SpotlightCTA } from '@/components/sections/spotlight-cta';
 import { AboutFaqAccordion } from '@/components/sections/about-faq-accordion';
 import { MissionVisionCards, PillarCard, ValueCard } from '@/components/nosotros/about-cards';
 
+export const dynamic = 'force-dynamic';
+
 export async function generateMetadata({
   params
 }: {
@@ -238,7 +240,7 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
           </Reveal>
 
           <div className="mt-14">
-            <AboutFaqAccordion />
+            <AboutFaqAccordion key={locale} />
           </div>
         </div>
       </section>

@@ -2,6 +2,7 @@
 
 import { useLocale } from 'next-intl';
 import { usePathname, useRouter } from '@/i18n/routing';
+import { startTransition } from 'react';
 import { cn } from '@/lib/utils';
 import type { AppLocale } from '@/i18n/routing';
 
@@ -12,6 +13,7 @@ type LocaleSwitcherProps = {
 
 function persistLocale(locale: AppLocale) {
   document.cookie = `NEXT_LOCALE=${locale};path=/;max-age=31536000;SameSite=Lax`;
+  document.documentElement.lang = locale;
 }
 
 export function LocaleSwitcher({ className, onSwitch }: LocaleSwitcherProps) {
@@ -23,7 +25,12 @@ export function LocaleSwitcher({ className, onSwitch }: LocaleSwitcherProps) {
   const handleSwitch = () => {
     if (otherLocale === locale) return;
     persistLocale(otherLocale);
-    router.replace(pathname, { locale: otherLocale });
+
+    startTransition(() => {
+      router.replace(pathname, { locale: otherLocale });
+      router.refresh();
+    });
+
     onSwitch?.();
   };
 

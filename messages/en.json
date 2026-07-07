@@ -147,9 +147,9 @@
       "title": "Where aesthetics meets strategy.",
       "subtitle": "A team that combines creative vision and technical precision to build brands with direction and purpose.",
       "members": [
-        { "name": "Luis Diego Medina", "role": "Strategic Director & Co-founder" },
-        { "name": "Sophia Nguyen", "role": "Head of Automation Engineering" },
-        { "name": "Ryan Mitchell", "role": "Lead Data Scientist" }
+        { "name": "Luis Diego Medina", "role": "Strategic Director & Founder" },
+        { "name": "Nicoll", "role": "Creative Director" },
+        { "name": "Cesar Belan", "role": "Strategic Advisor" }
       ]
     },
     "cta": {

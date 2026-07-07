@@ -25,6 +25,7 @@ export function ClientIntlProvider({
 
   useEffect(() => {
     setLocale(initialLocale);
+    document.documentElement.lang = initialLocale;
   }, [initialLocale]);
 
   return (
