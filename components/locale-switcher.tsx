@@ -1,5 +1,6 @@
 'use client';
 
+import { startTransition } from 'react';
 import { useLocale } from 'next-intl';
 import { useLocaleSwitch } from '@/i18n/locale-provider';
 import { cn } from '@/lib/utils';
@@ -16,8 +17,10 @@ export function LocaleSwitcher({ className, onSwitch }: LocaleSwitcherProps) {
   const otherLocale: AppLocale = locale === 'es' ? 'en' : 'es';
 
   const handleClick = () => {
-    switchLocale(otherLocale);
-    onSwitch?.();
+    startTransition(() => {
+      switchLocale(otherLocale);
+      onSwitch?.();
+    });
   };
 
   return (

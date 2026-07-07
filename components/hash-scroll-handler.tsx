@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { usePathname, useRouter } from '@/i18n/routing';
 
 function dispatchAnchorScroll() {
@@ -51,6 +51,7 @@ function isServiciosHash(hash: string) {
 export function HashScrollHandler() {
   const pathname = usePathname();
   const router = useRouter();
+  const prevPathnameRef = useRef<string | null>(null);
 
   useEffect(() => {
     if ('scrollRestoration' in history) {
@@ -59,9 +60,12 @@ export function HashScrollHandler() {
   }, []);
 
   useEffect(() => {
+    if (prevPathnameRef.current === pathname) return;
+    prevPathnameRef.current = pathname;
+
     const hash = window.location.hash;
     if (hash && isServiciosHash(hash) && isHomePath(window.location.pathname)) {
-      router.replace('/servicios');
+      router.replace('/servicios', { scroll: false });
       return;
     }
     if (hash) {
@@ -88,7 +92,7 @@ export function HashScrollHandler() {
 
       if (isServiciosHash(url.hash)) {
         event.preventDefault();
-        router.push('/servicios');
+        router.push('/servicios', { scroll: false });
         return;
       }
 
@@ -103,7 +107,7 @@ export function HashScrollHandler() {
   useEffect(() => {
     const onHashChange = () => {
       if (isServiciosHash(window.location.hash) && isHomePath(window.location.pathname)) {
-        router.replace('/servicios');
+        router.replace('/servicios', { scroll: false });
         return;
       }
       scrollToHashWithRetry(window.location.hash);

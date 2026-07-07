@@ -7,11 +7,12 @@ import {
   useEffect,
   useMemo,
   useState,
+  startTransition,
   type ReactNode
 } from 'react';
 import { NextIntlClientProvider } from 'next-intl';
+import { usePathname, useRouter } from '@/i18n/routing';
 import type { AppLocale } from '@/i18n/routing';
-import { swapLocaleInPath } from '@/i18n/locale-path';
 import esMessages from '@/messages/es.json';
 import enMessages from '@/messages/en.json';
 
@@ -45,6 +46,8 @@ export function LocaleProvider({
   children: ReactNode;
 }) {
   const [locale, setLocale] = useState<AppLocale>(initialLocale);
+  const pathname = usePathname();
+  const router = useRouter();
 
   useEffect(() => {
     setLocale(initialLocale);
@@ -70,18 +73,17 @@ export function LocaleProvider({
 
       const scrollY = window.scrollY;
 
-      setLocale(nextLocale);
-      document.documentElement.lang = nextLocale;
-
-      const nextPath = swapLocaleInPath(window.location.pathname, nextLocale);
-      const nextUrl = `${nextPath}${window.location.search}${window.location.hash}`;
-      window.history.replaceState(window.history.state, '', nextUrl);
+      startTransition(() => {
+        setLocale(nextLocale);
+        document.documentElement.lang = nextLocale;
+        router.replace(pathname, { locale: nextLocale, scroll: false });
+      });
 
       requestAnimationFrame(() => {
-        window.scrollTo(0, scrollY);
+        window.scrollTo({ top: scrollY, left: 0, behavior: 'instant' });
       });
     },
-    [locale]
+    [locale, pathname, router]
   );
 
   const contextValue = useMemo(
