@@ -1,5 +1,7 @@
 import { AdminSidebar } from '@/components/admin/admin-sidebar';
 
+export const dynamic = 'force-dynamic';
+
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex min-h-[calc(100vh-5.5rem)] flex-col md:flex-row">

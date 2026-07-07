@@ -11,6 +11,8 @@ export type BlogPost = {
   publishedAt: string;
   createdAt: string;
   updatedAt: string;
+  reviewedBy?: boolean;
+  isLiveOnSite?: boolean;
 };
 
 export type CreateBlogPostInput = {

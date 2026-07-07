@@ -1,8 +1,11 @@
+import { unstable_noStore as noStore } from 'next/cache';
 import { createAdminClient, isSupabaseConfigured } from '@/lib/supabase/server';
 import type { BlogPostRecord } from './post-types';
 import { toPublicBlogPost, type PublicBlogPost } from './public-post';
 
 async function fetchPublishedRows() {
+  noStore();
+
   const supabase = createAdminClient();
   const { data, error } = await supabase
     .from('posts')
@@ -28,6 +31,8 @@ export async function getPublicPosts(): Promise<PublicBlogPost[]> {
 }
 
 export async function getPublicPostBySlug(slug: string): Promise<PublicBlogPost | null> {
+  noStore();
+
   if (!isSupabaseConfigured()) {
     return null;
   }

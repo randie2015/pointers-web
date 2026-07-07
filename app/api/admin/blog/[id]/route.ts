@@ -1,8 +1,16 @@
 import { revalidatePath } from 'next/cache';
 import { NextResponse } from 'next/server';
 import { verifySessionToken } from '@/lib/auth/session';
-import { deletePost, getPostById, updatePost } from '@/lib/blog/store';
+import {
+  deleteAdminPost,
+  getAdminPostById,
+  toLegacyBlogPost,
+  updateAdminPost
+} from '@/lib/cms/posts-admin';
 import type { UpdateBlogPostInput } from '@/lib/blog/types';
+
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 function revalidateBlogPages() {
   revalidatePath('/es/blog');
@@ -23,13 +31,19 @@ export async function GET(request: Request, { params }: RouteContext) {
   if (!verifySessionToken(getSessionToken(request))) return unauthorized();
 
   const { id } = await params;
-  const post = await getPostById(id);
 
-  if (!post) {
-    return NextResponse.json({ error: 'Artículo no encontrado.' }, { status: 404 });
+  try {
+    const post = await getAdminPostById(id);
+
+    if (!post) {
+      return NextResponse.json({ error: 'Artículo no encontrado.' }, { status: 404 });
+    }
+
+    return NextResponse.json(toLegacyBlogPost(post));
+  } catch (error) {
+    const message = error instanceof Error ? error.message : 'Error al cargar el artículo.';
+    return NextResponse.json({ error: message }, { status: 500 });
   }
-
-  return NextResponse.json(post);
 }
 
 export async function PUT(request: Request, { params }: RouteContext) {
@@ -42,26 +56,37 @@ export async function PUT(request: Request, { params }: RouteContext) {
     return NextResponse.json({ error: 'El título no puede estar vacío.' }, { status: 400 });
   }
 
-  const post = await updatePost(id, body);
+  try {
+    const post = await updateAdminPost(id, body);
 
-  if (!post) {
-    return NextResponse.json({ error: 'Artículo no encontrado.' }, { status: 404 });
+    if (!post) {
+      return NextResponse.json({ error: 'Artículo no encontrado.' }, { status: 404 });
+    }
+
+    revalidateBlogPages();
+    return NextResponse.json(toLegacyBlogPost(post));
+  } catch (error) {
+    const message = error instanceof Error ? error.message : 'Error al actualizar el artículo.';
+    return NextResponse.json({ error: message }, { status: 500 });
   }
-
-  revalidateBlogPages();
-  return NextResponse.json(post);
 }
 
 export async function DELETE(request: Request, { params }: RouteContext) {
   if (!verifySessionToken(getSessionToken(request))) return unauthorized();
 
   const { id } = await params;
-  const deleted = await deletePost(id);
 
-  if (!deleted) {
-    return NextResponse.json({ error: 'Artículo no encontrado.' }, { status: 404 });
+  try {
+    const deleted = await deleteAdminPost(id);
+
+    if (!deleted) {
+      return NextResponse.json({ error: 'Artículo no encontrado.' }, { status: 404 });
+    }
+
+    revalidateBlogPages();
+    return NextResponse.json({ ok: true });
+  } catch (error) {
+    const message = error instanceof Error ? error.message : 'Error al eliminar el artículo.';
+    return NextResponse.json({ error: message }, { status: 500 });
   }
-
-  revalidateBlogPages();
-  return NextResponse.json({ ok: true });
 }

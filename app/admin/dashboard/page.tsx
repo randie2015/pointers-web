@@ -1,14 +1,14 @@
 import Link from 'next/link';
-import { FileText, PenLine, Sparkles } from 'lucide-react';
-import { getAllPosts } from '@/lib/blog/store';
+import { FileText, Globe, PenLine } from 'lucide-react';
+import { getPostMetrics } from '@/lib/cms/posts-admin';
+
+export const dynamic = 'force-dynamic';
 
 const cardClass =
   'rounded-2xl border border-white/10 bg-black/35 p-6 shadow-lg shadow-black/20 backdrop-blur-md';
 
 export default async function DashboardPage() {
-  const posts = await getAllPosts();
-  const published = posts.filter((post) => post.status === 'published').length;
-  const drafts = posts.filter((post) => post.status === 'draft').length;
+  const metrics = await getPostMetrics();
 
   return (
     <div className="mx-auto max-w-5xl">
@@ -18,18 +18,23 @@ export default async function DashboardPage() {
         <p className="mt-2 text-white/60">Gestiona el contenido del blog desde un solo lugar.</p>
       </div>
 
-      <div className="grid gap-4 sm:grid-cols-3">
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <div className={cardClass}>
           <p className="text-sm text-white/50">Total artículos</p>
-          <p className="mt-2 text-3xl font-bold text-white">{posts.length}</p>
+          <p className="mt-2 text-3xl font-bold text-white">{metrics.total}</p>
         </div>
         <div className={cardClass}>
           <p className="text-sm text-white/50">Publicados</p>
-          <p className="mt-2 text-3xl font-bold text-[#39B8AD]">{published}</p>
+          <p className="mt-2 text-3xl font-bold text-[#39B8AD]">{metrics.published}</p>
         </div>
         <div className={cardClass}>
           <p className="text-sm text-white/50">Borradores</p>
-          <p className="mt-2 text-3xl font-bold text-amber-400">{drafts}</p>
+          <p className="mt-2 text-3xl font-bold text-amber-400">{metrics.drafts}</p>
+        </div>
+        <div className={cardClass}>
+          <p className="text-sm text-white/50">En sitio público</p>
+          <p className="mt-2 text-3xl font-bold text-emerald-300">{metrics.liveOnSite}</p>
+          <p className="mt-1 text-xs text-white/40">Publicados y revisados</p>
         </div>
       </div>
 
@@ -51,10 +56,13 @@ export default async function DashboardPage() {
 
         <div className="rounded-2xl border border-dashed border-white/15 bg-black/20 p-6 backdrop-blur-sm">
           <div className="flex items-center gap-3 text-white/50">
-            <Sparkles size={22} />
+            <Globe size={22} />
             <div>
-              <h2 className="font-semibold text-white/70">Próximamente</h2>
-              <p className="text-sm">Más módulos del CMS en futuras versiones.</p>
+              <h2 className="font-semibold text-white/70">Sincronización</h2>
+              <p className="text-sm">
+                El panel lee la tabla <code className="text-white/60">posts</code> en tiempo real, igual que el
+                blog público.
+              </p>
             </div>
           </div>
         </div>

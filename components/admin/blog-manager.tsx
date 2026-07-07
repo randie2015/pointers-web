@@ -23,7 +23,7 @@ export function BlogManager() {
     setError('');
 
     try {
-      const response = await fetch('/api/admin/blog');
+      const response = await fetch('/api/admin/blog', { cache: 'no-store' });
       if (!response.ok) throw new Error('fetch failed');
       const data = (await response.json()) as BlogPost[];
       setPosts(data);
@@ -143,15 +143,19 @@ export function BlogManager() {
                       {formatPostDate(post.publishedAt)}
                     </td>
                     <td className="px-6 py-4">
-                      <span
-                        className={
-                          post.status === 'published'
-                            ? 'inline-flex rounded-full bg-emerald-500/20 px-2.5 py-1 text-xs font-semibold text-emerald-300'
-                            : 'inline-flex rounded-full bg-amber-500/20 px-2.5 py-1 text-xs font-semibold text-amber-300'
-                        }
-                      >
-                        {post.status === 'published' ? 'Publicado' : 'Borrador'}
-                      </span>
+                      {post.status === 'draft' ? (
+                        <span className="inline-flex rounded-full bg-amber-500/20 px-2.5 py-1 text-xs font-semibold text-amber-300">
+                          Borrador
+                        </span>
+                      ) : post.isLiveOnSite ? (
+                        <span className="inline-flex rounded-full bg-emerald-500/20 px-2.5 py-1 text-xs font-semibold text-emerald-300">
+                          En vivo
+                        </span>
+                      ) : (
+                        <span className="inline-flex rounded-full bg-sky-500/20 px-2.5 py-1 text-xs font-semibold text-sky-300">
+                          Pendiente revisión
+                        </span>
+                      )}
                     </td>
                     <td className="px-6 py-4">
                       <div className="flex justify-end gap-2">
