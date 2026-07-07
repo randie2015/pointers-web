@@ -1,6 +1,5 @@
 'use client';
 
-import { useLocale } from 'next-intl';
 import { useInstantLocale } from '@/i18n/client-intl-provider';
 import { cn } from '@/lib/utils';
 import type { AppLocale } from '@/i18n/routing';
@@ -11,8 +10,7 @@ type LocaleSwitcherProps = {
 };
 
 export function LocaleSwitcher({ className, onSwitch }: LocaleSwitcherProps) {
-  const locale = useLocale() as AppLocale;
-  const { switchLocaleInstant } = useInstantLocale();
+  const { locale, switchLocaleInstant } = useInstantLocale();
   const otherLocale: AppLocale = locale === 'es' ? 'en' : 'es';
 
   const handleSwitch = () => {

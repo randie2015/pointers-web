@@ -5,7 +5,8 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { motion } from 'framer-motion';
 import { Loader2 } from 'lucide-react';
-import { useTranslations, useLocale } from 'next-intl';
+import { useTranslations } from 'next-intl';
+import { useInstantLocale } from '@/i18n/client-intl-provider';
 import { cn } from '@/lib/utils';
 import { MaskUpButton } from '@/components/ui/mask-up-button';
 import { createContactFormSchema, type ContactFormData } from '@/lib/contact/schema';
@@ -44,7 +45,7 @@ type ContactQualificationFormProps = {
 
 export function ContactQualificationForm({ initialService, initialPlan }: ContactQualificationFormProps) {
   const t = useTranslations('contact');
-  const locale = useLocale();
+  const { locale } = useInstantLocale();
   const schema = useMemo(() => createContactFormSchema(t), [t]);
   const [formStatus, setFormStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
 
