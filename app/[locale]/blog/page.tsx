@@ -1,4 +1,4 @@
-import { setRequestLocale, getTranslations } from 'next-intl/server';
+import { setRequestLocale } from 'next-intl/server';
 import { getPublicPosts } from '@/lib/cms/posts-reader';
 import { BlogPostGrid } from '@/components/sections/blog-post-grid';
 
@@ -6,19 +6,7 @@ export default async function BlogPage({ params }: { params: Promise<{ locale: s
   const { locale } = await params;
   setRequestLocale(locale);
 
-  const t = await getTranslations({ locale, namespace: 'blog' });
   const posts = await getPublicPosts();
 
-  return (
-    <BlogPostGrid
-      posts={posts}
-      locale={locale}
-      labels={{
-        eyebrow: t('eyebrow'),
-        title: t('title'),
-        subtitle: t('subtitle'),
-        readMore: t('readMore')
-      }}
-    />
-  );
+  return <BlogPostGrid posts={posts} />;
 }

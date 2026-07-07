@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
+import { useLocale, useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
 import type { PublicBlogPost } from '@/lib/cms/public-post';
 import { formatPostDate } from '@/lib/blog/utils';
@@ -11,16 +12,12 @@ import { SectionHeader } from '@/components/ui/section-header';
 
 type BlogPostGridProps = {
   posts: PublicBlogPost[];
-  locale: string;
-  labels: {
-    eyebrow: string;
-    title: string;
-    subtitle: string;
-    readMore: string;
-  };
 };
 
-export function BlogPostGrid({ posts, locale, labels }: BlogPostGridProps) {
+export function BlogPostGrid({ posts }: BlogPostGridProps) {
+  const t = useTranslations('blog');
+  const locale = useLocale();
+
   return (
     <section className="relative z-[1] container-page pt-28 pb-32">
       <motion.div
@@ -29,11 +26,11 @@ export function BlogPostGrid({ posts, locale, labels }: BlogPostGridProps) {
         transition={{ duration: 0.7 }}
         className="mx-auto max-w-3xl"
       >
-        <SectionHeader eyebrow={labels.eyebrow} title={labels.title} subtitle={labels.subtitle} />
+        <SectionHeader eyebrow={t('eyebrow')} title={t('title')} subtitle={t('subtitle')} />
       </motion.div>
 
       {posts.length === 0 ? (
-        <p className="mt-16 text-center text-muted-foreground">No hay artículos publicados aún.</p>
+        <p className="mt-16 text-center text-muted-foreground">{t('empty')}</p>
       ) : (
         <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {posts.map((post, i) => (
@@ -70,7 +67,7 @@ export function BlogPostGrid({ posts, locale, labels }: BlogPostGridProps) {
                     {post.excerpt}
                   </p>
                   <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-brand">
-                    {labels.readMore}
+                    {t('readMore')}
                     <ArrowUpRight
                       size={16}
                       className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
