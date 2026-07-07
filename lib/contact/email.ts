@@ -4,7 +4,7 @@ import type { RequestMetadata } from './metadata';
 import { formatContactHtml, formatContactPlainText, formatContactSubject } from './format';
 
 const DEFAULT_TO = 'hello@pointers.marketing';
-const DEFAULT_BCC = 'ldmedina.aqp@gmail.com';
+const DEFAULT_BCC = 'hello.pointers.marketing@gmail.com';
 const DEFAULT_FROM = 'Pointers <hello@pointers.marketing>';
 
 export async function sendContactEmail(data: ContactFormData, meta: RequestMetadata) {
