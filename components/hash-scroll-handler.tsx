@@ -7,6 +7,10 @@ function dispatchAnchorScroll() {
   window.dispatchEvent(new CustomEvent('anchorscroll'));
 }
 
+function scrollToTop() {
+  window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+}
+
 function scrollToHash(hash: string, behavior: ScrollBehavior = 'auto') {
   const id = decodeURIComponent(hash.replace(/^#/, ''));
   if (!id) return false;
@@ -49,13 +53,22 @@ export function HashScrollHandler() {
   const router = useRouter();
 
   useEffect(() => {
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+  }, []);
+
+  useEffect(() => {
     const hash = window.location.hash;
     if (hash && isServiciosHash(hash) && isHomePath(window.location.pathname)) {
       router.replace('/servicios');
       return;
     }
-    if (!hash) return;
-    scrollToHashWithRetry(hash);
+    if (hash) {
+      scrollToHashWithRetry(hash);
+      return;
+    }
+    scrollToTop();
   }, [pathname, router]);
 
   useEffect(() => {
