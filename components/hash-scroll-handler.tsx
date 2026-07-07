@@ -69,6 +69,7 @@ export function HashScrollHandler() {
       return;
     }
     scrollToTop();
+    requestAnimationFrame(scrollToTop);
   }, [pathname, router]);
 
   useEffect(() => {

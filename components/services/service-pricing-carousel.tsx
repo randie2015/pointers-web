@@ -151,11 +151,23 @@ export function ServicePricingCarousel({
     [locale]
   );
 
-  const goTo = useCallback((index: number) => {
-    const next = Math.max(0, Math.min(TIERS.length - 1, index));
-    setActiveIndex(next);
-    slideRefs.current[next]?.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+  const scrollSlideToIndex = useCallback((index: number, behavior: ScrollBehavior = 'smooth') => {
+    const root = scrollRef.current;
+    const slide = slideRefs.current[index];
+    if (!root || !slide) return;
+
+    const target = slide.offsetLeft - (root.clientWidth - slide.offsetWidth) / 2;
+    root.scrollTo({ left: Math.max(0, target), behavior });
   }, []);
+
+  const goTo = useCallback(
+    (index: number) => {
+      const next = Math.max(0, Math.min(TIERS.length - 1, index));
+      setActiveIndex(next);
+      scrollSlideToIndex(next);
+    },
+    [scrollSlideToIndex]
+  );
 
   const goNext = useCallback(() => {
     goTo((activeIndex + 1) % TIERS.length);
@@ -192,15 +204,18 @@ export function ServicePricingCarousel({
   }, [activeIndex]);
 
   useEffect(() => {
-    const slide = slideRefs.current[1];
-    if (!slide) return;
-
     const id = window.requestAnimationFrame(() => {
-      slide.scrollIntoView({ behavior: 'auto', inline: 'center', block: 'nearest' });
+      scrollSlideToIndex(1, 'instant');
     });
-
     return () => window.cancelAnimationFrame(id);
-  }, []);
+  }, [scrollSlideToIndex]);
+
+  const swipeHint =
+    locale === 'es' ? 'Desliza o usa las flechas para comparar los 3 planes' : 'Swipe or use arrows to compare all 3 plans';
+  const planCounter =
+    locale === 'es'
+      ? `Plan ${activeIndex + 1} de ${TIERS.length}`
+      : `Plan ${activeIndex + 1} of ${TIERS.length}`;
 
   return (
       <div className="mt-8 sm:mt-10 md:mt-14">
@@ -212,42 +227,63 @@ export function ServicePricingCarousel({
 
       {/* Mobile: slider */}
       <div className="md:hidden">
-        <div
-          ref={scrollRef}
-          className="-mx-6 flex snap-x snap-mandatory gap-4 overflow-x-auto overscroll-x-contain scroll-smooth px-6 pb-1 transition-all duration-500 ease-in-out [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-          aria-label="Planes de precios"
-        >
-          {TIERS.map((tier, i) => (
-            <div
-              key={tier}
-              ref={(el) => {
-                slideRefs.current[i] = el;
-              }}
-              className="w-[min(92vw,400px)] shrink-0 snap-center transition-all duration-500 ease-in-out"
-            >
-              <PlanCard
-                tier={tier}
-                meta={tierMeta[tier]}
-                plan={pricing[tier]}
-                ctaLabel={ctaLabel}
-                contactUrl={getContactUrl({ service: slug, plan: tier })}
-                dualPrice={dualPriceFor(pricing[tier].price)}
-              />
-            </div>
-          ))}
+        <div className="mb-3 flex items-center justify-center gap-2">
+          <span className="rounded-full bg-[#5E549D]/12 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-[#5E549D]">
+            {planCounter}
+          </span>
+          <span className="text-xs font-medium text-muted-foreground">· {tierMeta[TIERS[activeIndex]].name}</span>
         </div>
 
-        <div className="mt-5 flex items-center justify-between gap-2 sm:justify-center sm:gap-4">
+        <div className="relative">
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-y-0 left-0 z-10 w-8 bg-gradient-to-r from-[#f6f6f4] to-transparent"
+          />
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-y-0 right-0 z-10 w-8 bg-gradient-to-l from-[#f6f6f4] to-transparent"
+          />
+
+          <div
+            ref={scrollRef}
+            className="-mx-6 flex snap-x snap-mandatory gap-3 overflow-x-auto overscroll-x-contain scroll-smooth px-6 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+            aria-label="Planes de precios"
+          >
+            {TIERS.map((tier, i) => (
+              <div
+                key={tier}
+                ref={(el) => {
+                  slideRefs.current[i] = el;
+                }}
+                className={cn(
+                  'w-[min(84vw,360px)] shrink-0 snap-center transition-transform duration-300',
+                  i === activeIndex ? 'scale-100 opacity-100' : 'scale-[0.97] opacity-90'
+                )}
+              >
+                <PlanCard
+                  tier={tier}
+                  meta={tierMeta[tier]}
+                  plan={pricing[tier]}
+                  ctaLabel={ctaLabel}
+                  contactUrl={getContactUrl({ service: slug, plan: tier })}
+                  dualPrice={dualPriceFor(pricing[tier].price)}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-4 flex items-center justify-between gap-3">
           <button
             type="button"
             onClick={goPrev}
-            className="touch-press flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[#5E549D]/25 text-[#5E549D] transition-all duration-500 ease-in-out active:bg-[#5E549D]/10"
-            aria-label="Plan anterior"
+            className="touch-press flex h-12 w-12 shrink-0 items-center justify-center rounded-full border-2 border-[#5E549D]/30 bg-white text-[#5E549D] shadow-md shadow-[#5E549D]/15 transition active:scale-95"
+            aria-label={locale === 'es' ? 'Plan anterior' : 'Previous plan'}
           >
-            <ChevronLeft size={20} />
+            <ChevronLeft size={22} strokeWidth={2.25} />
           </button>
 
-          <div className="flex flex-1 justify-center gap-2 sm:flex-none" role="tablist" aria-label="Planes">
+          <div className="flex flex-1 justify-center gap-2.5" role="tablist" aria-label="Planes">
             {TIERS.map((tier, i) => (
               <button
                 key={tier}
@@ -256,8 +292,8 @@ export function ServicePricingCarousel({
                 aria-selected={i === activeIndex}
                 onClick={() => goTo(i)}
                 className={cn(
-                  'h-2.5 rounded-full transition-all duration-500 ease-in-out',
-                  i === activeIndex ? 'w-8 bg-[#5E549D]' : 'w-2.5 bg-[#5E549D]/30'
+                  'rounded-full transition-all duration-300',
+                  i === activeIndex ? 'h-3 w-9 bg-[#5E549D]' : 'h-3 w-3 bg-[#5E549D]/25'
                 )}
                 aria-label={tierMeta[tier].name}
               />
@@ -267,16 +303,14 @@ export function ServicePricingCarousel({
           <button
             type="button"
             onClick={goNext}
-            className="touch-press flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[#5E549D]/25 text-[#5E549D] transition-all duration-500 ease-in-out active:bg-[#5E549D]/10"
-            aria-label="Plan siguiente"
+            className="touch-press flex h-12 w-12 shrink-0 items-center justify-center rounded-full border-2 border-[#5E549D]/30 bg-white text-[#5E549D] shadow-md shadow-[#5E549D]/15 transition active:scale-95"
+            aria-label={locale === 'es' ? 'Plan siguiente' : 'Next plan'}
           >
-            <ChevronRight size={20} />
+            <ChevronRight size={22} strokeWidth={2.25} />
           </button>
         </div>
 
-        <p className="mt-3 text-center text-xs text-muted-foreground sm:text-sm">
-          Desliza horizontalmente para ver los 3 planes
-        </p>
+        <p className="mt-3 text-center text-sm font-medium text-[#5E549D]/80">{swipeHint}</p>
       </div>
 
       {/* Desktop: three expanded plans */}
