@@ -36,7 +36,7 @@ body {
 .particles-canvas-layer {
   position: fixed;
   inset: 0;
-  z-index: 0;
+  z-index: -10;
   pointer-events: none;
 }
 
@@ -117,7 +117,13 @@ body {
   }
 
   .blog-content {
-    @apply text-base leading-relaxed text-foreground;
+    @apply relative z-10 font-sans text-base leading-relaxed text-foreground;
+  }
+
+  .blog-content [style] {
+    font-family: inherit !important;
+    font-size: inherit !important;
+    color: inherit !important;
   }
 
   .blog-content h2 {
@@ -155,5 +161,29 @@ body {
 
   .blog-content strong {
     @apply font-semibold text-foreground;
+  }
+
+  .blog-content table {
+    @apply my-8 w-full border-collapse bg-transparent text-left;
+  }
+
+  .blog-content thead th,
+  .blog-content tbody th,
+  .blog-content tbody td {
+    @apply border-0 border-b border-border/80 bg-transparent px-3 py-3 text-left align-top;
+  }
+
+  .blog-content thead th,
+  .blog-content tbody th {
+    @apply font-semibold text-foreground;
+  }
+
+  .blog-content tbody td {
+    @apply text-muted-foreground;
+  }
+
+  .blog-content table tr:last-child th,
+  .blog-content table tr:last-child td {
+    @apply border-b-0;
   }
 }

@@ -1,6 +1,7 @@
 import { unstable_noStore as noStore } from 'next/cache';
 import { createAdminClient, isSupabaseConfigured } from '@/lib/supabase/server';
 import type { BlogPostRecord, PostStatus } from './post-types';
+import { sanitizeBlogHtml } from './sanitize-blog-html';
 
 export type AdminPostListItem = {
   id: string;
@@ -130,7 +131,7 @@ export async function updateAdminPost(
   const patch: Record<string, string> = {};
   if (input.title !== undefined) patch.title = input.title.trim();
   if (input.excerpt !== undefined) patch.excerpt = input.excerpt.trim();
-  if (input.content !== undefined) patch.content = input.content;
+  if (input.content !== undefined) patch.content = sanitizeBlogHtml(input.content);
   if (input.tag !== undefined) patch.category = input.tag.trim();
   if (input.status !== undefined) patch.status = input.status;
 

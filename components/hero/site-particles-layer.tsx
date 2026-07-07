@@ -28,7 +28,7 @@ export function SiteParticlesLayer() {
     <Particles
       id="site-particles"
       key={isMobile ? 'site-particles-mobile' : 'site-particles-desktop'}
-      className="particles-canvas-layer"
+      className="particles-canvas-layer pointer-events-none -z-10"
       init={particlesInit}
       options={options}
     />

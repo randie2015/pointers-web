@@ -1,6 +1,7 @@
 import { slugify } from '@/lib/blog/utils';
 import { resolvePublicationState } from './authorize';
 import { resolveSeoDescription } from './seo';
+import { sanitizeBlogHtml } from './sanitize-blog-html';
 import type { BlogPostFormState } from './post-types';
 import { estimateReadTime } from './validation';
 
@@ -18,7 +19,7 @@ export function buildPostPayload({ form, authorId, imageUrl = null }: BuildPostP
     title: form.title.trim(),
     slug: normalizedSlug,
     excerpt: form.excerpt.trim(),
-    content: form.content,
+    content: sanitizeBlogHtml(form.content),
     image_url: imageUrl,
     category: form.category,
     read_time: Number(form.readTime) || estimateReadTime(form.content),

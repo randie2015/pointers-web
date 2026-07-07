@@ -3,6 +3,7 @@ import { ArrowLeft, Clock3 } from 'lucide-react';
 import { Link } from '@/i18n/routing';
 import type { PublicBlogPost } from '@/lib/cms/public-post';
 import { formatPostDate } from '@/lib/blog/utils';
+import { sanitizeBlogHtml } from '@/lib/cms/sanitize-blog-html';
 
 type BlogPostArticleProps = {
   post: PublicBlogPost;
@@ -11,9 +12,11 @@ type BlogPostArticleProps = {
 };
 
 export function BlogPostArticle({ post, locale, backLabel }: BlogPostArticleProps) {
+  const sanitizedContent = sanitizeBlogHtml(post.content);
+
   return (
-    <article className="relative z-[1] container-page pt-28 pb-32">
-      <div className="mx-auto max-w-3xl">
+    <article className="relative z-10 container-page pt-28 pb-32">
+      <div className="relative z-10 mx-auto max-w-3xl">
         <Link
           href="/blog"
           className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground transition hover:text-brand"
@@ -57,8 +60,8 @@ export function BlogPostArticle({ post, locale, backLabel }: BlogPostArticleProp
         ) : null}
 
         <div
-          className="blog-content mt-10"
-          dangerouslySetInnerHTML={{ __html: post.content }}
+          className="blog-content relative z-10 mt-10 font-sans"
+          dangerouslySetInnerHTML={{ __html: sanitizedContent }}
         />
       </div>
     </article>
