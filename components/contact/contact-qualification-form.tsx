@@ -121,8 +121,6 @@ export function ContactQualificationForm({ initialService, initialPlan }: Contac
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="grid gap-5" noValidate>
-      <p className="text-left text-xs text-white/75">{t('requiredLegend')}</p>
-
       <div className="grid gap-5 sm:grid-cols-2">
         <Field label={t('name')} required error={errors.name?.message}>
           <input
@@ -134,7 +132,7 @@ export function ContactQualificationForm({ initialService, initialPlan }: Contac
           />
         </Field>
 
-        <Field label={t('lastName')} required error={errors.lastName?.message}>
+        <Field label={t('lastName')} error={errors.lastName?.message}>
           <input
             {...register('lastName')}
             autoComplete="family-name"
@@ -145,7 +143,7 @@ export function ContactQualificationForm({ initialService, initialPlan }: Contac
         </Field>
       </div>
 
-      <Field label={t('email')} required error={errors.email?.message}>
+      <Field label={t('email')} error={errors.email?.message}>
         <input
           {...register('email')}
           type="email"

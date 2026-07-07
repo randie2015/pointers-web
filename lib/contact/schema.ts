@@ -3,10 +3,14 @@ import { z } from 'zod';
 export function createContactFormSchema(t: (key: string) => string) {
   return z.object({
     name: z.string().trim().min(2, t('errors.name')).max(80),
-    lastName: z.string().trim().min(2, t('errors.lastName')).max(80),
-    email: z.string().trim().email(t('errors.email')).max(200),
+    lastName: z.string().trim().max(80),
+    email: z
+      .string()
+      .trim()
+      .max(200)
+      .refine((v) => v === '' || z.string().email().safeParse(v).success, t('errors.email')),
     phone: z.string().trim().min(15, t('errors.phone')).max(30),
-    message: z.string().trim().min(10, t('errors.message')).max(5000)
+    message: z.string().trim().min(15, t('errors.message')).max(5000)
   });
 }
 

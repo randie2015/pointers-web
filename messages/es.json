@@ -133,7 +133,6 @@
     "formTitle": "Envíanos un mensaje",
     "formSubtitle": "Completa el formulario y nos pondremos en contacto contigo a la brevedad.",
     "whatsappHint": "¿Prefieres respuesta inmediata? Usa el botón flotante de WhatsApp:",
-    "requiredLegend": "(* = obligatorio)",
     "name": "Nombre",
     "lastName": "Apellido",
     "email": "Email",
@@ -167,10 +166,9 @@
     },
     "errors": {
       "name": "El nombre debe tener al menos 2 caracteres",
-      "lastName": "El apellido debe tener al menos 2 caracteres",
       "email": "Ingresa un correo electrónico válido",
       "phone": "El número debe tener al menos 15 caracteres",
-      "message": "El mensaje debe tener al menos 10 caracteres"
+      "message": "El mensaje debe tener al menos 15 caracteres"
     }
   },
   "faq": {

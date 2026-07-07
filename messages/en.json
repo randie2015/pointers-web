@@ -251,7 +251,6 @@
     "formTitle": "Send us a message",
     "formSubtitle": "Fill out the form and we'll contact you shortly.",
     "whatsappHint": "Prefer an immediate reply? Use the floating WhatsApp button:",
-    "requiredLegend": "(* = required)",
     "name": "First name",
     "lastName": "Last name",
     "email": "Email",
@@ -285,10 +284,9 @@
     },
     "errors": {
       "name": "Name must be at least 2 characters",
-      "lastName": "Last name must be at least 2 characters",
       "email": "Please enter a valid email address",
       "phone": "Phone number must be at least 15 characters",
-      "message": "Message must be at least 10 characters"
+      "message": "Message must be at least 15 characters"
     }
   },
   "faq": {
