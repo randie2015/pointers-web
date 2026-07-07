@@ -67,35 +67,40 @@ export function ServicePageTemplate({ slug }: ServicePageTemplateProps) {
         />
       </section>
 
-      {/* 2. El problema */}
+      {/* 2. El problema — dolor → empatía */}
       <section className="relative z-[1] py-14 sm:py-16 md:py-24">
         <div className="container-page">
-          <Reveal>
-            <div className="mx-auto max-w-3xl text-center">
-              <ServiceSectionBadge label={t('problemEyebrow')} />
-              <h2 className="h-display text-2xl text-gray-900 sm:text-3xl md:text-4xl lg:text-5xl">
-                {t('problemTitle')}
-              </h2>
-              <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base md:mt-5 md:text-lg">
-                {t('problemSolutionSubtitle')}
-              </p>
-            </div>
-          </Reveal>
+          <div className="mx-auto flex max-w-3xl flex-col items-center gap-6 text-center sm:gap-8">
+            <Reveal>
+              <ServiceSectionBadge label={t('problemEyebrow')} className="mb-0" />
+            </Reveal>
 
-          <Reveal delay={0.05}>
-            <article className="mobile-surface mx-auto mt-8 max-w-3xl rounded-2xl border border-border/60 bg-white p-6 sm:mt-10 sm:rounded-3xl sm:p-8 md:p-10">
-              {content.problem.title ? (
-                <h3 className="font-display text-xl font-semibold text-gray-900 sm:text-2xl">
-                  {content.problem.title}
-                </h3>
-              ) : null}
-              <p
-                className={`text-sm leading-relaxed text-gray-600 sm:text-base md:text-lg md:leading-relaxed ${content.problem.title ? 'mt-3 sm:mt-4' : ''}`}
-              >
-                {content.problem.body}
-              </p>
-            </article>
-          </Reveal>
+            <Reveal delay={0.05}>
+              <article className="mobile-surface w-full rounded-2xl border border-border/60 bg-white p-6 sm:rounded-3xl sm:p-8 md:p-10">
+                {content.problem.title ? (
+                  <h3 className="font-display text-xl font-semibold text-gray-900 sm:text-2xl">
+                    {content.problem.title}
+                  </h3>
+                ) : null}
+                <p
+                  className={`text-sm leading-relaxed text-gray-600 sm:text-base md:text-lg md:leading-relaxed ${content.problem.title ? 'mt-3 sm:mt-4' : ''}`}
+                >
+                  {content.problem.body}
+                </p>
+              </article>
+            </Reveal>
+
+            <Reveal delay={0.1}>
+              <div className="w-full">
+                <h2 className="h-display text-2xl text-gray-900 sm:text-3xl md:text-4xl lg:text-5xl">
+                  {t('problemTitle')}
+                </h2>
+                <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base md:mt-5 md:text-lg">
+                  {t('problemSolutionSubtitle')}
+                </p>
+              </div>
+            </Reveal>
+          </div>
         </div>
       </section>
 
