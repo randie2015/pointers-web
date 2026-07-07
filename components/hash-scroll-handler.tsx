@@ -4,6 +4,7 @@ import { useEffect, useRef } from 'react';
 import { usePathname } from 'next/navigation';
 import { useRouter as useIntlRouter } from '@/i18n/routing';
 import { stripLocaleFromPath } from '@/i18n/locale-path';
+import { isLocaleSwitchInProgress, LOCALE_SWITCH_EVENT } from '@/i18n/locale-switch';
 
 function dispatchAnchorScroll() {
   window.dispatchEvent(new CustomEvent('anchorscroll'));
@@ -54,6 +55,7 @@ export function HashScrollHandler() {
   const pathname = usePathname();
   const intlRouter = useIntlRouter();
   const prevRouteRef = useRef<string | null>(null);
+  const skipScrollRef = useRef(false);
 
   useEffect(() => {
     if ('scrollRestoration' in history) {
@@ -62,6 +64,20 @@ export function HashScrollHandler() {
   }, []);
 
   useEffect(() => {
+    const onLocaleSwitch = () => {
+      skipScrollRef.current = isLocaleSwitchInProgress();
+    };
+
+    window.addEventListener(LOCALE_SWITCH_EVENT, onLocaleSwitch);
+    return () => window.removeEventListener(LOCALE_SWITCH_EVENT, onLocaleSwitch);
+  }, []);
+
+  useEffect(() => {
+    if (skipScrollRef.current || isLocaleSwitchInProgress()) {
+      skipScrollRef.current = false;
+      return;
+    }
+
     const routeWithoutLocale = stripLocaleFromPath(pathname);
     if (prevRouteRef.current === routeWithoutLocale) return;
     prevRouteRef.current = routeWithoutLocale;

@@ -6,12 +6,13 @@ import {
   useContext,
   useEffect,
   useMemo,
+  useRef,
   useState,
-  startTransition,
   type ReactNode
 } from 'react';
 import { NextIntlClientProvider } from 'next-intl';
 import type { AppLocale } from '@/i18n/routing';
+import { markLocaleSwitchEnd, markLocaleSwitchStart } from '@/i18n/locale-switch';
 import esMessages from '@/messages/es.json';
 import enMessages from '@/messages/en.json';
 
@@ -48,9 +49,18 @@ function LocaleContextBridge({
   initialLocale: AppLocale;
   children: ReactNode;
 }) {
+  const clientSwitchRef = useRef(false);
+
   useEffect(() => {
-    setLocale(initialLocale);
-    document.documentElement.lang = initialLocale;
+    if (clientSwitchRef.current) {
+      clientSwitchRef.current = false;
+      return;
+    }
+
+    const fromUrl = readLocaleFromPath(window.location.pathname);
+    const nextLocale = fromUrl ?? initialLocale;
+    setLocale(nextLocale);
+    document.documentElement.lang = nextLocale;
   }, [initialLocale, setLocale]);
 
   useEffect(() => {
@@ -70,10 +80,11 @@ function LocaleContextBridge({
     (nextLocale: AppLocale) => {
       if (nextLocale === locale) return;
 
-      startTransition(() => {
-        setLocale(nextLocale);
-        document.documentElement.lang = nextLocale;
-      });
+      clientSwitchRef.current = true;
+      markLocaleSwitchStart();
+      setLocale(nextLocale);
+      document.documentElement.lang = nextLocale;
+      markLocaleSwitchEnd();
     },
     [locale, setLocale]
   );

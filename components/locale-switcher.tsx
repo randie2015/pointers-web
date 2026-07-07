@@ -1,10 +1,11 @@
 'use client';
 
-import { startTransition, type MouseEvent } from 'react';
+import { type MouseEvent } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import { useLocale } from 'next-intl';
 import { useLocaleSwitch } from '@/i18n/locale-provider';
 import { swapLocaleInPath } from '@/i18n/locale-path';
+import { lockPageScroll, unlockPageScroll } from '@/i18n/locale-switch';
 import { cn } from '@/lib/utils';
 import type { AppLocale } from '@/i18n/routing';
 
@@ -16,7 +17,7 @@ type LocaleSwitcherProps = {
 export function LocaleSwitcher({ className, onSwitch }: LocaleSwitcherProps) {
   const locale = useLocale() as AppLocale;
   const { switchLocale } = useLocaleSwitch();
-  const router = useRouter();
+  useRouter();
   const pathname = usePathname();
   const otherLocale: AppLocale = locale === 'es' ? 'en' : 'es';
 
@@ -26,15 +27,13 @@ export function LocaleSwitcher({ className, onSwitch }: LocaleSwitcherProps) {
     const nuevaURL = swapLocaleInPath(pathname, otherLocale);
     const scrollY = window.scrollY;
 
-    startTransition(() => {
-      switchLocale(otherLocale);
-      router.replace(nuevaURL, { scroll: false });
-    });
+    lockPageScroll(scrollY);
+    switchLocale(otherLocale);
 
-    requestAnimationFrame(() => {
-      window.scrollTo({ top: scrollY, left: 0, behavior: 'instant' });
-    });
+    const syncedUrl = `${nuevaURL}${window.location.search}${window.location.hash}`;
+    window.history.replaceState(window.history.state, '', syncedUrl);
 
+    unlockPageScroll(scrollY);
     onSwitch?.();
   };
 
