@@ -2,11 +2,37 @@
 
 import { useSearchParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
-import { MapPin, ShieldCheck, Sparkles } from 'lucide-react';
+import { Mail, Phone, type LucideIcon } from 'lucide-react';
 import { Reveal } from '@/components/reveal';
-import { WhiteParticlesSection } from '@/components/hero/white-particles-section';
+import { SectionBadge } from '@/components/ui/section-badge';
 import { ContactQualificationForm } from '@/components/contact/contact-qualification-form';
-import { getWhatsAppDisplayNumber } from '@/lib/site-config';
+import { VioletMagentaGradientBg } from '@/components/ui/violet-magenta-gradient-bg';
+import { getContactEmail, getWhatsAppDisplayNumber, WHATSAPP_PHONE } from '@/lib/site-config';
+
+function ContactChannelCard({
+  icon: Icon,
+  label,
+  value,
+  href
+}: {
+  icon: LucideIcon;
+  label: string;
+  value: string;
+  href: string;
+}) {
+  return (
+    <a
+      href={href}
+      className="solid-block group flex flex-col items-center justify-center rounded-3xl bg-[#BC2656] px-6 py-10 text-center text-white shadow-lg shadow-[#BC2656]/25 transition duration-300 hover:brightness-105 active:scale-[0.98] sm:py-12"
+    >
+      <Icon className="h-8 w-8 sm:h-9 sm:w-9" strokeWidth={1.75} aria-hidden />
+      <p className="mt-4 text-lg font-semibold sm:text-xl">{label}</p>
+      <p className="mt-2 break-all text-sm text-white/90 transition group-hover:text-white sm:text-base">
+        {value}
+      </p>
+    </a>
+  );
+}
 
 export function ContactPageContent() {
   const t = useTranslations('contact');
@@ -14,65 +40,61 @@ export function ContactPageContent() {
   const initialService = searchParams.get('servicio') ?? undefined;
   const initialPlan = searchParams.get('plan') ?? undefined;
 
+  const contactEmail = getContactEmail();
+  const phoneDisplay = getWhatsAppDisplayNumber();
+
   return (
-    <WhiteParticlesSection id="contacto" className="scroll-mt-24 py-14 sm:py-16 md:py-24" particlesId="contact-page-particles">
+    <section id="contacto" className="relative z-[1] scroll-mt-24 py-14 sm:py-16 md:py-24">
       <div className="container-page">
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:gap-14 lg:items-start">
-          <Reveal>
-            <aside className="space-y-6">
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-widest text-[#5E549D]">{t('eyebrow')}</p>
-                <h1 className="mt-3 font-display text-3xl font-bold tracking-tight text-gray-900 md:text-4xl lg:text-5xl">
-                  {t('pageTitle')}
-                </h1>
-                <p className="mt-4 max-w-lg text-sm leading-relaxed text-gray-600 sm:text-base">{t('pageSubtitle')}</p>
-              </div>
+        <Reveal>
+          <div className="mx-auto max-w-3xl text-center">
+            <SectionBadge text={t('eyebrow')} />
+            <h1 className="mt-5 font-display text-3xl font-bold tracking-tight text-gray-900 md:text-4xl lg:text-5xl">
+              {t('pageTitle')}
+            </h1>
+            <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-gray-600 sm:text-base md:text-lg">
+              {t('pageSubtitle')}
+            </p>
+          </div>
+        </Reveal>
 
-              <div className="mobile-surface rounded-2xl border border-border/60 bg-white/90 p-6 backdrop-blur-sm sm:p-7">
-                <div className="flex items-start gap-3">
-                  <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-[#BC2656]" aria-hidden />
-                  <div>
-                    <p className="font-semibold text-gray-900">{t('locationTitle')}</p>
-                    <p className="mt-1 text-sm leading-relaxed text-gray-600">{t('locationBody')}</p>
-                  </div>
-                </div>
-              </div>
+        <Reveal delay={0.05}>
+          <div className="mx-auto mt-10 grid max-w-3xl gap-4 sm:mt-12 sm:grid-cols-2 sm:gap-6">
+            <ContactChannelCard
+              icon={Mail}
+              label={t('emailLabel')}
+              value={contactEmail}
+              href={`mailto:${contactEmail}`}
+            />
+            <ContactChannelCard
+              icon={Phone}
+              label={t('phoneLabel')}
+              value={phoneDisplay}
+              href={`tel:+${WHATSAPP_PHONE}`}
+            />
+          </div>
+        </Reveal>
 
-              <ul className="space-y-4">
-                {[ShieldCheck, Sparkles].map((Icon, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <span
-                      className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl"
-                      style={{ backgroundColor: 'rgba(57, 184, 173, 0.12)', color: '#39B8AD' }}
-                    >
-                      <Icon className="h-5 w-5" aria-hidden />
-                    </span>
-                    <div>
-                      <p className="font-semibold text-gray-900">{t(`trustItems.${i}.title`)}</p>
-                      <p className="mt-1 text-sm leading-relaxed text-gray-600">{t(`trustItems.${i}.body`)}</p>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-
-              <p className="text-sm text-gray-500">
-                {t('whatsappHint')}{' '}
-                <span className="font-medium text-gray-700">{getWhatsAppDisplayNumber()}</span>
-              </p>
-            </aside>
-          </Reveal>
-
-          <Reveal delay={0.06}>
-            <div className="mobile-surface rounded-2xl border border-border/60 bg-white/95 p-6 shadow-lg shadow-black/[0.06] backdrop-blur-sm sm:p-8 md:p-10">
-              <h2 className="font-display text-xl font-semibold text-gray-900 sm:text-2xl">{t('formTitle')}</h2>
-              <p className="mt-2 text-sm leading-relaxed text-gray-600">{t('formSubtitle')}</p>
+        <Reveal delay={0.1}>
+          <div className="relative mx-auto mt-10 max-w-3xl overflow-hidden rounded-3xl px-6 py-8 shadow-lg shadow-[#5E549D]/20 sm:mt-12 sm:p-10 md:p-12">
+            <VioletMagentaGradientBg />
+            <div className="relative z-10">
+              <h2 className="text-center font-display text-xl font-semibold text-white sm:text-2xl">
+                {t('formTitle')}
+              </h2>
+              <p className="mt-2 text-center text-sm leading-relaxed text-white/90">{t('formSubtitle')}</p>
               <div className="mt-8">
                 <ContactQualificationForm initialService={initialService} initialPlan={initialPlan} />
               </div>
             </div>
-          </Reveal>
-        </div>
+          </div>
+        </Reveal>
+
+        <p className="mx-auto mt-8 max-w-3xl text-center text-sm text-gray-500">
+          {t('whatsappHint')}{' '}
+          <span className="font-medium text-gray-700">{phoneDisplay}</span>
+        </p>
       </div>
-    </WhiteParticlesSection>
+    </section>
   );
 }

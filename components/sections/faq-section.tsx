@@ -105,7 +105,7 @@ export function FaqSection({
   const [open, setOpen] = useState<number | null>(null);
 
   return (
-    <section id={sectionId} className="scroll-mt-24 bg-zinc-50/90 py-20 md:py-28">
+    <section id={sectionId} className="relative z-[1] scroll-mt-24 py-20 md:py-28">
       <div className="container-page">
         <Reveal>
           <SectionHeader

@@ -4,7 +4,6 @@ import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import { Reveal } from '@/components/reveal';
 import { SectionHeader } from '@/components/ui/section-header';
-import { WhiteParticlesSection } from '@/components/hero/white-particles-section';
 import { DiscoveryScanner } from '@/components/workflow/DiscoveryScanner';
 import { StrategyBullseye } from '@/components/workflow/StrategyBullseye';
 import { DesignDevSketch } from '@/components/workflow/DesignDevSketch';
@@ -138,7 +137,7 @@ export function ProcessSection({
   const steps = t.raw('steps') as { step: string; title: string; description: string }[];
 
   return (
-    <WhiteParticlesSection id={sectionId} className="scroll-mt-24 py-20 md:py-28" particlesId={`${sectionId}-particles`}>
+    <section id={sectionId} className="relative z-[1] scroll-mt-24 py-20 md:py-28">
       <div className="container-page">
         <Reveal>
           <SectionHeader eyebrow={t('eyebrow')} title={t('title')} subtitle={t('subtitle')} />
@@ -158,6 +157,6 @@ export function ProcessSection({
           ))}
         </div>
       </div>
-    </WhiteParticlesSection>
+    </section>
   );
 }

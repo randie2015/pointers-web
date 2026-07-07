@@ -20,7 +20,7 @@ type BlogPostGridProps = {
 
 export function BlogPostGrid({ posts, locale, labels }: BlogPostGridProps) {
   return (
-    <section className="container-page pt-28 pb-32">
+    <section className="relative z-[1] container-page pt-28 pb-32">
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}

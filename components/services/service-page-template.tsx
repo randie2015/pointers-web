@@ -5,11 +5,11 @@ import { useTranslations } from 'next-intl';
 import { Reveal } from '@/components/reveal';
 import { SectionBadge } from '@/components/ui/section-badge';
 import { SectionHeader } from '@/components/ui/section-header';
+import { ServiceSectionBadge } from '@/components/services/service-section-badge';
 import { MaskUpButton } from '@/components/ui/mask-up-button';
 import { ServicePricingCarousel, type PricingTierKey } from '@/components/services/service-pricing-carousel';
 import { FaqSection } from '@/components/sections/faq-section';
-import { ServiceClosingGradient } from '@/components/services/service-closing-gradient';
-import { WhiteParticlesSection } from '@/components/hero/white-particles-section';
+import { GradientCtaContent, GradientCtaSection } from '@/components/ui/gradient-cta-section';
 import { SERVICE_MAGENTA, SERVICE_PURPLE, SERVICE_TEAL } from '@/lib/service-brand';
 import { SERVICE_DELIVERABLE_ICONS, type ServicePageContent } from '@/lib/service-page';
 import type { ServiceSlug } from '@/lib/services';
@@ -41,11 +41,8 @@ export function ServicePageTemplate({ slug }: ServicePageTemplateProps) {
 
   return (
     <>
-      {/* 1. Hero — blanco + partículas */}
-      <WhiteParticlesSection
-        className="px-1 pt-12 sm:pt-14 md:pt-20"
-        particlesId={`service-${slug}-hero-particles`}
-      >
+      {/* 1. Hero */}
+      <section className="relative z-[1] overflow-hidden px-1 pt-12 sm:pt-14 md:pt-20">
         <div className="container-page">
           <Reveal>
             <div className="mx-auto max-w-4xl text-center">
@@ -68,17 +65,21 @@ export function ServicePageTemplate({ slug }: ServicePageTemplateProps) {
             background: `radial-gradient(circle at 30% 40%, ${SERVICE_PURPLE}33, transparent 55%), radial-gradient(circle at 70% 55%, ${SERVICE_TEAL}24, transparent 55%)`
           }}
         />
-      </WhiteParticlesSection>
+      </section>
 
       {/* 2. El problema */}
-      <section className="bg-muted/40 py-14 sm:py-16 md:py-24">
+      <section className="relative z-[1] py-14 sm:py-16 md:py-24">
         <div className="container-page">
           <Reveal>
-            <SectionHeader
-              eyebrow={t('problemEyebrow')}
-              title={t('problemTitle')}
-              subtitle={t('problemSolutionSubtitle')}
-            />
+            <div className="mx-auto max-w-3xl text-center">
+              <ServiceSectionBadge label={t('problemEyebrow')} />
+              <h2 className="h-display text-2xl text-gray-900 sm:text-3xl md:text-4xl lg:text-5xl">
+                {t('problemTitle')}
+              </h2>
+              <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base md:mt-5 md:text-lg">
+                {t('problemSolutionSubtitle')}
+              </p>
+            </div>
           </Reveal>
 
           <Reveal delay={0.05}>
@@ -98,15 +99,13 @@ export function ServicePageTemplate({ slug }: ServicePageTemplateProps) {
         </div>
       </section>
 
-      {/* 3. Nuestra solución — magenta sólido */}
-      <section className="py-14 sm:py-16 md:py-24" style={{ backgroundColor: SERVICE_MAGENTA }}>
+      {/* 3. Nuestra solución — magenta sólido (bloque intocable) */}
+      <section className="solid-block py-14 sm:py-16 md:py-24" style={{ backgroundColor: SERVICE_MAGENTA }}>
         <div className="container-page">
           <Reveal>
             <div className="mx-auto max-w-3xl text-center">
-              <p className="text-xs font-semibold uppercase tracking-widest text-white/80 sm:text-sm">
-                {t('solutionLabel')}
-              </p>
-              <h2 className="mt-4 font-display text-2xl font-bold leading-tight text-white sm:text-3xl md:text-4xl">
+              <ServiceSectionBadge label={t('solutionLabel')} tone="light" />
+              <h2 className="font-display text-2xl font-bold leading-tight text-white sm:text-3xl md:text-4xl">
                 {content.solution.title}
               </h2>
               <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-white/90 sm:mt-5 sm:text-base md:text-lg">
@@ -117,11 +116,8 @@ export function ServicePageTemplate({ slug }: ServicePageTemplateProps) {
         </div>
       </section>
 
-      {/* 4. Qué incluye — blanco + partículas */}
-      <WhiteParticlesSection
-        className="py-14 sm:py-16 md:py-28"
-        particlesId={`service-${slug}-deliverables-particles`}
-      >
+      {/* 4. Qué incluye */}
+      <section className="relative z-[1] py-14 sm:py-16 md:py-28">
         <div className="container-page">
           <Reveal>
             <SectionHeader
@@ -153,10 +149,10 @@ export function ServicePageTemplate({ slug }: ServicePageTemplateProps) {
             })}
           </div>
         </div>
-      </WhiteParticlesSection>
+      </section>
 
       {/* 5. Planes */}
-      <section className="overflow-hidden bg-muted/30 py-14 sm:py-16 md:py-28">
+      <section className="relative z-[1] overflow-hidden py-14 sm:py-16 md:py-28">
         <div className="container-page">
           <Reveal>
             <SectionHeader
@@ -186,39 +182,18 @@ export function ServicePageTemplate({ slug }: ServicePageTemplateProps) {
         items={content.faq}
       />
 
-      {/* 7. CTA final único — magenta / turquesa dinámico */}
-      <section
-        className="relative overflow-hidden py-14 sm:py-16 md:py-24"
-        style={{ backgroundColor: SERVICE_MAGENTA }}
-      >
-        <ServiceClosingGradient />
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 opacity-40"
-          style={{
-            background: `radial-gradient(ellipse 80% 60% at 20% 80%, ${SERVICE_TEAL}55 0%, transparent 55%), radial-gradient(ellipse 70% 50% at 85% 20%, ${SERVICE_PURPLE}44 0%, transparent 50%)`
-          }}
-        />
-        <div className="container-page relative z-10">
-          <Reveal>
-            <div className="mx-auto max-w-3xl px-2 text-center sm:px-0">
-              <h2 className="text-2xl font-bold leading-tight text-white sm:text-3xl md:text-4xl lg:text-5xl">
-                {content.cta.title}
-              </h2>
-              <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-white/90 sm:mt-5 sm:text-base md:text-lg">
-                {content.cta.subtitle}
-              </p>
-              <div className="mt-8 flex justify-center sm:mt-10">
-                <MaskUpButton
-                  href={contactUrl}
-                  label={t('heroCta')}
-                  className="w-full max-w-sm sm:w-auto"
-                />
-              </div>
-            </div>
-          </Reveal>
-        </div>
-      </section>
+      {/* 7. CTA final */}
+      <GradientCtaSection>
+        <Reveal>
+          <GradientCtaContent title={content.cta.title} subtitle={content.cta.subtitle}>
+            <MaskUpButton
+              href={contactUrl}
+              label={t('heroCta')}
+              className="w-full max-w-sm sm:w-auto"
+            />
+          </GradientCtaContent>
+        </Reveal>
+      </GradientCtaSection>
     </>
   );
 }

@@ -3,36 +3,36 @@
 import { useMemo, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Loader2 } from 'lucide-react';
 import { useTranslations, useLocale } from 'next-intl';
 import { cn } from '@/lib/utils';
 import { MaskUpButton } from '@/components/ui/mask-up-button';
-import {
-  CONTACT_BUDGET_VALUES,
-  CONTACT_SERVICE_VALUES,
-  createContactFormSchema,
-  type ContactFormData
-} from '@/lib/contact/schema';
+import { createContactFormSchema, type ContactFormData } from '@/lib/contact/schema';
 import { isServiceSlug } from '@/lib/services';
 
 const inputClass =
-  'w-full rounded-xl border border-gray-300 bg-white px-4 py-3.5 text-sm text-gray-900 shadow-sm outline-none transition placeholder:text-gray-400 focus:border-[#39B8AD] focus:ring-2 focus:ring-[#39B8AD]/25 max-md:min-h-[48px]';
+  'w-full rounded-xl border border-white/25 bg-white px-4 py-3.5 text-sm text-gray-900 shadow-sm outline-none transition placeholder:text-gray-400 focus:border-[#39B8AD] focus:ring-2 focus:ring-[#39B8AD]/25 max-md:min-h-[48px]';
 
 function Field({
   label,
+  required,
   error,
   children
 }: {
   label: string;
+  required?: boolean;
   error?: string;
   children: React.ReactNode;
 }) {
   return (
     <div className="grid gap-1.5 text-left">
-      <label className="text-xs font-medium uppercase tracking-wider text-gray-500">{label}</label>
+      <label className="text-xs font-medium uppercase tracking-wider text-white/90">
+        {label}
+        {required ? <span className="text-white"> *</span> : null}
+      </label>
       {children}
-      {error && <p className="text-sm text-red-500">{error}</p>}
+      {error && <p className="text-sm text-red-200">{error}</p>}
     </div>
   );
 }
@@ -49,10 +49,14 @@ export function ContactQualificationForm({ initialService, initialPlan }: Contac
   const [formStatus, setFormStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
 
   const resolvedService = isServiceSlug(initialService ?? '') ? initialService : undefined;
-  const planNote =
+  const contextNote = [
     initialPlan && ['pro', 'premium', 'pointers'].includes(initialPlan)
       ? `[Plan de interés: ${initialPlan}]`
-      : '';
+      : '',
+    resolvedService ? `[Servicio: ${resolvedService}]` : ''
+  ]
+    .filter(Boolean)
+    .join(' ');
 
   const {
     register,
@@ -64,10 +68,10 @@ export function ContactQualificationForm({ initialService, initialPlan }: Contac
     mode: 'onChange',
     defaultValues: {
       name: '',
-      company: '',
-      service: resolvedService as ContactFormData['service'],
-      budget: undefined as unknown as ContactFormData['budget'],
-      message: planNote
+      lastName: '',
+      email: '',
+      phone: '',
+      message: ''
     }
   });
 
@@ -78,12 +82,14 @@ export function ContactQualificationForm({ initialService, initialPlan }: Contac
   const onSubmit = async (data: ContactFormData) => {
     setFormStatus('loading');
 
+    const message = [data.message, contextNote].filter(Boolean).join('\n\n');
+
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          data,
+          data: { ...data, message },
           metadata: {
             locale,
             pageUrl: typeof window !== 'undefined' ? window.location.href : undefined,
@@ -115,50 +121,59 @@ export function ContactQualificationForm({ initialService, initialPlan }: Contac
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="grid gap-5" noValidate>
-      <Field label={t('name')} error={errors.name?.message}>
+      <p className="text-left text-xs text-white/75">{t('requiredLegend')}</p>
+
+      <div className="grid gap-5 sm:grid-cols-2">
+        <Field label={t('name')} required error={errors.name?.message}>
+          <input
+            {...register('name')}
+            autoComplete="given-name"
+            placeholder={t('placeholders.name')}
+            className={inputClass}
+            disabled={isBusy || isDone}
+          />
+        </Field>
+
+        <Field label={t('lastName')} required error={errors.lastName?.message}>
+          <input
+            {...register('lastName')}
+            autoComplete="family-name"
+            placeholder={t('placeholders.lastName')}
+            className={inputClass}
+            disabled={isBusy || isDone}
+          />
+        </Field>
+      </div>
+
+      <Field label={t('email')} required error={errors.email?.message}>
         <input
-          {...register('name')}
-          autoComplete="name"
+          {...register('email')}
+          type="email"
+          autoComplete="email"
+          inputMode="email"
+          placeholder={t('placeholders.email')}
           className={inputClass}
           disabled={isBusy || isDone}
         />
       </Field>
 
-      <Field label={t('company')} error={errors.company?.message}>
+      <Field label={t('phone')} required error={errors.phone?.message}>
         <input
-          {...register('company')}
-          autoComplete="organization"
+          {...register('phone')}
+          type="tel"
+          autoComplete="tel"
+          inputMode="tel"
+          placeholder={t('placeholders.phone')}
           className={inputClass}
           disabled={isBusy || isDone}
         />
       </Field>
 
-      <Field label={t('service')} error={errors.service?.message}>
-        <select {...register('service')} className={cn(inputClass, 'appearance-none')} disabled={isBusy || isDone}>
-          <option value="">{t('servicePlaceholder')}</option>
-          {CONTACT_SERVICE_VALUES.map((value) => (
-            <option key={value} value={value}>
-              {t(`serviceOptions.${value}`)}
-            </option>
-          ))}
-        </select>
-      </Field>
-
-      <Field label={t('budget')} error={errors.budget?.message}>
-        <select {...register('budget')} className={cn(inputClass, 'appearance-none')} disabled={isBusy || isDone}>
-          <option value="">{t('budgetPlaceholder')}</option>
-          {CONTACT_BUDGET_VALUES.map((value) => (
-            <option key={value} value={value}>
-              {t(`budgetOptions.${value}`)}
-            </option>
-          ))}
-        </select>
-      </Field>
-
-      <Field label={t('message')} error={errors.message?.message}>
+      <Field label={t('message')} required error={errors.message?.message}>
         <textarea
           {...register('message')}
           rows={5}
+          placeholder={t('placeholders.message')}
           className={cn(inputClass, 'resize-none py-3')}
           disabled={isBusy || isDone}
         />
@@ -199,7 +214,7 @@ export function ContactQualificationForm({ initialService, initialPlan }: Contac
         <motion.p
           initial={{ opacity: 0, y: 4 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center text-xs text-red-500"
+          className="text-center text-xs text-red-200"
         >
           {t('retryHint')}
         </motion.p>

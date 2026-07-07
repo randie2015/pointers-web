@@ -126,30 +126,26 @@
     "eyebrow": "Contacto",
     "title": "Moderniza tu presencia digital",
     "subtitle": "Cuéntanos sobre tu proyecto y demos juntos el siguiente paso.",
-    "pageTitle": "Hablemos de tu próximo proyecto",
-    "pageSubtitle": "Completa el formulario y te responderemos con una propuesta alineada a tus objetivos.",
-    "formTitle": "Formulario de calificación",
-    "formSubtitle": "Cuéntanos sobre tu negocio para preparar una asesoría relevante.",
-    "locationTitle": "Arequipa, Perú",
-    "locationBody": "Agencia digital con base en Arequipa. Trabajamos con marcas en todo el Perú y Latinoamérica.",
-    "trustItems": [
-      {
-        "title": "Proceso transparente",
-        "body": "Diagnóstico claro, propuesta concreta y planes escalables sin letra pequeña."
-      },
-      {
-        "title": "Estrategia + ejecución",
-        "body": "Branding, web, contenido y publicidad en un solo equipo para crecer con coherencia."
-      }
-    ],
+    "pageTitle": "Ponte en contacto con nosotros",
+    "pageSubtitle": "¿Tienes preguntas o necesitas soluciones digitales? Cuéntanos sobre tu proyecto y te responderemos pronto.",
+    "emailLabel": "E-mail",
+    "phoneLabel": "Teléfono",
+    "formTitle": "Envíanos un mensaje",
+    "formSubtitle": "Completa el formulario y nos pondremos en contacto contigo a la brevedad.",
     "whatsappHint": "¿Prefieres respuesta inmediata? Usa el botón flotante de WhatsApp:",
+    "requiredLegend": "(* = obligatorio)",
     "name": "Nombre",
-    "company": "Empresa",
-    "service": "Servicio de interés",
-    "servicePlaceholder": "Selecciona un servicio",
-    "budget": "Presupuesto estimado",
-    "budgetPlaceholder": "Selecciona un rango",
+    "lastName": "Apellido",
+    "email": "Email",
+    "phone": "Número",
     "message": "Mensaje",
+    "placeholders": {
+      "name": "Tu Nombre",
+      "lastName": "Tu Apellido",
+      "email": "ejemplo@correo.com",
+      "phone": "+51 999 999 999",
+      "message": "Cuéntanos qué te gustaría desarrollar o mejorar"
+    },
     "ctaButton": "Ir al formulario de contacto",
     "submit": "¡Hablemos!",
     "submitIdle": "Enviar solicitud",
@@ -171,9 +167,9 @@
     },
     "errors": {
       "name": "El nombre debe tener al menos 2 caracteres",
-      "company": "La empresa debe tener al menos 2 caracteres",
-      "service": "Selecciona un servicio",
-      "budget": "Selecciona un rango de presupuesto",
+      "lastName": "El apellido debe tener al menos 2 caracteres",
+      "email": "Ingresa un correo electrónico válido",
+      "phone": "El número debe tener al menos 15 caracteres",
       "message": "El mensaje debe tener al menos 10 caracteres"
     }
   },

@@ -4,14 +4,13 @@ import { useTranslations } from 'next-intl';
 import { Reveal } from '@/components/reveal';
 import { SectionBadge } from '@/components/ui/section-badge';
 import { MaskUpButton } from '@/components/ui/mask-up-button';
-import { WhiteParticlesSection } from '@/components/hero/white-particles-section';
 import { SERVICE_PURPLE, SERVICE_TEAL } from '@/lib/service-brand';
 
 export function ServicesPageHero() {
   const t = useTranslations('servicesPage.hero');
 
   return (
-    <WhiteParticlesSection className="pt-14 md:pt-20" particlesId="services-page-hero-particles">
+    <section className="relative z-[1] overflow-hidden pt-14 md:pt-20">
       <div className="container-page">
         <Reveal>
           <div className="mx-auto max-w-4xl text-center">
@@ -35,6 +34,6 @@ export function ServicesPageHero() {
           background: `radial-gradient(circle at 30% 40%, ${SERVICE_PURPLE}33, transparent 55%), radial-gradient(circle at 70% 55%, ${SERVICE_TEAL}24, transparent 55%)`
         }}
       />
-    </WhiteParticlesSection>
+    </section>
   );
 }

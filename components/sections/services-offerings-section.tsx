@@ -18,7 +18,7 @@ export function ServicesOfferingsSection() {
   }[];
 
   return (
-    <section className="scroll-mt-24 bg-muted/40 py-20 md:py-28">
+    <section className="relative z-[1] scroll-mt-24 py-20 md:py-28">
       <div className="container-page">
         <div className="space-y-24 md:space-y-32">
           {items.map((item, i) => {

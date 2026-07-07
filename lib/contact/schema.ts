@@ -1,15 +1,11 @@
 import { z } from 'zod';
-import { SERVICE_SLUGS } from '@/lib/services';
-
-export const CONTACT_SERVICE_VALUES = [...SERVICE_SLUGS, 'otro'] as const;
-export const CONTACT_BUDGET_VALUES = ['under-500', '500-1500', '1500-5000', 'over-5000'] as const;
 
 export function createContactFormSchema(t: (key: string) => string) {
   return z.object({
-    name: z.string().trim().min(2, t('errors.name')).max(120),
-    company: z.string().trim().min(2, t('errors.company')).max(120),
-    service: z.enum(CONTACT_SERVICE_VALUES, { message: t('errors.service') }),
-    budget: z.enum(CONTACT_BUDGET_VALUES, { message: t('errors.budget') }),
+    name: z.string().trim().min(2, t('errors.name')).max(80),
+    lastName: z.string().trim().min(2, t('errors.lastName')).max(80),
+    email: z.string().trim().email(t('errors.email')).max(200),
+    phone: z.string().trim().min(15, t('errors.phone')).max(30),
     message: z.string().trim().min(10, t('errors.message')).max(5000)
   });
 }

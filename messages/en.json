@@ -244,30 +244,26 @@
     "eyebrow": "Contact",
     "title": "Modernize your digital presence",
     "subtitle": "Tell us about your project and let's take the next step together.",
-    "pageTitle": "Let's talk about your next project",
-    "pageSubtitle": "Fill out the form and we'll reply with a proposal aligned to your goals.",
-    "formTitle": "Qualification form",
-    "formSubtitle": "Tell us about your business so we can prepare a relevant consultation.",
-    "locationTitle": "Arequipa, Peru",
-    "locationBody": "Digital agency based in Arequipa. We work with brands across Peru and Latin America.",
-    "trustItems": [
-      {
-        "title": "Transparent process",
-        "body": "Clear diagnosis, concrete proposal and scalable plans without fine print."
-      },
-      {
-        "title": "Strategy + execution",
-        "body": "Branding, web, content and advertising in one team to grow with consistency."
-      }
-    ],
+    "pageTitle": "Get in touch with us",
+    "pageSubtitle": "Have questions or need digital solutions? Tell us about your project and we'll get back to you soon.",
+    "emailLabel": "E-mail",
+    "phoneLabel": "Phone",
+    "formTitle": "Send us a message",
+    "formSubtitle": "Fill out the form and we'll contact you shortly.",
     "whatsappHint": "Prefer an immediate reply? Use the floating WhatsApp button:",
-    "name": "Name",
-    "company": "Company",
-    "service": "Service of interest",
-    "servicePlaceholder": "Select a service",
-    "budget": "Estimated budget",
-    "budgetPlaceholder": "Select a range",
+    "requiredLegend": "(* = required)",
+    "name": "First name",
+    "lastName": "Last name",
+    "email": "Email",
+    "phone": "Phone number",
     "message": "Message",
+    "placeholders": {
+      "name": "Your first name",
+      "lastName": "Your last name",
+      "email": "example@email.com",
+      "phone": "+51 999 999 999",
+      "message": "Tell us what you'd like to build or improve"
+    },
     "ctaButton": "Go to contact form",
     "submit": "Let's talk!",
     "submitIdle": "Send request",
@@ -289,9 +285,9 @@
     },
     "errors": {
       "name": "Name must be at least 2 characters",
-      "company": "Company must be at least 2 characters",
-      "service": "Please select a service",
-      "budget": "Please select a budget range",
+      "lastName": "Last name must be at least 2 characters",
+      "email": "Please enter a valid email address",
+      "phone": "Phone number must be at least 15 characters",
       "message": "Message must be at least 10 characters"
     }
   },

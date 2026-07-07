@@ -55,9 +55,9 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
   ] as const;
 
   return (
-    <main className="bg-white">
+    <main>
       {/* Hero */}
-      <section className="relative overflow-hidden bg-white pt-14 md:pt-20">
+      <section className="relative z-[1] overflow-hidden pt-14 md:pt-20">
         <div className="container-page">
           <Reveal>
             <div className="mx-auto max-w-4xl text-center">
@@ -84,7 +84,7 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
       <BrandTrustSection />
 
       {/* Mission & Vision */}
-      <section className="bg-white py-20 md:py-28">
+      <section className="relative z-[1] py-20 md:py-28">
         <div className="container-page">
           <Reveal>
             <SectionHeader eyebrow={t('missionVision.eyebrow')} title={t('missionVision.title')} />
@@ -100,7 +100,7 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
       </section>
 
       {/* Pillars */}
-      <section className="bg-gray-50 py-20 md:py-28">
+      <section className="relative z-[1] py-20 md:py-28">
         <div className="container-page">
           <Reveal>
             <SectionHeader eyebrow={t('pillars.eyebrow')} title={t('pillars.title')} />
@@ -115,7 +115,7 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
       </section>
 
       {/* Values */}
-      <section className="bg-white py-20 md:py-28">
+      <section className="relative z-[1] py-20 md:py-28">
         <div className="container-page">
           <Reveal>
             <SectionHeader eyebrow={t('values.eyebrow')} title={t('values.title')} subtitle={t('values.subtitle')} />
@@ -130,7 +130,7 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
       </section>
 
       {/* Why us */}
-      <section className="bg-gray-50 py-20 md:py-28">
+      <section className="relative z-[1] py-20 md:py-28">
         <div className="container-page">
           <Reveal>
             <SectionHeader eyebrow={t('whyUs.eyebrow')} title={t('whyUs.title')} subtitle={t('whyUs.subtitle')} />
@@ -197,7 +197,7 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
       </section>
 
       {/* Team */}
-      <section className="bg-white py-20 md:py-28">
+      <section className="relative z-[1] py-20 md:py-28">
         <div className="container-page">
           <Reveal>
             <SectionHeader eyebrow={t('team.eyebrow')} title={t('team.title')} subtitle={t('team.subtitle')} />
@@ -240,7 +240,7 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
       <SpotlightCTA />
 
       {/* FAQ (questions only, per provided content) */}
-      <section className="bg-white py-20 md:py-28">
+      <section className="relative z-[1] py-20 md:py-28">
         <div className="container-page">
           <Reveal>
             <SectionHeader eyebrow={t('faq.eyebrow')} title={t('faq.title')} subtitle={t('faq.subtitle')} />

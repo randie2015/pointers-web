@@ -62,3 +62,7 @@ export function getContactUrl(options?: { service?: ServiceWhatsAppSlug; plan?: 
   const query = params.toString();
   return query ? (`/contact?${query}` as const) : '/contact';
 }
+
+export function getContactEmail() {
+  return process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? 'hello@pointers.marketing';
+}

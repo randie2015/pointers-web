@@ -140,7 +140,7 @@ export function isEnergySaverActive(): boolean {
 
 type PhysicsConfig = {
   enableGyro: boolean;
-  mode?: 'hero' | 'ambient';
+  mode?: 'hero' | 'ambient' | 'site';
 };
 
 type OrientationSample = {
@@ -161,11 +161,17 @@ function smoothStep(current: number, target: number, factor: number) {
  * Pointer repulse is handled by tsparticles interactivity on the canvas.
  */
 export function bindHeroParticlePhysics(container: Container, config: PhysicsConfig): () => void {
+  // Espacio abierto del sitio: sin atracción, remolino ni centro de masa.
+  if (config.mode === 'site') {
+    return () => undefined;
+  }
+
   let running = true;
   let rafId = 0;
   let targetOrientation: OrientationSample = { beta: 45, gamma: 0 };
   let smoothOrientation: OrientationSample = { beta: 45, gamma: 0 };
   const isHero = config.mode === 'hero';
+  const isAmbient = config.mode === 'ambient';
 
   const onOrientation = (event: DeviceOrientationEvent) => {
     if (!config.enableGyro) return;
@@ -186,11 +192,11 @@ export function bindHeroParticlePhysics(container: Container, config: PhysicsCon
     const centerX = width / 2 + (smoothOrientation.gamma / 45) * maxOffset;
     const centerY = height / 2 + ((smoothOrientation.beta - 45) / 45) * maxOffset;
 
-    const voidRadius = Math.min(width, height) * (isHero ? 0.1 : 0.06);
+    const voidRadius = Math.min(width, height) * (isHero ? 0.1 : 0.05);
     const attractStrength = isHero ? 0.038 : 0.018;
     const swirlStrength = isHero ? 0.022 : 0.006;
-    const repulseStrength = isHero ? 0.14 : 0.05;
-    const damping = isHero ? 0.978 : 0.985;
+    const repulseStrength = isHero ? 0.14 : 0.04;
+    const damping = isHero ? 0.978 : 0.986;
 
     const particles = container.particles.filter(() => true);
 
@@ -209,7 +215,7 @@ export function bindHeroParticlePhysics(container: Container, config: PhysicsCon
         particle.velocity.y += (dy / distance) * pull;
       }
 
-      if (isHero) {
+      if (isHero || isAmbient) {
         particle.velocity.x += (-dy / distance) * swirlStrength;
         particle.velocity.y += (dx / distance) * swirlStrength;
       }

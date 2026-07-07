@@ -3,6 +3,7 @@
 import { useTranslations } from 'next-intl';
 import { Reveal } from '@/components/reveal';
 import { SectionHeader } from '@/components/ui/section-header';
+import { SectionBadge } from '@/components/ui/section-badge';
 import { MaskUpButton } from '@/components/ui/mask-up-button';
 import { Link } from '@/i18n/routing';
 import { SERVICE_SLUGS } from '@/lib/services';
@@ -16,7 +17,7 @@ export function ServicesHomePreview() {
   }[];
 
   return (
-    <section className="scroll-mt-24 bg-muted/40 py-20 md:py-28">
+    <section className="relative z-[1] scroll-mt-24 py-20 md:py-28">
       <div className="container-page">
         <Reveal>
           <SectionHeader eyebrow={t('eyebrow')} title={t('title')} subtitle={t('subtitle')} />
@@ -30,9 +31,7 @@ export function ServicesHomePreview() {
                 prefetch
                 className="group mobile-card-interactive block h-full rounded-2xl border border-border/60 bg-white p-6 shadow-sm md:p-8 md:shadow-sm md:hover:-translate-y-1 md:hover:shadow-md"
               >
-                <span className="inline-block rounded-xl bg-purple px-3 py-1 text-xs font-semibold text-white">
-                  {item.badge}
-                </span>
+                <SectionBadge text={item.badge} variant="purple" size="compact" />
                 <h3 className="h-display mt-4 text-xl md:text-2xl">{item.title}</h3>
                 <p className="mt-3 line-clamp-3 text-sm leading-relaxed text-muted-foreground md:text-base">
                   {item.description}

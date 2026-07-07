@@ -10,6 +10,7 @@ import { Inter } from 'next/font/google';
 import type { Metadata } from 'next';
 import '../globals.css';
 import { siteIconMetadata } from '@/lib/site-icons';
+import { SiteParticlesLayer } from '@/components/hero/site-particles-layer';
 import { ClientIntlProvider } from '@/i18n/client-intl-provider';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' });
@@ -57,11 +58,14 @@ export default async function LocaleLayout({
     <html lang={locale} className={inter.variable}>
       <body>
         <ClientIntlProvider initialLocale={locale as 'es' | 'en'}>
-          <HashScrollHandler />
-          <Header />
-          <main>{children}</main>
-          <Footer />
-          <WhatsAppFloat />
+          <SiteParticlesLayer />
+          <div className="site-content-layer">
+            <HashScrollHandler />
+            <Header />
+            <main>{children}</main>
+            <Footer />
+            <WhatsAppFloat />
+          </div>
         </ClientIntlProvider>
       </body>
     </html>

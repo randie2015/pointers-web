@@ -1,16 +1,34 @@
+import { cn } from '@/lib/utils';
+
 type SectionBadgeProps = {
   text: string;
-  variant?: 'brand' | 'purple';
+  variant?: 'brand' | 'purple' | 'light';
+  size?: 'default' | 'compact';
+  className?: string;
 };
 
-export function SectionBadge({ text, variant = 'brand' }: SectionBadgeProps) {
+const VARIANT_CLASS = {
+  brand: 'badge-carved--brand',
+  purple: 'badge-carved--purple',
+  light: 'badge-carved--light'
+} as const;
+
+export function SectionBadge({
+  text,
+  variant = 'brand',
+  size = 'default',
+  className
+}: SectionBadgeProps) {
   return (
     <span
-      className={
-        variant === 'purple'
-          ? 'inline-block rounded-xl bg-[#5E549D] px-4 py-1.5 text-sm font-medium text-white shadow-sm max-md:shadow-md md:text-base'
-          : 'inline-block rounded-xl bg-[#BC2656] px-4 py-1.5 text-sm font-medium text-white shadow-sm max-md:shadow-md md:text-base'
-      }
+      className={cn(
+        'badge-carved font-medium',
+        VARIANT_CLASS[variant],
+        size === 'compact'
+          ? 'px-3 py-1 text-xs font-semibold'
+          : 'px-4 py-1.5 text-sm md:text-base',
+        className
+      )}
     >
       {text}
     </span>

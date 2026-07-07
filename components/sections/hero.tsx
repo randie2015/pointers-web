@@ -4,22 +4,13 @@ import { useTranslations } from 'next-intl';
 import { motion, useReducedMotion } from 'framer-motion';
 import { MaskUpButton } from '@/components/ui/mask-up-button';
 import { AdminAccessIcon } from '@/components/admin/admin-access-icon';
-import { HeroCosmicVoid } from '@/components/hero/hero-cosmic-void';
-import { HeroParticlesBackground } from '@/components/hero/hero-particles-background';
 
 export function Hero() {
   const t = useTranslations('hero');
   const reduced = useReducedMotion();
 
   return (
-    <section
-      id="hero"
-      className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden text-center"
-      style={{
-        background:
-          'radial-gradient(ellipse 120% 80% at 50% 42%, #fdf6f9 0%, #f6f0f3 38%, #efe8ec 72%, #e8e2e8 100%)'
-      }}
-    >
+    <section id="hero" className="relative z-[1] flex min-h-screen flex-col items-center justify-center overflow-hidden text-center">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 z-[2] opacity-[0.035]"
@@ -27,10 +18,6 @@ export function Hero() {
           backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`
         }}
       />
-
-      <HeroCosmicVoid />
-
-      <HeroParticlesBackground preset="hero" id="hero-cosmic-particles" />
 
       <div className="relative z-10 flex max-w-4xl flex-col items-center justify-center px-6 py-24 md:px-10">
         <motion.h1
