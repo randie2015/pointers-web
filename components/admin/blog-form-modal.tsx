@@ -28,6 +28,9 @@ const EMPTY_FORM: FormState = {
   status: 'draft'
 };
 
+const fieldClassName =
+  'w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm text-gray-900 placeholder-gray-500 outline-none transition focus:border-brand focus:ring-2 focus:ring-brand/20';
+
 export function BlogFormModal({ open, post, onClose, onSaved }: BlogFormModalProps) {
   const [form, setForm] = useState<FormState>(EMPTY_FORM);
   const [error, setError] = useState('');
@@ -84,27 +87,31 @@ export function BlogFormModal({ open, post, onClose, onSaved }: BlogFormModalPro
   }
 
   return (
-    <div className="fixed inset-0 z-[70] flex items-center justify-center bg-black/50 p-4 backdrop-blur-sm">
-      <div className="flex max-h-[92vh] w-full max-w-3xl flex-col overflow-hidden rounded-2xl bg-white shadow-2xl">
-        <div className="flex items-center justify-between border-b border-gray-100 px-6 py-4">
-          <div>
-            <h2 className="text-lg font-semibold text-gray-900">
-              {post ? 'Editar artículo' : 'Nuevo artículo'}
-            </h2>
-            <p className="text-sm text-gray-500">Completa los campos y guarda los cambios.</p>
+    <div className="fixed inset-0 z-[80] flex flex-col bg-black/50 backdrop-blur-sm md:items-center md:justify-center md:p-4">
+      <div className="relative flex h-full w-full flex-col overflow-hidden bg-white text-gray-900 shadow-2xl md:my-auto md:max-h-[92vh] md:max-w-3xl md:rounded-2xl">
+        <div className="sticky top-0 z-20 shrink-0 border-b border-gray-200 bg-white px-4 pb-4 pt-5 shadow-sm sm:px-6 sm:py-4">
+          <div className="flex items-start justify-between gap-3">
+            <div className="min-w-0 flex-1 pr-2">
+              <h2 className="text-lg font-semibold text-gray-900">
+                {post ? 'Editar artículo' : 'Nuevo artículo'}
+              </h2>
+              <p className="mt-1 text-sm leading-relaxed text-gray-500">
+                Completa los campos y guarda los cambios.
+              </p>
+            </div>
+            <button
+              type="button"
+              onClick={onClose}
+              className="relative z-30 shrink-0 rounded-lg border border-gray-200 bg-white p-2 text-gray-600 shadow-sm transition hover:bg-gray-50 hover:text-gray-900"
+              aria-label="Cerrar"
+            >
+              <X size={20} />
+            </button>
           </div>
-          <button
-            type="button"
-            onClick={onClose}
-            className="rounded-lg p-2 text-gray-500 transition hover:bg-gray-100 hover:text-gray-800"
-            aria-label="Cerrar"
-          >
-            <X size={20} />
-          </button>
         </div>
 
-        <form onSubmit={handleSubmit} className="flex flex-1 flex-col overflow-hidden">
-          <div className="flex-1 space-y-5 overflow-y-auto px-6 py-5">
+        <form onSubmit={handleSubmit} className="flex min-h-0 flex-1 flex-col overflow-hidden">
+          <div className="flex-1 space-y-5 overflow-y-auto px-4 pb-6 pt-6 sm:px-6 sm:py-5 md:pt-5">
             <label className="block">
               <span className="mb-2 block text-sm font-medium text-gray-700">Título</span>
               <input
@@ -112,7 +119,7 @@ export function BlogFormModal({ open, post, onClose, onSaved }: BlogFormModalPro
                 value={form.title}
                 onChange={(e) => setForm((current) => ({ ...current, title: e.target.value }))}
                 required
-                className="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm outline-none focus:border-brand focus:ring-2 focus:ring-brand/20"
+                className={fieldClassName}
                 placeholder="Título del artículo"
               />
             </label>
@@ -124,7 +131,7 @@ export function BlogFormModal({ open, post, onClose, onSaved }: BlogFormModalPro
                   type="text"
                   value={form.tag}
                   onChange={(e) => setForm((current) => ({ ...current, tag: e.target.value }))}
-                  className="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm outline-none focus:border-brand focus:ring-2 focus:ring-brand/20"
+                  className={fieldClassName}
                   placeholder="Branding"
                 />
               </label>
@@ -139,10 +146,14 @@ export function BlogFormModal({ open, post, onClose, onSaved }: BlogFormModalPro
                       status: e.target.value as PostStatus
                     }))
                   }
-                  className="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm outline-none focus:border-brand focus:ring-2 focus:ring-brand/20"
+                  className={fieldClassName}
                 >
-                  <option value="draft">Borrador</option>
-                  <option value="published">Publicado</option>
+                  <option value="draft" className="bg-white text-gray-900">
+                    Borrador
+                  </option>
+                  <option value="published" className="bg-white text-gray-900">
+                    Publicado
+                  </option>
                 </select>
               </label>
             </div>
@@ -155,7 +166,7 @@ export function BlogFormModal({ open, post, onClose, onSaved }: BlogFormModalPro
                 value={form.excerpt}
                 onChange={(e) => setForm((current) => ({ ...current, excerpt: e.target.value }))}
                 rows={2}
-                className="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm outline-none focus:border-brand focus:ring-2 focus:ring-brand/20"
+                className={fieldClassName}
                 placeholder="Resumen breve para la tarjeta del blog"
               />
             </label>
@@ -176,11 +187,11 @@ export function BlogFormModal({ open, post, onClose, onSaved }: BlogFormModalPro
             )}
           </div>
 
-          <div className="flex justify-end gap-3 border-t border-gray-100 px-6 py-4">
+          <div className="sticky bottom-0 z-20 flex shrink-0 justify-end gap-3 border-t border-gray-200 bg-white px-4 py-4 sm:px-6">
             <button
               type="button"
               onClick={onClose}
-              className="rounded-xl border border-gray-200 px-4 py-2.5 text-sm font-medium text-gray-700 transition hover:bg-gray-50"
+              className="rounded-xl border border-gray-300 bg-white px-4 py-2.5 text-sm font-medium text-gray-700 transition hover:bg-gray-50"
             >
               Cancelar
             </button>
