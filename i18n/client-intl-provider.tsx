@@ -34,6 +34,7 @@ export function ClientIntlProvider({
     document.documentElement.lang = next;
     const path = window.location.pathname.replace(/^\/(es|en)(?=\/|$)/, `/${next}`);
     window.history.replaceState(null, '', `${path}${window.location.search}${window.location.hash}`);
+    window.dispatchEvent(new CustomEvent('localeswitch'));
     setLocale(next);
   }, [locale]);
 

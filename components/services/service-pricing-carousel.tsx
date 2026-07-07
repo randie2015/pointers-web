@@ -1,7 +1,7 @@
 'use client';
 
-import { useCallback, useEffect, useRef, useState } from 'react';
-import { Check, ChevronLeft, ChevronRight } from 'lucide-react';
+import { useMemo } from 'react';
+import { Check } from 'lucide-react';
 import { useLocale } from 'next-intl';
 import { MaskUpButton } from '@/components/ui/mask-up-button';
 import { SERVICE_MAGENTA, SERVICE_TEAL } from '@/lib/service-brand';
@@ -38,8 +38,7 @@ function PlanCard({
   plan,
   ctaLabel,
   dualPrice,
-  contactUrl,
-  interactive
+  contactUrl
 }: {
   tier: PricingTierKey;
   meta: PricingTierMeta;
@@ -47,7 +46,6 @@ function PlanCard({
   ctaLabel: string;
   dualPrice: { usd: string; pen: string } | null;
   contactUrl: string;
-  interactive?: boolean;
 }) {
   const featured = tier === 'pointers';
 
@@ -56,15 +54,11 @@ function PlanCard({
       aria-label={`${meta.name} — ${dualPrice?.usd ?? plan.price}`}
       style={featured ? { backgroundColor: SERVICE_MAGENTA, borderColor: SERVICE_MAGENTA, boxShadow: `0 10px 40px ${SERVICE_MAGENTA}4d` } : undefined}
       className={cn(
-        'relative flex h-full w-full min-w-0 flex-col rounded-2xl border p-5 text-left shadow-sm sm:rounded-3xl sm:p-6 md:p-6 lg:p-7',
-        'transition-all duration-500 ease-in-out',
-        interactive && 'hover:-translate-y-2 hover:shadow-xl',
+        'relative flex h-full w-full min-w-0 flex-col rounded-2xl border p-6 text-left shadow-sm sm:rounded-3xl sm:p-7 md:p-8',
+        'md:transition-all md:duration-300 md:ease-out md:hover:-translate-y-1 md:hover:shadow-lg',
         featured
           ? 'text-white shadow-lg'
-          : cn(
-              'border-border/70 bg-white',
-              interactive && 'hover:border-[#5E549D]/40'
-            )
+          : 'border-border/70 bg-white md:hover:border-[#5E549D]/40'
       )}
     >
       <div>
@@ -76,39 +70,34 @@ function PlanCard({
         >
           {meta.name}
         </p>
-        <p className={cn('mt-1.5 text-sm sm:mt-2', featured ? 'text-white/75' : 'text-muted-foreground')}>
+        <p className={cn('mt-2 text-sm leading-relaxed sm:text-base', featured ? 'text-white/80' : 'text-muted-foreground')}>
           {meta.tagline}
         </p>
         <p
           className={cn(
-            'mt-3 font-display text-lg font-bold leading-tight tracking-tight sm:mt-4 sm:text-xl md:text-2xl lg:text-[1.65rem]',
+            'mt-4 font-display text-xl font-bold leading-tight tracking-tight sm:text-2xl',
             featured ? 'text-white' : 'text-gray-900'
           )}
         >
           {dualPrice?.usd ?? plan.price}
         </p>
         {dualPrice ? (
-          <p className={cn('mt-1 text-sm font-medium sm:text-base', featured ? 'text-white/75' : 'text-muted-foreground')}>
+          <p className={cn('mt-1.5 text-sm font-medium sm:text-base', featured ? 'text-white/80' : 'text-muted-foreground')}>
             {dualPrice.pen}
           </p>
         ) : null}
       </div>
 
-      <div className="mt-3 flex min-h-0 flex-1 flex-col sm:mt-4">
+      <div className="mt-5 flex flex-1 flex-col sm:mt-6">
         {plan.description ? (
-          <p className={cn('text-sm leading-relaxed', featured ? 'text-white/85' : 'text-muted-foreground')}>
+          <p className={cn('text-sm leading-relaxed sm:text-base', featured ? 'text-white/90' : 'text-muted-foreground')}>
             {plan.description}
           </p>
         ) : null}
 
-        <ul
-          className={cn(
-            'flex flex-col gap-2.5 sm:gap-3',
-            plan.description ? 'mt-4 sm:mt-5' : 'mt-1'
-          )}
-        >
+        <ul className={cn('flex flex-col gap-3', plan.description ? 'mt-5 sm:mt-6' : 'mt-2')}>
           {plan.features.map((feature, index) => (
-            <li key={`${tier}-${index}`} className="flex items-start gap-2.5 sm:gap-3">
+            <li key={`${tier}-${index}`} className="flex items-start gap-3">
               <Check
                 className={cn('mt-0.5 h-4 w-4 shrink-0', featured ? 'text-white' : 'text-[#39B8AD]')}
                 style={featured ? undefined : { color: SERVICE_TEAL }}
@@ -116,7 +105,7 @@ function PlanCard({
               />
               <span
                 className={cn(
-                  'text-xs leading-snug sm:text-sm sm:leading-relaxed',
+                  'text-sm leading-relaxed',
                   featured ? 'text-white/90' : 'text-gray-700'
                 )}
               >
@@ -126,8 +115,8 @@ function PlanCard({
           ))}
         </ul>
 
-        <div className="mt-auto w-full pt-6 sm:pt-8">
-          <MaskUpButton href={contactUrl} label={ctaLabel} className="block w-full sm:inline-block sm:w-auto" />
+        <div className="mt-auto w-full pt-8">
+          <MaskUpButton href={contactUrl} label={ctaLabel} className="block w-full" />
         </div>
       </div>
     </article>
@@ -142,168 +131,21 @@ export function ServicePricingCarousel({
   customNote
 }: ServicePricingCarouselProps) {
   const locale = useLocale() as 'es' | 'en';
-  const [activeIndex, setActiveIndex] = useState(1);
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const slideRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  const dualPriceFor = useCallback(
-    (priceString: string) => formatPricingDual(priceString, locale),
+  const dualPriceFor = useMemo(
+    () => (priceString: string) => formatPricingDual(priceString, locale),
     [locale]
   );
 
-  const scrollSlideToIndex = useCallback((index: number, behavior: ScrollBehavior = 'smooth') => {
-    const root = scrollRef.current;
-    const slide = slideRefs.current[index];
-    if (!root || !slide) return;
-
-    const target = slide.offsetLeft - (root.clientWidth - slide.offsetWidth) / 2;
-    root.scrollTo({ left: Math.max(0, target), behavior });
-  }, []);
-
-  const goTo = useCallback(
-    (index: number) => {
-      const next = Math.max(0, Math.min(TIERS.length - 1, index));
-      setActiveIndex(next);
-      scrollSlideToIndex(next);
-    },
-    [scrollSlideToIndex]
-  );
-
-  const goNext = useCallback(() => {
-    goTo((activeIndex + 1) % TIERS.length);
-  }, [activeIndex, goTo]);
-
-  const goPrev = useCallback(() => {
-    goTo((activeIndex - 1 + TIERS.length) % TIERS.length);
-  }, [activeIndex, goTo]);
-
-  useEffect(() => {
-    const root = scrollRef.current;
-    if (!root) return;
-
-    const syncActiveFromScroll = () => {
-      const center = root.scrollLeft + root.clientWidth / 2;
-      let closest = 0;
-      let minDistance = Number.POSITIVE_INFINITY;
-
-      slideRefs.current.forEach((slide, index) => {
-        if (!slide) return;
-        const slideCenter = slide.offsetLeft + slide.offsetWidth / 2;
-        const distance = Math.abs(center - slideCenter);
-        if (distance < minDistance) {
-          minDistance = distance;
-          closest = index;
-        }
-      });
-
-      setActiveIndex((prev) => (prev === closest ? prev : closest));
-    };
-
-    root.addEventListener('scroll', syncActiveFromScroll, { passive: true });
-    return () => root.removeEventListener('scroll', syncActiveFromScroll);
-  }, []);
-
-  useEffect(() => {
-    const id = window.requestAnimationFrame(() => {
-      scrollSlideToIndex(1, 'instant');
-    });
-    return () => window.cancelAnimationFrame(id);
-  }, [scrollSlideToIndex]);
-
-  const swipeHint =
-    locale === 'es' ? 'Desliza o usa las flechas para comparar los 3 planes' : 'Swipe or use arrows to compare all 3 plans';
-  const planCounter =
-    locale === 'es'
-      ? `Plan ${activeIndex + 1} de ${TIERS.length}`
-      : `Plan ${activeIndex + 1} of ${TIERS.length}`;
-
   return (
-      <div className="mt-8 sm:mt-10 md:mt-14">
-      <p className="mb-6 text-center text-xs text-muted-foreground sm:mb-8 sm:text-sm">
+    <div className="mt-8 sm:mt-10 md:mt-14">
+      <p className="mb-8 text-center text-xs leading-relaxed text-muted-foreground sm:text-sm">
         {locale === 'es'
           ? 'Precios base en USD con equivalente en soles (tipo de cambio referencial × 3.4, redondeo a S/ 50).'
           : 'Base prices in USD with PEN equivalent (reference rate × 3.4, rounded to S/ 50).'}
       </p>
 
-      {/* Mobile: peek carousel — sin máscaras, swipe natural */}
-      <div className="md:hidden">
-        <div className="mb-4 flex items-center justify-center gap-2">
-          <span className="rounded-full bg-[#5E549D]/12 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-[#5E549D]">
-            {planCounter}
-          </span>
-          <span className="text-xs font-medium text-muted-foreground">· {tierMeta[TIERS[activeIndex]].name}</span>
-        </div>
-
-        <div
-          ref={scrollRef}
-          className="flex snap-x snap-mandatory gap-4 overflow-x-auto overscroll-x-contain scroll-smooth px-5 py-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-          style={{ scrollPaddingInline: '1.25rem' }}
-          aria-label="Planes de precios"
-        >
-          {TIERS.map((tier, i) => (
-            <div
-              key={tier}
-              ref={(el) => {
-                slideRefs.current[i] = el;
-              }}
-              className="w-[70%] max-w-[320px] shrink-0 snap-center"
-            >
-              <PlanCard
-                tier={tier}
-                meta={tierMeta[tier]}
-                plan={pricing[tier]}
-                ctaLabel={ctaLabel}
-                contactUrl={getContactUrl({ service: slug, plan: tier })}
-                dualPrice={dualPriceFor(pricing[tier].price)}
-              />
-            </div>
-          ))}
-          {/* Espaciador final para centrar la última tarjeta con peek natural */}
-          <div className="w-[14%] max-w-[4.5rem] shrink-0 snap-none" aria-hidden />
-        </div>
-
-        <div className="mt-6 flex items-center justify-center gap-4">
-          <button
-            type="button"
-            onClick={goPrev}
-            className="touch-press flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[#5E549D]/25 bg-white text-[#5E549D] shadow-sm transition active:scale-95"
-            aria-label={locale === 'es' ? 'Plan anterior' : 'Previous plan'}
-          >
-            <ChevronLeft size={20} strokeWidth={2.25} />
-          </button>
-
-          <button
-            type="button"
-            onClick={goNext}
-            className="touch-press flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[#5E549D]/25 bg-white text-[#5E549D] shadow-sm transition active:scale-95"
-            aria-label={locale === 'es' ? 'Plan siguiente' : 'Next plan'}
-          >
-            <ChevronRight size={20} strokeWidth={2.25} />
-          </button>
-        </div>
-
-        <div className="mt-6 flex justify-center gap-2.5" role="tablist" aria-label="Planes">
-          {TIERS.map((tier, i) => (
-            <button
-              key={tier}
-              type="button"
-              role="tab"
-              aria-selected={i === activeIndex}
-              onClick={() => goTo(i)}
-              className={cn(
-                'rounded-full transition-all duration-300',
-                i === activeIndex ? 'h-2.5 w-8 bg-[#5E549D]' : 'h-2.5 w-2.5 bg-[#5E549D]/30'
-              )}
-              aria-label={tierMeta[tier].name}
-            />
-          ))}
-        </div>
-
-        <p className="mt-5 text-center text-sm text-muted-foreground">{swipeHint}</p>
-      </div>
-
-      {/* Desktop: three expanded plans */}
-      <div className="hidden md:grid md:grid-cols-3 md:items-stretch md:gap-5 lg:gap-8">
+      <div className="grid grid-cols-1 items-stretch gap-8 md:grid-cols-3">
         {TIERS.map((tier) => (
           <PlanCard
             key={tier}
@@ -313,12 +155,11 @@ export function ServicePricingCarousel({
             ctaLabel={ctaLabel}
             contactUrl={getContactUrl({ service: slug, plan: tier })}
             dualPrice={dualPriceFor(pricing[tier].price)}
-            interactive
           />
         ))}
       </div>
 
-      <p className="mt-8 text-center text-xs text-muted-foreground sm:mt-10 sm:text-sm">{customNote}</p>
+      <p className="mt-10 text-center text-xs leading-relaxed text-muted-foreground sm:text-sm">{customNote}</p>
     </div>
   );
 }

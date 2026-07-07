@@ -2,7 +2,6 @@
 
 import { useLayoutEffect, useRef, useState } from 'react';
 import { useInView, useReducedMotion } from 'framer-motion';
-import { useLocale } from 'next-intl';
 
 type Options = {
   margin?: number;
@@ -17,7 +16,6 @@ function isElementInView(el: Element, margin: number) {
 
 export function useMotionReveal({ margin = -32, amount = 0.05 }: Options = {}) {
   const reduced = useReducedMotion();
-  const locale = useLocale();
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: `${margin}px`, amount });
   const [forced, setForced] = useState(false);
@@ -51,7 +49,7 @@ export function useMotionReveal({ margin = -32, amount = 0.05 }: Options = {}) {
       window.removeEventListener('anchorscroll', sync);
       window.removeEventListener('resize', sync);
     };
-  }, [margin, locale]);
+  }, [margin]);
 
   return {
     ref,
