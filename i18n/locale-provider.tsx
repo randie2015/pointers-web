@@ -8,12 +8,9 @@ import {
   useMemo,
   useState,
   startTransition,
-  type Dispatch,
-  type ReactNode,
-  type SetStateAction
+  type ReactNode
 } from 'react';
 import { NextIntlClientProvider } from 'next-intl';
-import { usePathname, useRouter } from '@/i18n/routing';
 import type { AppLocale } from '@/i18n/routing';
 import esMessages from '@/messages/es.json';
 import enMessages from '@/messages/en.json';
@@ -40,20 +37,17 @@ export function useLocaleSwitch() {
   return context;
 }
 
-function LocaleNavigationBridge({
+function LocaleContextBridge({
   locale,
   setLocale,
   initialLocale,
   children
 }: {
   locale: AppLocale;
-  setLocale: Dispatch<SetStateAction<AppLocale>>;
+  setLocale: (locale: AppLocale) => void;
   initialLocale: AppLocale;
   children: ReactNode;
 }) {
-  const pathname = usePathname();
-  const router = useRouter();
-
   useEffect(() => {
     setLocale(initialLocale);
     document.documentElement.lang = initialLocale;
@@ -76,19 +70,12 @@ function LocaleNavigationBridge({
     (nextLocale: AppLocale) => {
       if (nextLocale === locale) return;
 
-      const scrollY = window.scrollY;
-
       startTransition(() => {
         setLocale(nextLocale);
         document.documentElement.lang = nextLocale;
-        router.replace(pathname, { locale: nextLocale, scroll: false });
-      });
-
-      requestAnimationFrame(() => {
-        window.scrollTo({ top: scrollY, left: 0, behavior: 'instant' });
       });
     },
-    [locale, pathname, router, setLocale]
+    [locale, setLocale]
   );
 
   const contextValue = useMemo(
@@ -113,9 +100,9 @@ export function LocaleProvider({
 
   return (
     <NextIntlClientProvider locale={locale} messages={MESSAGE_BUNDLES[locale]} timeZone="UTC">
-      <LocaleNavigationBridge locale={locale} setLocale={setLocale} initialLocale={initialLocale}>
+      <LocaleContextBridge locale={locale} setLocale={setLocale} initialLocale={initialLocale}>
         {children}
-      </LocaleNavigationBridge>
+      </LocaleContextBridge>
     </NextIntlClientProvider>
   );
 }

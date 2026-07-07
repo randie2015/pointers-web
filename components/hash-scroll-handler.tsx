@@ -1,7 +1,9 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { usePathname, useRouter } from '@/i18n/routing';
+import { usePathname } from 'next/navigation';
+import { useRouter as useIntlRouter } from '@/i18n/routing';
+import { stripLocaleFromPath } from '@/i18n/locale-path';
 
 function dispatchAnchorScroll() {
   window.dispatchEvent(new CustomEvent('anchorscroll'));
@@ -40,8 +42,8 @@ function normalizePath(path: string) {
 }
 
 function isHomePath(path: string) {
-  const normalized = normalizePath(path);
-  return normalized === '/' || normalized === '/es' || normalized === '/en';
+  const normalized = normalizePath(stripLocaleFromPath(path));
+  return normalized === '/';
 }
 
 function isServiciosHash(hash: string) {
@@ -50,8 +52,8 @@ function isServiciosHash(hash: string) {
 
 export function HashScrollHandler() {
   const pathname = usePathname();
-  const router = useRouter();
-  const prevPathnameRef = useRef<string | null>(null);
+  const intlRouter = useIntlRouter();
+  const prevRouteRef = useRef<string | null>(null);
 
   useEffect(() => {
     if ('scrollRestoration' in history) {
@@ -60,12 +62,13 @@ export function HashScrollHandler() {
   }, []);
 
   useEffect(() => {
-    if (prevPathnameRef.current === pathname) return;
-    prevPathnameRef.current = pathname;
+    const routeWithoutLocale = stripLocaleFromPath(pathname);
+    if (prevRouteRef.current === routeWithoutLocale) return;
+    prevRouteRef.current = routeWithoutLocale;
 
     const hash = window.location.hash;
-    if (hash && isServiciosHash(hash) && isHomePath(window.location.pathname)) {
-      router.replace('/servicios', { scroll: false });
+    if (hash && isServiciosHash(hash) && isHomePath(pathname)) {
+      intlRouter.replace('/servicios', { scroll: false });
       return;
     }
     if (hash) {
@@ -74,7 +77,7 @@ export function HashScrollHandler() {
     }
     scrollToTop();
     requestAnimationFrame(scrollToTop);
-  }, [pathname, router]);
+  }, [pathname, intlRouter]);
 
   useEffect(() => {
     const handleClick = (event: MouseEvent) => {
@@ -92,7 +95,7 @@ export function HashScrollHandler() {
 
       if (isServiciosHash(url.hash)) {
         event.preventDefault();
-        router.push('/servicios', { scroll: false });
+        intlRouter.push('/servicios', { scroll: false });
         return;
       }
 
@@ -102,12 +105,12 @@ export function HashScrollHandler() {
 
     document.addEventListener('click', handleClick);
     return () => document.removeEventListener('click', handleClick);
-  }, [router]);
+  }, [intlRouter]);
 
   useEffect(() => {
     const onHashChange = () => {
       if (isServiciosHash(window.location.hash) && isHomePath(window.location.pathname)) {
-        router.replace('/servicios', { scroll: false });
+        intlRouter.replace('/servicios', { scroll: false });
         return;
       }
       scrollToHashWithRetry(window.location.hash);
@@ -115,7 +118,7 @@ export function HashScrollHandler() {
 
     window.addEventListener('hashchange', onHashChange);
     return () => window.removeEventListener('hashchange', onHashChange);
-  }, [router]);
+  }, [intlRouter]);
 
   return null;
 }

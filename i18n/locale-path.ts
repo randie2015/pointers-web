@@ -16,10 +16,10 @@ export function swapLocaleInPath(pathname: string, nextLocale: AppLocale): strin
 }
 
 /**
- * Builds a locale-prefixed path from a locale-free pathname.
- * /nosotros + en -> /en/nosotros
+ * Removes the locale prefix from a path.
+ * /es/nosotros -> /nosotros
  */
-export function buildLocalizedPath(pathname: string, locale: AppLocale): string {
-  const normalized = pathname === '/' ? '' : pathname.startsWith('/') ? pathname : `/${pathname}`;
-  return `/${locale}${normalized}`;
+export function stripLocaleFromPath(pathname: string): string {
+  const stripped = pathname.replace(LOCALE_SEGMENT_RE, '');
+  return stripped === '' ? '/' : stripped;
 }

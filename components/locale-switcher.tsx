@@ -1,7 +1,10 @@
 'use client';
 
+import { startTransition, type MouseEvent } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
 import { useLocale } from 'next-intl';
 import { useLocaleSwitch } from '@/i18n/locale-provider';
+import { swapLocaleInPath } from '@/i18n/locale-path';
 import { cn } from '@/lib/utils';
 import type { AppLocale } from '@/i18n/routing';
 
@@ -13,10 +16,25 @@ type LocaleSwitcherProps = {
 export function LocaleSwitcher({ className, onSwitch }: LocaleSwitcherProps) {
   const locale = useLocale() as AppLocale;
   const { switchLocale } = useLocaleSwitch();
+  const router = useRouter();
+  const pathname = usePathname();
   const otherLocale: AppLocale = locale === 'es' ? 'en' : 'es';
 
-  const handleClick = () => {
-    switchLocale(otherLocale);
+  const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+
+    const nuevaURL = swapLocaleInPath(pathname, otherLocale);
+    const scrollY = window.scrollY;
+
+    startTransition(() => {
+      switchLocale(otherLocale);
+      router.replace(nuevaURL, { scroll: false });
+    });
+
+    requestAnimationFrame(() => {
+      window.scrollTo({ top: scrollY, left: 0, behavior: 'instant' });
+    });
+
     onSwitch?.();
   };
 
@@ -29,9 +47,9 @@ export function LocaleSwitcher({ className, onSwitch }: LocaleSwitcherProps) {
         className
       )}
       aria-label={otherLocale === 'en' ? 'Switch to English' : 'Cambiar a español'}
-      aria-pressed={false}
       data-locale-from={locale}
       data-locale-to={otherLocale}
+      data-target-path={swapLocaleInPath(pathname, otherLocale)}
     >
       {otherLocale}
     </button>
