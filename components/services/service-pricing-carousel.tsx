@@ -4,7 +4,7 @@ import { useMemo } from 'react';
 import { Check } from 'lucide-react';
 import { useLocale } from 'next-intl';
 import { MaskUpButton } from '@/components/ui/mask-up-button';
-import { SERVICE_MAGENTA, SERVICE_TEAL } from '@/lib/service-brand';
+import { SERVICE_MAGENTA, SERVICE_PURPLE, SERVICE_TEAL } from '@/lib/service-brand';
 import { formatPricingDual } from '@/lib/pricing-currency';
 import { getContactUrl, type ServiceWhatsAppSlug } from '@/lib/site-config';
 import { cn } from '@/lib/utils';
@@ -47,42 +47,68 @@ function PlanCard({
   dualPrice: { usd: string; pen: string } | null;
   contactUrl: string;
 }) {
-  const featured = tier === 'pointers';
+  const isTop = tier === 'pointers';
+  const isPremium = tier === 'premium';
+  const isColored = isTop || isPremium;
+
+  const cardStyle = isTop
+    ? {
+        backgroundColor: SERVICE_MAGENTA,
+        borderColor: SERVICE_MAGENTA,
+        boxShadow: `0 12px 44px ${SERVICE_MAGENTA}4d`
+      }
+    : isPremium
+      ? {
+          backgroundColor: SERVICE_PURPLE,
+          borderColor: SERVICE_PURPLE,
+          boxShadow: `0 8px 32px ${SERVICE_PURPLE}40`
+        }
+      : undefined;
 
   return (
     <article
       aria-label={`${meta.name} — ${dualPrice?.usd ?? plan.price}`}
-      style={featured ? { backgroundColor: SERVICE_MAGENTA, borderColor: SERVICE_MAGENTA, boxShadow: `0 10px 40px ${SERVICE_MAGENTA}4d` } : undefined}
+      style={cardStyle}
       className={cn(
         'relative flex h-full w-full min-w-0 flex-col rounded-2xl border p-6 text-left shadow-sm sm:rounded-3xl sm:p-7 md:p-8',
         'md:transition-all md:duration-300 md:ease-out md:hover:-translate-y-1 md:hover:shadow-lg',
-        featured
-          ? 'text-white shadow-lg'
-          : 'border-border/70 bg-white md:hover:border-[#5E549D]/40'
+        isTop && 'z-[1] text-white shadow-lg md:scale-[1.04] md:shadow-xl',
+        isPremium && 'text-white shadow-md',
+        !isColored && 'border-border/70 bg-white md:hover:border-[#5E549D]/40'
       )}
     >
       <div>
         <p
           className={cn(
             'text-xs font-semibold uppercase tracking-widest sm:text-sm',
-            featured ? 'text-white/90' : 'text-[#5E549D]'
+            isColored ? 'text-white/90' : 'text-[#5E549D]'
           )}
         >
           {meta.name}
         </p>
-        <p className={cn('mt-2 text-sm leading-relaxed sm:text-base', featured ? 'text-white/80' : 'text-muted-foreground')}>
+        <p
+          className={cn(
+            'mt-2 text-sm leading-relaxed sm:text-base',
+            isColored ? 'text-white/80' : 'text-muted-foreground'
+          )}
+        >
           {meta.tagline}
         </p>
         <p
           className={cn(
             'mt-4 font-display text-xl font-bold leading-tight tracking-tight sm:text-2xl',
-            featured ? 'text-white' : 'text-gray-900'
+            isColored ? 'text-white' : 'text-gray-900'
           )}
         >
           {dualPrice?.usd ?? plan.price}
         </p>
         {dualPrice ? (
-          <p className={cn('mt-1.5 text-sm font-medium sm:text-base', featured ? 'text-white/80' : 'text-muted-foreground')}>
+          <p
+            className={cn(
+              'mt-1.5 text-sm font-medium sm:text-base',
+              isColored ? 'text-white/80' : 'text-muted-foreground'
+            )}
+          >
             {dualPrice.pen}
           </p>
         ) : null}
@@ -90,7 +116,12 @@ function PlanCard({
 
       <div className="mt-5 flex flex-1 flex-col sm:mt-6">
         {plan.description ? (
-          <p className={cn('text-sm leading-relaxed sm:text-base', featured ? 'text-white/90' : 'text-muted-foreground')}>
+          <p
+            className={cn(
+              'text-sm leading-relaxed sm:text-base',
+              isColored ? 'text-white/90' : 'text-muted-foreground'
+            )}
+          >
             {plan.description}
           </p>
         ) : null}
@@ -99,15 +130,12 @@ function PlanCard({
           {plan.features.map((feature, index) => (
             <li key={`${tier}-${index}`} className="flex items-start gap-3">
               <Check
-                className={cn('mt-0.5 h-4 w-4 shrink-0', featured ? 'text-white' : 'text-[#39B8AD]')}
-                style={featured ? undefined : { color: SERVICE_TEAL }}
+                className={cn('mt-0.5 h-4 w-4 shrink-0', isColored ? 'text-white' : 'text-[#39B8AD]')}
+                style={isColored ? undefined : { color: SERVICE_TEAL }}
                 aria-hidden
               />
               <span
-                className={cn(
-                  'text-sm leading-relaxed',
-                  featured ? 'text-white/90' : 'text-gray-700'
-                )}
+                className={cn('text-sm leading-relaxed', isColored ? 'text-white/90' : 'text-gray-700')}
               >
                 {feature}
               </span>

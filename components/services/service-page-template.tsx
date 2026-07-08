@@ -4,13 +4,14 @@ import { useMemo } from 'react';
 import { useTranslations } from 'next-intl';
 import { Reveal } from '@/components/reveal';
 import { SectionBadge } from '@/components/ui/section-badge';
-import { SectionHeader } from '@/components/ui/section-header';
-import { ServiceSectionBadge } from '@/components/services/service-section-badge';
 import { MaskUpButton } from '@/components/ui/mask-up-button';
 import { ServicePricingCarousel, type PricingTierKey } from '@/components/services/service-pricing-carousel';
+import { ServiceProblemSolutionSection } from '@/components/services/service-problem-solution';
+import { ServiceDeliverablesSection } from '@/components/services/service-deliverables-section';
 import { FaqSection } from '@/components/sections/faq-section';
 import { GradientCtaContent, GradientCtaSection } from '@/components/ui/gradient-cta-section';
-import { SERVICE_MAGENTA, SERVICE_PURPLE, SERVICE_TEAL } from '@/lib/service-brand';
+import { SectionHeader } from '@/components/ui/section-header';
+import { SERVICE_PURPLE, SERVICE_TEAL } from '@/lib/service-brand';
 import { SERVICE_DELIVERABLE_ICONS, type ServicePageContent } from '@/lib/service-page';
 import type { ServiceSlug } from '@/lib/services';
 import { getContactUrl } from '@/lib/site-config';
@@ -67,96 +68,30 @@ export function ServicePageTemplate({ slug }: ServicePageTemplateProps) {
         />
       </section>
 
-      {/* 2. El problema — dolor → empatía */}
-      <section className="relative z-[1] py-14 sm:py-16 md:py-24">
-        <div className="container-page">
-          <div className="mx-auto flex max-w-3xl flex-col items-center gap-6 text-center sm:gap-8">
-            <Reveal>
-              <ServiceSectionBadge label={t('problemEyebrow')} className="mb-0" />
-            </Reveal>
+      {/* 2. Problema vs. Solución */}
+      <ServiceProblemSolutionSection
+        eyebrow={t('problemSolutionEyebrow')}
+        title={t('problemSolutionTitle')}
+        subtitle={t('problemSolutionSubtitle')}
+        problemLabel={t('problemEyebrow')}
+        problemHeading={t('problemTitle')}
+        problemTitle={content.problem.title}
+        problemBody={content.problem.body}
+        solutionLabel={t('solutionLabel')}
+        solutionTitle={content.solution.title}
+        solutionBody={content.solution.body}
+      />
 
-            <Reveal delay={0.05}>
-              <article className="mobile-surface w-full rounded-2xl border border-border/60 bg-white p-6 sm:rounded-3xl sm:p-8 md:p-10">
-                {content.problem.title ? (
-                  <h3 className="font-display text-xl font-semibold text-gray-900 sm:text-2xl">
-                    {content.problem.title}
-                  </h3>
-                ) : null}
-                <p
-                  className={`text-sm leading-relaxed text-gray-600 sm:text-base md:text-lg md:leading-relaxed ${content.problem.title ? 'mt-3 sm:mt-4' : ''}`}
-                >
-                  {content.problem.body}
-                </p>
-              </article>
-            </Reveal>
+      {/* 3. Lo que recibes */}
+      <ServiceDeliverablesSection
+        eyebrow={t('deliverablesEyebrow')}
+        title={t('deliverablesTitle')}
+        subtitle={t('deliverablesSubtitle')}
+        items={content.deliverables}
+        icons={DeliverableIcons}
+      />
 
-            <Reveal delay={0.1}>
-              <div className="w-full">
-                <h2 className="h-display text-2xl text-gray-900 sm:text-3xl md:text-4xl lg:text-5xl">
-                  {t('problemTitle')}
-                </h2>
-                <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base md:mt-5 md:text-lg">
-                  {t('problemSolutionSubtitle')}
-                </p>
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
-      {/* 3. Nuestra solución — magenta sólido (bloque intocable) */}
-      <section className="solid-block py-14 sm:py-16 md:py-24" style={{ backgroundColor: SERVICE_MAGENTA }}>
-        <div className="container-page">
-          <Reveal>
-            <div className="mx-auto max-w-3xl text-center">
-              <ServiceSectionBadge label={t('solutionLabel')} tone="light" />
-              <h2 className="font-display text-2xl font-bold leading-tight text-white sm:text-3xl md:text-4xl">
-                {content.solution.title}
-              </h2>
-              <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-white/90 sm:mt-5 sm:text-base md:text-lg">
-                {content.solution.body}
-              </p>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* 4. Qué incluye */}
-      <section className="relative z-[1] py-14 sm:py-16 md:py-28">
-        <div className="container-page">
-          <Reveal>
-            <SectionHeader
-              eyebrow={t('deliverablesEyebrow')}
-              title={t('deliverablesTitle')}
-              subtitle={t('deliverablesSubtitle')}
-            />
-          </Reveal>
-
-          <div className="mt-8 grid grid-cols-1 gap-4 sm:mt-10 sm:grid-cols-2 sm:gap-5 lg:mt-14 lg:grid-cols-4 lg:gap-6">
-            {content.deliverables.map((item, i) => {
-              const Icon = DeliverableIcons[i] ?? DeliverableIcons[0];
-              return (
-                <Reveal key={item.title} delay={i * 0.05}>
-                  <article className="mobile-surface group h-full rounded-2xl border border-border/60 bg-white p-5 transition-all duration-500 ease-in-out active:shadow-md sm:p-6 md:p-7 md:hover:-translate-y-1 md:hover:shadow-lg">
-                    <div
-                      className="flex h-11 w-11 items-center justify-center rounded-2xl sm:h-12 sm:w-12"
-                      style={{ backgroundColor: `${SERVICE_MAGENTA}14`, color: SERVICE_MAGENTA }}
-                    >
-                      <Icon className="h-5 w-5 sm:h-6 sm:w-6" aria-hidden />
-                    </div>
-                    <h3 className="mt-4 font-display text-base font-semibold text-gray-900 sm:mt-5 sm:text-lg">
-                      {item.title}
-                    </h3>
-                    <p className="mt-2 text-sm leading-relaxed text-gray-600">{item.description}</p>
-                  </article>
-                </Reveal>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* 5. Planes */}
+      {/* 4. Planes */}
       <section className="relative z-[1] overflow-hidden py-14 sm:py-16 md:py-28">
         <div className="container-page">
           <Reveal>
@@ -178,7 +113,7 @@ export function ServicePageTemplate({ slug }: ServicePageTemplateProps) {
         </div>
       </section>
 
-      {/* 6. FAQ */}
+      {/* 5. FAQ */}
       <FaqSection
         sectionId={`faq-${slug}`}
         eyebrow={t('faqEyebrow')}
@@ -187,15 +122,11 @@ export function ServicePageTemplate({ slug }: ServicePageTemplateProps) {
         items={content.faq}
       />
 
-      {/* 7. CTA final */}
+      {/* 6. CTA final */}
       <GradientCtaSection>
         <Reveal>
           <GradientCtaContent title={content.cta.title} subtitle={content.cta.subtitle}>
-            <MaskUpButton
-              href={contactUrl}
-              label={t('heroCta')}
-              className="w-full max-w-sm sm:w-auto"
-            />
+            <MaskUpButton href={contactUrl} label={t('heroCta')} className="w-full max-w-sm sm:w-auto" />
           </GradientCtaContent>
         </Reveal>
       </GradientCtaSection>
