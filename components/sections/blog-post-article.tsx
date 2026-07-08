@@ -4,27 +4,40 @@ import { Link } from '@/i18n/routing';
 import type { PublicBlogPost } from '@/lib/cms/public-post';
 import { formatPostDate } from '@/lib/blog/utils';
 import { sanitizeBlogHtml } from '@/lib/cms/sanitize-blog-html';
+import { BlogEditLink } from '@/components/blog/blog-edit-link';
 
 type BlogPostArticleProps = {
   post: PublicBlogPost;
   locale: string;
   backLabel: string;
+  editLabel?: string;
+  showEditControls?: boolean;
 };
 
-export function BlogPostArticle({ post, locale, backLabel }: BlogPostArticleProps) {
+export function BlogPostArticle({
+  post,
+  locale,
+  backLabel,
+  editLabel = 'Editar',
+  showEditControls = false
+}: BlogPostArticleProps) {
   const sanitizedContent = sanitizeBlogHtml(post.content);
 
   return (
     <article className="relative z-10 pt-28 pb-32">
       <div className="mx-auto px-4 md:px-8">
         <div className="relative z-10 mx-auto my-8 max-w-3xl rounded-2xl bg-white p-6 shadow-lg md:p-12">
-          <Link
-            href="/blog"
-            className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground transition hover:text-brand"
-          >
-            <ArrowLeft size={16} />
-            {backLabel}
-          </Link>
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <Link
+              href="/blog"
+              className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground transition hover:text-brand"
+            >
+              <ArrowLeft size={16} />
+              {backLabel}
+            </Link>
+
+            {showEditControls ? <BlogEditLink postId={post.id} label={editLabel} /> : null}
+          </div>
 
           <header className="mt-8">
             <div className="flex flex-wrap items-center gap-3 text-xs">

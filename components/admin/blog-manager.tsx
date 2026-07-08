@@ -89,8 +89,18 @@ export function BlogManager() {
   useEffect(() => {
     if (searchParams.get('create') === '1') {
       setShowCreateForm(true);
+      return;
     }
-  }, [searchParams]);
+
+    const editId = searchParams.get('edit');
+    if (!editId || loading) return;
+
+    const postToEdit = posts.find((post) => post.id === editId);
+    if (!postToEdit) return;
+
+    setEditingPost(postToEdit);
+    setModalOpen(true);
+  }, [searchParams, posts, loading]);
 
   function handleSort(field: SortField) {
     if (sortField === field) {

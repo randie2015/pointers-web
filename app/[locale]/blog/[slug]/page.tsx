@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { getPublicPostBySlug } from '@/lib/cms/posts-reader';
+import { getServerAdminSession } from '@/lib/auth/server-session';
 import { BlogPostArticle } from '@/components/sections/blog-post-article';
 
 type BlogPostPageProps = {
@@ -42,7 +43,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { locale, slug } = await params;
   setRequestLocale(locale);
 
-  const post = await getPublicPostBySlug(slug);
+  const [post, session] = await Promise.all([
+    getPublicPostBySlug(slug),
+    getServerAdminSession()
+  ]);
   if (!post) notFound();
 
   const t = await getTranslations({ locale, namespace: 'blog' });
@@ -52,6 +56,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       post={post}
       locale={locale}
       backLabel={t('backToBlog')}
+      editLabel={t('editPost')}
+      showEditControls={Boolean(session)}
     />
   );
 }

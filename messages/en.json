@@ -363,6 +363,7 @@
     "empty": "No published articles yet.",
     "backToBlog": "Back to blog",
     "newPost": "+ New post",
+    "editPost": "Edit",
     "posts": [
       {
         "slug": "branding-that-connects",

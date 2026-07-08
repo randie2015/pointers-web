@@ -9,5 +9,5 @@ export default async function BlogPage({ params }: { params: Promise<{ locale: s
 
   const [posts, session] = await Promise.all([getPublicPosts(), getServerAdminSession()]);
 
-  return <BlogPostGrid posts={posts} showNewPostCta={Boolean(session)} />;
+  return <BlogPostGrid posts={posts} showAdminControls={Boolean(session)} />;
 }

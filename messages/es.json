@@ -230,6 +230,7 @@
     "empty": "No hay artículos publicados aún.",
     "backToBlog": "Volver al blog",
     "newPost": "+ Nueva entrada",
+    "editPost": "Editar",
     "posts": [
       {
         "slug": "branding-que-conecta",
