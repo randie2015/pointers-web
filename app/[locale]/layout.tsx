@@ -1,5 +1,5 @@
 import { hasLocale } from 'next-intl';
-import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import { LocaleProvider } from '@/i18n/locale-provider';
@@ -15,6 +15,13 @@ import { SiteParticlesLayer } from '@/components/hero/site-particles-layer';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' });
 
+const OG_IMAGE = {
+  url: 'https://pointers.marketing/opengraph-image.png',
+  width: 1200,
+  height: 630,
+  alt: 'Pointers | Branding y Diseño Web'
+};
+
 export const dynamic = 'force-dynamic';
 
 export function generateStaticParams() {
@@ -27,23 +34,42 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'meta' });
-  const hero = await getTranslations({ locale, namespace: 'hero' });
+  const isSpanish = locale === 'es';
 
   return {
-    title: t('title'),
-    description: hero('subtitle'),
+    title: 'Pointers | Agencia de Branding y Diseño Web Premium',
+    description:
+      'Especialistas en branding corporativo y desarrollo web de alto nivel. Construimos identidades visuales con estética limpia y experiencias digitales exclusivas para marcas exigentes.',
+    keywords: [
+      'agencia de branding',
+      'diseño web premium',
+      'branding corporativo',
+      'desarrollo web',
+      'identidad visual',
+      'diseño UI/UX',
+      'estética minimalista',
+      'creación de marcas'
+    ],
     ...siteIconMetadata(),
     alternates: {
       canonical: `/${locale}`,
       languages: { es: '/es', en: '/en', 'x-default': '/es' }
     },
     openGraph: {
-      title: t('title'),
-      description: hero('subtitle'),
-      locale: locale === 'es' ? 'es_PE' : 'en_US',
-      alternateLocale: locale === 'es' ? ['en_US'] : ['es_PE'],
-      images: [{ url: '/brand/logo-vertical-dark.png', width: 1000, height: 540, alt: 'Pointers' }]
+      title: 'Pointers | Agencia de Branding y Diseño Web Premium',
+      description: 'Especialistas en branding corporativo y desarrollo web de alto nivel.',
+      url: 'https://pointers.marketing',
+      siteName: 'Pointers',
+      images: [OG_IMAGE],
+      locale: isSpanish ? 'es_PE' : 'en_US',
+      alternateLocale: isSpanish ? ['en_US'] : ['es_PE'],
+      type: 'website'
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: 'Pointers | Agencia de Branding y Diseño Web Premium',
+      description: 'Especialistas en branding corporativo y desarrollo web de alto nivel.',
+      images: [OG_IMAGE.url]
     }
   };
 }
