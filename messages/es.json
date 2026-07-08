@@ -273,51 +273,51 @@
       "title": "Misión y visión",
       "mission": {
         "title": "Misión",
-        "body": "Unimos estrategia, diseño y tecnología para crear ecosistemas digitales que potencian marcas."
+        "body": "Guiar empresas y emprendedores hacia su máximo potencial mediante ecosistemas digitales estratégicos, donde la creatividad de vanguardia y la precisión técnica definen el camino al éxito."
       },
       "vision": {
         "title": "Visión",
-        "body": "Ser la agencia de referencia en ecosistemas digitales de alto impacto."
+        "body": "Ser el aliado que convierte ideas abstractas en activos digitales sólidos, donde el éxito no es una posibilidad, sino el resultado inevitable de una estrategia bien definida."
       }
     },
     "pillars": {
-      "eyebrow": "Pilares",
-      "title": "Pilares",
+      "eyebrow": "Nuestro Proceso",
+      "title": "Los 3 Pilares",
       "items": [
         {
           "title": "Estrategia",
-          "description": "Construimos direcciones claras para que cada marca crezca con propósito."
+          "description": "Analizamos el terreno y trazamos el mapa. No damos pasos al azar; diseñamos el curso de acción para que cada marca sepa exactamente hacia dónde moverse."
         },
         {
-          "title": "Eficiencia",
-          "description": "Optimizamos cada proceso para lograr más con menos."
+          "title": "Ejecución",
+          "description": "Construimos ecosistemas digitales con rigor técnico. Traducimos conceptos en estructuras funcionales y de alto rendimiento."
         },
         {
-          "title": "Impacto",
-          "description": "Diseñamos experiencias que generan resultados visibles."
+          "title": "Resultados",
+          "description": "Impacto real y medible. Nos obsesiona que la estrategia se convierta en crecimiento tangible para el negocio."
         }
       ]
     },
     "values": {
-      "eyebrow": "Nuestros valores",
-      "title": "Los principios detrás de Pointers",
-      "subtitle": "Creemos en el poder de las ideas bien ejecutadas.\nUnimos estrategia, creatividad y innovación para crear experiencias digitales que inspiran, conectan y perduran.",
+      "eyebrow": "Nuestro ADN",
+      "title": "Los 4 Valores",
+      "subtitle": "Creemos en el poder de las ideas bien ejecutadas.\nUnimos estrategia, creatividad y precisión para crear experiencias digitales que inspiran, conectan y perduran.",
       "items": [
         {
-          "title": "Excelencia",
-          "description": "Cada entrega refleja nuestro compromiso con lo impecable. Buscamos superar el estándar en cada detalle."
-        },
-        {
-          "title": "Efectividad",
-          "description": "Transformamos estrategia y diseño en resultados medibles. Combinamos eficiencia, eficacia y dirección para alcanzar los objetivos de nuestros clientes."
+          "title": "Maestría",
+          "description": "No entregamos simplemente un trabajo; dejamos una marca. Buscamos esa perfección que solo se logra cuando el talento se obsesiona con lo impecable."
         },
         {
           "title": "Creatividad",
-          "description": "Exploramos nuevas perspectivas para crear soluciones que inspiran, conectan y perduran."
+          "description": "Exploramos nuevas perspectivas para crear soluciones que marcan diferencia. Si no es capaz de destacar, no es Pointers."
         },
         {
-          "title": "Técnica",
-          "description": "Dominamos la tecnología con precisión y propósito, transformando conocimiento técnico en impacto estético y funcional."
+          "title": "Precisión",
+          "description": "Dominamos la tecnología con propósito. Transformamos el conocimiento técnico en herramientas estéticas y funcionales."
+        },
+        {
+          "title": "Efectividad",
+          "description": "Nuestra razón de ser es que los objetivos se cumplan. No nos detenemos hasta que la visión del cliente se convierta en un activo real."
         }
       ]
     },

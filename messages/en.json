@@ -71,51 +71,51 @@
       "title": "Mission & vision",
       "mission": {
         "title": "Mission",
-        "body": "We bring together strategy, design and technology to create digital ecosystems that empower brands."
+        "body": "To guide companies and entrepreneurs toward their full potential through strategic digital ecosystems, where cutting-edge creativity and technical precision define the path to success."
       },
       "vision": {
         "title": "Vision",
-        "body": "To be the go-to agency for high-impact digital ecosystems."
+        "body": "To be the partner that turns abstract ideas into solid digital assets, where success is not a possibility but the inevitable outcome of a well-defined strategy."
       }
     },
     "pillars": {
-      "eyebrow": "Pillars",
-      "title": "Pillars",
+      "eyebrow": "Our Process",
+      "title": "The 3 Pillars",
       "items": [
         {
           "title": "Strategy",
-          "description": "We build clear direction so each brand grows with purpose."
+          "description": "We analyze the terrain and map the route. We don't take random steps; we design the course of action so every brand knows exactly where to move."
         },
         {
-          "title": "Efficiency",
-          "description": "We optimize every process to achieve more with less."
+          "title": "Execution",
+          "description": "We build digital ecosystems with technical rigor. We translate concepts into functional, high-performance structures."
         },
         {
-          "title": "Impact",
-          "description": "We design experiences that deliver visible results."
+          "title": "Results",
+          "description": "Real, measurable impact. We obsess over turning strategy into tangible growth for the business."
         }
       ]
     },
     "values": {
-      "eyebrow": "Our values",
-      "title": "The principles behind Pointers",
-      "subtitle": "We believe in the power of well-executed ideas.\nWe unite strategy, creativity and innovation to create digital experiences that inspire, connect and endure.",
+      "eyebrow": "Our DNA",
+      "title": "The 4 Values",
+      "subtitle": "We believe in the power of well-executed ideas.\nWe unite strategy, creativity and precision to create digital experiences that inspire, connect and endure.",
       "items": [
         {
-          "title": "Excellence",
-          "description": "Every delivery reflects our commitment to impeccable quality. We aim to exceed the standard in every detail."
-        },
-        {
-          "title": "Effectiveness",
-          "description": "We turn strategy and design into measurable results. We combine efficiency, efficacy and direction to reach our clients’ goals."
+          "title": "Mastery",
+          "description": "We don't simply deliver work; we leave a mark. We pursue the perfection that only comes when talent obsesses over the impeccable."
         },
         {
           "title": "Creativity",
-          "description": "We explore new perspectives to create solutions that inspire, connect and endure."
+          "description": "We explore new perspectives to create solutions that make a difference. If it can't stand out, it's not Pointers."
         },
         {
-          "title": "Craft",
-          "description": "We master technology with precision and purpose, turning technical expertise into aesthetic and functional impact."
+          "title": "Precision",
+          "description": "We master technology with purpose. We turn technical knowledge into aesthetic and functional tools."
+        },
+        {
+          "title": "Effectiveness",
+          "description": "Our reason for being is that objectives are met. We don't stop until the client's vision becomes a real asset."
         }
       ]
     },
