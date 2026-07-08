@@ -148,8 +148,9 @@
       "eyebrow": "Our team",
       "title": "Where aesthetics meets strategy.",
       "subtitle": "A team that combines creative vision and technical precision to build brands with direction and purpose.",
+      "viewLinkedIn": "View LinkedIn Profile",
       "members": [
-        { "name": "Luis Diego Medina", "role": "Strategic Director & Founder" },
+        { "name": "Luis Diego Medina", "role": "Strategic Director & Founder", "linkedin": "https://www.linkedin.com/in/luisdiegodmedinav" },
         { "name": "Valentina Aramayo", "role": "Creative Director" },
         { "name": "Cesar Belan", "role": "Strategic Advisor" }
       ]
@@ -313,23 +314,23 @@
     "items": [
       {
         "question": "What are Pointers' main services?",
-        "answer": "Branding & Visual Identity, Web Design & Digital Experience, Content & Social Presence, and Digital Strategy & Advertising. We combine strategy, design and technology to build solutions that truly work."
+        "answer": "We focus on four pillars: branding and visual identity, web design and digital experience, content and social media, and advertising strategy and automation. Together they build a coherent ecosystem that drives your brand's growth."
       },
       {
         "question": "What if I don't have a defined brand yet?",
-        "answer": "In the Discovery phase we analyze your business, competitors and opportunities to define a solid starting point. Then, in Strategy & Concept, we outline the plan and project identity."
+        "answer": "Don't worry. We can help you from scratch: we define your visual identity, brand voice and digital strategy to build a solid foundation before launching your website or campaigns."
       },
       {
         "question": "How long does it take to develop a project?",
-        "answer": "Timing depends on scope: branding, web, content or campaigns. After Discovery we define a clear timeline in the Strategy & Concept stage."
+        "answer": "It depends on scope. A branding project can take 2 to 4 weeks, while a website or digital campaign is usually developed in 4 to 6 weeks. We always work with a clear, realistic timeline."
       },
       {
         "question": "Can I request changes during the project?",
-        "answer": "Yes. Our workflow is modern and collaborative: in Design & Development we turn strategy into visual and functional experiences, with room for revisions before Optimization & Growth."
+        "answer": "Yes, of course. At each stage of the process you'll have review and feedback rounds to ensure the final result is fully aligned with your goals."
       },
       {
         "question": "How can I start working with you?",
-        "answer": "Tell us about your project and let's take the next step together. Reach out via the contact form or tap Let's talk! in any section."
+        "answer": "Just book a meeting or write to us. We assess your needs, present a tailored proposal and start building the most effective strategy for your brand."
       }
     ]
   },

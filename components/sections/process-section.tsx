@@ -89,7 +89,7 @@ function ProcessCard({
   return (
     <Reveal delay={index * 0.04}>
       <motion.article
-        className="mobile-surface flex h-full flex-col items-center rounded-2xl border border-border/60 bg-white p-6 text-center md:p-7"
+        className="mobile-surface flex h-full flex-col items-center rounded-2xl border border-border/60 bg-white p-8 text-center md:p-10"
         initial="rest"
         whileHover="hover"
         whileTap={{ scale: 0.97, transition: { duration: 0.2 } }}
@@ -107,13 +107,13 @@ function ProcessCard({
         </motion.span>
 
         <h3
-          className="mt-5 w-full font-display text-xl font-semibold tracking-tight md:text-2xl"
+          className="mt-5 w-full font-display text-2xl font-semibold tracking-tight md:text-3xl"
           style={{ color: theme.titleColor }}
         >
           {title}
         </h3>
-        <p className="mt-3 w-full text-sm leading-relaxed text-gray-600">{description}</p>
-        <div className="mt-5 w-full">{visual}</div>
+        <p className="mt-4 w-full text-base leading-relaxed text-gray-600 md:text-lg">{description}</p>
+        <div className="mt-6 w-full">{visual}</div>
       </motion.article>
     </Reveal>
   );
@@ -143,7 +143,7 @@ export function ProcessSection({
           <SectionHeader eyebrow={t('eyebrow')} title={t('title')} subtitle={t('subtitle')} />
         </Reveal>
 
-        <div className="mt-14 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+        <div className="mx-auto mt-14 grid max-w-5xl gap-10 md:grid-cols-2 lg:gap-12">
           {steps.map((step, i) => (
             <ProcessCard
               key={step.title}

@@ -180,23 +180,23 @@
     "items": [
       {
         "question": "¿Cuáles son los servicios principales de Pointers?",
-        "answer": "Branding e Identidad Visual, Diseño Web y Experiencia Digital, Contenido y Presencia en Redes, y Estrategia Digital y Publicidad. Combinamos estrategia, diseño y tecnología para construir soluciones que realmente funcionan."
+        "answer": "Nos enfocamos en cuatro pilares: branding e identidad visual, diseño web y experiencia digital, contenido y redes sociales, y estrategia publicitaria y automatización. Juntos construyen un ecosistema coherente que impulsa el crecimiento de tu marca."
       },
       {
         "question": "¿Qué pasa si aún no tengo una marca definida?",
-        "answer": "En la fase de Descubrimiento analizamos tu negocio, competidores y oportunidades para definir un punto de partida sólido. Luego, en Estrategia & Concepto, trazamos el plan y la identidad del proyecto."
+        "answer": "No te preocupes. Podemos ayudarte desde cero: definimos tu identidad visual, tono de marca y estrategia digital para construir una base sólida antes de lanzar tu sitio web o campañas."
       },
       {
         "question": "¿Cuánto tiempo toma desarrollar un proyecto?",
-        "answer": "El tiempo depende del alcance: branding, web, contenido o campañas. Tras el Descubrimiento definimos un cronograma claro en la etapa de Estrategia & Concepto."
+        "answer": "Depende del alcance. Un proyecto de branding puede tomar entre 2 y 4 semanas, mientras que un sitio web o una campaña digital suele desarrollarse en 4 a 6 semanas. Siempre trabajamos con un cronograma claro y realista."
       },
       {
         "question": "¿Puedo solicitar cambios durante el proyecto?",
-        "answer": "Sí. Nuestro flujo es moderno y colaborativo: en Diseño & Desarrollo convertimos la estrategia en experiencias visuales y funcionales, con espacio para revisiones antes de Optimización & Crecimiento."
+        "answer": "Sí, claro. En cada fase del proceso tendrás espacios de revisión y feedback para garantizar que el resultado final esté completamente alineado con tus objetivos."
       },
       {
         "question": "¿Cómo puedo empezar a trabajar con ustedes?",
-        "answer": "Cuéntanos sobre tu proyecto y demos juntos el siguiente paso. Escríbenos desde el formulario de contacto o pulsa ¡Hablemos! en cualquier sección."
+        "answer": "Solo tienes que agendar una reunión o escribirnos. Evaluamos tus necesidades, te presentamos una propuesta personalizada y comenzamos a construir la estrategia más efectiva para tu marca."
       }
     ]
   },
@@ -350,8 +350,9 @@
       "eyebrow": "Nuestro Equipo",
       "title": "Donde la estética se encuentra con la estrategia.",
       "subtitle": "Un equipo que combina visión creativa y precisión técnica para construir marcas con dirección y propósito.",
+      "viewLinkedIn": "Ver perfil de LinkedIn",
       "members": [
-        { "name": "Luis Diego Medina", "role": "Director Estratégico y Fundador" },
+        { "name": "Luis Diego Medina", "role": "Director Estratégico y Fundador", "linkedin": "https://www.linkedin.com/in/luisdiegodmedinav" },
         { "name": "Valentina Aramayo", "role": "Directora Creativa" },
         { "name": "Cesar Belan", "role": "Asesor Estratégico" }
       ]

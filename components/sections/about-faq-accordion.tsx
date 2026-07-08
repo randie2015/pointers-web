@@ -12,8 +12,8 @@ type FaqItem = {
 
 export function AboutFaqAccordion() {
   const locale = useLocale();
-  const t = useTranslations('aboutPage.faq');
-  const items = t.raw('items') as FaqItem[];
+  const t = useTranslations('aboutPage');
+  const items = t.raw('faq.items') as FaqItem[];
   const [activeIndex, setActiveIndex] = useState<number | null>(0);
 
   useEffect(() => {

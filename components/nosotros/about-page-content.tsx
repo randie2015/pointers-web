@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { Check, Linkedin, X } from 'lucide-react';
+import { ArrowUpRight, Check, Linkedin, X } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
 import { Reveal } from '@/components/reveal';
 import { SectionHeader } from '@/components/ui/section-header';
@@ -28,10 +28,12 @@ export function AboutPageContent() {
     { title: t('values.items.3.title'), description: t('values.items.3.description'), color: '#BC2656' }
   ];
 
-  const team = (t.raw('team.members') as Array<{ name: string; role: string }>).map((member, index) => ({
-    ...member,
-    ...(index === 0 ? { imageSrc: '/diego.png' as const } : {})
-  }));
+  const team = (t.raw('team.members') as Array<{ name: string; role: string; linkedin?: string }>).map(
+    (member, index) => ({
+      ...member,
+      ...(index === 0 ? { imageSrc: '/diego.png' as const } : {})
+    })
+  );
 
   return (
     <main>
@@ -179,7 +181,7 @@ export function AboutPageContent() {
           <div className="mt-14 grid grid-cols-1 gap-8 md:grid-cols-3">
             {team.map((m, i) => (
               <Reveal key={m.name} delay={i * 0.06}>
-                <article className="rounded-2xl bg-white p-4 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+                <article className="group rounded-2xl bg-white p-4 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
                   <div className="relative aspect-[4/5] overflow-hidden rounded-xl bg-gradient-to-br from-gray-100 to-gray-200">
                     {'imageSrc' in m && m.imageSrc ? (
                       <Image
@@ -187,12 +189,27 @@ export function AboutPageContent() {
                         alt={m.name}
                         fill
                         sizes="(max-width: 768px) 100vw, 360px"
-                        className="object-cover"
+                        className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
                         priority={i === 0}
                       />
                     ) : (
                       <div className="absolute inset-0 bg-gradient-to-br from-gray-100 via-gray-200 to-gray-100" />
                     )}
+
+                    {m.linkedin ? (
+                      <a
+                        href={m.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="absolute inset-x-0 bottom-0 flex justify-center bg-gradient-to-t from-black/80 via-black/45 to-transparent px-4 pb-5 pt-24 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                        aria-label={`${t('team.viewLinkedIn')} — ${m.name}`}
+                      >
+                        <span className="inline-flex items-center gap-1.5 rounded-full bg-black/85 px-4 py-2.5 text-sm font-medium text-white backdrop-blur-sm">
+                          {t('team.viewLinkedIn')}
+                          <ArrowUpRight className="h-4 w-4 shrink-0" aria-hidden />
+                        </span>
+                      </a>
+                    ) : null}
                   </div>
 
                   <div className="mt-4 flex items-start justify-between gap-3">
@@ -200,7 +217,19 @@ export function AboutPageContent() {
                       <p className="truncate text-lg font-semibold text-gray-900">{m.name}</p>
                       <p className="mt-1 truncate text-sm font-medium text-[#BC2656]">{m.role}</p>
                     </div>
-                    <Linkedin className="h-5 w-5 shrink-0 text-gray-400" aria-hidden />
+                    {m.linkedin ? (
+                      <a
+                        href={m.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="shrink-0 text-gray-400 transition-colors hover:text-[#0A66C2]"
+                        aria-label={`${t('team.viewLinkedIn')} — ${m.name}`}
+                      >
+                        <Linkedin className="h-5 w-5" aria-hidden />
+                      </a>
+                    ) : (
+                      <Linkedin className="h-5 w-5 shrink-0 text-gray-400" aria-hidden />
+                    )}
                   </div>
                 </article>
               </Reveal>
