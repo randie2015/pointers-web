@@ -1,27 +1,43 @@
 'use client';
 
+import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
 import { BrandLogo } from '@/components/brand-logo';
 import { HOME_ANCHORS, MAIN_ROUTES } from '@/lib/navigation';
 
 const TEAL = '#39B8AD';
+const SOCIAL_ICON_SIZE = 36;
 
 const linkClass =
   'text-sm text-gray-800 transition-all duration-200 hover:text-[#39B8AD] active:scale-95 active:text-[#39B8AD]';
+
+const social = [
+  {
+    key: 'facebook',
+    href: 'https://www.facebook.com/PointersMarketing',
+    icon: '/social/facebook.png',
+    label: 'Facebook'
+  },
+  {
+    key: 'instagram',
+    href: 'https://www.instagram.com/pointers.marketing',
+    icon: '/social/instagram.png',
+    label: 'Instagram'
+  },
+  {
+    key: 'x',
+    href: 'https://x.com/pointersmkt',
+    icon: '/social/x.svg',
+    label: 'X'
+  }
+] as const;
 
 export function Footer() {
   const t = useTranslations('footer');
   const nav = useTranslations('nav');
   const anchors = useTranslations('anchors');
   const year = new Date().getFullYear();
-
-  const social = [
-    { key: 'instagram', href: '#' },
-    { key: 'facebook', href: '#' },
-    { key: 'linkedin', href: '#' },
-    { key: 'twitter', href: '#' }
-  ] as const;
 
   return (
     <footer className="mt-20 bg-gradient-to-b from-transparent to-[#BC2656]/20 text-gray-800">
@@ -74,10 +90,23 @@ export function Footer() {
 
           <div className="lg:col-span-2">
             <p className="mb-4 text-sm font-semibold text-gray-900">{t('socials')}</p>
-            <nav className="flex flex-col gap-2.5">
-              {social.map((s) => (
-                <a key={s.key} href={s.href} className={linkClass}>
-                  {t(`social.${s.key}`)}
+            <nav className="flex items-center gap-4" aria-label={t('socials')}>
+              {social.map((item) => (
+                <a
+                  key={item.key}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={item.label}
+                  className="touch-press inline-flex transition-opacity hover:opacity-80 active:scale-95"
+                >
+                  <Image
+                    src={item.icon}
+                    alt=""
+                    width={SOCIAL_ICON_SIZE}
+                    height={SOCIAL_ICON_SIZE}
+                    className="h-9 w-9 object-contain"
+                  />
                 </a>
               ))}
             </nav>
