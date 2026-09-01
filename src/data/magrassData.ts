@@ -203,6 +203,7 @@ export type MagrassTreatment = {
   description: string;
   expectedResults: string;
   category: TreatmentCategory;
+  image?: string;
 };
 
 export type FeaturedTreatment = {
@@ -222,7 +223,8 @@ export const keyTreatments: MagrassTreatment[] = [
     title: 'Armonización Facial & Ácido Hialurónico',
     description:
       'Perfilado de labios, mentón y ángulo mandibular respetando simetría y naturalidad facial.',
-    expectedResults: 'Contorno definido, volumen equilibrado y armonía visible desde la primera sesión.'
+    expectedResults: 'Contorno definido, volumen equilibrado y armonía visible desde la primera sesión.',
+    image: '/magrass-lagree/armonizacion-facial.jpg'
   },
   {
     id: 'botox',
@@ -240,7 +242,8 @@ export const keyTreatments: MagrassTreatment[] = [
     title: 'Limpieza Facial Médica & Hydrafacial',
     description:
       'Desintoxicación profunda, extracción de impurezas e hidratación intensiva con glow inmediato.',
-    expectedResults: 'Piel luminosa, poros refinados e hidratación visible desde la primera visita.'
+    expectedResults: 'Piel luminosa, poros refinados e hidratación visible desde la primera visita.',
+    image: '/magrass-lagree/hydrafacial.jpg'
   },
   {
     id: 'criolipolisis',
@@ -249,7 +252,8 @@ export const keyTreatments: MagrassTreatment[] = [
     title: 'Criolipólisis 360°',
     description:
       'Reducción no invasiva de grasa localizada mediante frío controlado, sin dolor ni recuperación.',
-    expectedResults: 'Reducción progresiva de adiposidad localizada y silueta más armónica.'
+    expectedResults: 'Reducción progresiva de adiposidad localizada y silueta más armónica.',
+    image: '/magrass-lagree/criolipolisis.jpg'
   },
   {
     id: 'peptonas',
@@ -258,7 +262,8 @@ export const keyTreatments: MagrassTreatment[] = [
     title: 'Peptonas & Firmeza de Glúteos',
     description:
       'Estimulación muscular para tonificar y levantar glúteos combinada con aparatología médica.',
-    expectedResults: 'Mayor firmeza, tono muscular mejorado y contorno glúteo más definido.'
+    expectedResults: 'Mayor firmeza, tono muscular mejorado y contorno glúteo más definido.',
+    image: '/magrass-lagree/peptonas.jpg'
   },
   {
     id: 'pb-serum',
@@ -267,7 +272,8 @@ export const keyTreatments: MagrassTreatment[] = [
     title: 'Enzimas PB Serum & Reductores',
     description:
       'Tratamiento focalizado para adiposidad rebelde, flacidez y celulitis con acción tensora.',
-    expectedResults: 'Piel más firme, textura uniforme y reducción visible de volumen localizado.'
+    expectedResults: 'Piel más firme, textura uniforme y reducción visible de volumen localizado.',
+    image: '/magrass-lagree/enzimas.jpg'
   },
   {
     id: 'bioestimuladores',
@@ -276,7 +282,8 @@ export const keyTreatments: MagrassTreatment[] = [
     title: 'Bioestimuladores de Colágeno',
     description:
       'Estimulación dérmica profunda para recuperar firmeza, elasticidad y calidad de la piel.',
-    expectedResults: 'Piel más tersa, luminosa y rejuvenecida con resultados progresivos y duraderos.'
+    expectedResults: 'Piel más tersa, luminosa y rejuvenecida con resultados progresivos y duraderos.',
+    image: '/magrass-lagree/bioestimuladores.jpg'
   },
   {
     id: 'peelings',

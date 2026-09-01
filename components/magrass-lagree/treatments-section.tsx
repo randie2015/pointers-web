@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import {
   keyTreatments,
@@ -9,7 +10,7 @@ import {
 import { magrassContainer, magrassSection } from '@/lib/magrass-lagree/layout';
 import { buildWhatsAppUrl } from '@/lib/magrass-lagree/whatsapp';
 import { MagrassCtaButton } from '@/components/magrass-lagree/cta-button';
-import { MagrassReveal, magrassLuxuryCard } from '@/components/magrass-lagree/motion';
+import { MagrassReveal, magrassImageZoom, magrassLuxuryCard } from '@/components/magrass-lagree/motion';
 import { cn } from '@/lib/utils';
 
 function scrollToAnchor(anchor: string) {
@@ -72,34 +73,49 @@ export function MagrassTreatmentsSection() {
           ))}
         </div>
 
-        <div className="mt-8 grid gap-4 sm:mt-10 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
+        <div className="mt-8 grid gap-5 sm:mt-10 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
           {filtered.map((treatment) => (
             <MagrassReveal key={treatment.id}>
               <article
                 id={treatment.anchor}
                 className={cn(
                   magrassLuxuryCard,
-                  'scroll-mt-24 flex flex-col rounded-2xl border border-mag-border bg-mag-cream/50 p-5 sm:scroll-mt-28 sm:rounded-3xl sm:p-6'
+                  'scroll-mt-24 flex flex-col overflow-hidden rounded-2xl border border-mag-border bg-white shadow-sm sm:scroll-mt-28 sm:rounded-3xl'
                 )}
               >
-              <h3 className="font-playfair text-lg font-semibold text-balance text-mag-navy sm:text-xl">
-                {treatment.title}
-              </h3>
-              <p className="mt-2 text-sm leading-relaxed text-mag-muted">{treatment.description}</p>
-              <p className="mt-3 text-xs font-semibold uppercase tracking-[0.1em] text-mag-jade">
-                Resultados esperados
-              </p>
-              <p className="mt-1 flex-1 text-sm leading-relaxed text-mag-navy/80">
-                {treatment.expectedResults}
-              </p>
-              <MagrassCtaButton
-                href={buildWhatsAppUrl({ type: 'treatment', name: treatment.title })}
-                label="Consultar este Tratamiento"
-                variant="secondary"
-                className="mt-4 w-full sm:max-w-xs"
-                shimmer={false}
-              />
-            </article>
+                {treatment.image ? (
+                  <div className="relative h-44 overflow-hidden sm:h-48">
+                    <Image
+                      src={treatment.image}
+                      alt={treatment.title}
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className={cn('object-cover', magrassImageZoom)}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#192031]/75 via-[#192031]/20 to-transparent" />
+                  </div>
+                ) : null}
+
+                <div className="flex flex-1 flex-col p-5 sm:p-6">
+                  <h3 className="font-playfair text-lg font-semibold text-balance text-mag-navy sm:text-xl">
+                    {treatment.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-mag-muted">{treatment.description}</p>
+                  <p className="mt-3 text-xs font-semibold uppercase tracking-[0.1em] text-mag-jade">
+                    Resultados esperados
+                  </p>
+                  <p className="mt-1 flex-1 text-sm leading-relaxed text-mag-navy/80">
+                    {treatment.expectedResults}
+                  </p>
+                  <MagrassCtaButton
+                    href={buildWhatsAppUrl({ type: 'treatment', name: treatment.title })}
+                    label="Consultar este Tratamiento"
+                    variant="secondary"
+                    className="mt-4 w-full sm:max-w-xs"
+                    shimmer={false}
+                  />
+                </div>
+              </article>
             </MagrassReveal>
           ))}
         </div>
