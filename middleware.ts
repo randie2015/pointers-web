@@ -62,6 +62,11 @@ export default async function middleware(request: NextRequest) {
     return NextResponse.rewrite(new URL(localizedAlejandraMatch[2], request.url));
   }
 
+  const localizedMagrassMatch = pathname.match(/^\/(es|en)(\/magrass-lagree(?:\/.*)?)$/);
+  if (localizedMagrassMatch) {
+    return NextResponse.rewrite(new URL(localizedMagrassMatch[2], request.url));
+  }
+
   const localeAdminMatch = pathname.match(/^\/(es|en)(\/admin(?:\/.*)?)$/);
   if (localeAdminMatch) {
     return NextResponse.redirect(new URL(localeAdminMatch[2], request.url));
@@ -106,6 +111,10 @@ export default async function middleware(request: NextRequest) {
   }
 
   if (pathname.startsWith('/alejandracusirramos')) {
+    return NextResponse.next();
+  }
+
+  if (pathname.startsWith('/magrass-lagree')) {
     return NextResponse.next();
   }
 

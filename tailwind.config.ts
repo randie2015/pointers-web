@@ -7,7 +7,9 @@ export default {
       fontFamily: {
         sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
         display: ['var(--font-inter)', 'system-ui', 'sans-serif'],
-        cinzel: ['var(--font-cinzel)', 'Georgia', 'serif']
+        cinzel: ['var(--font-cinzel)', 'Georgia', 'serif'],
+        playfair: ['var(--font-playfair)', 'Georgia', 'serif'],
+        jakarta: ['var(--font-jakarta)', 'system-ui', 'sans-serif']
       },
       colors: {
         background: 'hsl(var(--background))',
@@ -52,6 +54,17 @@ export default {
           neutral: '#E8DFD8',
           surface: '#FFFFFF',
           dark: '#2E2A2B'
+        },
+        mag: {
+          ivory: '#F8F6F2',
+          white: '#FFFFFF',
+          navy: '#1C2331',
+          'navy-deep': '#16213E',
+          gold: '#C5A880',
+          'gold-light': '#D4AF37',
+          ink: '#1C2331',
+          muted: '#5C6474',
+          border: '#E8E2D8'
         }
       },
       letterSpacing: { tightest: '-0.04em' },
