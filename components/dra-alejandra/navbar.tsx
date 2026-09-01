@@ -97,7 +97,7 @@ export function DraAlejandraNavbar() {
       )}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 sm:px-6 sm:py-3.5 lg:gap-4">
-        <Link href="/alejandracusirramos" className="group min-w-0">
+        <Link href="/alejandracusirramos" className="group flex min-w-0 max-w-[calc(100%-3rem)] shrink items-center sm:max-w-[70%] lg:max-w-none">
           <DraAlejandraLogo theme={chrome.logoTheme} />
         </Link>
 
