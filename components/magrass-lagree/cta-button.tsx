@@ -27,7 +27,7 @@ export function MagrassCtaButton({
 
   const variants = {
     primary: 'bg-mag-navy text-mag-white shadow-md shadow-mag-navy/20 hover:bg-mag-navy/90',
-    nav: 'bg-mag-navy text-mag-white shadow-sm hover:bg-mag-navy/90',
+    nav: 'bg-[#1C2331] text-white shadow-sm hover:bg-[#1C2331]/90',
     secondary:
       'border border-mag-navy/25 bg-mag-white text-mag-navy hover:border-mag-sand hover:bg-mag-cream',
     accent: 'bg-mag-sand text-mag-navy shadow-md shadow-mag-sand/30 hover:bg-mag-sand/90'
