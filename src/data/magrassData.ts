@@ -96,10 +96,10 @@ export const clinicHome = {
     ]
   },
   beforeAfter: {
-    before: '/magrass-lagree/before-after-before.webp',
-    after: '/magrass-lagree/before-after-after.webp',
-    width: 1200,
-    height: 700
+    before: '/magrass-lagree/before-after-before.jpg',
+    after: '/magrass-lagree/before-after-after.jpg',
+    width: 824,
+    height: 1024
   },
   featuredTreatments: [
     {
