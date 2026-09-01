@@ -300,10 +300,11 @@ export const keyTreatments: MagrassTreatment[] = [
     id: 'iluminacion',
     anchor: 'iluminacion',
     category: 'rejuvenecimiento',
-    title: 'Iluminación & Uniformidad de Tono',
+    title: 'Iluminación & Uniformidad de Tono (Glow / Manchas)',
     description:
       'Protocolos médicos para recuperar luminosidad, vitalidad y homogeneidad del cutis.',
-    expectedResults: 'Rostro más radiante, manchas atenuadas y piel con glow saludable.'
+    expectedResults: 'Rostro más radiante, manchas atenuadas y piel con glow saludable.',
+    image: '/magrass-lagree/iluminacion.jpg'
   }
 ];
 
