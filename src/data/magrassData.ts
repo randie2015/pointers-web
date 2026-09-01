@@ -44,6 +44,8 @@ export const clinicWhatsApp = {
   evaluateCase: 'Hola, deseo evaluar mi caso médico por WhatsApp',
   specialists:
     'Hola, me gustaría agendar una consulta con el equipo de especialistas de Magrass LaGreé.',
+  specialist: (name: string) =>
+    `Hola, deseo agendar una consulta con ${name} en Magrass LaGreé.`,
   location:
     'Hola, deseo recibir la ubicación exacta y confirmar disponibilidad para asistir a la sede.',
   closing: 'Hola, deseo agendar un diagnóstico personalizado en Magrass LaGreé.',
@@ -341,46 +343,43 @@ export type Specialist = {
   id: string;
   name: string;
   role: string;
-  credentials: string[];
-  focus: string;
+  specialty: string;
+  badge: string;
+  image: string;
 };
 
 export const specialists: Specialist[] = [
   {
-    id: 'direccion',
-    name: 'Dirección Médica Magrass LaGreé',
-    role: 'Medicina Estética & Protocolos Integrales',
-    credentials: [
-      'Supervisión clínica de tratamientos faciales y corporales',
-      'Protocolos no invasivos con tecnología médica certificada',
-      'Enfoque en seguridad, ética y resultados naturales'
-    ],
-    focus:
-      'Liderazgo médico enfocado en diagnóstico personalizado, combinación de técnicas y seguimiento riguroso de cada paciente.'
+    id: 'elena-vargas',
+    name: 'Dra. Elena Vargas',
+    role: 'Directora Médica & Estética Facial',
+    specialty: 'Armonización Facial, Toxina Botulínica y Bioestimuladores',
+    badge: 'CMP 74829',
+    image: '/magrass-lagree/specialists/doctora-1.jpg'
   },
   {
-    id: 'estetica-facial',
-    name: 'Especialista en Estética Facial',
-    role: 'Armonización, Toxina Botulínica & Rejuvenecimiento',
-    credentials: [
-      'Evaluación facial 360° y diseño de plan terapéutico',
-      'Manejo de ácido hialurónico y toxina botulínica',
-      'Protocolos de limpieza médica e hidratación profunda'
-    ],
-    focus:
-      'Realzar la belleza natural respetando proporciones faciales y expectativas individuales de cada paciente.'
+    id: 'gabriel-torres',
+    name: 'Dr. Gabriel Torres',
+    role: 'Médico Especialista en Contorno Corporal',
+    specialty: 'Criolipólisis 360°, Enzimas PB Serum y Lipoescultura No Invasiva',
+    badge: 'CMP 81204',
+    image: '/magrass-lagree/specialists/doctor-2.jpg'
   },
   {
-    id: 'estetica-corporal',
-    name: 'Especialista en Estética Corporal',
-    role: 'Contorno, Firmeza & Reducción Localizada',
-    credentials: [
-      'Criolipólisis y aparatología médica corporal',
-      'Protocolos con peptonas y enzimas reductoras',
-      'Seguimiento de evolución y ajuste de plan clínico'
-    ],
-    focus:
-      'Tratamientos corporales personalizados con objetivos medibles, enfoque en bienestar y resultados progresivos.'
+    id: 'lucia-mendoza',
+    name: 'Dra. Lucía Mendoza',
+    role: 'Dermatología Estética & Láser',
+    specialty: 'Protocolos Hydrafacial, Despigmentación y Rejuvenecimiento Cutáneo',
+    badge: 'CMP 69315',
+    image: '/magrass-lagree/specialists/doctora-3.jpg'
+  },
+  {
+    id: 'camila-morales',
+    name: 'Dra. Camila Morales',
+    role: 'Medicina Regenerativa & Antienvejecimiento',
+    specialty: 'Peptonas, Sueroterapia Endovenosa y Nutrición Celular',
+    badge: 'CMP 85490',
+    image: '/magrass-lagree/specialists/doctora-4.jpg'
   }
 ];
 

@@ -9,11 +9,16 @@ export type WhatsAppIntent =
   | 'evaluateCase'
   | 'specialists'
   | 'location'
-  | { type: 'treatment'; name: string };
+  | { type: 'treatment'; name: string }
+  | { type: 'specialist'; name: string };
 
 function resolveMessage(intent: WhatsAppIntent = 'appointment'): string {
   if (typeof intent === 'object' && intent.type === 'treatment') {
     return clinicWhatsApp.treatment(intent.name);
+  }
+
+  if (typeof intent === 'object' && intent.type === 'specialist') {
+    return clinicWhatsApp.specialist(intent.name);
   }
 
   switch (intent) {

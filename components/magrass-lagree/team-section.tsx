@@ -1,51 +1,66 @@
-import { specialists, specialistsPage } from '@/src/data/magrassData';
+'use client';
+
+import Image from 'next/image';
+import { specialists } from '@/src/data/magrassData';
 import { magrassContainer, magrassSection } from '@/lib/magrass-lagree/layout';
 import { buildWhatsAppUrl } from '@/lib/magrass-lagree/whatsapp';
-import { MagrassCtaButton } from '@/components/magrass-lagree/cta-button';
-import { Award, Stethoscope } from 'lucide-react';
+import { MagrassStagger, MagrassStaggerChild } from '@/components/magrass-lagree/motion';
 import { cn } from '@/lib/utils';
 
 export function MagrassTeamSection() {
-  const whatsappUrl = buildWhatsAppUrl('specialists');
-
   return (
     <section className={cn(magrassSection, 'bg-mag-white lg:py-24')}>
       <div className={magrassContainer}>
-        <div className="grid gap-5 sm:gap-6 lg:gap-8">
-          {specialists.map((specialist, index) => (
-            <article
-              key={specialist.id}
-              className={`grid gap-5 rounded-2xl border border-mag-border p-5 shadow-sm sm:rounded-3xl sm:p-7 md:grid-cols-[auto_1fr] md:gap-6 ${
-                index % 2 === 0 ? 'bg-mag-cream/60' : 'bg-mag-white'
-              }`}
-            >
-              <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-mag-sand/30 text-mag-jade sm:h-16 sm:w-16">
-                <Stethoscope className="h-7 w-7" strokeWidth={1.75} />
-              </div>
+        <MagrassStagger className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {specialists.map((specialist) => (
+            <MagrassStaggerChild key={specialist.id}>
+              <article
+                className={cn(
+                  'group flex h-full flex-col rounded-2xl border border-[#F0EBE3] bg-white p-3',
+                  'transition-all duration-500 hover:-translate-y-2 hover:border-[#C5A880]/30 hover:shadow-xl hover:shadow-[#1C2331]/10 sm:p-4'
+                )}
+              >
+                <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-[#F8F6F2]">
+                  <Image
+                    src={specialist.image}
+                    alt={specialist.name}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div
+                    className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#1C2331]/55 via-[#1C2331]/10 to-transparent"
+                    aria-hidden
+                  />
+                  <span className="absolute top-3 left-3 rounded-full border border-white/20 bg-white/90 px-2.5 py-1 text-[10px] font-bold tracking-[0.08em] text-[#1C2331] backdrop-blur-sm sm:text-[11px]">
+                    {specialist.badge}
+                  </span>
+                </div>
 
-              <div className="min-w-0">
-                <h3 className="font-playfair text-xl font-semibold text-balance text-mag-navy sm:text-2xl">
-                  {specialist.name}
-                </h3>
-                <p className="mt-1 text-sm font-semibold text-mag-jade">{specialist.role}</p>
-                <p className="mt-3 text-sm leading-relaxed text-mag-muted">{specialist.focus}</p>
-
-                <ul className="mt-4 space-y-2">
-                  {specialist.credentials.map((credential) => (
-                    <li key={credential} className="flex items-start gap-2 text-sm text-mag-muted">
-                      <Award className="mt-0.5 h-4 w-4 shrink-0 text-mag-sand" />
-                      <span>{credential}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </article>
+                <div className="flex flex-1 flex-col pt-4 sm:pt-5">
+                  <h3 className="font-playfair text-lg font-semibold leading-snug text-[#1C2331] sm:text-xl">
+                    {specialist.name}
+                  </h3>
+                  <p className="mt-1.5 text-xs font-semibold uppercase tracking-[0.08em] text-[#C5A880] sm:text-[11px]">
+                    {specialist.role}
+                  </p>
+                  <p className="mt-3 flex-1 text-sm leading-relaxed text-mag-muted">{specialist.specialty}</p>
+                  <a
+                    href={buildWhatsAppUrl({ type: 'specialist', name: specialist.name })}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-4 inline-flex items-center text-sm font-semibold text-[#197876] transition-colors duration-300 group-hover:text-[#1C2331]"
+                  >
+                    Agendar con especialista
+                    <span aria-hidden className="ml-1 transition-transform duration-300 group-hover:translate-x-1">
+                      →
+                    </span>
+                  </a>
+                </div>
+              </article>
+            </MagrassStaggerChild>
           ))}
-        </div>
-
-        <div className="mt-10 text-center">
-          <MagrassCtaButton href={whatsappUrl} label={specialistsPage.cta} />
-        </div>
+        </MagrassStagger>
       </div>
     </section>
   );
