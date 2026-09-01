@@ -187,3 +187,20 @@ body {
     @apply border-b-0;
   }
 }
+
+/* Rey Dental hero: background video without native controls */
+.rey-hero-video {
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.rey-hero-video::-webkit-media-controls,
+.rey-hero-video::-webkit-media-controls-enclosure,
+.rey-hero-video::-webkit-media-controls-panel,
+.rey-hero-video::-webkit-media-controls-play-button,
+.rey-hero-video::-webkit-media-controls-start-playback-button,
+.rey-hero-video::-webkit-media-controls-overlay-play-button {
+  display: none !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}

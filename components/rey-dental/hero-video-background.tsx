@@ -17,15 +17,18 @@ export function ReyDentalHeroVideoBackground() {
     const video = videoRef.current;
     if (!video) return;
 
-    const play = async () => {
-      try {
-        await video.play();
-      } catch {
-        setEnabled(false);
-      }
+    const handleEnded = () => {
+      video.currentTime = 0;
+      void video.play().catch(() => setEnabled(false));
     };
 
-    void play();
+    video.addEventListener('ended', handleEnded);
+
+    void video.play().catch(() => setEnabled(false));
+
+    return () => {
+      video.removeEventListener('ended', handleEnded);
+    };
   }, []);
 
   if (!enabled) {
@@ -41,13 +44,16 @@ export function ReyDentalHeroVideoBackground() {
   return (
     <video
       ref={videoRef}
-      className="absolute inset-0 h-full w-full object-cover"
+      className="rey-hero-video pointer-events-none absolute inset-0 h-full w-full object-cover"
       autoPlay
       muted
       loop
       playsInline
-      preload="metadata"
-      poster={clinicBrand.doctorPhoto}
+      preload="auto"
+      disablePictureInPicture
+      disableRemotePlayback
+      controls={false}
+      tabIndex={-1}
       aria-hidden
     >
       <source src={clinicBrand.heroVideo} type="video/mp4" />

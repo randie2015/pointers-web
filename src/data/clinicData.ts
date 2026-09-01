@@ -20,6 +20,34 @@ export const clinicBrand = {
   heroVideo: '/rey-dental/hero-video.mp4'
 } as const;
 
+/** Recommended media specs for sharp display without heavy files. */
+export const clinicMediaSpecs = {
+  heroVideo: {
+    format: 'MP4 (H.264) + opcional WebM (VP9) para mejor compresión',
+    resolution: '1920×1080 px (Full HD) o 1280×720 px mínimo',
+    aspectRatio: '16:9 horizontal',
+    duration: '10–20 s en loop',
+    maxWeight: '5–8 MB ideal (máx. ~15 MB)',
+    notes: 'Sin audio o pista silenciada; loop seamless si es posible'
+  },
+  doctorPhoto: {
+    format: 'WebP o JPG progresivo (PNG si necesitas transparencia)',
+    resolution: '1200×1500 px mínimo (proporción 4:5)',
+    retina: '2400×3000 px para pantallas 2x',
+    maxWeight: '200–400 KB optimizado'
+  },
+  beforeAfter: {
+    format: 'WebP o JPG; ambas imágenes mismo tamaño y encuadre',
+    resolution: '1600×800 px mínimo (proporción 2:1)',
+    retina: '3200×1600 px para pantallas 2x',
+    maxWeight: '150–300 KB cada una'
+  },
+  logo: {
+    format: 'SVG preferido; PNG 512×512 px con fondo transparente',
+    notes: 'Vectorial evita pixelado en navbar y footer'
+  }
+} as const;
+
 export const pointersCloser = {
   name: 'Diego',
   whatsapp: '51904330335',
