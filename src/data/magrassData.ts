@@ -236,6 +236,8 @@ export const keyTreatments: MagrassTreatment[] = [
     expectedResults: 'Expresión más descansada, piel lisa y prevención del envejecimiento dinámico.',
     image: '/magrass-lagree/botox.jpg'
   },
+  {
+    id: 'hydrafacial',
     anchor: 'hydrafacial',
     category: 'facial',
     title: 'Limpieza Facial Médica & Hydrafacial',
