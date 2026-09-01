@@ -1,18 +1,10 @@
-import { AlignCenter, Sparkles, Stethoscope, Syringe } from 'lucide-react';
 import { clinicTreatments } from '@/src/data/clinicData';
 import { buildWhatsAppUrl } from '@/lib/rey-dental/whatsapp';
 import { ReyDentalCtaButton } from '@/components/rey-dental/cta-button';
+import { ReyDentalTreatmentMedia } from '@/components/rey-dental/treatment-media';
 import type { Treatment } from '@/src/data/clinicData';
 
-const iconMap = {
-  align: AlignCenter,
-  implant: Syringe,
-  whitening: Sparkles,
-  general: Stethoscope
-} as const;
-
 function TreatmentCard({ treatment, index }: { treatment: Treatment; index: number }) {
-  const Icon = iconMap[treatment.icon];
   const whatsappUrl = buildWhatsAppUrl(treatment.title);
 
   return (
@@ -21,12 +13,11 @@ function TreatmentCard({ treatment, index }: { treatment: Treatment; index: numb
         index % 2 === 1 ? 'lg:flex-row-reverse' : 'lg:flex-row'
       }`}
     >
-      <div className="flex min-h-[140px] items-center justify-center bg-gradient-to-br from-rey-accent/30 to-rey-primary/10 sm:min-h-[180px] lg:aspect-auto lg:min-h-[220px] lg:w-2/5">
-        <Icon
-          className="h-12 w-12 text-rey-primary/60 transition group-hover:scale-110 group-hover:text-rey-primary sm:h-16 sm:w-16"
-          strokeWidth={1.25}
-        />
-      </div>
+      <ReyDentalTreatmentMedia
+        treatment={treatment}
+        className="min-h-[140px] sm:min-h-[180px] lg:aspect-[3/2] lg:min-h-0 lg:w-2/5"
+        priority={index === 0}
+      />
       <div className="flex flex-1 flex-col justify-center p-5 sm:p-6 lg:p-8">
         <h3 className="font-display text-lg font-semibold text-rey-ink sm:text-xl">{treatment.title}</h3>
         <p className="mt-2 text-sm leading-relaxed text-slate-600">{treatment.shortDescription}</p>

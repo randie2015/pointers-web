@@ -47,6 +47,12 @@ export const clinicMediaSpecs = {
   logo: {
     format: 'SVG preferido; PNG 512×512 px con fondo transparente',
     notes: 'Vectorial evita pixelado en navbar y footer'
+  },
+  serviceCard: {
+    format: 'WebP o JPG',
+    resolution: '960×640 px (proporción 3:2 horizontal)',
+    retina: '1200×800 px para pantallas 2x',
+    maxWeight: '80–150 KB por imagen'
   }
 } as const;
 
@@ -142,6 +148,8 @@ export type Treatment = {
   description: string;
   benefits: string[];
   icon: 'align' | 'implant' | 'whitening' | 'general';
+  image?: string;
+  imageAlt?: string;
 };
 
 export const clinicTreatments: Treatment[] = [
@@ -157,7 +165,9 @@ export const clinicTreatments: Treatment[] = [
       'Control mensual de avance',
       'Resultados estables y naturales'
     ],
-    icon: 'align'
+    icon: 'align',
+    image: '/rey-dental/services/ortodoncia.webp',
+    imageAlt: 'Paciente con brackets durante tratamiento de ortodoncia'
   },
   {
     id: 'implantes',
