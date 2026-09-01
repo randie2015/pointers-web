@@ -96,6 +96,12 @@ export const clinicHome = {
     title: '¿Listo para recuperar tu tranquilidad y sonrisa?',
     subtitle: 'Agenda tu evaluación hoy mismo. Respuesta directa por WhatsApp sin formularios.',
     button: 'Contactar a Recepción por WhatsApp'
+  },
+  beforeAfter: {
+    before: '/rey-dental/before-after-before.png',
+    after: '/rey-dental/before-after-after.png',
+    width: 862,
+    height: 426
   }
 } as const;
 
