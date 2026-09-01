@@ -114,7 +114,7 @@ export const clinicHome = {
       badge: 'CORPORAL',
       title: 'Criolipólisis 360°',
       description: 'Reducción no invasiva de grasa localizada con frío controlado y sin recuperación.',
-      image: '/magrass-lagree/before-after-after.webp'
+      image: '/magrass-lagree/criolipolisis.jpg'
     },
     {
       id: 'bioestimuladores',
