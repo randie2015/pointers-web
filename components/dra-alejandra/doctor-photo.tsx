@@ -28,11 +28,11 @@ export function DraAlejandraDoctorPhoto({
           />
         </div>
         <div className="border-t border-ale-neutral/30 bg-white p-4 sm:p-5">
-          <p className="font-display text-lg font-semibold text-ale-ink sm:text-xl">{clinicBrand.doctorFullName}</p>
-          <p className="mt-0.5 text-xs text-ale-ink/60 sm:text-sm">
+          <p className="font-display text-lg font-semibold text-slate-900 sm:text-xl">{clinicBrand.doctorFullName}</p>
+          <p className="mt-0.5 text-xs text-slate-500 sm:text-sm">
             {clinicBrand.positioning} · {clinicBrand.usp}
           </p>
-          <div className="mt-4 grid grid-cols-3 gap-2 text-center text-[10px] text-ale-ink/60 sm:text-xs">
+          <div className="mt-4 grid grid-cols-3 gap-2 text-center text-[10px] text-slate-600 sm:text-xs">
             <div className="rounded-lg border border-ale-gold/25 bg-ale-ivory px-1.5 py-2.5 sm:rounded-xl sm:px-2 sm:py-3">
               <p className="font-semibold text-ale-gold">USP</p>
               <p>Brasil</p>

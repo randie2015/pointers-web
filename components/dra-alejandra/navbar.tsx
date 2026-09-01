@@ -50,12 +50,12 @@ function getNavChrome(theme: NavSectionTheme, scrolled: boolean, isHome: boolean
       bar: glassHero
         ? 'border-ale-gold/30 bg-ale-rose/75 shadow-sm'
         : 'border-ale-gold/45 bg-ale-rose/92 shadow-md shadow-ale-rose/20',
-      link: 'text-ale-ink/85 hover:text-ale-cta',
-      linkActive: 'text-ale-cta',
+      link: 'text-ale-charcoal hover:text-ale-cta',
+      linkActive: 'text-ale-cta-dark',
       menuBtn: 'text-ale-ink hover:bg-ale-ink/5',
       mobilePanel: 'border-ale-gold/35 bg-ale-rose/98',
-      mobileLink: 'text-ale-ink hover:bg-ale-ink/5',
-      mobileLinkActive: 'bg-ale-ink/8 text-ale-cta',
+      mobileLink: 'text-ale-charcoal hover:bg-ale-ink/5',
+      mobileLinkActive: 'bg-ale-ink/8 text-ale-cta-dark',
       logoTheme: 'light',
       ctaVariant: 'primary'
     };
@@ -67,12 +67,12 @@ function getNavChrome(theme: NavSectionTheme, scrolled: boolean, isHome: boolean
       : scrolled
         ? 'border-ale-gold/40 bg-ale-ivory/95 shadow-sm shadow-ale-ink/5'
         : 'border-ale-gold/35 bg-ale-ivory/88',
-    link: 'text-ale-ink/80 hover:text-ale-cta',
-    linkActive: 'text-ale-cta',
+    link: 'text-ale-charcoal hover:text-ale-cta',
+    linkActive: 'text-ale-cta-dark',
     menuBtn: 'text-ale-ink hover:bg-ale-ink/5',
     mobilePanel: 'border-ale-gold/30 bg-ale-ivory/98',
-    mobileLink: 'text-ale-ink hover:bg-ale-rose/20',
-    mobileLinkActive: 'bg-ale-rose/30 text-ale-cta',
+    mobileLink: 'text-ale-charcoal hover:bg-ale-rose/20',
+    mobileLinkActive: 'bg-ale-rose/30 text-ale-cta-dark',
     logoTheme: 'light',
     ctaVariant: 'primary'
   };

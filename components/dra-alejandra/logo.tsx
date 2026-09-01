@@ -27,8 +27,8 @@ const taglineStyles = {
 
 const themeStyles = {
   light: {
-    name: 'text-ale-ink',
-    tagline: 'text-ale-gold',
+    name: 'text-ale-charcoal',
+    tagline: 'text-ale-gold-deep',
     shell: 'bg-ale-ink text-white shadow-sm'
   },
   dark: {

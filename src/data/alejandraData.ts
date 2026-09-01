@@ -63,7 +63,8 @@ export const clinicHome = {
       'Armonización dental personalizada, natural y sin dolor en Arequipa. Formación especializada en la Universidad de São Paulo (USP Brasil).',
     primaryCta: 'Agendar Evaluación por WhatsApp',
     secondaryCta: 'Ver Casos Clínicos',
-    rating: '★★★★★ Smile Maker · Boutique Dental Experience'
+    ratingStars: '★★★★★',
+    ratingText: 'Smile Maker · Boutique Dental Experience'
   },
   stats: [
     { value: 'USP', label: 'formación en Brasil' },

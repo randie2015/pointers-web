@@ -23,10 +23,10 @@ export function DraAlejandraCasesSection() {
           <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-ale-gold sm:text-xs">
             Antes & Después
           </p>
-          <h2 className="mt-2 font-display text-2xl font-semibold text-ale-ink sm:text-3xl lg:text-4xl">
+          <h2 className="mt-2 font-display text-2xl font-semibold text-ale-charcoal sm:text-3xl lg:text-4xl">
             {cases.title}
           </h2>
-          <p className="mx-auto mt-3 max-w-2xl text-sm text-ale-ink/70 sm:text-base">{cases.subtitle}</p>
+          <p className="mx-auto mt-3 max-w-2xl text-sm font-medium text-slate-700 sm:text-base">{cases.subtitle}</p>
         </div>
 
         <DraAlejandraBeforeAfterSlider />

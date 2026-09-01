@@ -11,7 +11,7 @@ export function DraAlejandraLocationSection() {
   return (
     <section data-nav-theme="light" className="bg-ale-ivory py-12 sm:py-16 lg:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <h2 className="text-center font-display text-2xl font-bold text-ale-ink sm:text-3xl lg:text-4xl">
+        <h2 className="text-center font-display text-2xl font-bold text-ale-charcoal sm:text-3xl lg:text-4xl">
           {location.title}
         </h2>
 
@@ -32,7 +32,7 @@ export function DraAlejandraLocationSection() {
 
             <div className="flex gap-3">
               <Clock className="mt-0.5 h-5 w-5 shrink-0 text-ale-cta" />
-              <div className="min-w-0 text-sm text-slate-600">
+              <div className="min-w-0 text-sm font-medium text-slate-700">
                 <p>{clinicContact.schedule.weekdays}</p>
                 <p>{clinicContact.schedule.saturday}</p>
               </div>

@@ -19,8 +19,8 @@ function TreatmentCard({ treatment, index }: { treatment: Treatment; index: numb
         priority={index === 0}
       />
       <div className="flex flex-1 flex-col justify-center p-5 sm:p-6 lg:p-8">
-        <h3 className="font-display text-lg font-semibold text-ale-ink sm:text-xl">{treatment.title}</h3>
-        <p className="mt-2 text-sm leading-relaxed text-ale-ink/70">{treatment.shortDescription}</p>
+        <h3 className="font-display text-lg font-semibold text-ale-charcoal sm:text-xl">{treatment.title}</h3>
+        <p className="mt-2 text-sm font-medium leading-relaxed text-slate-700">{treatment.shortDescription}</p>
         <div className="mt-4 sm:mt-5">
           <DraAlejandraCtaButton href={whatsappUrl} label="Consultar por WhatsApp" className="sm:max-w-xs" />
         </div>
@@ -37,7 +37,7 @@ export function DraAlejandraTreatmentsSection() {
           <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-ale-gold sm:text-xs">
             Servicios Estrella
           </p>
-          <h2 className="mt-2 font-display text-2xl font-semibold text-ale-ink sm:mt-3 sm:text-3xl lg:text-4xl">
+          <h2 className="mt-2 font-display text-2xl font-semibold text-ale-charcoal sm:mt-3 sm:text-3xl lg:text-4xl">
             Tratamientos boutique de alta gama
           </h2>
         </div>

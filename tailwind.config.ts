@@ -43,8 +43,12 @@ export default {
           ivory: '#FAF7F5',
           rose: '#E8B4B8',
           cta: '#C97D7D',
+          'cta-dark': '#A85353',
           gold: '#C5A059',
+          'gold-deep': '#B4833E',
           ink: '#2E2A2B',
+          charcoal: '#1F1B1D',
+          'badge-text': '#833A3A',
           neutral: '#E8DFD8',
           surface: '#FFFFFF',
           dark: '#2E2A2B'

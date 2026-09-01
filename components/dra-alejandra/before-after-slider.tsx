@@ -101,7 +101,7 @@ export function DraAlejandraBeforeAfterSlider() {
         </span>
       </div>
 
-      <p className="mt-4 text-center text-xs tracking-wide text-ale-ink/55 sm:text-sm">
+      <p className="mt-4 text-center text-xs font-medium tracking-wide text-slate-600 sm:text-sm">
         Arrastra el control para comparar carillas y diseño de sonrisa
       </p>
     </div>
