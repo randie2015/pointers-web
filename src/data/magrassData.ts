@@ -180,6 +180,36 @@ export const clinicHome = {
     title: '¿Quieres comprobar la efectividad de nuestros tratamientos antes de agendar?',
     casesCta: 'Ver casos clínicos',
     whatsappCta: 'Evaluar mi caso por WhatsApp'
+  },
+  testimonials: {
+    eyebrow: 'EXPERIENCIAS REALES',
+    title: 'Resultados que transforman la confianza médica y estética',
+    items: [
+      {
+        id: 'valeria-m',
+        treatment: 'Armonización Facial & Labios',
+        quote:
+          'Buscaba un resultado súper natural y cero exagerado. La evaluación previa me dio muchísima seguridad; el perfilado de labios quedó impecable.',
+        patientName: 'Valeria M.',
+        patientMeta: 'Paciente verificada · Sede Arequipa'
+      },
+      {
+        id: 'claudia-r',
+        treatment: 'Criolipólisis 360°',
+        quote:
+          'Reduje medidas en la zona abdominal sin dolor ni tiempo de recuperación. La aparatología médica y el seguimiento del equipo fueron de primer nivel.',
+        patientName: 'Claudia R.',
+        patientMeta: 'Paciente verificada · Sede Arequipa'
+      },
+      {
+        id: 'luciana-g',
+        treatment: 'Hydrafacial & Bioestimuladores',
+        quote:
+          'Mi piel recuperó una luminosidad increíble desde la primera sesión. La atención boutique y el trato personalizado marcan toda la diferencia.',
+        patientName: 'Luciana G.',
+        patientMeta: 'Paciente verificada · Sede Arequipa'
+      }
+    ]
   }
 } as const;
 

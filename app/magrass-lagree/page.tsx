@@ -7,6 +7,7 @@ import {
 import { MagrassFeaturedTreatmentsSection } from '@/components/magrass-lagree/featured-treatments-section';
 import { MagrassDiagnosis360Section } from '@/components/magrass-lagree/diagnosis-360-section';
 import { MagrassCtaZoneSection } from '@/components/magrass-lagree/cta-zone-section';
+import { MagrassTestimonialsSection } from '@/components/magrass-lagree/testimonials-section';
 
 export default function MagrassHomePage() {
   return (
@@ -17,6 +18,7 @@ export default function MagrassHomePage() {
       <MagrassWhyChooseSection />
       <MagrassCtaZoneSection />
       <MagrassCasesPreviewSection />
+      <MagrassTestimonialsSection />
       <MagrassDiagnosis360Section />
       <MagrassLocationPreviewSection />
     </>
