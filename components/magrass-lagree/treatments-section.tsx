@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   keyTreatments,
   treatmentsPage,
@@ -10,9 +10,44 @@ import { buildWhatsAppUrl } from '@/lib/magrass-lagree/whatsapp';
 import { MagrassCtaButton } from '@/components/magrass-lagree/cta-button';
 import { cn } from '@/lib/utils';
 
+function scrollToAnchor(anchor: string) {
+  const element = document.getElementById(anchor);
+  if (!element) return;
+  element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
 export function MagrassTreatmentsSection() {
   const [activeCategory, setActiveCategory] = useState<TreatmentCategory>('facial');
   const filtered = keyTreatments.filter((treatment) => treatment.category === activeCategory);
+
+  useEffect(() => {
+    const hash = window.location.hash.replace('#', '');
+    if (!hash) return;
+
+    const treatment = keyTreatments.find((item) => item.anchor === hash);
+    if (!treatment) return;
+
+    setActiveCategory(treatment.category);
+
+    const timer = window.setTimeout(() => scrollToAnchor(hash), 120);
+    return () => window.clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    const onHashChange = () => {
+      const hash = window.location.hash.replace('#', '');
+      if (!hash) return;
+
+      const treatment = keyTreatments.find((item) => item.anchor === hash);
+      if (!treatment) return;
+
+      setActiveCategory(treatment.category);
+      window.setTimeout(() => scrollToAnchor(hash), 120);
+    };
+
+    window.addEventListener('hashchange', onHashChange);
+    return () => window.removeEventListener('hashchange', onHashChange);
+  }, []);
 
   return (
     <section className="bg-mag-white py-14 sm:py-16 lg:py-24">
@@ -39,7 +74,8 @@ export function MagrassTreatmentsSection() {
           {filtered.map((treatment) => (
             <article
               key={treatment.id}
-              className="group flex flex-col rounded-2xl border border-mag-border bg-mag-cream/50 p-5 transition duration-300 hover:border-mag-sand hover:shadow-md sm:rounded-3xl sm:p-6"
+              id={treatment.anchor}
+              className="group scroll-mt-28 flex flex-col rounded-2xl border border-mag-border bg-mag-cream/50 p-5 transition duration-300 hover:border-mag-sand hover:shadow-md sm:rounded-3xl sm:p-6"
             >
               <h3 className="font-playfair text-lg font-semibold text-mag-navy sm:text-xl">
                 {treatment.title}

@@ -101,30 +101,54 @@ export const clinicHome = {
   },
   featuredTreatments: [
     {
-      id: 'facial',
-      category: 'Facial',
+      id: 'armonizacion',
+      anchor: 'armonizacion-facial',
+      badge: 'FACIAL',
       title: 'Armonización Facial & Ácido Hialurónico',
-      description: 'Perfilado natural de labios, mentón y ángulo mandibular con simetría clínica.'
+      description: 'Perfilado natural de labios, mentón y ángulo mandibular con simetría clínica.',
+      image: '/magrass-lagree/hero-poster.webp'
     },
     {
-      id: 'corporal',
-      category: 'Corporal',
+      id: 'criolipolisis',
+      anchor: 'criolipolisis',
+      badge: 'CORPORAL',
       title: 'Criolipólisis 360°',
-      description: 'Reducción no invasiva de grasa localizada con frío controlado y sin recuperación.'
+      description: 'Reducción no invasiva de grasa localizada con frío controlado y sin recuperación.',
+      image: '/magrass-lagree/before-after-after.webp'
     },
     {
-      id: 'antiage',
-      category: 'Antiage',
+      id: 'bioestimuladores',
+      anchor: 'bioestimuladores',
+      badge: 'ANTIAGE',
       title: 'Bioestimuladores de Colágeno',
-      description: 'Rejuvenecimiento progresivo con firmeza, luminosidad y calidad dérmica mejorada.'
+      description: 'Rejuvenecimiento progresivo con firmeza, luminosidad y calidad dérmica mejorada.',
+      image: '/magrass-lagree/before-after-before.webp'
     },
     {
-      id: 'skin',
-      category: 'Facial',
+      id: 'hydrafacial',
+      anchor: 'hydrafacial',
+      badge: 'FACIAL',
       title: 'Limpieza Médica & Hydrafacial',
-      description: 'Desintoxicación profunda, hidratación intensiva y glow inmediato con enfoque clínico.'
+      description: 'Desintoxicación profunda, hidratación intensiva y glow inmediato con enfoque clínico.',
+      image: '/magrass-lagree/hero-poster.webp'
+    },
+    {
+      id: 'peptonas',
+      anchor: 'peptonas',
+      badge: 'CORPORAL',
+      title: 'Peptonas & Firmeza de Glúteos',
+      description: 'Tonificación y levantamiento glúteo con estimulación muscular y aparatología médica.',
+      image: '/magrass-lagree/before-after-after.webp'
+    },
+    {
+      id: 'enzimas',
+      anchor: 'enzimas',
+      badge: 'CORPORAL',
+      title: 'Enzimas PB Serum & Reductores',
+      description: 'Tratamiento focalizado para adiposidad rebelde, flacidez y celulitis con acción tensora.',
+      image: '/magrass-lagree/before-after-before.webp'
     }
-  ],
+  ] satisfies readonly FeaturedTreatment[],
   whyChoose: {
     title: 'Por qué Elegir Magrass LaGreé',
     subtitle:
@@ -172,15 +196,26 @@ export type TreatmentCategory = (typeof treatmentsPage.categories)[number]['id']
 
 export type MagrassTreatment = {
   id: string;
+  anchor: string;
   title: string;
   description: string;
   expectedResults: string;
   category: TreatmentCategory;
 };
 
+export type FeaturedTreatment = {
+  id: string;
+  anchor: string;
+  badge: string;
+  title: string;
+  description: string;
+  image: string;
+};
+
 export const keyTreatments: MagrassTreatment[] = [
   {
     id: 'armonizacion',
+    anchor: 'armonizacion-facial',
     category: 'facial',
     title: 'Armonización Facial & Ácido Hialurónico',
     description:
@@ -189,6 +224,7 @@ export const keyTreatments: MagrassTreatment[] = [
   },
   {
     id: 'botox',
+    anchor: 'botox',
     category: 'facial',
     title: 'Toxina Botulínica (Botox)',
     description:
@@ -197,6 +233,7 @@ export const keyTreatments: MagrassTreatment[] = [
   },
   {
     id: 'hydrafacial',
+    anchor: 'hydrafacial',
     category: 'facial',
     title: 'Limpieza Facial Médica & Hydrafacial',
     description:
@@ -205,6 +242,7 @@ export const keyTreatments: MagrassTreatment[] = [
   },
   {
     id: 'criolipolisis',
+    anchor: 'criolipolisis',
     category: 'corporal',
     title: 'Criolipólisis 360°',
     description:
@@ -213,6 +251,7 @@ export const keyTreatments: MagrassTreatment[] = [
   },
   {
     id: 'peptonas',
+    anchor: 'peptonas',
     category: 'corporal',
     title: 'Peptonas & Firmeza de Glúteos',
     description:
@@ -221,6 +260,7 @@ export const keyTreatments: MagrassTreatment[] = [
   },
   {
     id: 'pb-serum',
+    anchor: 'enzimas',
     category: 'corporal',
     title: 'Enzimas PB Serum & Reductores',
     description:
@@ -229,6 +269,7 @@ export const keyTreatments: MagrassTreatment[] = [
   },
   {
     id: 'bioestimuladores',
+    anchor: 'bioestimuladores',
     category: 'rejuvenecimiento',
     title: 'Bioestimuladores de Colágeno',
     description:
@@ -237,6 +278,7 @@ export const keyTreatments: MagrassTreatment[] = [
   },
   {
     id: 'peelings',
+    anchor: 'peelings',
     category: 'rejuvenecimiento',
     title: 'Peelings Médicos & Dermapen',
     description:
@@ -245,6 +287,7 @@ export const keyTreatments: MagrassTreatment[] = [
   },
   {
     id: 'iluminacion',
+    anchor: 'iluminacion',
     category: 'rejuvenecimiento',
     title: 'Iluminación & Uniformidad de Tono',
     description:

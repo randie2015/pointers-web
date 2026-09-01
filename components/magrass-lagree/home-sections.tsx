@@ -17,65 +17,6 @@ const MagrassBeforeAfterSlider = dynamic(
   }
 );
 
-export function MagrassFeaturedTreatmentsSection() {
-  const { featuredTreatments } = clinicHome;
-
-  return (
-    <section className="bg-white py-14 sm:py-16 lg:py-20">
-      <div className="mx-auto max-w-7xl px-6 md:px-12">
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#197876] sm:text-xs">
-              Tratamientos destacados
-            </p>
-            <h2 className="mt-2 font-playfair text-2xl font-semibold text-[#192031] sm:text-3xl">
-              Protocolos faciales, corporales y antiage
-            </h2>
-          </div>
-          <Link
-            href={`${MAGRASS_BASE}/tratamientos`}
-            className="text-sm font-semibold text-[#197876] hover:text-[#192031]"
-          >
-            Ver todos los tratamientos →
-          </Link>
-        </div>
-
-        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
-          {featuredTreatments.map((treatment) => (
-            <article
-              key={treatment.id}
-              className="flex flex-col rounded-2xl border border-mag-border bg-[#FAFAFA] p-5"
-            >
-              <span className="text-[10px] font-bold uppercase tracking-[0.14em] text-[#C5A57D]">
-                {treatment.category}
-              </span>
-              <h3 className="mt-2 font-playfair text-base font-semibold text-[#192031] sm:text-lg">
-                {treatment.title}
-              </h3>
-              <p className="mt-2 flex-1 text-sm leading-relaxed text-mag-muted">{treatment.description}</p>
-              <MagrassCtaButton
-                href={buildWhatsAppUrl({ type: 'treatment', name: treatment.title })}
-                label="Consultar por WhatsApp"
-                variant="secondary"
-                className="mt-4 !text-xs"
-              />
-            </article>
-          ))}
-        </div>
-
-        <div className="mt-8 text-center">
-          <MagrassCtaButton
-            href={`${MAGRASS_BASE}/tratamientos`}
-            label="Explorar catálogo completo"
-            variant="secondary"
-            external={false}
-          />
-        </div>
-      </div>
-    </section>
-  );
-}
-
 export function MagrassWhyChooseSection() {
   const { whyChoose } = clinicHome;
   const icons = [ShieldCheck, Award, ShieldCheck] as const;

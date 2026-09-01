@@ -1,10 +1,10 @@
 import { MagrassHeroSection, MagrassValuePillarsSection } from '@/components/magrass-lagree/hero-section';
 import {
   MagrassCasesPreviewSection,
-  MagrassFeaturedTreatmentsSection,
   MagrassLocationPreviewSection,
   MagrassWhyChooseSection
 } from '@/components/magrass-lagree/home-sections';
+import { MagrassFeaturedTreatmentsSection } from '@/components/magrass-lagree/featured-treatments-section';
 import { MagrassDiagnosis360Section } from '@/components/magrass-lagree/diagnosis-360-section';
 import { MagrassCtaZoneSection } from '@/components/magrass-lagree/cta-zone-section';
 
