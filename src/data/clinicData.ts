@@ -197,7 +197,9 @@ export const clinicTreatments: Treatment[] = [
       'Materiales de alta estética',
       'Mantenimiento personalizado'
     ],
-    icon: 'whitening'
+    icon: 'whitening',
+    image: '/rey-dental/services/estetica.webp',
+    imageAlt: 'Sonrisa luminosa tras tratamiento de estética dental y blanqueamiento'
   },
   {
     id: 'integral',
