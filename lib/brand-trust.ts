@@ -6,8 +6,6 @@ export type BrandLogo = {
 /** Logos del carrusel — fuente única para home, servicios y nosotros */
 export const BRAND_TRUST_LOGOS: BrandLogo[] = [
   { name: 'Carrara', src: '/brands/carrara.png' },
-  { name: 'Cirezza', src: '/brands/cirezza.png' },
-  { name: 'Vezzanti', src: '/brands/vezzanti-v2.png' },
   { name: 'Mossad', src: '/brands/mossad-v2.png' }
 ];
 
