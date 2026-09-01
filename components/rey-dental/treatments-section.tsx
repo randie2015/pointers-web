@@ -15,7 +15,7 @@ function TreatmentCard({ treatment, index }: { treatment: Treatment; index: numb
     >
       <ReyDentalTreatmentMedia
         treatment={treatment}
-        className="min-h-[140px] sm:min-h-[180px] lg:aspect-[3/2] lg:min-h-0 lg:w-2/5"
+        className="aspect-[3/2] w-full lg:w-2/5"
         priority={index === 0}
       />
       <div className="flex flex-1 flex-col justify-center p-5 sm:p-6 lg:p-8">

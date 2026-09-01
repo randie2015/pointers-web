@@ -150,6 +150,7 @@ export type Treatment = {
   icon: 'align' | 'implant' | 'whitening' | 'general';
   image?: string;
   imageAlt?: string;
+  imagePosition?: string;
 };
 
 export const clinicTreatments: Treatment[] = [
@@ -167,7 +168,8 @@ export const clinicTreatments: Treatment[] = [
     ],
     icon: 'align',
     image: '/rey-dental/services/ortodoncia.webp',
-    imageAlt: 'Paciente con brackets durante tratamiento de ortodoncia'
+    imageAlt: 'Paciente con brackets durante tratamiento de ortodoncia',
+    imagePosition: '50% 22%'
   },
   {
     id: 'implantes',

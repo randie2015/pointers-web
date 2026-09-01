@@ -35,6 +35,7 @@ export function ReyDentalTreatmentMedia({
           alt={treatment.imageAlt ?? treatment.title}
           fill
           className={cn('object-cover transition duration-500 group-hover:scale-105', imageClassName)}
+          style={treatment.imagePosition ? { objectPosition: treatment.imagePosition } : undefined}
           sizes={sizes}
           priority={priority}
           loading={priority ? undefined : 'lazy'}
