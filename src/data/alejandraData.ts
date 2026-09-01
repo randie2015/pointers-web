@@ -18,7 +18,8 @@ export const clinicBrand = {
   disclaimer:
     'Aviso de Demostración Privada (72 horas): Entorno interactivo temporal desarrollado por Pointers (pointers.marketing) con fines exclusivos de evaluación técnica para la Dra. Alejandra Cusirramos. Plataforma no indexada en Google y de acceso restringido. Derechos reservados a sus respectivos titulares.',
   pointersUrl: 'https://pointers.marketing',
-  logo: '/dra-alejandra/logo-mark.svg',
+  logo: '/dra-alejandra/logo-ae.png',
+  logoMark: '/dra-alejandra/logo-ae.png',
   doctorPhoto: '/dra-alejandra/doctor.jpg',
   heroVideo: '/dra-alejandra/hero-video.mp4',
   heroVideoWebm: '/dra-alejandra/hero-video.webm',
