@@ -37,6 +37,16 @@ export default {
           gold: '#D4A373',
           ink: '#334155',
           dark: '#0F2137'
+        },
+        ale: {
+          ivory: '#FAF7F5',
+          rose: '#E8B4B8',
+          cta: '#C97D7D',
+          gold: '#C5A059',
+          ink: '#2E2A2B',
+          neutral: '#E8DFD8',
+          surface: '#FFFFFF',
+          dark: '#2E2A2B'
         }
       },
       letterSpacing: { tightest: '-0.04em' },

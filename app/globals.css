@@ -243,3 +243,30 @@ body {
   pointer-events: none !important;
   -webkit-appearance: none !important;
 }
+
+.ale-hero-video {
+  appearance: none;
+  -webkit-appearance: none;
+  object-fit: cover;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.ale-hero-video::-webkit-media-controls,
+.ale-hero-video::-webkit-media-controls-enclosure,
+.ale-hero-video::-webkit-media-controls-panel,
+.ale-hero-video::-webkit-media-controls-play-button,
+.ale-hero-video::-webkit-media-controls-start-playback-button,
+.ale-hero-video::-webkit-media-controls-overlay-play-button,
+.ale-hero-video::-webkit-media-controls-timeline,
+.ale-hero-video::-webkit-media-controls-current-time-display,
+.ale-hero-video::-webkit-media-controls-time-remaining-display,
+.ale-hero-video::-webkit-media-controls-mute-button,
+.ale-hero-video::-webkit-media-controls-volume-slider,
+.ale-hero-video::-webkit-media-controls-fullscreen-button {
+  display: none !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  -webkit-appearance: none !important;
+}

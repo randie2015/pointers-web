@@ -57,6 +57,11 @@ export default async function middleware(request: NextRequest) {
     return NextResponse.rewrite(new URL(localizedOrthozentMatch[2], request.url));
   }
 
+  const localizedAlejandraMatch = pathname.match(/^\/(es|en)(\/alejandracusirramos(?:\/.*)?)$/);
+  if (localizedAlejandraMatch) {
+    return NextResponse.rewrite(new URL(localizedAlejandraMatch[2], request.url));
+  }
+
   const localeAdminMatch = pathname.match(/^\/(es|en)(\/admin(?:\/.*)?)$/);
   if (localeAdminMatch) {
     return NextResponse.redirect(new URL(localeAdminMatch[2], request.url));
@@ -97,6 +102,10 @@ export default async function middleware(request: NextRequest) {
   }
 
   if (pathname.startsWith('/orthozent')) {
+    return NextResponse.next();
+  }
+
+  if (pathname.startsWith('/alejandracusirramos')) {
     return NextResponse.next();
   }
 
