@@ -47,6 +47,11 @@ const intlMiddleware = createMiddleware(routing);
 export default async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
+  const localizedReyDentalMatch = pathname.match(/^\/(es|en)(\/rey-dental(?:\/.*)?)$/);
+  if (localizedReyDentalMatch) {
+    return NextResponse.redirect(new URL(localizedReyDentalMatch[2], request.url), 308);
+  }
+
   const localeAdminMatch = pathname.match(/^\/(es|en)(\/admin(?:\/.*)?)$/);
   if (localeAdminMatch) {
     return NextResponse.redirect(new URL(localeAdminMatch[2], request.url));
