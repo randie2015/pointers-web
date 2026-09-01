@@ -4,9 +4,10 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
 import { useState } from 'react';
-import { clinicBrand, clinicNav, clinicWhatsApp } from '@/src/data/clinicData';
+import { clinicNav, clinicWhatsApp } from '@/src/data/clinicData';
 import { buildWhatsAppUrl } from '@/lib/rey-dental/whatsapp';
 import { ReyDentalCtaButton } from '@/components/rey-dental/cta-button';
+import { ReyDentalLogo } from '@/components/rey-dental/logo';
 import { cn } from '@/lib/utils';
 
 function isReyDentalPath(pathname: string, href: string) {
@@ -22,16 +23,8 @@ export function ReyDentalNavbar() {
   return (
     <header className="sticky top-0 z-50 border-b border-rey-neutral/30 bg-white/95 backdrop-blur-md">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 sm:px-6 sm:py-4 lg:gap-4">
-        <Link href="/rey-dental" className="group flex min-w-0 items-center gap-2 sm:gap-2.5">
-          <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-rey-primary text-base font-bold text-white sm:h-10 sm:w-10 sm:text-lg">
-            R
-          </span>
-          <div className="min-w-0 leading-tight">
-            <p className="truncate font-display text-sm font-bold text-rey-ink group-hover:text-rey-primary sm:text-base">
-              {clinicBrand.name}
-            </p>
-            <p className="truncate text-xs text-slate-500 max-[360px]:hidden sm:block">{clinicBrand.doctor}</p>
-          </div>
+        <Link href="/rey-dental" className="group min-w-0">
+          <ReyDentalLogo />
         </Link>
 
         <nav className="hidden items-center gap-6 lg:flex xl:gap-8">

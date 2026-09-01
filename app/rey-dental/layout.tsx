@@ -11,7 +11,11 @@ const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'sw
 export const metadata: Metadata = {
   title: `${clinicBrand.name} | ${clinicBrand.doctor}`,
   description: 'Clínica odontológica especializada en Arequipa. Tratamientos personalizados y atención sin dolor.',
-  robots: { index: false, follow: false }
+  robots: { index: false, follow: false },
+  icons: {
+    icon: clinicBrand.logo,
+    apple: clinicBrand.logo
+  }
 };
 
 export const viewport: Viewport = {

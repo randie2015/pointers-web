@@ -1,12 +1,13 @@
 import Link from 'next/link';
 import { clinicBrand, clinicContact, clinicNav } from '@/src/data/clinicData';
+import { ReyDentalLogo } from '@/components/rey-dental/logo';
 
 export function ReyDentalFooter() {
   return (
     <footer className="border-t border-rey-neutral/40 bg-white">
       <div className="mx-auto grid max-w-7xl gap-8 px-4 py-10 sm:grid-cols-2 sm:px-6 sm:py-12 lg:grid-cols-3 lg:gap-10 lg:px-8 lg:py-16">
         <div className="sm:col-span-2 lg:col-span-1">
-          <p className="font-display text-lg font-bold text-rey-ink">{clinicBrand.name}</p>
+          <ReyDentalLogo size="lg" />
           <p className="mt-2 max-w-sm text-sm leading-relaxed text-slate-600">
             Clínica odontológica en {clinicContact.city}. Atención especializada, bioseguridad y tecnología de
             vanguardia.
