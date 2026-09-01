@@ -122,7 +122,7 @@ export const clinicHome = {
       badge: 'ANTIAGE',
       title: 'Bioestimuladores de Colágeno',
       description: 'Rejuvenecimiento progresivo con firmeza, luminosidad y calidad dérmica mejorada.',
-      image: '/magrass-lagree/before-after-before.webp'
+      image: '/magrass-lagree/bioestimuladores.jpg'
     },
     {
       id: 'hydrafacial',
