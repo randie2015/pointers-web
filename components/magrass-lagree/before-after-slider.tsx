@@ -9,7 +9,7 @@ import { cn } from '@/lib/utils';
 const { before, after, width, height } = clinicHome.beforeAfter;
 const IMAGE_CLASS = 'pointer-events-none select-none object-cover object-center';
 
-export function MagrassBeforeAfterSlider() {
+export function MagrassBeforeAfterSlider({ showHint = true }: { showHint?: boolean }) {
   const [position, setPosition] = useState(50);
   const [isDragging, setIsDragging] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -105,9 +105,11 @@ export function MagrassBeforeAfterSlider() {
           Después
         </span>
       </div>
-      <p className="mt-4 text-center text-xs font-medium text-mag-muted sm:text-sm">
-        Arrastra el control para comparar resultados reales
-      </p>
+      {showHint ? (
+        <p className="mt-4 text-center text-xs font-medium text-mag-muted sm:text-sm">
+          Arrastra el control para comparar resultados reales
+        </p>
+      ) : null}
     </MagrassReveal>
   );
 }

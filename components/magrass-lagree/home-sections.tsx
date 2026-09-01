@@ -82,18 +82,7 @@ export function MagrassCasesPreviewSection() {
           </p>
         </MagrassReveal>
 
-        <MagrassBeforeAfterSlider />
-
-        <MagrassReveal className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row" delay={0.1}>
-          <MagrassCtaButton
-            href={`${MAGRASS_BASE}/casos-clinicos`}
-            label="Ver casos clínicos"
-            variant="secondary"
-            external={false}
-            shimmer={false}
-          />
-          <MagrassCtaButton href={buildWhatsAppUrl('cases')} label="Evaluar mi caso por WhatsApp" />
-        </MagrassReveal>
+        <MagrassBeforeAfterSlider showHint={false} />
       </div>
     </section>
   );
