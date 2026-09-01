@@ -233,10 +233,9 @@ export const keyTreatments: MagrassTreatment[] = [
     title: 'Toxina Botulínica (Botox)',
     description:
       'Atenuación y prevención de líneas de expresión en frente, entrecejo y patas de gallo.',
-    expectedResults: 'Expresión más descansada, piel lisa y prevención del envejecimiento dinámico.'
+    expectedResults: 'Expresión más descansada, piel lisa y prevención del envejecimiento dinámico.',
+    image: '/magrass-lagree/botox.jpg'
   },
-  {
-    id: 'hydrafacial',
     anchor: 'hydrafacial',
     category: 'facial',
     title: 'Limpieza Facial Médica & Hydrafacial',
