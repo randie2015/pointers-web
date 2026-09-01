@@ -189,8 +189,8 @@ export const clinicTreatments: Treatment[] = [
       'Plan integral personalizado'
     ],
     icon: 'align',
-    image: '/dra-alejandra/services/integral.webp',
-    imageAlt: 'Armonización de sonrisa y alineación dental'
+    image: '/dra-alejandra/services/armonizacion.jpg',
+    imageAlt: 'Alineador transparente para armonización y alineación dental estética'
   }
 ];
 
