@@ -49,7 +49,7 @@ export default async function middleware(request: NextRequest) {
 
   const localizedReyDentalMatch = pathname.match(/^\/(es|en)(\/rey-dental(?:\/.*)?)$/);
   if (localizedReyDentalMatch) {
-    return NextResponse.redirect(new URL(localizedReyDentalMatch[2], request.url), 308);
+    return NextResponse.rewrite(new URL(localizedReyDentalMatch[2], request.url));
   }
 
   const localeAdminMatch = pathname.match(/^\/(es|en)(\/admin(?:\/.*)?)$/);

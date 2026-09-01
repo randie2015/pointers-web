@@ -4,20 +4,6 @@ const withNextIntl = createNextIntlPlugin('./i18n/request.ts');
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  async redirects() {
-    return [
-      {
-        source: '/:locale(es|en)/rey-dental',
-        destination: '/rey-dental',
-        permanent: true
-      },
-      {
-        source: '/:locale(es|en)/rey-dental/:path*',
-        destination: '/rey-dental/:path*',
-        permanent: true
-      }
-    ];
-  },
   images: {
     remotePatterns: [
       {
