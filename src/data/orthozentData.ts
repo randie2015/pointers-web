@@ -10,7 +10,7 @@ export const clinicColors = {
 
 export const clinicBrand = {
   name: 'Orthozent',
-  doctor: 'Dr. Amatheus',
+  doctor: 'Dr. Amatheus Zenteno',
   doctorFullName: 'Dr. Amatheus Zenteno',
   tagline: 'Ortodoncia Especializada y Salud Dental',
   disclaimer:
