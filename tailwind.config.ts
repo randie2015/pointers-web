@@ -6,7 +6,8 @@ export default {
     extend: {
       fontFamily: {
         sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
-        display: ['var(--font-inter)', 'system-ui', 'sans-serif']
+        display: ['var(--font-inter)', 'system-ui', 'sans-serif'],
+        cinzel: ['var(--font-cinzel)', 'Georgia', 'serif']
       },
       colors: {
         background: 'hsl(var(--background))',

@@ -270,3 +270,7 @@ body {
   pointer-events: none !important;
   -webkit-appearance: none !important;
 }
+
+.ale-jandra-brand .font-display {
+  font-family: var(--font-cinzel), Georgia, serif;
+}
