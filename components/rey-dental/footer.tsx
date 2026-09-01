@@ -4,10 +4,10 @@ import { clinicBrand, clinicContact, clinicNav } from '@/src/data/clinicData';
 export function ReyDentalFooter() {
   return (
     <footer className="border-t border-rey-neutral/40 bg-white">
-      <div className="mx-auto grid max-w-6xl gap-10 px-4 py-12 md:grid-cols-3 md:px-6 md:py-16">
-        <div>
+      <div className="mx-auto grid max-w-7xl gap-8 px-4 py-10 sm:grid-cols-2 sm:px-6 sm:py-12 lg:grid-cols-3 lg:gap-10 lg:px-8 lg:py-16">
+        <div className="sm:col-span-2 lg:col-span-1">
           <p className="font-display text-lg font-bold text-rey-ink">{clinicBrand.name}</p>
-          <p className="mt-2 text-sm leading-relaxed text-slate-600">
+          <p className="mt-2 max-w-sm text-sm leading-relaxed text-slate-600">
             Clínica odontológica en {clinicContact.city}. Atención especializada, bioseguridad y tecnología de
             vanguardia.
           </p>
@@ -37,9 +37,11 @@ export function ReyDentalFooter() {
         </div>
       </div>
 
-      <div className="border-t border-rey-neutral/30 bg-rey-base px-4 py-6 md:px-6">
-        <p className="mx-auto max-w-6xl text-xs leading-relaxed text-slate-500">{clinicBrand.disclaimer}</p>
-        <p className="mx-auto mt-3 max-w-6xl text-xs text-slate-400">
+      <div className="border-t border-rey-neutral/30 bg-rey-base px-4 py-5 sm:px-6 sm:py-6 lg:px-8">
+        <p className="mx-auto max-w-7xl text-[11px] leading-relaxed text-slate-500 sm:text-xs">
+          {clinicBrand.disclaimer}
+        </p>
+        <p className="mx-auto mt-3 max-w-7xl text-[11px] text-slate-400 sm:text-xs">
           © {new Date().getFullYear()} {clinicBrand.name}. Demo privada ·{' '}
           <a href={clinicBrand.pointersUrl} className="underline hover:text-rey-primary">
             pointers.marketing

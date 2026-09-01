@@ -10,24 +10,26 @@ export default function ReyDentalServiciosPage() {
     <>
       <ReyDentalPageHero title={clinicServicesPage.title} subtitle={clinicServicesPage.subtitle} />
 
-      <section className="bg-rey-base py-16 md:py-24">
-        <div className="mx-auto max-w-6xl space-y-8 px-4 md:px-6">
+      <section className="bg-rey-base py-12 sm:py-16 lg:py-24">
+        <div className="mx-auto max-w-7xl space-y-5 px-4 sm:space-y-8 sm:px-6 lg:px-8">
           {clinicTreatments.map((treatment) => (
             <article
               key={treatment.id}
-              className="overflow-hidden rounded-2xl border border-rey-neutral/40 bg-white shadow-sm"
+              className="overflow-hidden rounded-xl border border-rey-neutral/40 bg-white shadow-sm sm:rounded-2xl"
             >
-              <div className="grid md:grid-cols-2">
-                <div className="bg-gradient-to-br from-rey-accent/30 to-rey-primary/10 p-8 md:p-10">
-                  <h2 className="font-display text-2xl font-bold text-rey-ink md:text-3xl">{treatment.title}</h2>
-                  <p className="mt-3 text-sm leading-relaxed text-slate-600 md:text-base">{treatment.description}</p>
+              <div className="grid lg:grid-cols-2">
+                <div className="bg-gradient-to-br from-rey-accent/30 to-rey-primary/10 p-5 sm:p-8 lg:p-10">
+                  <h2 className="font-display text-xl font-bold text-rey-ink sm:text-2xl lg:text-3xl">
+                    {treatment.title}
+                  </h2>
+                  <p className="mt-3 text-sm leading-relaxed text-slate-600 sm:text-base">{treatment.description}</p>
                 </div>
 
-                <div className="flex flex-col justify-center p-8 md:p-10">
-                  <p className="text-sm font-semibold uppercase tracking-wider text-rey-primary">Beneficios</p>
-                  <ul className="mt-4 space-y-3">
+                <div className="flex flex-col justify-center p-5 sm:p-8 lg:p-10">
+                  <p className="text-xs font-semibold uppercase tracking-wider text-rey-primary sm:text-sm">Beneficios</p>
+                  <ul className="mt-3 space-y-2.5 sm:mt-4 sm:space-y-3">
                     {treatment.benefits.map((benefit) => (
-                      <li key={benefit} className="flex items-start gap-3 text-sm text-slate-700">
+                      <li key={benefit} className="flex items-start gap-2.5 text-sm text-slate-700 sm:gap-3">
                         <Check className="mt-0.5 h-4 w-4 shrink-0 text-rey-primary" strokeWidth={2.5} />
                         {benefit}
                       </li>
@@ -36,7 +38,7 @@ export default function ReyDentalServiciosPage() {
                   <ReyDentalCtaButton
                     href={buildWhatsAppUrl(treatment.title)}
                     label="Consultar por WhatsApp"
-                    className="mt-6 w-fit"
+                    className="mt-5 sm:mt-6 sm:max-w-xs"
                   />
                 </div>
               </div>

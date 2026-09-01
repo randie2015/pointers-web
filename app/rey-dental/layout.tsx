@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
 import { ReyDentalExpiryGuard } from '@/components/rey-dental/expiry-guard';
 import { ReyDentalNavbar } from '@/components/rey-dental/navbar';
@@ -14,13 +14,19 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false }
 };
 
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5
+};
+
 export default function ReyDentalLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es" className={inter.variable}>
-      <body className="min-h-screen bg-rey-base font-sans text-rey-ink antialiased">
+      <body className="min-h-screen overflow-x-hidden bg-rey-base font-sans text-rey-ink antialiased">
         <ReyDentalExpiryGuard>
           <ReyDentalNavbar />
-          <main>{children}</main>
+          <main className="overflow-x-hidden">{children}</main>
           <ReyDentalFooter />
         </ReyDentalExpiryGuard>
       </body>
