@@ -296,6 +296,8 @@ export const keyTreatments: MagrassTreatment[] = [
     expectedResults: 'Tono más uniforme, textura refinada y aspecto renovado en pocas sesiones.',
     image: '/magrass-lagree/peelings.jpg'
   },
+  {
+    id: 'iluminacion',
     anchor: 'iluminacion',
     category: 'rejuvenecimiento',
     title: 'Iluminación & Uniformidad de Tono',
