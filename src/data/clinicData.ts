@@ -213,7 +213,9 @@ export const clinicTreatments: Treatment[] = [
       'Manejo del dolor sin estrés',
       'Planes familiares flexibles'
     ],
-    icon: 'general'
+    icon: 'general',
+    image: '/rey-dental/services/integral.webp',
+    imageAlt: 'Consulta odontológica integral y preventiva con el paciente'
   }
 ];
 
