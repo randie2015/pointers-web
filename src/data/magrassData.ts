@@ -106,7 +106,7 @@ export const clinicHome = {
       badge: 'FACIAL',
       title: 'Armonización Facial & Ácido Hialurónico',
       description: 'Perfilado natural de labios, mentón y ángulo mandibular con simetría clínica.',
-      image: '/magrass-lagree/hero-poster.webp'
+      image: '/magrass-lagree/armonizacion-facial.jpg'
     },
     {
       id: 'criolipolisis',
