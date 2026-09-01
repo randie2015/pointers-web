@@ -157,8 +157,8 @@ export const clinicTreatments: Treatment[] = [
       'Mantenimiento personalizado'
     ],
     icon: 'whitening',
-    image: '/dra-alejandra/services/ortodoncia.webp',
-    imageAlt: 'Blanqueamiento dental boutique de alta luminosidad'
+    image: '/dra-alejandra/services/blanqueamiento.jpg',
+    imageAlt: 'Blanqueamiento dental boutique con protocolo clínico de alta luminosidad'
   },
   {
     id: 'rehabilitacion',
