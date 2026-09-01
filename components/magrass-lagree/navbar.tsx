@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { clinicNav, MAGRASS_BASE } from '@/src/data/magrassData';
 import { buildWhatsAppUrl } from '@/lib/magrass-lagree/whatsapp';
@@ -18,18 +18,38 @@ function isMagrassPath(pathname: string, href: string) {
 }
 
 const navLinkClass =
-  'relative text-sm font-medium text-[#192031] transition-colors duration-300 after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-0 after:bg-[#197876] after:transition-all after:duration-300 hover:text-[#197876] hover:after:w-full';
+  'relative text-sm font-medium text-[#192031] transition-colors duration-300 after:absolute after:-bottom-1 after:left-1/2 after:h-0.5 after:w-0 after:-translate-x-1/2 after:origin-center after:rounded-full after:bg-[#197876] after:transition-all after:duration-300 hover:text-[#197876] hover:after:w-full';
 
 export function MagrassNavbar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const whatsappUrl = buildWhatsAppUrl('appointment');
 
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 16);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
   return (
-    <header className="sticky top-0 z-50 border-b border-[#192031]/10 bg-[#C5A57D]">
-      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between gap-4 px-6 md:px-12">
+    <header
+      className={cn(
+        'sticky top-0 z-50 border-b transition-all duration-300',
+        scrolled
+          ? 'border-[#192031]/15 bg-[#C5A57D]/88 shadow-sm backdrop-blur-md'
+          : 'border-[#192031]/10 bg-[#C5A57D]'
+      )}
+    >
+      <div
+        className={cn(
+          'mx-auto flex max-w-7xl items-center justify-between gap-4 px-6 transition-all duration-300 md:px-12',
+          scrolled ? 'h-16' : 'h-20'
+        )}
+      >
         <Link href={MAGRASS_BASE} className="group flex shrink-0 items-center">
-          <MagrassLogo size="nav" className="group-hover:opacity-90" />
+          <MagrassLogo size="nav" className="transition-transform duration-300 group-hover:opacity-90" />
         </Link>
 
         <nav className="hidden items-center gap-5 lg:flex xl:gap-7">
@@ -68,7 +88,7 @@ export function MagrassNavbar() {
       </div>
 
       {open ? (
-        <div className="border-t border-[#192031]/10 bg-[#C5A57D] px-6 py-4 md:px-12 lg:hidden">
+        <div className="border-t border-[#192031]/10 bg-[#C5A57D]/95 px-6 py-4 backdrop-blur-md md:px-12 lg:hidden">
           <nav className="flex flex-col gap-2">
             {clinicNav.map((item) => {
               const active = isMagrassPath(pathname, item.href);

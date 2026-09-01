@@ -68,7 +68,21 @@ export default {
         }
       },
       letterSpacing: { tightest: '-0.04em' },
-      borderRadius: { '4xl': '2rem' }
+      borderRadius: { '4xl': '2rem' },
+      keyframes: {
+        'mag-shimmer': {
+          '0%': { transform: 'translateX(-120%)' },
+          '100%': { transform: 'translateX(120%)' }
+        },
+        'mag-gold-pulse': {
+          '0%, 100%': { boxShadow: '0 0 0 0 rgba(197, 168, 128, 0.45)' },
+          '50%': { boxShadow: '0 0 0 14px rgba(197, 168, 128, 0)' }
+        }
+      },
+      animation: {
+        'mag-shimmer': 'mag-shimmer 1.8s ease-in-out infinite',
+        'mag-gold-pulse': 'mag-gold-pulse 2.4s ease-in-out infinite'
+      }
     }
   },
   plugins: []

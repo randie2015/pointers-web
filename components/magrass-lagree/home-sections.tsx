@@ -1,9 +1,13 @@
+'use client';
+
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { clinicContact, clinicHome, MAGRASS_BASE } from '@/src/data/magrassData';
 import { buildPhoneUrl, buildWhatsAppUrl } from '@/lib/magrass-lagree/whatsapp';
 import { MagrassCtaButton } from '@/components/magrass-lagree/cta-button';
+import { magrassLuxuryCard, MagrassReveal, MagrassStagger, MagrassStaggerChild } from '@/components/magrass-lagree/motion';
 import { Award, Clock, MapPin, Phone, ShieldCheck } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 const MagrassBeforeAfterSlider = dynamic(
   () =>
@@ -12,7 +16,7 @@ const MagrassBeforeAfterSlider = dynamic(
     })),
   {
     loading: () => (
-      <div className="mx-auto h-56 w-full max-w-5xl animate-pulse rounded-3xl bg-mag-border sm:h-72" />
+      <div className="mx-auto mt-8 h-56 w-full max-w-5xl animate-pulse rounded-3xl bg-mag-border sm:mt-10 sm:h-72" />
     )
   }
 );
@@ -24,30 +28,39 @@ export function MagrassWhyChooseSection() {
   return (
     <section className="bg-[#FAFAFA] py-14 sm:py-16 lg:py-20">
       <div className="mx-auto max-w-7xl px-6 md:px-12">
-        <div className="max-w-2xl">
-          <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#197876] sm:text-xs">
-            Autoridad médica
-          </p>
-          <h2 className="mt-2 font-playfair text-2xl font-semibold text-[#192031] sm:text-3xl lg:text-4xl">
-            {whyChoose.title}
-          </h2>
-          <p className="mt-3 text-sm leading-relaxed text-mag-muted sm:text-base">{whyChoose.subtitle}</p>
-        </div>
+        <MagrassReveal>
+          <div className="max-w-2xl">
+            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#197876] sm:text-xs">
+              Autoridad médica
+            </p>
+            <h2 className="mt-2 font-playfair text-2xl font-semibold text-[#192031] sm:text-3xl lg:text-4xl">
+              {whyChoose.title}
+            </h2>
+            <p className="mt-3 text-sm leading-relaxed text-mag-muted sm:text-base">{whyChoose.subtitle}</p>
+          </div>
+        </MagrassReveal>
 
-        <div className="mt-8 grid gap-4 sm:mt-10 sm:grid-cols-3 sm:gap-6">
+        <MagrassStagger className="mt-8 grid gap-4 sm:mt-10 sm:grid-cols-3 sm:gap-6">
           {whyChoose.points.map((point, index) => {
             const Icon = icons[index] ?? ShieldCheck;
             return (
-              <article key={point.title} className="rounded-2xl border border-mag-border bg-white p-5 sm:p-6">
-                <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#C5A57D]/25 text-[#197876]">
-                  <Icon className="h-5 w-5" />
-                </span>
-                <h3 className="mt-4 font-playfair text-lg font-semibold text-[#192031]">{point.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-mag-muted">{point.description}</p>
-              </article>
+              <MagrassStaggerChild key={point.title}>
+                <article
+                  className={cn(
+                    magrassLuxuryCard,
+                    'rounded-2xl border border-mag-border bg-white p-5 sm:p-6'
+                  )}
+                >
+                  <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#C5A57D]/25 text-[#197876] transition-transform duration-500 group-hover:scale-105">
+                    <Icon className="h-5 w-5" />
+                  </span>
+                  <h3 className="mt-4 font-playfair text-lg font-semibold text-[#192031]">{point.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-mag-muted">{point.description}</p>
+                </article>
+              </MagrassStaggerChild>
             );
           })}
-        </div>
+        </MagrassStagger>
       </div>
     </section>
   );
@@ -57,7 +70,7 @@ export function MagrassCasesPreviewSection() {
   return (
     <section className="bg-white py-14 sm:py-16 lg:py-20">
       <div className="mx-auto max-w-7xl px-6 md:px-12">
-        <div className="text-center">
+        <MagrassReveal className="text-center">
           <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#197876] sm:text-xs">
             Resultados reales
           </p>
@@ -67,19 +80,20 @@ export function MagrassCasesPreviewSection() {
           <p className="mx-auto mt-3 max-w-2xl text-sm text-mag-muted sm:text-base">
             Transformaciones reales bajo seguimiento médico estricto y protocolos personalizados.
           </p>
-        </div>
+        </MagrassReveal>
 
         <MagrassBeforeAfterSlider />
 
-        <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+        <MagrassReveal className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row" delay={0.1}>
           <MagrassCtaButton
             href={`${MAGRASS_BASE}/casos-clinicos`}
             label="Ver casos clínicos"
             variant="secondary"
             external={false}
+            shimmer={false}
           />
           <MagrassCtaButton href={buildWhatsAppUrl('cases')} label="Evaluar mi caso por WhatsApp" />
-        </div>
+        </MagrassReveal>
       </div>
     </section>
   );
@@ -91,52 +105,58 @@ export function MagrassLocationPreviewSection() {
   return (
     <section className="bg-[#FAFAFA] py-14 sm:py-16 lg:py-20">
       <div className="mx-auto max-w-7xl px-6 md:px-12">
-        <div className="mx-auto max-w-3xl rounded-2xl border border-mag-border bg-white p-6 sm:p-8">
-          <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#197876] sm:text-xs">
-            Sede Arequipa
-          </p>
-          <h2 className="mt-2 font-playfair text-2xl font-semibold text-[#192031] sm:text-3xl">
-            {locationPreview.title}
-          </h2>
-          <p className="mt-2 text-sm text-mag-muted">{locationPreview.subtitle}</p>
+        <MagrassReveal>
+          <div className="mx-auto max-w-3xl rounded-2xl border border-mag-border bg-white p-6 shadow-sm transition-all duration-500 hover:border-[#C5A880]/40 hover:shadow-xl hover:shadow-[#1C2331]/5 sm:p-8">
+            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#197876] sm:text-xs">
+              Sede Arequipa
+            </p>
+            <h2 className="mt-2 font-playfair text-2xl font-semibold text-[#192031] sm:text-3xl">
+              {locationPreview.title}
+            </h2>
+            <p className="mt-2 text-sm text-mag-muted">{locationPreview.subtitle}</p>
 
-          <div className="mt-6 space-y-4">
-            <div className="flex gap-3 text-sm text-mag-muted">
-              <Clock className="mt-0.5 h-5 w-5 shrink-0 text-[#197876]" />
-              <div>
-                <p className="font-medium text-[#192031]">{clinicContact.schedule.weekdays}</p>
-                <p>{clinicContact.schedule.saturday}</p>
+            <div className="mt-6 space-y-4">
+              <div className="flex gap-3 text-sm text-mag-muted">
+                <Clock className="mt-0.5 h-5 w-5 shrink-0 text-[#197876]" />
+                <div>
+                  <p className="font-medium text-[#192031]">{clinicContact.schedule.weekdays}</p>
+                  <p>{clinicContact.schedule.saturday}</p>
+                </div>
+              </div>
+              <div className="flex gap-3 text-sm">
+                <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-[#197876]" />
+                <p className="text-mag-muted">
+                  {clinicContact.address} · {clinicContact.city}
+                </p>
+              </div>
+              <div className="flex gap-3 text-sm">
+                <Phone className="mt-0.5 h-5 w-5 shrink-0 text-[#197876]" />
+                <a
+                  href={buildPhoneUrl()}
+                  className="font-semibold text-[#192031] transition-colors duration-300 hover:text-[#197876]"
+                >
+                  {clinicContact.phoneDisplay}
+                </a>
               </div>
             </div>
-            <div className="flex gap-3 text-sm">
-              <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-[#197876]" />
-              <p className="text-mag-muted">
-                {clinicContact.address} · {clinicContact.city}
-              </p>
-            </div>
-            <div className="flex gap-3 text-sm">
-              <Phone className="mt-0.5 h-5 w-5 shrink-0 text-[#197876]" />
-              <a href={buildPhoneUrl()} className="font-semibold text-[#192031] hover:text-[#197876]">
-                {clinicContact.phoneDisplay}
-              </a>
-            </div>
-          </div>
 
-          <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-            <MagrassCtaButton
-              href={`${MAGRASS_BASE}/ubicacion`}
-              label={locationPreview.cta}
-              variant="secondary"
-              external={false}
-              className="sm:flex-1"
-            />
-            <MagrassCtaButton
-              href={buildWhatsAppUrl('location')}
-              label="Solicitar cita en sede"
-              className="sm:flex-1"
-            />
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+              <MagrassCtaButton
+                href={`${MAGRASS_BASE}/ubicacion`}
+                label={locationPreview.cta}
+                variant="secondary"
+                external={false}
+                className="sm:flex-1"
+                shimmer={false}
+              />
+              <MagrassCtaButton
+                href={buildWhatsAppUrl('location')}
+                label="Solicitar cita en sede"
+                className="sm:flex-1"
+              />
+            </div>
           </div>
-        </div>
+        </MagrassReveal>
       </div>
     </section>
   );

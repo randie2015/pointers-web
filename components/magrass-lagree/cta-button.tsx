@@ -8,6 +8,7 @@ type MagrassCtaButtonProps = {
   className?: string;
   external?: boolean;
   fullWidth?: boolean;
+  shimmer?: boolean;
 };
 
 export function MagrassCtaButton({
@@ -16,10 +17,11 @@ export function MagrassCtaButton({
   variant = 'primary',
   className,
   external = true,
-  fullWidth = false
+  fullWidth = false,
+  shimmer = true
 }: MagrassCtaButtonProps) {
   const base = cn(
-    'inline-flex min-h-11 items-center justify-center rounded-full px-5 py-3 text-center text-xs font-semibold tracking-wide transition-all duration-300 active:scale-[0.98] sm:min-h-0 sm:px-7 sm:text-sm',
+    'group relative inline-flex min-h-11 items-center justify-center overflow-hidden rounded-full px-5 py-3 text-center text-xs font-semibold tracking-wide transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] sm:min-h-0 sm:px-7 sm:text-sm',
     fullWidth ? 'w-full sm:w-auto' : 'w-full max-w-full sm:w-auto'
   );
 
@@ -31,19 +33,33 @@ export function MagrassCtaButton({
     accent: 'bg-mag-sand text-mag-navy shadow-md shadow-mag-sand/30 hover:bg-mag-sand/90'
   };
 
+  const showShimmer = shimmer && (variant === 'primary' || variant === 'accent' || variant === 'nav');
+
+  const content = (
+    <>
+      {showShimmer ? (
+        <span
+          aria-hidden
+          className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/25 to-transparent transition-transform duration-700 group-hover:translate-x-full"
+        />
+      ) : null}
+      <span className="relative z-10">{label}</span>
+    </>
+  );
+
   const props = external ? { target: '_blank' as const, rel: 'noopener noreferrer' as const } : {};
 
   if (href.startsWith('#') || (href.startsWith('/') && !external)) {
     return (
       <Link href={href} className={cn(base, variants[variant], className)}>
-        {label}
+        {content}
       </Link>
     );
   }
 
   return (
     <a href={href} className={cn(base, variants[variant], className)} {...(href.startsWith('http') ? props : {})}>
-      {label}
+      {content}
     </a>
   );
 }

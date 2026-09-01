@@ -8,6 +8,7 @@ import {
 } from '@/src/data/magrassData';
 import { buildWhatsAppUrl } from '@/lib/magrass-lagree/whatsapp';
 import { MagrassCtaButton } from '@/components/magrass-lagree/cta-button';
+import { MagrassReveal, magrassLuxuryCard } from '@/components/magrass-lagree/motion';
 import { cn } from '@/lib/utils';
 
 function scrollToAnchor(anchor: string) {
@@ -72,11 +73,14 @@ export function MagrassTreatmentsSection() {
 
         <div className="mt-8 grid gap-4 sm:mt-10 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
           {filtered.map((treatment) => (
-            <article
-              key={treatment.id}
-              id={treatment.anchor}
-              className="group scroll-mt-28 flex flex-col rounded-2xl border border-mag-border bg-mag-cream/50 p-5 transition duration-300 hover:border-mag-sand hover:shadow-md sm:rounded-3xl sm:p-6"
-            >
+            <MagrassReveal key={treatment.id}>
+              <article
+                id={treatment.anchor}
+                className={cn(
+                  magrassLuxuryCard,
+                  'scroll-mt-28 flex flex-col rounded-2xl border border-mag-border bg-mag-cream/50 p-5 sm:rounded-3xl sm:p-6'
+                )}
+              >
               <h3 className="font-playfair text-lg font-semibold text-mag-navy sm:text-xl">
                 {treatment.title}
               </h3>
@@ -92,8 +96,10 @@ export function MagrassTreatmentsSection() {
                 label="Consultar este Tratamiento"
                 variant="secondary"
                 className="mt-4 sm:max-w-xs"
+                shimmer={false}
               />
             </article>
+            </MagrassReveal>
           ))}
         </div>
       </div>
