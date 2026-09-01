@@ -41,6 +41,7 @@ export const clinicWhatsApp = {
     `Hola, deseo información y evaluación para el tratamiento de ${name}.`,
   clinicalCase:
     'Hola, vi los casos clínicos en la web y me gustaría evaluar si califico para un procedimiento similar.',
+  evaluateCase: 'Hola, deseo evaluar mi caso médico por WhatsApp',
   specialists:
     'Hola, me gustaría agendar una consulta con el equipo de especialistas de Magrass LaGreé.',
   location:
@@ -147,6 +148,12 @@ export const clinicHome = {
     title: 'Horarios & Sede',
     subtitle: 'Atención médica personalizada en Arequipa con agenda previa.',
     cta: 'Ver ubicación completa'
+  },
+  ctaZone: {
+    eyebrow: 'Valoración médica & resultados',
+    title: '¿Quieres comprobar la efectividad de nuestros tratamientos antes de agendar?',
+    casesCta: 'Ver casos clínicos',
+    whatsappCta: 'Evaluar mi caso por WhatsApp'
   }
 } as const;
 

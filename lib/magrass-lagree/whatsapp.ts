@@ -6,6 +6,7 @@ export type WhatsAppIntent =
   | 'closing'
   | 'diagnosis360'
   | 'cases'
+  | 'evaluateCase'
   | 'specialists'
   | 'location'
   | { type: 'treatment'; name: string };
@@ -23,6 +24,8 @@ function resolveMessage(intent: WhatsAppIntent = 'appointment'): string {
       return clinicWhatsApp.diagnosis360;
     case 'cases':
       return clinicWhatsApp.clinicalCase;
+    case 'evaluateCase':
+      return clinicWhatsApp.evaluateCase;
     case 'specialists':
       return clinicWhatsApp.specialists;
     case 'location':
