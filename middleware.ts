@@ -82,6 +82,10 @@ export default async function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
+  if (pathname.startsWith('/rey-dental')) {
+    return NextResponse.next();
+  }
+
   const response = intlMiddleware(request);
   response.headers.set('Cache-Control', 'private, no-cache, no-store, must-revalidate');
   response.headers.set('Vary', 'Accept-Language');

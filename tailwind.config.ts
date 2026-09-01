@@ -1,7 +1,7 @@
 import type { Config } from 'tailwindcss';
 
 export default {
-  content: ['./app/**/*.{ts,tsx}', './components/**/*.{ts,tsx}'],
+  content: ['./app/**/*.{ts,tsx}', './components/**/*.{ts,tsx}', './src/**/*.{ts,tsx}'],
   theme: {
     extend: {
       fontFamily: {
@@ -20,7 +20,15 @@ export default {
           foreground: 'hsl(var(--brand-foreground))'
         },
         teal: 'hsl(var(--teal))',
-        purple: 'hsl(var(--purple))'
+        purple: 'hsl(var(--purple))',
+        rey: {
+          base: '#F1F1F2',
+          neutral: '#BCBABE',
+          accent: '#A1D6E2',
+          primary: '#1995AD',
+          ink: '#1E293B',
+          dark: '#0F172A'
+        }
       },
       letterSpacing: { tightest: '-0.04em' },
       borderRadius: { '4xl': '2rem' }
