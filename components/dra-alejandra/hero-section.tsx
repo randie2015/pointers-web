@@ -25,7 +25,7 @@ export function DraAlejandraHeroSection() {
   );
 
   return (
-    <section className="relative isolate overflow-hidden bg-ale-ivory lg:min-h-[92vh]">
+    <section data-nav-theme="light" className="relative isolate overflow-hidden bg-ale-ivory lg:min-h-[92vh]">
       <DraAlejandraHeroVideoBackground />
 
       <div

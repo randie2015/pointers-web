@@ -7,7 +7,7 @@ export function DraAlejandraClosingCtaSection() {
   const whatsappUrl = buildWhatsAppUrl();
 
   return (
-    <section className="bg-gradient-to-br from-ale-ink via-ale-ink to-ale-cta/80 py-14 sm:py-16 lg:py-20">
+    <section data-nav-theme="dark" className="bg-gradient-to-br from-ale-ink via-ale-ink to-ale-cta/80 py-14 sm:py-16 lg:py-20">
       <div className="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
         <h2 className="text-balance font-display text-2xl font-semibold text-white sm:text-3xl lg:text-4xl">
           {closingCta.title}

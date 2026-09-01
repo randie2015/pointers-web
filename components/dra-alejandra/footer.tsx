@@ -3,7 +3,7 @@ import { DraAlejandraLogo } from '@/components/dra-alejandra/logo';
 
 export function DraAlejandraFooter() {
   return (
-    <footer className="border-t border-ale-gold/30 bg-white">
+    <footer data-nav-theme="light" className="border-t border-ale-gold/30 bg-white">
       <div className="mx-auto grid max-w-7xl gap-8 px-4 py-10 sm:grid-cols-2 sm:px-6 sm:py-12 lg:grid-cols-3 lg:gap-10 lg:px-8 lg:py-16">
         <div className="sm:col-span-2 lg:col-span-1">
           <DraAlejandraLogo size="lg" />

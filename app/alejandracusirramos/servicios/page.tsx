@@ -11,7 +11,7 @@ export default function DraAlejandraServiciosPage() {
     <>
       <DraAlejandraPageHero title={clinicServicesPage.title} subtitle={clinicServicesPage.subtitle} />
 
-      <section className="bg-ale-ivory py-12 sm:py-16 lg:py-24">
+      <section data-nav-theme="light" className="bg-ale-ivory py-12 sm:py-16 lg:py-24">
         <div className="mx-auto max-w-7xl space-y-5 px-4 sm:space-y-8 sm:px-6 lg:px-8">
           {clinicTreatments.map((treatment) => (
             <article

@@ -13,7 +13,7 @@ export default function DraAlejandraNosotrosPage() {
     <>
       <DraAlejandraPageHero title={hero.title} subtitle={hero.subtitle} />
 
-      <section className="bg-ale-ivory py-12 sm:py-16 lg:py-24">
+      <section data-nav-theme="light" className="bg-ale-ivory py-12 sm:py-16 lg:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid items-center gap-8 sm:gap-10 lg:grid-cols-2 lg:gap-12">
             <DraAlejandraDoctorPhoto variant="profile" className="mx-auto w-full max-w-md lg:max-w-none" />

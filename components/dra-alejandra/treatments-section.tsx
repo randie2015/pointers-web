@@ -31,7 +31,7 @@ function TreatmentCard({ treatment, index }: { treatment: Treatment; index: numb
 
 export function DraAlejandraTreatmentsSection() {
   return (
-    <section id="tratamientos" className="bg-ale-rose/15 py-12 sm:py-16 lg:py-24">
+    <section id="tratamientos" data-nav-theme="rose" className="bg-ale-rose/15 py-12 sm:py-16 lg:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-ale-gold sm:text-xs">

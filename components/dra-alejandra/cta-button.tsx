@@ -4,7 +4,7 @@ import { cn } from '@/lib/utils';
 type WhatsAppButtonProps = {
   href: string;
   label: string;
-  variant?: 'primary' | 'secondary' | 'light' | 'outline-gold';
+  variant?: 'primary' | 'secondary' | 'secondary-dark' | 'light' | 'outline-gold';
   className?: string;
   external?: boolean;
   fullWidth?: boolean;
@@ -27,6 +27,8 @@ export function DraAlejandraCtaButton({
     primary: 'bg-ale-cta text-white shadow-md shadow-ale-cta/25 hover:bg-ale-cta/90 hover:shadow-lg',
     secondary:
       'border border-ale-gold/60 bg-ale-ivory/80 text-ale-ink backdrop-blur-sm hover:border-ale-gold hover:bg-white',
+    'secondary-dark':
+      'border border-white/35 bg-white/10 text-white backdrop-blur-sm hover:border-white/55 hover:bg-white/15',
     light: 'bg-white text-ale-cta shadow-md hover:bg-ale-ivory',
     'outline-gold': 'border-2 border-ale-gold bg-transparent text-ale-ink hover:bg-ale-gold/10'
   };

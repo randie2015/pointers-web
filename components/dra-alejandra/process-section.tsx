@@ -4,7 +4,7 @@ export function DraAlejandraProcessSection() {
   const { process } = clinicHome;
 
   return (
-    <section className="bg-ale-ivory py-12 sm:py-16 lg:py-24">
+    <section data-nav-theme="light" className="bg-ale-ivory py-12 sm:py-16 lg:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <h2 className="font-display text-2xl font-semibold text-ale-ink sm:text-3xl lg:text-4xl">{process.title}</h2>

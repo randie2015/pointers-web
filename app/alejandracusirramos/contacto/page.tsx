@@ -12,7 +12,7 @@ export default function DraAlejandraContactoPage() {
     <>
       <DraAlejandraPageHero title={clinicContactPage.title} subtitle={clinicContactPage.subtitle} />
 
-      <section className="bg-ale-ivory py-12 sm:py-16 lg:py-24">
+      <section data-nav-theme="light" className="bg-ale-ivory py-12 sm:py-16 lg:py-24">
         <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8">
           <div className="overflow-hidden rounded-xl border border-ale-neutral/40 bg-white shadow-sm sm:rounded-2xl">
             <div className="space-y-5 p-5 sm:space-y-6 sm:p-8">

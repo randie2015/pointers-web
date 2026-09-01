@@ -17,7 +17,7 @@ export function DraAlejandraCasesSection() {
   const { cases } = clinicHome;
 
   return (
-    <section id="casos" className="scroll-mt-24 bg-white py-14 sm:py-16 lg:py-24">
+    <section id="casos" data-nav-theme="light" className="scroll-mt-24 bg-white py-14 sm:py-16 lg:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-ale-gold sm:text-xs">

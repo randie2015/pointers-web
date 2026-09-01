@@ -6,6 +6,7 @@ type DraAlejandraLogoProps = {
   className?: string;
   imageClassName?: string;
   size?: 'sm' | 'md' | 'lg';
+  theme?: 'light' | 'dark';
 };
 
 const iconShell = {
@@ -26,15 +27,31 @@ const taglineStyles = {
   lg: 'text-xs tracking-[0.14em] sm:text-sm'
 } as const;
 
-export function DraAlejandraLogo({ className, imageClassName, size = 'md' }: DraAlejandraLogoProps) {
+const themeStyles = {
+  light: {
+    name: 'text-ale-ink',
+    tagline: 'text-ale-gold',
+    shell: 'bg-ale-ink shadow-sm'
+  },
+  dark: {
+    name: 'text-white',
+    tagline: 'text-ale-rose',
+    shell: 'border border-white/20 bg-white/10 shadow-sm backdrop-blur-sm'
+  }
+} as const;
+
+export function DraAlejandraLogo({
+  className,
+  imageClassName,
+  size = 'md',
+  theme = 'light'
+}: DraAlejandraLogoProps) {
+  const palette = themeStyles[theme];
+
   return (
-    <span className={cn('flex min-w-0 items-center gap-2.5 sm:gap-3', className)}>
+    <span className={cn('flex min-w-0 items-center gap-2.5 transition-colors duration-500 sm:gap-3', className)}>
       <span
-        className={cn(
-          'relative shrink-0 overflow-hidden bg-ale-ink shadow-sm',
-          iconShell[size],
-          imageClassName
-        )}
+        className={cn('relative shrink-0 overflow-hidden transition-colors duration-500', iconShell[size], palette.shell, imageClassName)}
         aria-hidden
       >
         <Image
@@ -48,8 +65,10 @@ export function DraAlejandraLogo({ className, imageClassName, size = 'md' }: Dra
       </span>
 
       <span className="min-w-0 font-cinzel leading-none">
-        <span className={cn('block font-medium text-ale-ink', nameStyles[size])}>{clinicBrand.name}</span>
-        <span className={cn('mt-1 block uppercase text-ale-gold', taglineStyles[size])}>
+        <span className={cn('block font-medium transition-colors duration-500', palette.name, nameStyles[size])}>
+          {clinicBrand.name}
+        </span>
+        <span className={cn('mt-1 block uppercase transition-colors duration-500', palette.tagline, taglineStyles[size])}>
           {clinicBrand.tagline}
         </span>
       </span>

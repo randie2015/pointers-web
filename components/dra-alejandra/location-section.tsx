@@ -9,7 +9,7 @@ export function DraAlejandraLocationSection() {
   const whatsappUrl = buildWhatsAppUrl();
 
   return (
-    <section className="bg-ale-ivory py-12 sm:py-16 lg:py-24">
+    <section data-nav-theme="light" className="bg-ale-ivory py-12 sm:py-16 lg:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <h2 className="text-center font-display text-2xl font-bold text-ale-ink sm:text-3xl lg:text-4xl">
           {location.title}

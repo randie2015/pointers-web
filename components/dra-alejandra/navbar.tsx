@@ -8,6 +8,7 @@ import { clinicNav } from '@/src/data/alejandraData';
 import { buildWhatsAppUrl } from '@/lib/dra-alejandra/whatsapp';
 import { DraAlejandraCtaButton } from '@/components/dra-alejandra/cta-button';
 import { DraAlejandraLogo } from '@/components/dra-alejandra/logo';
+import { useNavbarBehavior, type NavSectionTheme } from '@/components/dra-alejandra/use-navbar-behavior';
 import { cn } from '@/lib/utils';
 
 function isDraAlejandraPath(pathname: string, href: string) {
@@ -15,16 +16,89 @@ function isDraAlejandraPath(pathname: string, href: string) {
   return pathname.endsWith(href) && href !== '/alejandracusirramos';
 }
 
+type NavChrome = {
+  bar: string;
+  link: string;
+  linkActive: string;
+  menuBtn: string;
+  mobilePanel: string;
+  mobileLink: string;
+  mobileLinkActive: string;
+  logoTheme: 'light' | 'dark';
+  ctaVariant: 'primary' | 'light';
+};
+
+function getNavChrome(theme: NavSectionTheme, scrolled: boolean, isHome: boolean): NavChrome {
+  const glassHero = isHome && !scrolled && theme === 'light';
+
+  if (theme === 'dark') {
+    return {
+      bar: 'border-ale-gold/30 bg-ale-ink/95 shadow-lg shadow-ale-ink/25',
+      link: 'text-white/80 hover:text-ale-rose',
+      linkActive: 'text-ale-rose',
+      menuBtn: 'text-white hover:bg-white/10',
+      mobilePanel: 'border-ale-gold/25 bg-ale-ink/98',
+      mobileLink: 'text-white/90 hover:bg-white/10',
+      mobileLinkActive: 'bg-white/10 text-ale-rose',
+      logoTheme: 'dark',
+      ctaVariant: 'light'
+    };
+  }
+
+  if (theme === 'rose') {
+    return {
+      bar: glassHero
+        ? 'border-ale-gold/30 bg-ale-rose/75 shadow-sm'
+        : 'border-ale-gold/45 bg-ale-rose/92 shadow-md shadow-ale-rose/20',
+      link: 'text-ale-ink/85 hover:text-ale-cta',
+      linkActive: 'text-ale-cta',
+      menuBtn: 'text-ale-ink hover:bg-ale-ink/5',
+      mobilePanel: 'border-ale-gold/35 bg-ale-rose/98',
+      mobileLink: 'text-ale-ink hover:bg-ale-ink/5',
+      mobileLinkActive: 'bg-ale-ink/8 text-ale-cta',
+      logoTheme: 'light',
+      ctaVariant: 'primary'
+    };
+  }
+
+  return {
+    bar: glassHero
+      ? 'border-ale-gold/25 bg-ale-ivory/72'
+      : scrolled
+        ? 'border-ale-gold/40 bg-ale-ivory/95 shadow-sm shadow-ale-ink/5'
+        : 'border-ale-gold/35 bg-ale-ivory/88',
+    link: 'text-ale-ink/80 hover:text-ale-cta',
+    linkActive: 'text-ale-cta',
+    menuBtn: 'text-ale-ink hover:bg-ale-ink/5',
+    mobilePanel: 'border-ale-gold/30 bg-ale-ivory/98',
+    mobileLink: 'text-ale-ink hover:bg-ale-rose/20',
+    mobileLinkActive: 'bg-ale-rose/30 text-ale-cta',
+    logoTheme: 'light',
+    ctaVariant: 'primary'
+  };
+}
+
 export function DraAlejandraNavbar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const whatsappUrl = buildWhatsAppUrl();
+  const { visible, scrolled, sectionTheme } = useNavbarBehavior(pathname);
+
+  const isHome = pathname === '/alejandracusirramos';
+  const chrome = getNavChrome(sectionTheme, scrolled, isHome);
+  const showBar = visible || open;
 
   return (
-    <header className="sticky top-0 z-50 border-b border-ale-gold/40 bg-ale-ivory/95 backdrop-blur-md">
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 sm:px-6 sm:py-4 lg:gap-4">
+    <header
+      className={cn(
+        'fixed inset-x-0 top-0 z-50 border-b backdrop-blur-xl transition-[transform,background-color,border-color,box-shadow,opacity] duration-500 ease-out',
+        chrome.bar,
+        showBar ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0 pointer-events-none'
+      )}
+    >
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 sm:px-6 sm:py-3.5 lg:gap-4">
         <Link href="/alejandracusirramos" className="group min-w-0">
-          <DraAlejandraLogo />
+          <DraAlejandraLogo theme={chrome.logoTheme} />
         </Link>
 
         <nav className="hidden items-center gap-6 lg:flex xl:gap-8">
@@ -33,8 +107,8 @@ export function DraAlejandraNavbar() {
               key={item.href}
               href={item.href}
               className={cn(
-                'text-sm font-medium tracking-wide transition-colors hover:text-ale-cta',
-                isDraAlejandraPath(pathname, item.href) ? 'text-ale-cta' : 'text-ale-ink/80'
+                'text-sm font-medium tracking-wide transition-colors duration-300',
+                isDraAlejandraPath(pathname, item.href) ? chrome.linkActive : chrome.link
               )}
             >
               {item.label}
@@ -43,12 +117,12 @@ export function DraAlejandraNavbar() {
         </nav>
 
         <div className="hidden shrink-0 lg:block">
-          <DraAlejandraCtaButton href={whatsappUrl} label="Agendar Cita" />
+          <DraAlejandraCtaButton href={whatsappUrl} label="Agendar Cita" variant={chrome.ctaVariant} />
         </div>
 
         <button
           type="button"
-          className="inline-flex shrink-0 rounded-lg p-2 text-ale-ink lg:hidden"
+          className={cn('inline-flex shrink-0 rounded-lg p-2 transition-colors duration-300 lg:hidden', chrome.menuBtn)}
           onClick={() => setOpen((v) => !v)}
           aria-expanded={open}
           aria-label={open ? 'Cerrar menú' : 'Abrir menú'}
@@ -58,7 +132,12 @@ export function DraAlejandraNavbar() {
       </div>
 
       {open ? (
-        <div className="max-h-[calc(100dvh-4rem)] overflow-y-auto border-t border-ale-gold/30 bg-ale-ivory px-4 py-4 lg:hidden">
+        <div
+          className={cn(
+            'max-h-[calc(100dvh-4rem)] overflow-y-auto border-t px-4 py-4 backdrop-blur-xl transition-colors duration-500 lg:hidden',
+            chrome.mobilePanel
+          )}
+        >
           <nav className="flex flex-col gap-2">
             {clinicNav.map((item) => (
               <Link
@@ -66,16 +145,14 @@ export function DraAlejandraNavbar() {
                 href={item.href}
                 onClick={() => setOpen(false)}
                 className={cn(
-                  'rounded-xl px-3 py-3 text-sm font-medium',
-                  isDraAlejandraPath(pathname, item.href)
-                    ? 'bg-ale-rose/30 text-ale-cta'
-                    : 'text-ale-ink hover:bg-ale-rose/15'
+                  'rounded-xl px-3 py-3 text-sm font-medium transition-colors duration-300',
+                  isDraAlejandraPath(pathname, item.href) ? chrome.mobileLinkActive : chrome.mobileLink
                 )}
               >
                 {item.label}
               </Link>
             ))}
-            <DraAlejandraCtaButton href={whatsappUrl} label="Agendar Cita" fullWidth className="mt-1" />
+            <DraAlejandraCtaButton href={whatsappUrl} label="Agendar Cita" variant={chrome.ctaVariant} fullWidth className="mt-1" />
           </nav>
         </div>
       ) : null}

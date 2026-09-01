@@ -2,7 +2,7 @@ import { clinicHome } from '@/src/data/alejandraData';
 
 export function DraAlejandraStatsSection() {
   return (
-    <section className="border-y border-ale-neutral/30 bg-white">
+    <section data-nav-theme="light" className="border-y border-ale-neutral/30 bg-white">
       <div className="mx-auto grid max-w-7xl grid-cols-2 gap-3 px-4 py-8 sm:gap-4 sm:px-6 sm:py-10 md:grid-cols-4 md:gap-6 md:py-12 lg:px-8">
         {clinicHome.stats.map((stat) => (
           <div
