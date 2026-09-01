@@ -10,11 +10,13 @@ export const clinicColors = {
 export const clinicBrand = {
   name: 'Rey Dental',
   doctor: 'Dr. David',
+  doctorFullName: 'Dr. David A.',
   tagline: 'Atención Odontológica Especializada',
   disclaimer:
     'Aviso de Demostración Privada: Entorno interactivo temporal desarrollado por Pointers (pointers.marketing) con fines exclusivos de evaluación técnica para Rey Dental. Plataforma no indexada de acceso restringido. Derechos reservados a sus respectivos titulares.',
   pointersUrl: 'https://pointers.marketing',
-  logo: '/rey-dental/logo.png'
+  logo: '/rey-dental/logo.png',
+  doctorPhoto: '/rey-dental/doctor.png'
 } as const;
 
 export const pointersCloser = {

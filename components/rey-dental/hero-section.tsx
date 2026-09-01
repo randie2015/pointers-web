@@ -1,7 +1,7 @@
 import { clinicHome, clinicWhatsApp } from '@/src/data/clinicData';
 import { buildWhatsAppUrl } from '@/lib/rey-dental/whatsapp';
 import { ReyDentalCtaButton } from '@/components/rey-dental/cta-button';
-import { Stethoscope } from 'lucide-react';
+import { ReyDentalDoctorPhoto } from '@/components/rey-dental/doctor-photo';
 
 export function ReyDentalHeroSection() {
   const { hero } = clinicHome;
@@ -39,32 +39,7 @@ export function ReyDentalHeroSection() {
         </div>
 
         <div className="relative order-1 mx-auto w-full max-w-md lg:order-2 lg:max-w-none">
-          <div className="absolute -inset-3 rounded-3xl bg-gradient-to-br from-rey-accent/40 to-rey-primary/20 blur-2xl sm:-inset-4" />
-          <div className="relative overflow-hidden rounded-2xl border border-rey-neutral/40 bg-white shadow-xl sm:rounded-3xl">
-            <div className="flex aspect-[5/6] flex-col items-center justify-center bg-gradient-to-br from-rey-accent/30 via-white to-rey-primary/10 p-6 sm:aspect-[4/5] sm:p-8 lg:aspect-[4/5]">
-              <div className="flex h-20 w-20 items-center justify-center rounded-full bg-rey-primary/10 sm:h-24 sm:w-24">
-                <Stethoscope className="h-10 w-10 text-rey-primary sm:h-12 sm:w-12" strokeWidth={1.5} />
-              </div>
-              <p className="mt-5 text-center font-display text-lg font-semibold text-rey-ink sm:mt-6 sm:text-xl">
-                Dr. David
-              </p>
-              <p className="mt-1 text-center text-xs text-slate-500 sm:text-sm">Odontología especializada · Arequipa</p>
-              <div className="mt-5 grid w-full grid-cols-3 gap-2 text-center text-[10px] text-slate-500 sm:mt-6 sm:text-xs">
-                <div className="rounded-lg bg-rey-base px-1.5 py-2.5 sm:rounded-xl sm:px-2 sm:py-3">
-                  <p className="font-semibold text-rey-primary">+10</p>
-                  <p>años</p>
-                </div>
-                <div className="rounded-lg bg-rey-base px-1.5 py-2.5 sm:rounded-xl sm:px-2 sm:py-3">
-                  <p className="font-semibold text-rey-primary">3D</p>
-                  <p>diagnóstico</p>
-                </div>
-                <div className="rounded-lg bg-rey-base px-1.5 py-2.5 sm:rounded-xl sm:px-2 sm:py-3">
-                  <p className="font-semibold text-rey-primary">100%</p>
-                  <p>bioseguro</p>
-                </div>
-              </div>
-            </div>
-          </div>
+          <ReyDentalDoctorPhoto variant="hero" priority />
         </div>
       </div>
     </section>
