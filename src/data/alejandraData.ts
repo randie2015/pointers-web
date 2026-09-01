@@ -173,8 +173,8 @@ export const clinicTreatments: Treatment[] = [
       'Materiales premium'
     ],
     icon: 'implant',
-    image: '/dra-alejandra/services/implantes.webp',
-    imageAlt: 'Rehabilitación oral estética con coronas premium'
+    image: '/dra-alejandra/services/rehabilitacion.jpg',
+    imageAlt: 'Modelos dentales y planificación de rehabilitación estética de alta precisión'
   },
   {
     id: 'armonizacion',
