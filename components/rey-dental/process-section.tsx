@@ -1,5 +1,15 @@
+import dynamic from 'next/dynamic';
 import { clinicHome } from '@/src/data/clinicData';
-import { ReyDentalBeforeAfterSlider } from '@/components/rey-dental/before-after-slider';
+
+const ReyDentalBeforeAfterSlider = dynamic(
+  () =>
+    import('@/components/rey-dental/before-after-slider').then((module) => ({
+      default: module.ReyDentalBeforeAfterSlider
+    })),
+  {
+    loading: () => <div className="mx-auto mt-8 h-48 w-full max-w-4xl animate-pulse rounded-xl bg-rey-neutral/20 sm:mt-10 sm:h-64" />
+  }
+);
 
 export function ReyDentalProcessSection() {
   const { process } = clinicHome;

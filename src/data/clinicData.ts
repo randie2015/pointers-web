@@ -15,9 +15,11 @@ export const clinicBrand = {
   disclaimer:
     'Aviso de Demostración Privada: Entorno interactivo temporal desarrollado por Pointers (pointers.marketing) con fines exclusivos de evaluación técnica para Rey Dental. Plataforma no indexada de acceso restringido. Derechos reservados a sus respectivos titulares.',
   pointersUrl: 'https://pointers.marketing',
-  logo: '/rey-dental/logo.png',
+  logo: '/rey-dental/logo.webp',
   doctorPhoto: '/rey-dental/doctor.jpg',
-  heroVideo: '/rey-dental/hero-video.mp4'
+  heroVideo: '/rey-dental/hero-video.mp4',
+  heroVideoWebm: '/rey-dental/hero-video.webm',
+  heroPoster: '/rey-dental/hero-poster.webp'
 } as const;
 
 /** Recommended media specs for sharp display without heavy files. */
@@ -126,10 +128,10 @@ export const clinicHome = {
     button: 'Contactar a Recepción por WhatsApp'
   },
   beforeAfter: {
-    before: '/rey-dental/before-after-before.png',
-    after: '/rey-dental/before-after-after.png',
-    width: 862,
-    height: 426
+    before: '/rey-dental/before-after-before.webp',
+    after: '/rey-dental/before-after-after.webp',
+    width: 1200,
+    height: 600
   }
 } as const;
 

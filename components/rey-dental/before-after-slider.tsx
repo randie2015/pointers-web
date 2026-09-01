@@ -60,7 +60,7 @@ export function ReyDentalBeforeAfterSlider() {
           sizes="(max-width: 896px) 100vw, 896px"
           className={IMAGE_CLASS}
           draggable={false}
-          priority
+          loading="lazy"
         />
 
         <div className="absolute inset-0" style={{ clipPath: `inset(0 ${100 - position}% 0 0)` }}>
@@ -71,7 +71,7 @@ export function ReyDentalBeforeAfterSlider() {
             sizes="(max-width: 896px) 100vw, 896px"
             className={IMAGE_CLASS}
             draggable={false}
-            priority
+            loading="lazy"
           />
         </div>
 

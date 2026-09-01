@@ -25,6 +25,10 @@ export const viewport: Viewport = {
 export default function ReyDentalLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es" className={inter.variable}>
+      <head>
+        <link rel="preload" href={clinicBrand.heroPoster} as="image" type="image/webp" />
+        <link rel="preload" href={clinicBrand.doctorPhoto} as="image" fetchPriority="high" />
+      </head>
       <body className="min-h-screen overflow-x-hidden bg-rey-base font-sans text-rey-ink antialiased">
         <ReyDentalExpiryGuard>
           <ReyDentalNavbar />
