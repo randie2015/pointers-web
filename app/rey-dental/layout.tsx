@@ -4,6 +4,7 @@ import { ReyDentalExpiryGuard } from '@/components/rey-dental/expiry-guard';
 import { ReyDentalNavbar } from '@/components/rey-dental/navbar';
 import { ReyDentalFooter } from '@/components/rey-dental/footer';
 import { clinicBrand } from '@/src/data/clinicData';
+import { siteIconMetadata } from '@/lib/site-icons';
 import '../globals.css';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' });
@@ -12,10 +13,7 @@ export const metadata: Metadata = {
   title: `${clinicBrand.name} | ${clinicBrand.doctor}`,
   description: 'Clínica odontológica especializada en Arequipa. Tratamientos personalizados y atención sin dolor.',
   robots: { index: false, follow: false },
-  icons: {
-    icon: clinicBrand.logo,
-    apple: clinicBrand.logo
-  }
+  ...siteIconMetadata()
 };
 
 export const viewport: Viewport = {
