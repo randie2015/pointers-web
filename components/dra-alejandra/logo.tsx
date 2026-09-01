@@ -8,21 +8,21 @@ type DraAlejandraLogoProps = {
 };
 
 const markSize = {
-  sm: 'h-9 w-9',
-  md: 'h-10 w-10 sm:h-11 sm:w-11',
-  lg: 'h-12 w-12 sm:h-14 sm:w-14'
+  sm: 'h-9 w-[1.65rem]',
+  md: 'h-10 w-[1.85rem] sm:h-11 sm:w-8',
+  lg: 'h-12 w-9 sm:h-14 sm:w-10'
 } as const;
 
 const nameStyles = {
-  sm: 'text-[11px] leading-tight',
-  md: 'text-sm leading-tight sm:text-[15px]',
-  lg: 'text-base leading-tight sm:text-lg'
+  sm: 'text-[10px] leading-tight tracking-[0.04em]',
+  md: 'text-[13px] leading-tight tracking-[0.04em] sm:text-sm',
+  lg: 'text-base leading-tight tracking-[0.05em] sm:text-lg'
 } as const;
 
 const taglineStyles = {
-  sm: 'text-[9px] tracking-[0.1em]',
-  md: 'text-[10px] tracking-[0.12em] sm:text-[11px]',
-  lg: 'text-xs tracking-[0.14em] sm:text-sm'
+  sm: 'text-[8px] tracking-[0.14em]',
+  md: 'text-[9px] tracking-[0.16em] sm:text-[10px]',
+  lg: 'text-[10px] tracking-[0.18em] sm:text-xs'
 } as const;
 
 const themeStyles = {
@@ -38,25 +38,26 @@ const themeStyles = {
   }
 } as const;
 
-function LogoMark({ className }: { className?: string }) {
+/** Brand mark — do not replace with PNG until a valid transparent asset is provided. */
+function BrandMark({ className }: { className?: string }) {
   return (
-    <svg viewBox="0 0 80 96" fill="none" xmlns="http://www.w3.org/2000/svg" className={className} aria-hidden>
+    <svg viewBox="0 0 56 72" fill="none" xmlns="http://www.w3.org/2000/svg" className={className} aria-hidden>
       <path
-        d="M26 10C16 30 14 54 28 86"
+        d="M19 5C13 22 13 40 21 67"
         stroke="currentColor"
-        strokeWidth="3.5"
+        strokeWidth="2.15"
         strokeLinecap="round"
       />
       <path
-        d="M54 10C64 30 66 54 52 86"
+        d="M37 5C43 22 43 40 35 67"
         stroke="currentColor"
-        strokeWidth="3.5"
+        strokeWidth="2.15"
         strokeLinecap="round"
       />
       <path
-        d="M30 44C36 50 44 50 50 44"
+        d="M22 33C25.5 36.5 30.5 36.5 34 33"
         stroke="currentColor"
-        strokeWidth="2.5"
+        strokeWidth="1.7"
         strokeLinecap="round"
       />
     </svg>
@@ -68,12 +69,12 @@ export function DraAlejandraLogo({ className, size = 'md', theme = 'light' }: Dr
 
   return (
     <span className={cn('flex min-w-0 items-center gap-2.5 sm:gap-3', className)}>
-      <LogoMark className={cn('shrink-0 transition-colors duration-500', markSize[size], palette.mark)} />
+      <BrandMark className={cn('shrink-0 transition-colors duration-500', markSize[size], palette.mark)} />
 
       <span className="min-w-0 shrink font-cinzel leading-none">
         <span
           className={cn(
-            'block font-medium transition-colors duration-500',
+            'block font-semibold uppercase transition-colors duration-500',
             palette.name,
             nameStyles[size]
           )}
