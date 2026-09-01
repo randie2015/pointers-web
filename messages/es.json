@@ -11,6 +11,13 @@
     "blog": "Blog",
     "cta": "¡Hablemos!"
   },
+  "notFound": {
+    "badge": "Error 404",
+    "title": "Esta página no existe",
+    "description": "El enlace puede estar roto o la página pudo haberse movido. Volvamos a terreno conocido.",
+    "homeCta": "Ir al inicio",
+    "servicesCta": "Ver servicios"
+  },
   "whatsapp": {
     "label": "¡Escríbenos!",
     "ariaLabel": "Contactar por WhatsApp"
