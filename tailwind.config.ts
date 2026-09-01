@@ -56,13 +56,13 @@ export default {
           dark: '#2E2A2B'
         },
         mag: {
-          ivory: '#F8F6F2',
+          sand: '#C5A57D',
+          navy: '#192031',
+          'navy-deep': '#121929',
           white: '#FFFFFF',
-          navy: '#1C2331',
-          'navy-deep': '#16213E',
-          gold: '#C5A880',
-          'gold-light': '#D4AF37',
-          ink: '#1C2331',
+          cream: '#FAFAFA',
+          jade: '#197876',
+          ink: '#192031',
           muted: '#5C6474',
           border: '#E8E2D8'
         }

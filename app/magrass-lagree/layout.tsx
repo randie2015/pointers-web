@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import { Inter, Playfair_Display, Plus_Jakarta_Sans } from 'next/font/google';
 import { MagrassNavbar } from '@/components/magrass-lagree/navbar';
 import { MagrassFooter } from '@/components/magrass-lagree/footer';
+import { MagrassWhatsAppFloat } from '@/components/magrass-lagree/whatsapp-float';
 import { clinicBrand } from '@/src/data/magrassData';
 import { siteIconMetadata } from '@/lib/site-icons';
 import '../globals.css';
@@ -23,7 +24,7 @@ const jakarta = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   title: `${clinicBrand.name} | ${clinicBrand.tagline} en Arequipa`,
   description:
-    'Resultados reales y naturales sin cirugía. Protocolos médico-estéticos faciales y corporales con tecnología no invasiva en Arequipa.',
+    'Resultados naturales respaldados por rigor médico y tecnología de vanguardia. Medicina estética facial y corporal en Arequipa.',
   ...siteIconMetadata()
 };
 
@@ -36,10 +37,11 @@ export const viewport: Viewport = {
 export default function MagrassLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es" className={`${inter.variable} ${playfair.variable} ${jakarta.variable} scroll-smooth`}>
-      <body className="min-h-screen overflow-x-hidden bg-mag-ivory font-jakarta text-mag-ink antialiased">
+      <body className="min-h-screen overflow-x-hidden bg-mag-white font-jakarta text-mag-ink antialiased">
         <MagrassNavbar />
         <main className="overflow-x-hidden">{children}</main>
         <MagrassFooter />
+        <MagrassWhatsAppFloat />
       </body>
     </html>
   );

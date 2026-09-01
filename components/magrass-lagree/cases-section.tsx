@@ -1,5 +1,7 @@
 import dynamic from 'next/dynamic';
-import { clinicHome } from '@/src/data/magrassData';
+import { casesPage, clinicalCases } from '@/src/data/magrassData';
+import { buildWhatsAppUrl } from '@/lib/magrass-lagree/whatsapp';
+import { MagrassCtaButton } from '@/components/magrass-lagree/cta-button';
 
 const MagrassBeforeAfterSlider = dynamic(
   () =>
@@ -14,23 +16,40 @@ const MagrassBeforeAfterSlider = dynamic(
 );
 
 export function MagrassCasesSection() {
-  const { cases } = clinicHome;
+  const whatsappUrl = buildWhatsAppUrl('cases');
 
   return (
-    <section id="casos" className="scroll-mt-20 bg-mag-white py-14 sm:py-16 lg:py-24">
+    <section className="bg-mag-cream py-14 sm:py-16 lg:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center">
-          <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-mag-gold sm:text-xs">
-            Antes & Después
-          </p>
-          <h2 className="mt-2 font-playfair text-2xl font-semibold text-mag-navy sm:text-3xl lg:text-4xl">
-            {cases.title}
-          </h2>
-          <p className="mx-auto mt-3 max-w-2xl text-sm font-medium text-mag-muted sm:text-base">
-            {cases.subtitle}
-          </p>
-        </div>
         <MagrassBeforeAfterSlider />
+
+        <div className="mt-10 grid gap-4 sm:mt-12 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
+          {clinicalCases.map((clinicalCase) => (
+            <article
+              key={clinicalCase.id}
+              className="flex flex-col rounded-2xl border border-mag-border bg-mag-white p-5 sm:rounded-3xl sm:p-6"
+            >
+              <h3 className="font-playfair text-lg font-semibold text-mag-navy sm:text-xl">
+                {clinicalCase.title}
+              </h3>
+              <div className="mt-3 space-y-2 text-sm text-mag-muted">
+                <p>
+                  <span className="font-semibold text-mag-navy">Abordaje:</span> {clinicalCase.approach}
+                </p>
+                <p>
+                  <span className="font-semibold text-mag-navy">Evolución:</span> {clinicalCase.duration}
+                </p>
+              </div>
+              <p className="mt-3 flex-1 text-sm leading-relaxed text-mag-muted">{clinicalCase.summary}</p>
+              <MagrassCtaButton
+                href={whatsappUrl}
+                label={casesPage.cta}
+                variant="secondary"
+                className="mt-4"
+              />
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   );

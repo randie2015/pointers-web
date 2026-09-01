@@ -1,21 +1,12 @@
-import { MagrassHeroSection } from '@/components/magrass-lagree/hero-section';
-import { MagrassTreatmentsSection } from '@/components/magrass-lagree/treatments-section';
-import { MagrassProcessSection } from '@/components/magrass-lagree/process-section';
-import { MagrassCasesSection } from '@/components/magrass-lagree/cases-section';
-import { MagrassTeamSection } from '@/components/magrass-lagree/team-section';
-import { MagrassLocationSection } from '@/components/magrass-lagree/location-section';
-import { MagrassClosingCtaSection } from '@/components/magrass-lagree/closing-cta-section';
+import { MagrassHeroSection, MagrassValuePillarsSection } from '@/components/magrass-lagree/hero-section';
+import { MagrassDiagnosis360Section } from '@/components/magrass-lagree/diagnosis-360-section';
 
 export default function MagrassHomePage() {
   return (
     <>
       <MagrassHeroSection />
-      <MagrassTreatmentsSection />
-      <MagrassProcessSection />
-      <MagrassCasesSection />
-      <MagrassTeamSection />
-      <MagrassLocationSection />
-      <MagrassClosingCtaSection />
+      <MagrassValuePillarsSection />
+      <MagrassDiagnosis360Section />
     </>
   );
 }

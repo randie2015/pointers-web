@@ -4,47 +4,45 @@ import { cn } from '@/lib/utils';
 
 type MagrassLogoProps = {
   className?: string;
-  theme?: 'light' | 'dark';
-  size?: 'sm' | 'md' | 'lg';
+  theme?: 'navy' | 'white';
+  size?: 'sm' | 'md' | 'lg' | 'nav';
   showText?: boolean;
 };
 
 const markHeight = {
-  sm: 'h-8',
-  md: 'h-9 sm:h-10',
-  lg: 'h-11 sm:h-12'
-} as const;
-
-const nameSize = {
-  sm: 'text-sm',
-  md: 'text-base sm:text-lg',
-  lg: 'text-lg sm:text-xl'
-} as const;
-
-const subSize = {
-  sm: 'text-[9px]',
-  md: 'text-[10px] sm:text-[11px]',
-  lg: 'text-xs'
+  sm: 'h-10',
+  md: 'h-12 sm:h-14',
+  lg: 'h-14 sm:h-16',
+  nav: 'h-12 sm:h-14 lg:h-[4.5rem]'
 } as const;
 
 export function MagrassLogo({
   className,
-  theme = 'light',
+  theme = 'navy',
   size = 'md',
   showText = false
 }: MagrassLogoProps) {
+  const isNav = size === 'nav';
+
   return (
     <span className={cn('flex min-w-0 items-center gap-2.5 sm:gap-3', className)}>
-      <span className={cn('relative shrink-0', markHeight[size], 'aspect-[878/555]')}>
+      <span
+        className={cn(
+          'relative shrink-0 aspect-[417/223] transition-transform duration-300',
+          markHeight[size],
+          isNav && 'group-hover:scale-[1.04]'
+        )}
+      >
         <Image
           src={clinicBrand.logoMark}
           alt={clinicBrand.name}
           fill
-          sizes="(max-width: 768px) 120px, 160px"
+          sizes="(max-width: 768px) 150px, 220px"
           className={cn(
-            'object-contain object-left transition-[filter] duration-500',
-            theme === 'dark' && 'brightness-0 invert'
+            'object-contain object-left transition-[filter] duration-300',
+            theme === 'white' && 'brightness-0 invert'
           )}
+          style={theme === 'navy' ? { filter: 'brightness(0) saturate(100%)' } : undefined}
           priority
         />
       </span>
@@ -54,17 +52,15 @@ export function MagrassLogo({
           <span
             className={cn(
               'block font-semibold tracking-wide',
-              theme === 'dark' ? 'text-white' : 'text-mag-navy',
-              nameSize[size]
+              theme === 'white' ? 'text-white' : 'text-mag-navy'
             )}
           >
             {clinicBrand.name}
           </span>
           <span
             className={cn(
-              'block uppercase tracking-[0.14em]',
-              theme === 'dark' ? 'text-mag-gold-light' : 'text-mag-gold',
-              subSize[size]
+              'block text-[10px] uppercase tracking-[0.14em] sm:text-[11px]',
+              theme === 'white' ? 'text-mag-sand' : 'text-mag-jade'
             )}
           >
             {clinicBrand.subtitle}

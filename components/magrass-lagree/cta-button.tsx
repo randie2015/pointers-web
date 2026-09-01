@@ -4,7 +4,7 @@ import { cn } from '@/lib/utils';
 type MagrassCtaButtonProps = {
   href: string;
   label: string;
-  variant?: 'primary' | 'secondary' | 'light';
+  variant?: 'primary' | 'secondary' | 'accent' | 'nav';
   className?: string;
   external?: boolean;
   fullWidth?: boolean;
@@ -24,10 +24,11 @@ export function MagrassCtaButton({
   );
 
   const variants = {
-    primary: 'bg-mag-gold text-mag-navy shadow-md shadow-mag-gold/25 hover:bg-mag-gold-light hover:shadow-lg',
+    primary: 'bg-mag-navy text-mag-white shadow-md shadow-mag-navy/20 hover:bg-mag-navy/90',
+    nav: 'bg-mag-navy text-mag-white shadow-sm hover:bg-mag-navy/90',
     secondary:
-      'border border-mag-gold/70 bg-mag-white text-mag-navy hover:border-mag-gold hover:bg-mag-ivory',
-    light: 'bg-mag-white text-mag-navy shadow-md hover:bg-mag-ivory'
+      'border border-mag-navy/25 bg-mag-white text-mag-navy hover:border-mag-sand hover:bg-mag-cream',
+    accent: 'bg-mag-sand text-mag-navy shadow-md shadow-mag-sand/30 hover:bg-mag-sand/90'
   };
 
   const props = external ? { target: '_blank' as const, rel: 'noopener noreferrer' as const } : {};

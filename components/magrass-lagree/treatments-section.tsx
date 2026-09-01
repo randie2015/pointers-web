@@ -1,42 +1,59 @@
-import { clinicHome, keyTreatments } from '@/src/data/magrassData';
+'use client';
+
+import { useState } from 'react';
+import {
+  keyTreatments,
+  treatmentsPage,
+  type TreatmentCategory
+} from '@/src/data/magrassData';
 import { buildWhatsAppUrl } from '@/lib/magrass-lagree/whatsapp';
 import { MagrassCtaButton } from '@/components/magrass-lagree/cta-button';
+import { cn } from '@/lib/utils';
 
 export function MagrassTreatmentsSection() {
-  const { treatments } = clinicHome;
-  const whatsappUrl = buildWhatsAppUrl();
+  const [activeCategory, setActiveCategory] = useState<TreatmentCategory>('facial');
+  const filtered = keyTreatments.filter((treatment) => treatment.category === activeCategory);
 
   return (
-    <section id="tratamientos" className="scroll-mt-20 bg-mag-white py-14 sm:py-16 lg:py-24">
+    <section className="bg-mag-white py-14 sm:py-16 lg:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center">
-          <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-mag-gold sm:text-xs">
-            Protocolos médicos
-          </p>
-          <h2 className="mt-2 font-playfair text-2xl font-semibold text-mag-navy sm:text-3xl lg:text-4xl">
-            {treatments.title}
-          </h2>
-          <p className="mx-auto mt-3 max-w-2xl text-sm font-medium text-mag-muted sm:text-base">
-            {treatments.subtitle}
-          </p>
+        <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
+          {treatmentsPage.categories.map((category) => (
+            <button
+              key={category.id}
+              type="button"
+              onClick={() => setActiveCategory(category.id)}
+              className={cn(
+                'rounded-full border px-4 py-2 text-xs font-semibold uppercase tracking-[0.12em] transition-all duration-300 sm:px-5 sm:text-sm',
+                activeCategory === category.id
+                  ? 'border-mag-navy bg-mag-navy text-mag-white'
+                  : 'border-mag-border bg-mag-cream text-mag-navy hover:border-mag-sand'
+              )}
+            >
+              {category.label}
+            </button>
+          ))}
         </div>
 
         <div className="mt-8 grid gap-4 sm:mt-10 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
-          {keyTreatments.map((treatment, index) => (
+          {filtered.map((treatment) => (
             <article
               key={treatment.id}
-              className="group flex flex-col rounded-2xl border border-mag-border bg-mag-ivory/50 p-5 transition hover:border-mag-gold/50 hover:shadow-md sm:rounded-3xl sm:p-6"
+              className="group flex flex-col rounded-2xl border border-mag-border bg-mag-cream/50 p-5 transition duration-300 hover:border-mag-sand hover:shadow-md sm:rounded-3xl sm:p-6"
             >
-              <span className="font-jakarta text-xs font-bold text-mag-gold">
-                {String(index + 1).padStart(2, '0')}
-              </span>
-              <h3 className="mt-2 font-playfair text-lg font-semibold text-mag-navy sm:text-xl">
+              <h3 className="font-playfair text-lg font-semibold text-mag-navy sm:text-xl">
                 {treatment.title}
               </h3>
-              <p className="mt-2 flex-1 text-sm leading-relaxed text-mag-muted">{treatment.description}</p>
+              <p className="mt-2 text-sm leading-relaxed text-mag-muted">{treatment.description}</p>
+              <p className="mt-3 text-xs font-semibold uppercase tracking-[0.1em] text-mag-jade">
+                Resultados esperados
+              </p>
+              <p className="mt-1 flex-1 text-sm leading-relaxed text-mag-navy/80">
+                {treatment.expectedResults}
+              </p>
               <MagrassCtaButton
-                href={whatsappUrl}
-                label="Consultar por WhatsApp"
+                href={buildWhatsAppUrl({ type: 'treatment', name: treatment.title })}
+                label="Consultar este Tratamiento"
                 variant="secondary"
                 className="mt-4 sm:max-w-xs"
               />
