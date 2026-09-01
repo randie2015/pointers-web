@@ -181,7 +181,9 @@ export const clinicTreatments: Treatment[] = [
       'Prótesis personalizadas',
       'Seguimiento post-operatorio'
     ],
-    icon: 'implant'
+    icon: 'implant',
+    image: '/rey-dental/services/implantes.webp',
+    imageAlt: 'Modelo dental con implante y corona en rehabilitación oral'
   },
   {
     id: 'estetica',
