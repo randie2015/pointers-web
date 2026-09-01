@@ -10,8 +10,8 @@ export const clinicColors = {
 
 export const clinicBrand = {
   name: 'Orthozent',
-  doctor: 'Equipo Orthozent',
-  doctorFullName: 'Equipo Orthozent',
+  doctor: 'Dr. Amatheus',
+  doctorFullName: 'Dr. Amatheus Zenteno',
   tagline: 'Ortodoncia Especializada y Salud Dental',
   disclaimer:
     'Aviso de Demostración Privada (72 horas): Entorno interactivo temporal desarrollado por Pointers (pointers.marketing) con fines exclusivos de evaluación técnica para Orthozent. Plataforma no indexada en Google y de acceso restringido. Derechos reservados a sus respectivos titulares.',
@@ -213,7 +213,7 @@ export const clinicAbout = {
     }
   ],
   doctorBio:
-    'El equipo de Orthozent combina experiencia en ortodoncia, rehabilitación oral y estética dental para diseñar planes personalizados con tecnología de vanguardia y estándares clínicos exigentes.'
+    'El Dr. Amatheus Zenteno lidera Orthozent con enfoque en ortodoncia avanzada, rehabilitación oral y estética dental. Combina diagnóstico digital, precisión clínica y trato humano para resultados medibles en Arequipa.'
 } as const;
 
 export const clinicServicesPage = {

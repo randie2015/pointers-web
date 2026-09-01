@@ -63,7 +63,7 @@ export function OrthozentLogo({
               isLight ? 'text-white/70' : 'text-slate-500'
             )}
           >
-            {clinicBrand.tagline}
+            {clinicBrand.doctor}
           </span>
         </span>
       ) : null}
