@@ -17,7 +17,7 @@ const markSize = {
   sm: 'h-8 max-h-[36px] w-auto',
   md: 'h-9 max-h-[40px] w-auto sm:h-10',
   lg: 'h-10 max-h-[44px] w-auto sm:h-11',
-  nav: 'h-9 max-h-[44px] w-auto sm:h-10 md:h-11'
+  nav: 'h-8 max-h-[34px] w-auto sm:h-10 sm:max-h-[44px] md:h-11'
 } as const;
 
 export function MagrassLogo({

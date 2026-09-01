@@ -33,19 +33,26 @@ export function MagrassNavbar() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [open]);
+
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-gray-100 bg-white/95 shadow-sm backdrop-blur-md transition-all duration-300">
+    <header className="sticky top-0 z-50 w-full border-b border-gray-100 bg-white/95 shadow-sm backdrop-blur-md transition-all duration-300 supports-[padding:max(0px)]:pt-[env(safe-area-inset-top)]">
       <div
         className={cn(
-          'mx-auto flex max-w-7xl items-center justify-between gap-4 px-6 transition-all duration-300 md:px-12',
-          scrolled ? 'h-16' : 'h-20'
+          'mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 transition-all duration-300 sm:gap-4 sm:px-6 lg:px-8',
+          scrolled ? 'h-14 sm:h-16' : 'h-16 sm:h-20'
         )}
       >
         <Link href={MAGRASS_BASE} className="group flex shrink-0 items-center">
           <MagrassLogo size="nav" className="transition-opacity duration-300 group-hover:opacity-90" />
         </Link>
 
-        <nav className="hidden items-center gap-5 lg:flex xl:gap-7">
+        <nav className="hidden items-center gap-4 lg:flex xl:gap-7">
           {clinicNav.map((item) => {
             const active = isMagrassPath(pathname, item.href);
             return (
@@ -71,7 +78,7 @@ export function MagrassNavbar() {
 
         <button
           type="button"
-          className="rounded-lg p-2 text-[#1C2331] transition-colors duration-300 hover:text-[#C5A880] lg:hidden"
+          className="rounded-lg p-2.5 text-[#1C2331] transition-colors duration-300 hover:text-[#C5A880] lg:hidden"
           onClick={() => setOpen((v) => !v)}
           aria-expanded={open}
           aria-label={open ? 'Cerrar menú' : 'Abrir menú'}
@@ -81,7 +88,7 @@ export function MagrassNavbar() {
       </div>
 
       {open ? (
-        <div className="border-t border-gray-100 bg-white/95 px-6 py-4 backdrop-blur-md md:px-12 lg:hidden">
+        <div className="border-t border-gray-100 bg-white/95 px-4 py-4 backdrop-blur-md sm:px-6 lg:hidden">
           <nav className="flex flex-col gap-2">
             {clinicNav.map((item) => {
               const active = isMagrassPath(pathname, item.href);

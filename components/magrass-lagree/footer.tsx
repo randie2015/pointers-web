@@ -1,23 +1,30 @@
 import Link from 'next/link';
 import { clinicBrand, clinicContact, clinicNav } from '@/src/data/magrassData';
+import { magrassContainer } from '@/lib/magrass-lagree/layout';
 import { buildWhatsAppUrl } from '@/lib/magrass-lagree/whatsapp';
 import { MagrassLogo } from '@/components/magrass-lagree/logo';
+import { cn } from '@/lib/utils';
 
 export function MagrassFooter() {
   const whatsappUrl = buildWhatsAppUrl('appointment');
 
   return (
     <footer className="border-t border-mag-navy/20 bg-mag-navy text-white">
-      <div className="mx-auto flex max-w-7xl flex-col gap-8 px-4 py-10 sm:px-6 sm:py-12 lg:flex-row lg:items-start lg:justify-between lg:px-8">
-        <div>
+      <div
+        className={cn(
+          magrassContainer,
+          'grid gap-8 py-10 sm:py-12 md:grid-cols-2 lg:grid-cols-[1.35fr_1fr_1fr] lg:items-start lg:gap-10'
+        )}
+      >
+        <div className="min-w-0">
           <MagrassLogo theme="white" size="lg" />
-          <p className="mt-3 max-w-sm text-sm text-white/70">
+          <p className="mt-3 max-w-sm text-sm leading-relaxed text-white/70">
             Consultorio médico estético en Arequipa. Resultados naturales con protocolos no invasivos y atención
             especializada.
           </p>
         </div>
 
-        <nav className="grid grid-cols-2 gap-x-8 gap-y-2 text-sm sm:grid-cols-1">
+        <nav className="grid grid-cols-2 gap-x-6 gap-y-2 text-sm sm:grid-cols-1">
           {clinicNav.map((item) => (
             <Link key={item.href} href={item.href} className="text-white/75 transition-colors hover:text-mag-sand">
               {item.label}
@@ -45,8 +52,8 @@ export function MagrassFooter() {
         </div>
       </div>
 
-      <div className="border-t border-white/10 px-4 py-5 sm:px-6 lg:px-8">
-        <p className="mx-auto max-w-7xl text-center text-xs text-white/50">{clinicBrand.disclaimer}</p>
+      <div className={cn('border-t border-white/10 py-5', magrassContainer)}>
+        <p className="text-center text-xs leading-relaxed text-white/50">{clinicBrand.disclaimer}</p>
       </div>
     </footer>
   );

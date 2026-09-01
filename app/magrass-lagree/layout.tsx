@@ -39,7 +39,7 @@ export default function MagrassLayout({ children }: { children: React.ReactNode 
     <html lang="es" className={`${inter.variable} ${playfair.variable} ${jakarta.variable} scroll-smooth`}>
       <body className="min-h-screen overflow-x-hidden bg-mag-white font-jakarta text-mag-ink antialiased">
         <MagrassNavbar />
-        <main className="overflow-x-hidden">{children}</main>
+        <main className="overflow-x-hidden pb-20 sm:pb-24">{children}</main>
         <MagrassFooter />
         <MagrassWhatsAppFloat />
       </body>

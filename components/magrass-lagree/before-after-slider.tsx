@@ -45,7 +45,7 @@ export function MagrassBeforeAfterSlider({ showHint = true }: { showHint?: boole
     <MagrassReveal className="relative mx-auto mt-8 w-full max-w-5xl sm:mt-10">
       <div
         ref={containerRef}
-        className="group relative touch-none overflow-hidden rounded-2xl border-2 border-[#C5A880]/40 bg-mag-navy shadow-xl select-none sm:rounded-3xl"
+        className="group relative touch-none overflow-hidden rounded-2xl border-2 border-[#C5A880]/40 bg-mag-navy shadow-xl select-none sm:rounded-3xl max-sm:max-h-[min(72vh,520px)]"
         style={{ aspectRatio: `${width} / ${height}` }}
         onPointerDown={handlePointerDown}
         onPointerMove={handlePointerMove}
@@ -81,7 +81,7 @@ export function MagrassBeforeAfterSlider({ showHint = true }: { showHint?: boole
         >
           <div
             className={cn(
-              'absolute top-1/2 left-1/2 flex h-12 w-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-[3px] border-white bg-[#C5A880] shadow-lg transition-transform duration-300',
+              'absolute top-1/2 left-1/2 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-[3px] border-white bg-[#C5A880] shadow-lg transition-transform duration-300 sm:h-12 sm:w-12',
               !isDragging && 'animate-mag-gold-pulse',
               isDragging && 'scale-110'
             )}

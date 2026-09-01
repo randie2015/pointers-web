@@ -2,6 +2,7 @@
 
 import dynamic from 'next/dynamic';
 import { casesPage, clinicalCases } from '@/src/data/magrassData';
+import { magrassContainer, magrassSection } from '@/lib/magrass-lagree/layout';
 import { buildWhatsAppUrl } from '@/lib/magrass-lagree/whatsapp';
 import { MagrassCtaButton } from '@/components/magrass-lagree/cta-button';
 import { magrassLuxuryCard, MagrassStagger, MagrassStaggerChild } from '@/components/magrass-lagree/motion';
@@ -23,11 +24,11 @@ export function MagrassCasesSection() {
   const whatsappUrl = buildWhatsAppUrl('cases');
 
   return (
-    <section className="bg-mag-cream py-14 sm:py-16 lg:py-24">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section className={cn('bg-mag-cream', magrassSection, 'lg:py-24')}>
+      <div className={magrassContainer}>
         <MagrassBeforeAfterSlider />
 
-        <MagrassStagger className="mt-10 grid gap-4 sm:mt-12 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
+        <MagrassStagger className="mt-8 grid gap-4 sm:mt-12 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
           {clinicalCases.map((clinicalCase) => (
             <MagrassStaggerChild key={clinicalCase.id}>
               <article

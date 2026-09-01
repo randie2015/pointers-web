@@ -21,7 +21,7 @@ export function MagrassCtaButton({
   shimmer = true
 }: MagrassCtaButtonProps) {
   const base = cn(
-    'group relative inline-flex min-h-11 items-center justify-center overflow-hidden rounded-full px-5 py-3 text-center text-xs font-semibold tracking-wide transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] sm:min-h-0 sm:px-7 sm:text-sm',
+    'group relative inline-flex min-h-11 items-center justify-center overflow-hidden rounded-full px-5 py-3 text-center text-xs font-semibold tracking-wide transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] sm:min-h-[44px] sm:px-7 sm:text-sm',
     fullWidth ? 'w-full sm:w-auto' : 'w-full max-w-full sm:w-auto'
   );
 

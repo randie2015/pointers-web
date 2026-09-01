@@ -19,7 +19,7 @@ export function MagrassWhatsAppFloat() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Agendar cita por WhatsApp"
-      className="fixed bottom-5 right-5 z-40 flex items-center gap-0 overflow-hidden rounded-full bg-[#25D366] text-white shadow-[0_6px_24px_rgba(25,32,49,0.2)] ring-2 ring-white transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_10px_32px_rgba(25,32,49,0.24)] active:scale-[0.97] max-sm:h-12 max-sm:w-12 max-sm:justify-center sm:bottom-6 sm:right-6 sm:gap-2.5 sm:py-2 sm:pl-2.5 sm:pr-4"
+      className="fixed right-4 z-40 flex items-center gap-0 overflow-hidden rounded-full bg-[#25D366] text-white shadow-[0_6px_24px_rgba(25,32,49,0.2)] ring-2 ring-white transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_10px_32px_rgba(25,32,49,0.24)] active:scale-[0.97] max-sm:bottom-[max(1rem,env(safe-area-inset-bottom))] max-sm:right-[max(1rem,env(safe-area-inset-right))] max-sm:h-12 max-sm:w-12 max-sm:justify-center sm:bottom-6 sm:right-6 sm:gap-2.5 sm:py-2 sm:pl-2.5 sm:pr-4"
     >
       <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full max-sm:h-full max-sm:w-full sm:bg-white/15">
         <WhatsAppIcon className="h-6 w-6 sm:h-5 sm:w-5" />

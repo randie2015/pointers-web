@@ -4,6 +4,7 @@ import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { clinicContact, clinicHome, MAGRASS_BASE } from '@/src/data/magrassData';
 import { buildPhoneUrl, buildWhatsAppUrl } from '@/lib/magrass-lagree/whatsapp';
+import { magrassContainer, magrassSection } from '@/lib/magrass-lagree/layout';
 import { MagrassCtaButton } from '@/components/magrass-lagree/cta-button';
 import { magrassLuxuryCard, MagrassReveal, MagrassStagger, MagrassStaggerChild } from '@/components/magrass-lagree/motion';
 import { Award, Clock, MapPin, Phone, ShieldCheck } from 'lucide-react';
@@ -26,21 +27,21 @@ export function MagrassWhyChooseSection() {
   const icons = [ShieldCheck, Award, ShieldCheck] as const;
 
   return (
-    <section className="bg-[#FAFAFA] py-14 sm:py-16 lg:py-20">
-      <div className="mx-auto max-w-7xl px-6 md:px-12">
+    <section className={cn('bg-[#FAFAFA]', magrassSection)}>
+      <div className={magrassContainer}>
         <MagrassReveal>
           <div className="max-w-2xl">
             <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#197876] sm:text-xs">
               Autoridad médica
             </p>
-            <h2 className="mt-2 font-playfair text-2xl font-semibold text-[#192031] sm:text-3xl lg:text-4xl">
+            <h2 className="mt-2 font-playfair text-2xl font-semibold text-balance text-[#192031] sm:text-3xl lg:text-4xl">
               {whyChoose.title}
             </h2>
             <p className="mt-3 text-sm leading-relaxed text-mag-muted sm:text-base">{whyChoose.subtitle}</p>
           </div>
         </MagrassReveal>
 
-        <MagrassStagger className="mt-8 grid gap-4 sm:mt-10 sm:grid-cols-3 sm:gap-6">
+        <MagrassStagger className="mt-8 grid gap-4 sm:mt-10 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6">
           {whyChoose.points.map((point, index) => {
             const Icon = icons[index] ?? ShieldCheck;
             return (
@@ -68,8 +69,8 @@ export function MagrassWhyChooseSection() {
 
 export function MagrassCasesPreviewSection() {
   return (
-    <section className="bg-white py-14 sm:py-16 lg:py-20">
-      <div className="mx-auto max-w-7xl px-6 md:px-12">
+    <section className={cn('bg-white', magrassSection)}>
+      <div className={magrassContainer}>
         <MagrassReveal className="text-center">
           <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#197876] sm:text-xs">
             Resultados reales
@@ -92,10 +93,10 @@ export function MagrassLocationPreviewSection() {
   const { locationPreview } = clinicHome;
 
   return (
-    <section className="bg-[#FAFAFA] py-14 sm:py-16 lg:py-20">
-      <div className="mx-auto max-w-7xl px-6 md:px-12">
+    <section className={cn('bg-[#FAFAFA]', magrassSection)}>
+      <div className={magrassContainer}>
         <MagrassReveal>
-          <div className="mx-auto max-w-3xl rounded-2xl border border-mag-border bg-white p-6 shadow-sm transition-all duration-500 hover:border-[#C5A880]/40 hover:shadow-xl hover:shadow-[#1C2331]/5 sm:p-8">
+          <div className="mx-auto max-w-3xl rounded-2xl border border-mag-border bg-white p-5 shadow-sm transition-all duration-500 hover:border-[#C5A880]/40 hover:shadow-xl hover:shadow-[#1C2331]/5 sm:p-8">
             <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#197876] sm:text-xs">
               Sede Arequipa
             </p>
@@ -129,19 +130,19 @@ export function MagrassLocationPreviewSection() {
               </div>
             </div>
 
-            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-6 flex flex-col items-stretch gap-3 sm:flex-row">
               <MagrassCtaButton
                 href={`${MAGRASS_BASE}/ubicacion`}
                 label={locationPreview.cta}
                 variant="secondary"
                 external={false}
-                className="sm:flex-1"
+                className="w-full sm:flex-1"
                 shimmer={false}
               />
               <MagrassCtaButton
                 href={buildWhatsAppUrl('location')}
                 label="Solicitar cita en sede"
-                className="sm:flex-1"
+                className="w-full sm:flex-1"
               />
             </div>
           </div>

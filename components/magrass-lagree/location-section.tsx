@@ -1,15 +1,17 @@
 import { MapPin, Clock, Phone } from 'lucide-react';
 import { clinicBrand, clinicContact, locationPage } from '@/src/data/magrassData';
+import { magrassContainer, magrassSection } from '@/lib/magrass-lagree/layout';
 import { buildPhoneUrl, buildWhatsAppUrl } from '@/lib/magrass-lagree/whatsapp';
 import { MagrassCtaButton } from '@/components/magrass-lagree/cta-button';
+import { cn } from '@/lib/utils';
 
 export function MagrassLocationSection() {
   const whatsappUrl = buildWhatsAppUrl('location');
 
   return (
-    <section className="bg-mag-cream py-14 sm:py-16 lg:py-24">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto grid max-w-5xl gap-6 lg:grid-cols-2">
+    <section className={cn(magrassSection, 'bg-mag-cream lg:py-24')}>
+      <div className={magrassContainer}>
+        <div className="mx-auto grid max-w-5xl gap-5 sm:gap-6 lg:grid-cols-2">
           <div className="overflow-hidden rounded-2xl border border-mag-border bg-mag-white shadow-sm sm:rounded-3xl">
             <div className="bg-mag-navy px-5 py-4 sm:px-6">
               <p className="font-playfair text-lg font-semibold text-white sm:text-xl">
@@ -48,9 +50,9 @@ export function MagrassLocationSection() {
                   href={clinicContact.mapsUrl}
                   label={locationPage.ctaMaps}
                   variant="secondary"
-                  className="sm:flex-1"
+                  className="w-full sm:flex-1"
                 />
-                <MagrassCtaButton href={whatsappUrl} label={locationPage.ctaBook} className="sm:flex-1" />
+                <MagrassCtaButton href={whatsappUrl} label={locationPage.ctaBook} className="w-full sm:flex-1" />
               </div>
             </div>
           </div>
@@ -59,7 +61,7 @@ export function MagrassLocationSection() {
             <iframe
               title={`Mapa ${clinicBrand.name}`}
               src="https://maps.google.com/maps?q=Magrass+LaGre%C3%A9+Arequipa,+Peru&output=embed"
-              className="h-72 w-full border-0 lg:h-full lg:min-h-[360px]"
+              className="h-64 w-full border-0 sm:h-72 lg:h-full lg:min-h-[360px]"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
             />
