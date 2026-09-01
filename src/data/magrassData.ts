@@ -130,7 +130,7 @@ export const clinicHome = {
       badge: 'FACIAL',
       title: 'Limpieza Médica & Hydrafacial',
       description: 'Desintoxicación profunda, hidratación intensiva y glow inmediato con enfoque clínico.',
-      image: '/magrass-lagree/hero-poster.webp'
+      image: '/magrass-lagree/hydrafacial.jpg'
     },
     {
       id: 'peptonas',
