@@ -192,6 +192,10 @@ body {
 .rey-hero-video {
   appearance: none;
   -webkit-appearance: none;
+  object-fit: cover;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 .rey-hero-video::-webkit-media-controls,
@@ -199,8 +203,15 @@ body {
 .rey-hero-video::-webkit-media-controls-panel,
 .rey-hero-video::-webkit-media-controls-play-button,
 .rey-hero-video::-webkit-media-controls-start-playback-button,
-.rey-hero-video::-webkit-media-controls-overlay-play-button {
+.rey-hero-video::-webkit-media-controls-overlay-play-button,
+.rey-hero-video::-webkit-media-controls-timeline,
+.rey-hero-video::-webkit-media-controls-current-time-display,
+.rey-hero-video::-webkit-media-controls-time-remaining-display,
+.rey-hero-video::-webkit-media-controls-mute-button,
+.rey-hero-video::-webkit-media-controls-volume-slider,
+.rey-hero-video::-webkit-media-controls-fullscreen-button {
   display: none !important;
   opacity: 0 !important;
   pointer-events: none !important;
+  -webkit-appearance: none !important;
 }
