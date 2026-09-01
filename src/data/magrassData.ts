@@ -138,7 +138,7 @@ export const clinicHome = {
       badge: 'CORPORAL',
       title: 'Peptonas & Firmeza de Glúteos',
       description: 'Tonificación y levantamiento glúteo con estimulación muscular y aparatología médica.',
-      image: '/magrass-lagree/before-after-after.webp'
+      image: '/magrass-lagree/peptonas.jpg'
     },
     {
       id: 'enzimas',
