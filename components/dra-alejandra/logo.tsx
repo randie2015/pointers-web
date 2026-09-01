@@ -7,10 +7,10 @@ type DraAlejandraLogoProps = {
   theme?: 'light' | 'dark';
 };
 
-const markShell = {
-  sm: 'h-9 w-9 rounded-md p-1.5',
-  md: 'h-10 w-10 rounded-lg p-1.5 sm:h-11 sm:w-11 sm:p-2',
-  lg: 'h-12 w-12 rounded-lg p-2 sm:h-14 sm:w-14 sm:p-2.5'
+const markSize = {
+  sm: 'h-9 w-9',
+  md: 'h-10 w-10 sm:h-11 sm:w-11',
+  lg: 'h-12 w-12 sm:h-14 sm:w-14'
 } as const;
 
 const nameStyles = {
@@ -29,35 +29,34 @@ const themeStyles = {
   light: {
     name: 'text-ale-charcoal',
     tagline: 'text-ale-gold-deep',
-    shell: 'bg-ale-ink text-white shadow-sm'
+    mark: 'text-ale-cta-dark'
   },
   dark: {
     name: 'text-white',
     tagline: 'text-ale-rose',
-    shell: 'border border-white/25 bg-white/12 text-white shadow-sm backdrop-blur-sm'
+    mark: 'text-ale-rose'
   }
 } as const;
 
 function LogoMark({ className }: { className?: string }) {
   return (
-    <svg
-      viewBox="0 0 48 56"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className={className}
-      aria-hidden
-    >
+    <svg viewBox="0 0 80 96" fill="none" xmlns="http://www.w3.org/2000/svg" className={className} aria-hidden>
       <path
-        d="M24 4C14 4 8 12 8 22c0 8 3 14 6 18 2 3 4 8 4 10 0 2 1.5 2 2 2s2 0 2-2c0-2 2-7 4-10 3-4 6-10 6-18 0-10-6-18-16-18Z"
+        d="M26 10C16 30 14 54 28 86"
         stroke="currentColor"
-        strokeWidth="2.2"
+        strokeWidth="3.5"
         strokeLinecap="round"
-        strokeLinejoin="round"
       />
       <path
-        d="M16 24c2 4 5 6 8 6s6-2 8-6"
+        d="M54 10C64 30 66 54 52 86"
         stroke="currentColor"
-        strokeWidth="2"
+        strokeWidth="3.5"
+        strokeLinecap="round"
+      />
+      <path
+        d="M30 44C36 50 44 50 50 44"
+        stroke="currentColor"
+        strokeWidth="2.5"
         strokeLinecap="round"
       />
     </svg>
@@ -69,15 +68,7 @@ export function DraAlejandraLogo({ className, size = 'md', theme = 'light' }: Dr
 
   return (
     <span className={cn('flex min-w-0 items-center gap-2.5 sm:gap-3', className)}>
-      <span
-        className={cn(
-          'inline-flex shrink-0 items-center justify-center transition-colors duration-500',
-          markShell[size],
-          palette.shell
-        )}
-      >
-        <LogoMark className="h-full w-full" />
-      </span>
+      <LogoMark className={cn('shrink-0 transition-colors duration-500', markSize[size], palette.mark)} />
 
       <span className="min-w-0 shrink font-cinzel leading-none">
         <span
