@@ -34,6 +34,10 @@ export function MagrassNavbar() {
   }, []);
 
   useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : '';
     return () => {
       document.body.style.overflow = '';
@@ -41,11 +45,16 @@ export function MagrassNavbar() {
   }, [open]);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-gray-100 bg-white/95 shadow-sm backdrop-blur-md transition-all duration-300 supports-[padding:max(0px)]:pt-[env(safe-area-inset-top)]">
+    <header
+      className={cn(
+        'sticky top-0 z-50 isolate w-full border-b bg-white transition-[border-color,box-shadow] duration-300 supports-[padding:max(0px)]:pt-[env(safe-area-inset-top)]',
+        scrolled ? 'border-gray-200 shadow-md shadow-[#1C2331]/8' : 'border-gray-100 shadow-sm'
+      )}
+    >
       <div
         className={cn(
-          'mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 transition-all duration-300 sm:gap-4 sm:px-6 lg:px-8',
-          scrolled ? 'h-14 sm:h-16' : 'h-16 sm:h-20'
+          'mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 transition-all duration-300 sm:px-6 lg:px-8',
+          scrolled ? 'h-16' : 'h-20'
         )}
       >
         <Link href={MAGRASS_BASE} className="group flex shrink-0 items-center">
@@ -88,8 +97,8 @@ export function MagrassNavbar() {
       </div>
 
       {open ? (
-        <div className="border-t border-gray-100 bg-white/95 px-4 py-4 backdrop-blur-md sm:px-6 lg:hidden">
-          <nav className="flex flex-col gap-2">
+        <div className="max-h-[calc(100dvh-5rem)] overflow-y-auto border-t border-gray-100 bg-white px-4 py-4 sm:px-6 lg:hidden">
+          <nav className="flex flex-col gap-1">
             {clinicNav.map((item) => {
               const active = isMagrassPath(pathname, item.href);
               return (
@@ -98,8 +107,10 @@ export function MagrassNavbar() {
                   href={item.href}
                   onClick={() => setOpen(false)}
                   className={cn(
-                    'rounded-xl px-3 py-3 text-sm font-medium text-[#1C2331] transition-colors duration-300',
-                    active ? 'bg-gray-50 text-[#C5A880]' : 'hover:bg-gray-50 hover:text-[#C5A880]'
+                    'relative rounded-xl px-3 py-3 text-sm font-medium text-[#1C2331] transition-colors duration-300 after:absolute after:bottom-2 after:left-3 after:h-0.5 after:w-0 after:origin-center after:rounded-full after:bg-[#C5A880] after:transition-all after:duration-300',
+                    active
+                      ? 'bg-gray-50 text-[#C5A880] after:w-8'
+                      : 'hover:bg-gray-50 hover:text-[#C5A880] hover:after:w-8'
                   )}
                 >
                   {item.label}
@@ -111,7 +122,7 @@ export function MagrassNavbar() {
               label="Agendar Cita"
               variant="nav"
               fullWidth
-              className="mt-1 !min-h-0 h-10 bg-[#1C2331] text-xs text-white hover:bg-[#1C2331]/90"
+              className="mt-2 !min-h-0 h-10 bg-[#1C2331] text-xs text-white hover:bg-[#1C2331]/90"
             />
           </nav>
         </div>
