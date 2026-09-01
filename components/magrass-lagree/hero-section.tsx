@@ -1,47 +1,47 @@
 'use client';
 
-import Link from 'next/link';
-import { clinicHome, MAGRASS_BASE } from '@/src/data/magrassData';
-import { buildWhatsAppUrl } from '@/lib/magrass-lagree/whatsapp';
-import { MagrassCtaButton } from '@/components/magrass-lagree/cta-button';
+import { clinicHome } from '@/src/data/magrassData';
 import { MagrassReveal } from '@/components/magrass-lagree/motion';
 
 export function MagrassHeroSection() {
   const { hero } = clinicHome;
-  const whatsappUrl = buildWhatsAppUrl('home');
 
   return (
-    <section className="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-24">
+    <section className="relative min-h-[72vh] overflow-hidden bg-[#192031] sm:min-h-[80vh] lg:min-h-[88vh]">
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        preload="auto"
+        className="absolute inset-0 h-full w-full object-cover"
+        aria-hidden
+      >
+        <source src="/magrass-lagree/hero.mp4" type="video/mp4" />
+      </video>
+
       <div
-        className="absolute inset-0 bg-[url('/magrass-lagree/hero-poster.webp')] bg-cover bg-center opacity-[0.06] transition-transform duration-700"
+        className="absolute inset-0 bg-gradient-to-r from-[#192031]/85 via-[#192031]/55 to-[#192031]/25"
+        aria-hidden
+      />
+      <div
+        className="absolute inset-0 bg-gradient-to-t from-[#192031]/70 via-transparent to-[#192031]/20"
         aria-hidden
       />
 
-      <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-12">
+      <div className="relative z-10 mx-auto flex min-h-[72vh] max-w-7xl items-center px-6 py-16 sm:min-h-[80vh] sm:py-20 md:px-12 lg:min-h-[88vh] lg:py-24">
         <MagrassReveal className="max-w-3xl">
-          <span className="inline-flex rounded-full border border-[#C5A57D]/70 bg-[#FAFAFA] px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-[#197876] sm:px-4 sm:text-xs">
+          <span className="inline-flex rounded-full border border-[#C5A57D]/60 bg-[#192031]/40 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-[#C5A57D] backdrop-blur-sm sm:px-4 sm:text-xs">
             {hero.badge}
           </span>
 
-          <h1 className="mt-5 font-playfair text-[1.85rem] font-semibold leading-[1.12] text-[#192031] sm:text-4xl lg:text-5xl xl:text-[3.15rem]">
+          <h1 className="mt-5 font-playfair text-[1.85rem] font-semibold leading-[1.12] text-white sm:text-4xl lg:text-5xl xl:text-[3.15rem]">
             {hero.title}
           </h1>
 
-          <p className="mt-4 max-w-2xl text-sm font-medium leading-relaxed text-mag-muted sm:mt-5 sm:text-base lg:text-lg">
+          <p className="mt-4 max-w-2xl text-sm font-medium leading-relaxed text-white/80 sm:mt-5 sm:text-base lg:text-lg">
             {hero.subtitle}
           </p>
-
-          <div className="mt-7 flex w-full max-w-lg flex-col gap-3 sm:mt-8 sm:flex-row">
-            <MagrassCtaButton href={whatsappUrl} label={hero.primaryCta} className="sm:flex-1" />
-            <MagrassCtaButton
-              href={`${MAGRASS_BASE}/tratamientos`}
-              label={hero.secondaryCta}
-              variant="secondary"
-              external={false}
-              className="sm:flex-1"
-              shimmer={false}
-            />
-          </div>
         </MagrassReveal>
       </div>
     </section>
