@@ -146,7 +146,7 @@ export const clinicHome = {
       badge: 'CORPORAL',
       title: 'Enzimas PB Serum & Reductores',
       description: 'Tratamiento focalizado para adiposidad rebelde, flacidez y celulitis con acción tensora.',
-      image: '/magrass-lagree/before-after-before.webp'
+      image: '/magrass-lagree/enzimas.jpg'
     }
   ] satisfies readonly FeaturedTreatment[],
   whyChoose: {
