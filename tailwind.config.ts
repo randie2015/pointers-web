@@ -28,6 +28,15 @@ export default {
           primary: '#1995AD',
           ink: '#1E293B',
           dark: '#0F172A'
+        },
+        ortho: {
+          base: '#F8FAFC',
+          surface: '#FFFFFF',
+          neutral: '#CBD5E1',
+          primary: '#0284C7',
+          gold: '#D4A373',
+          ink: '#334155',
+          dark: '#0F2137'
         }
       },
       letterSpacing: { tightest: '-0.04em' },

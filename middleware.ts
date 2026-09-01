@@ -52,6 +52,11 @@ export default async function middleware(request: NextRequest) {
     return NextResponse.rewrite(new URL(localizedReyDentalMatch[2], request.url));
   }
 
+  const localizedOrthozentMatch = pathname.match(/^\/(es|en)(\/orthozent(?:\/.*)?)$/);
+  if (localizedOrthozentMatch) {
+    return NextResponse.rewrite(new URL(localizedOrthozentMatch[2], request.url));
+  }
+
   const localeAdminMatch = pathname.match(/^\/(es|en)(\/admin(?:\/.*)?)$/);
   if (localeAdminMatch) {
     return NextResponse.redirect(new URL(localeAdminMatch[2], request.url));
@@ -88,6 +93,10 @@ export default async function middleware(request: NextRequest) {
   }
 
   if (pathname.startsWith('/rey-dental')) {
+    return NextResponse.next();
+  }
+
+  if (pathname.startsWith('/orthozent')) {
     return NextResponse.next();
   }
 
