@@ -8,11 +8,11 @@ export function MagrassDiagnosis360Section() {
   const whatsappUrl = buildWhatsAppUrl('diagnosis360');
 
   return (
-    <section className="bg-mag-navy py-14 sm:py-16 lg:py-20">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section className="bg-[#192031] py-14 sm:py-16 lg:py-20">
+      <div className="mx-auto max-w-7xl px-6 md:px-12">
         <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
           <div>
-            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-mag-sand sm:text-xs">
+            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#C5A57D] sm:text-xs">
               Método exclusivo
             </p>
             <h2 className="mt-2 font-playfair text-2xl font-semibold text-white sm:text-3xl lg:text-4xl">
@@ -30,11 +30,11 @@ export function MagrassDiagnosis360Section() {
                 key={step}
                 className="flex gap-4 rounded-2xl border border-white/10 bg-white/5 p-4 sm:p-5"
               >
-                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-mag-sand text-xs font-bold text-mag-navy">
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#C5A57D] text-xs font-bold text-[#192031]">
                   {String(index + 1).padStart(2, '0')}
                 </span>
                 <div className="flex gap-3">
-                  <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-mag-jade" />
+                  <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-[#197876]" />
                   <p className="text-sm font-medium leading-relaxed text-white/90 sm:text-base">{step}</p>
                 </div>
               </li>

@@ -36,8 +36,7 @@ export const clinicNav = [
 
 export const clinicWhatsApp = {
   homeDiagnosis: 'Hola, deseo agendar un diagnóstico personalizado en Magrass LaGreé.',
-  diagnosis360:
-    'Hola, deseo agendar un diagnóstico personalizado en Magrass LaGreé.',
+  diagnosis360: 'Hola, deseo agendar mi evaluación médica personalizada',
   treatment: (name: string) =>
     `Hola, deseo información y evaluación para el tratamiento de ${name}.`,
   clinicalCase:
@@ -98,6 +97,56 @@ export const clinicHome = {
     after: '/magrass-lagree/before-after-after.webp',
     width: 1200,
     height: 700
+  },
+  featuredTreatments: [
+    {
+      id: 'facial',
+      category: 'Facial',
+      title: 'Armonización Facial & Ácido Hialurónico',
+      description: 'Perfilado natural de labios, mentón y ángulo mandibular con simetría clínica.'
+    },
+    {
+      id: 'corporal',
+      category: 'Corporal',
+      title: 'Criolipólisis 360°',
+      description: 'Reducción no invasiva de grasa localizada con frío controlado y sin recuperación.'
+    },
+    {
+      id: 'antiage',
+      category: 'Antiage',
+      title: 'Bioestimuladores de Colágeno',
+      description: 'Rejuvenecimiento progresivo con firmeza, luminosidad y calidad dérmica mejorada.'
+    },
+    {
+      id: 'skin',
+      category: 'Facial',
+      title: 'Limpieza Médica & Hydrafacial',
+      description: 'Desintoxicación profunda, hidratación intensiva y glow inmediato con enfoque clínico.'
+    }
+  ],
+  whyChoose: {
+    title: 'Por qué Elegir Magrass LaGreé',
+    subtitle:
+      'Medicina estética con rigor clínico, protocolos certificados y un entorno seguro para cada paciente.',
+    points: [
+      {
+        title: 'Protocolos médicos certificados',
+        description: 'Técnicas no invasivas supervisadas por especialistas con criterio clínico y ético.'
+      },
+      {
+        title: 'Seguridad del paciente primero',
+        description: 'Evaluación previa, indicaciones personalizadas y seguimiento en cada etapa del tratamiento.'
+      },
+      {
+        title: 'Resultados naturales y medibles',
+        description: 'Planes terapéuticos realistas con evolución documentada y expectativas alineadas.'
+      }
+    ]
+  },
+  locationPreview: {
+    title: 'Horarios & Sede',
+    subtitle: 'Atención médica personalizada en Arequipa con agenda previa.',
+    cta: 'Ver ubicación completa'
   }
 } as const;
 

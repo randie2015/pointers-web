@@ -1,0 +1,202 @@
+import Link from 'next/link';
+import dynamic from 'next/dynamic';
+import { clinicContact, clinicHome, MAGRASS_BASE } from '@/src/data/magrassData';
+import { buildPhoneUrl, buildWhatsAppUrl } from '@/lib/magrass-lagree/whatsapp';
+import { MagrassCtaButton } from '@/components/magrass-lagree/cta-button';
+import { Award, Clock, MapPin, Phone, ShieldCheck } from 'lucide-react';
+
+const MagrassBeforeAfterSlider = dynamic(
+  () =>
+    import('@/components/magrass-lagree/before-after-slider').then((m) => ({
+      default: m.MagrassBeforeAfterSlider
+    })),
+  {
+    loading: () => (
+      <div className="mx-auto h-56 w-full max-w-5xl animate-pulse rounded-3xl bg-mag-border sm:h-72" />
+    )
+  }
+);
+
+export function MagrassFeaturedTreatmentsSection() {
+  const { featuredTreatments } = clinicHome;
+
+  return (
+    <section className="bg-white py-14 sm:py-16 lg:py-20">
+      <div className="mx-auto max-w-7xl px-6 md:px-12">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#197876] sm:text-xs">
+              Tratamientos destacados
+            </p>
+            <h2 className="mt-2 font-playfair text-2xl font-semibold text-[#192031] sm:text-3xl">
+              Protocolos faciales, corporales y antiage
+            </h2>
+          </div>
+          <Link
+            href={`${MAGRASS_BASE}/tratamientos`}
+            className="text-sm font-semibold text-[#197876] hover:text-[#192031]"
+          >
+            Ver todos los tratamientos →
+          </Link>
+        </div>
+
+        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
+          {featuredTreatments.map((treatment) => (
+            <article
+              key={treatment.id}
+              className="flex flex-col rounded-2xl border border-mag-border bg-[#FAFAFA] p-5"
+            >
+              <span className="text-[10px] font-bold uppercase tracking-[0.14em] text-[#C5A57D]">
+                {treatment.category}
+              </span>
+              <h3 className="mt-2 font-playfair text-base font-semibold text-[#192031] sm:text-lg">
+                {treatment.title}
+              </h3>
+              <p className="mt-2 flex-1 text-sm leading-relaxed text-mag-muted">{treatment.description}</p>
+              <MagrassCtaButton
+                href={buildWhatsAppUrl({ type: 'treatment', name: treatment.title })}
+                label="Consultar por WhatsApp"
+                variant="secondary"
+                className="mt-4 !text-xs"
+              />
+            </article>
+          ))}
+        </div>
+
+        <div className="mt-8 text-center">
+          <MagrassCtaButton
+            href={`${MAGRASS_BASE}/tratamientos`}
+            label="Explorar catálogo completo"
+            variant="secondary"
+            external={false}
+          />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function MagrassWhyChooseSection() {
+  const { whyChoose } = clinicHome;
+  const icons = [ShieldCheck, Award, ShieldCheck] as const;
+
+  return (
+    <section className="bg-[#FAFAFA] py-14 sm:py-16 lg:py-20">
+      <div className="mx-auto max-w-7xl px-6 md:px-12">
+        <div className="max-w-2xl">
+          <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#197876] sm:text-xs">
+            Autoridad médica
+          </p>
+          <h2 className="mt-2 font-playfair text-2xl font-semibold text-[#192031] sm:text-3xl lg:text-4xl">
+            {whyChoose.title}
+          </h2>
+          <p className="mt-3 text-sm leading-relaxed text-mag-muted sm:text-base">{whyChoose.subtitle}</p>
+        </div>
+
+        <div className="mt-8 grid gap-4 sm:mt-10 sm:grid-cols-3 sm:gap-6">
+          {whyChoose.points.map((point, index) => {
+            const Icon = icons[index] ?? ShieldCheck;
+            return (
+              <article key={point.title} className="rounded-2xl border border-mag-border bg-white p-5 sm:p-6">
+                <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#C5A57D]/25 text-[#197876]">
+                  <Icon className="h-5 w-5" />
+                </span>
+                <h3 className="mt-4 font-playfair text-lg font-semibold text-[#192031]">{point.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-mag-muted">{point.description}</p>
+              </article>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function MagrassCasesPreviewSection() {
+  return (
+    <section className="bg-white py-14 sm:py-16 lg:py-20">
+      <div className="mx-auto max-w-7xl px-6 md:px-12">
+        <div className="text-center">
+          <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#197876] sm:text-xs">
+            Resultados reales
+          </p>
+          <h2 className="mt-2 font-playfair text-2xl font-semibold text-[#192031] sm:text-3xl">
+            Casos clínicos documentados
+          </h2>
+          <p className="mx-auto mt-3 max-w-2xl text-sm text-mag-muted sm:text-base">
+            Transformaciones reales bajo seguimiento médico estricto y protocolos personalizados.
+          </p>
+        </div>
+
+        <MagrassBeforeAfterSlider />
+
+        <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <MagrassCtaButton
+            href={`${MAGRASS_BASE}/casos-clinicos`}
+            label="Ver casos clínicos"
+            variant="secondary"
+            external={false}
+          />
+          <MagrassCtaButton href={buildWhatsAppUrl('cases')} label="Evaluar mi caso por WhatsApp" />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function MagrassLocationPreviewSection() {
+  const { locationPreview } = clinicHome;
+
+  return (
+    <section className="bg-[#FAFAFA] py-14 sm:py-16 lg:py-20">
+      <div className="mx-auto max-w-7xl px-6 md:px-12">
+        <div className="mx-auto max-w-3xl rounded-2xl border border-mag-border bg-white p-6 sm:p-8">
+          <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#197876] sm:text-xs">
+            Sede Arequipa
+          </p>
+          <h2 className="mt-2 font-playfair text-2xl font-semibold text-[#192031] sm:text-3xl">
+            {locationPreview.title}
+          </h2>
+          <p className="mt-2 text-sm text-mag-muted">{locationPreview.subtitle}</p>
+
+          <div className="mt-6 space-y-4">
+            <div className="flex gap-3 text-sm text-mag-muted">
+              <Clock className="mt-0.5 h-5 w-5 shrink-0 text-[#197876]" />
+              <div>
+                <p className="font-medium text-[#192031]">{clinicContact.schedule.weekdays}</p>
+                <p>{clinicContact.schedule.saturday}</p>
+              </div>
+            </div>
+            <div className="flex gap-3 text-sm">
+              <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-[#197876]" />
+              <p className="text-mag-muted">
+                {clinicContact.address} · {clinicContact.city}
+              </p>
+            </div>
+            <div className="flex gap-3 text-sm">
+              <Phone className="mt-0.5 h-5 w-5 shrink-0 text-[#197876]" />
+              <a href={buildPhoneUrl()} className="font-semibold text-[#192031] hover:text-[#197876]">
+                {clinicContact.phoneDisplay}
+              </a>
+            </div>
+          </div>
+
+          <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+            <MagrassCtaButton
+              href={`${MAGRASS_BASE}/ubicacion`}
+              label={locationPreview.cta}
+              variant="secondary"
+              external={false}
+              className="sm:flex-1"
+            />
+            <MagrassCtaButton
+              href={buildWhatsAppUrl('location')}
+              label="Solicitar cita en sede"
+              className="sm:flex-1"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
