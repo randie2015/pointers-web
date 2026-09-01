@@ -16,7 +16,7 @@ export const clinicBrand = {
     'Aviso de Demostración Privada: Entorno interactivo temporal desarrollado por Pointers (pointers.marketing) con fines exclusivos de evaluación técnica para Rey Dental. Plataforma no indexada de acceso restringido. Derechos reservados a sus respectivos titulares.',
   pointersUrl: 'https://pointers.marketing',
   logo: '/rey-dental/logo.png',
-  doctorPhoto: '/rey-dental/doctor.png',
+  doctorPhoto: '/rey-dental/doctor.jpg',
   heroVideo: '/rey-dental/hero-video.mp4'
 } as const;
 
