@@ -293,10 +293,9 @@ export const keyTreatments: MagrassTreatment[] = [
     title: 'Peelings Médicos & Dermapen',
     description:
       'Renovación celular controlada para mejorar textura, manchas y signos tempranos de envejecimiento.',
-    expectedResults: 'Tono más uniforme, textura refinada y aspecto renovado en pocas sesiones.'
+    expectedResults: 'Tono más uniforme, textura refinada y aspecto renovado en pocas sesiones.',
+    image: '/magrass-lagree/peelings.jpg'
   },
-  {
-    id: 'iluminacion',
     anchor: 'iluminacion',
     category: 'rejuvenecimiento',
     title: 'Iluminación & Uniformidad de Tono',
