@@ -55,6 +55,17 @@ export function MagrassFooter() {
       <div className={cn('border-t border-white/10 py-5', magrassContainer)}>
         <p className="text-center text-xs leading-relaxed text-white/50">{clinicBrand.disclaimer}</p>
       </div>
+
+      <div className="border-t border-white/10 bg-[#1C2331]/10 py-4 px-6">
+        <div className="mx-auto max-w-4xl text-center text-xs text-gray-500">
+          <p className="leading-relaxed">
+            Aviso de Demostración Privada (72 horas): Entorno interactivo temporal desarrollado por Pointers
+            (pointers.marketing) con fines exclusivos de evaluación técnica y comercial para Magrass LaGreé. Plataforma
+            no indexada en motores de búsqueda y de acceso restringido. Derechos reservados a sus respectivos titulares.
+          </p>
+          <p className="mt-3 text-gray-600">© 2026 Magrass LaGreé. Demo privada · pointers.marketing</p>
+        </div>
+      </div>
     </footer>
   );
 }
