@@ -5,11 +5,11 @@ import { ClinicClosingCtaSection } from '@/components/clinic-demo/closing-cta-se
 import { ClinicCtaButton } from '@/components/clinic-demo/cta-button';
 import { ClinicTreatmentMedia } from '@/components/clinic-demo/treatment-media';
 import { buildWhatsAppUrl } from '@/lib/clinic-demo/whatsapp';
-import { getResolvedDemo, isDemoSlug } from '@/lib/clinic-demo/registry';
+import { getResolvedDemo, isDentistDemoSlug } from '@/lib/clinic-demo/registry';
 
 export default async function ClinicDemoServiciosPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  if (!isDemoSlug(slug)) notFound();
+  if (!isDentistDemoSlug(slug)) notFound();
 
   const demo = getResolvedDemo(slug);
   const whatsappUrl = buildWhatsAppUrl(demo);

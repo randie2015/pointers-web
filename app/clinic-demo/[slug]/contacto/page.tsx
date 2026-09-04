@@ -3,11 +3,11 @@ import { notFound } from 'next/navigation';
 import { ClinicPageHero } from '@/components/clinic-demo/page-hero';
 import { ClinicCtaButton } from '@/components/clinic-demo/cta-button';
 import { buildPhoneUrl, buildWhatsAppUrl } from '@/lib/clinic-demo/whatsapp';
-import { getResolvedDemo, isDemoSlug } from '@/lib/clinic-demo/registry';
+import { getResolvedDemo, isDentistDemoSlug } from '@/lib/clinic-demo/registry';
 
 export default async function ClinicDemoContactoPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  if (!isDemoSlug(slug)) notFound();
+  if (!isDentistDemoSlug(slug)) notFound();
 
   const demo = getResolvedDemo(slug);
   const whatsappUrl = buildWhatsAppUrl(demo);

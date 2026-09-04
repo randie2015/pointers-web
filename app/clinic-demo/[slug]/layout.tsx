@@ -6,7 +6,7 @@ import { ClinicExpiryGuard } from '@/components/clinic-demo/expiry-guard';
 import { ClinicNavbar } from '@/components/clinic-demo/navbar';
 import { ClinicFooter } from '@/components/clinic-demo/footer';
 import { DemoProvider } from '@/components/clinic-demo/demo-provider';
-import { DEMO_SLUGS, getResolvedDemo, isDemoSlug } from '@/lib/clinic-demo/registry';
+import { DENTIST_SLUGS, getResolvedDemo, isDentistDemoSlug } from '@/lib/clinic-demo/registry';
 import { siteIconMetadata } from '@/lib/site-icons';
 import '../../globals.css';
 
@@ -19,7 +19,7 @@ const cinzel = Cinzel({
 });
 
 export function generateStaticParams() {
-  return DEMO_SLUGS.map((slug) => ({ slug }));
+  return DENTIST_SLUGS.map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({
@@ -28,7 +28,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  if (!isDemoSlug(slug)) return {};
+  if (!isDentistDemoSlug(slug)) return {};
 
   const demo = getResolvedDemo(slug);
   return {
@@ -53,7 +53,7 @@ export default async function ClinicDemoLayout({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  if (!isDemoSlug(slug)) notFound();
+  if (!isDentistDemoSlug(slug)) notFound();
 
   const demo = getResolvedDemo(slug);
 

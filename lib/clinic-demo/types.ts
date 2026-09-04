@@ -1,6 +1,8 @@
-export type DemoPreset = 'dentist';
+export type DemoPreset = 'dentist' | 'aesthetic';
 
 export type DemoServiceIcon = 'align' | 'implant' | 'whitening' | 'general';
+
+export type AestheticTreatmentCategory = 'facial' | 'corporal' | 'rejuvenecimiento';
 
 export type DemoServiceInput = {
   title: string;
@@ -10,6 +12,11 @@ export type DemoServiceInput = {
   icon?: DemoServiceIcon;
   image?: string;
   imageAlt?: string;
+  /** Aesthetic: facial | corporal | rejuvenecimiento */
+  category?: AestheticTreatmentCategory;
+  badge?: string;
+  expectedResults?: string;
+  anchor?: string;
 };
 
 export type DemoColors = {
@@ -35,14 +42,17 @@ export type DemoConfig = {
   address?: string;
   email?: string;
   mapsUrl?: string;
+  mapsEmbedUrl?: string;
   phone?: string;
   phoneDisplay?: string;
   whatsapp?: string;
+  instagramUrl?: string;
   assets?: {
     doctorPhoto?: string;
     heroVideo?: string;
     heroVideoWebm?: string;
     heroPoster?: string;
+    logoMark?: string;
     beforeAfter?: {
       before: string;
       after: string;
@@ -60,6 +70,7 @@ export type DemoConfig = {
       secondaryCta?: string;
       ratingStars?: string;
       ratingText?: string;
+      trustBadges?: string[];
     };
     stats?: Array<{ value: string; label: string }>;
     cases?: { title?: string; subtitle?: string };
@@ -85,6 +96,85 @@ export type DemoConfig = {
     };
     whatsappMessage?: string;
     disclaimer?: string;
+    /** Aesthetic home / pages */
+    valuePillars?: Array<{ title: string; description: string }>;
+    diagnosis360?: {
+      title?: string;
+      subtitle?: string;
+      cta?: string;
+      steps?: string[];
+    };
+    whyChoose?: {
+      title?: string;
+      subtitle?: string;
+      points?: Array<{ title: string; description: string }>;
+    };
+    locationPreview?: { title?: string; subtitle?: string; cta?: string };
+    ctaZone?: { eyebrow?: string; title?: string; casesCta?: string; whatsappCta?: string };
+    testimonials?: {
+      eyebrow?: string;
+      title?: string;
+      items?: Array<{
+        id: string;
+        treatment: string;
+        quote: string;
+        patientName: string;
+        patientMeta: string;
+      }>;
+    };
+    closing?: { title?: string; subtitle?: string; cta?: string };
+    treatmentsPage?: {
+      title?: string;
+      subtitle?: string;
+      categories?: Array<{ id: AestheticTreatmentCategory; label: string }>;
+    };
+    /** Full aesthetic treatment catalog (optional; defaults from services) */
+    treatments?: Array<{
+      id: string;
+      anchor: string;
+      title: string;
+      description: string;
+      expectedResults: string;
+      category: AestheticTreatmentCategory;
+      image?: string;
+    }>;
+    featuredTreatments?: Array<{
+      id: string;
+      anchor: string;
+      badge: string;
+      title: string;
+      description: string;
+      image: string;
+    }>;
+    clinicalCases?: Array<{
+      id: string;
+      title: string;
+      approach: string;
+      duration: string;
+      summary: string;
+    }>;
+    casesPage?: { title?: string; subtitle?: string; cta?: string };
+    specialists?: Array<{
+      id: string;
+      name: string;
+      role: string;
+      specialty: string;
+      badge: string;
+      image: string;
+    }>;
+    specialistsPage?: { title?: string; subtitle?: string; cta?: string };
+    locationPage?: {
+      title?: string;
+      subtitle?: string;
+      ctaMaps?: string;
+      ctaBook?: string;
+    };
+    schedule?: {
+      weekdays?: string;
+      saturday?: string;
+      sunday?: string;
+    };
+    footerBlurb?: string;
   };
 };
 

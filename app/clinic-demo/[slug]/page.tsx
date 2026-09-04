@@ -6,11 +6,11 @@ import { ClinicTreatmentsSection } from '@/components/clinic-demo/treatments-sec
 import { ClinicProcessSection } from '@/components/clinic-demo/process-section';
 import { ClinicLocationSection } from '@/components/clinic-demo/location-section';
 import { ClinicClosingCtaSection } from '@/components/clinic-demo/closing-cta-section';
-import { getResolvedDemo, isDemoSlug } from '@/lib/clinic-demo/registry';
+import { getResolvedDemo, isDentistDemoSlug } from '@/lib/clinic-demo/registry';
 
 export default async function ClinicDemoHomePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  if (!isDemoSlug(slug)) notFound();
+  if (!isDentistDemoSlug(slug)) notFound();
 
   const demo = getResolvedDemo(slug);
 

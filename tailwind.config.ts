@@ -36,7 +36,10 @@ export default {
           dark: 'var(--demo-dark)',
           neutral: 'var(--demo-neutral)',
           surface: 'var(--demo-surface)',
-          badge: 'var(--demo-badge)'
+          badge: 'var(--demo-badge)',
+          jade: 'var(--demo-jade)',
+          muted: 'var(--demo-muted)',
+          border: 'var(--demo-border)'
         },
         mag: {
           sand: '#C5A57D',

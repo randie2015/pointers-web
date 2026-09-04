@@ -3,13 +3,13 @@ import { notFound } from 'next/navigation';
 import { ClinicPageHero } from '@/components/clinic-demo/page-hero';
 import { ClinicClosingCtaSection } from '@/components/clinic-demo/closing-cta-section';
 import { ClinicDoctorPhoto } from '@/components/clinic-demo/doctor-photo';
-import { getResolvedDemo, isDemoSlug } from '@/lib/clinic-demo/registry';
+import { getResolvedDemo, isDentistDemoSlug } from '@/lib/clinic-demo/registry';
 
 const valueIcons = [Shield, Heart, Cpu, Users] as const;
 
 export default async function ClinicDemoNosotrosPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  if (!isDemoSlug(slug)) notFound();
+  if (!isDentistDemoSlug(slug)) notFound();
 
   const demo = getResolvedDemo(slug);
   const { hero, values, doctorBio } = demo.about;
