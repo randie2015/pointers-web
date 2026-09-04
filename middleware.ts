@@ -1,6 +1,7 @@
 import createMiddleware from 'next-intl/middleware';
 import { NextRequest, NextResponse } from 'next/server';
 import { routing } from './i18n/routing';
+import { DEMO_SLUGS, isDemoSlug } from './lib/clinic-demo/demo-catalog';
 
 const SESSION_COOKIE = 'admin_session';
 
@@ -44,22 +45,21 @@ async function verifyAdminSession(token: string | undefined) {
 
 const intlMiddleware = createMiddleware(routing);
 
+function rewriteClinicDemo(request: NextRequest, slug: string, rest = '') {
+  return NextResponse.rewrite(new URL(`/clinic-demo/${slug}${rest}`, request.url));
+}
+
 export default async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  const localizedReyDentalMatch = pathname.match(/^\/(es|en)(\/rey-dental(?:\/.*)?)$/);
-  if (localizedReyDentalMatch) {
-    return NextResponse.rewrite(new URL(localizedReyDentalMatch[2], request.url));
+  const localizedDemoMatch = pathname.match(/^\/(es|en)\/([^/]+)(\/.*)?$/);
+  if (localizedDemoMatch && isDemoSlug(localizedDemoMatch[2])) {
+    return rewriteClinicDemo(request, localizedDemoMatch[2], localizedDemoMatch[3] ?? '');
   }
 
-  const localizedOrthozentMatch = pathname.match(/^\/(es|en)(\/orthozent(?:\/.*)?)$/);
-  if (localizedOrthozentMatch) {
-    return NextResponse.rewrite(new URL(localizedOrthozentMatch[2], request.url));
-  }
-
-  const localizedAlejandraMatch = pathname.match(/^\/(es|en)(\/alejandracusirramos(?:\/.*)?)$/);
-  if (localizedAlejandraMatch) {
-    return NextResponse.rewrite(new URL(localizedAlejandraMatch[2], request.url));
+  const demoMatch = pathname.match(/^\/([^/]+)(\/.*)?$/);
+  if (demoMatch && isDemoSlug(demoMatch[1])) {
+    return rewriteClinicDemo(request, demoMatch[1], demoMatch[2] ?? '');
   }
 
   const localizedMagrassMatch = pathname.match(/^\/(es|en)(\/magrass-lagree(?:\/.*)?)$/);
@@ -102,15 +102,11 @@ export default async function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  if (pathname.startsWith('/rey-dental')) {
+  if (pathname.startsWith('/clinic-demo')) {
     return NextResponse.next();
   }
 
-  if (pathname.startsWith('/orthozent')) {
-    return NextResponse.next();
-  }
-
-  if (pathname.startsWith('/alejandracusirramos')) {
+  if (DEMO_SLUGS.some((slug) => pathname === `/${slug}` || pathname.startsWith(`/${slug}/`))) {
     return NextResponse.next();
   }
 

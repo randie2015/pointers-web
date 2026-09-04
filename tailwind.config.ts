@@ -1,7 +1,7 @@
 import type { Config } from 'tailwindcss';
 
 export default {
-  content: ['./app/**/*.{ts,tsx}', './components/**/*.{ts,tsx}', './src/**/*.{ts,tsx}'],
+  content: ['./app/**/*.{ts,tsx}', './components/**/*.{ts,tsx}', './src/**/*.{ts,tsx}', './demos/**/*.{ts,tsx}', './lib/**/*.{ts,tsx}'],
   theme: {
     extend: {
       fontFamily: {
@@ -24,36 +24,19 @@ export default {
         },
         teal: 'hsl(var(--teal))',
         purple: 'hsl(var(--purple))',
-        rey: {
-          base: '#F1F1F2',
-          neutral: '#BCBABE',
-          accent: '#A1D6E2',
-          primary: '#1995AD',
-          ink: '#1E293B',
-          dark: '#0F172A'
-        },
-        ortho: {
-          base: '#F8FAFC',
-          surface: '#FFFFFF',
-          neutral: '#CBD5E1',
-          primary: '#0284C7',
-          gold: '#D4A373',
-          ink: '#334155',
-          dark: '#0F2137'
-        },
-        ale: {
-          ivory: '#FAF7F5',
-          rose: '#E8B4B8',
-          cta: '#C97D7D',
-          'cta-dark': '#A85353',
-          gold: '#C5A059',
-          'gold-deep': '#B4833E',
-          ink: '#2E2A2B',
-          charcoal: '#1F1B1D',
-          'badge-text': '#833A3A',
-          neutral: '#E8DFD8',
-          surface: '#FFFFFF',
-          dark: '#2E2A2B'
+        demo: {
+          primary: 'var(--demo-primary)',
+          'primary-dark': 'var(--demo-primary-dark)',
+          accent: 'var(--demo-accent)',
+          'accent-deep': 'var(--demo-accent-deep)',
+          soft: 'var(--demo-soft)',
+          base: 'var(--demo-base)',
+          ink: 'var(--demo-ink)',
+          charcoal: 'var(--demo-charcoal)',
+          dark: 'var(--demo-dark)',
+          neutral: 'var(--demo-neutral)',
+          surface: 'var(--demo-surface)',
+          badge: 'var(--demo-badge)'
         },
         mag: {
           sand: '#C5A57D',

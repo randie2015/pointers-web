@@ -188,8 +188,7 @@ body {
   }
 }
 
-/* Rey Dental hero: background video without native controls */
-.rey-hero-video {
+.demo-hero-video {
   appearance: none;
   -webkit-appearance: none;
   object-fit: cover;
@@ -198,79 +197,24 @@ body {
   user-select: none;
 }
 
-.rey-hero-video::-webkit-media-controls,
-.rey-hero-video::-webkit-media-controls-enclosure,
-.rey-hero-video::-webkit-media-controls-panel,
-.rey-hero-video::-webkit-media-controls-play-button,
-.rey-hero-video::-webkit-media-controls-start-playback-button,
-.rey-hero-video::-webkit-media-controls-overlay-play-button,
-.rey-hero-video::-webkit-media-controls-timeline,
-.rey-hero-video::-webkit-media-controls-current-time-display,
-.rey-hero-video::-webkit-media-controls-time-remaining-display,
-.rey-hero-video::-webkit-media-controls-mute-button,
-.rey-hero-video::-webkit-media-controls-volume-slider,
-.rey-hero-video::-webkit-media-controls-fullscreen-button {
+.demo-hero-video::-webkit-media-controls,
+.demo-hero-video::-webkit-media-controls-enclosure,
+.demo-hero-video::-webkit-media-controls-panel,
+.demo-hero-video::-webkit-media-controls-play-button,
+.demo-hero-video::-webkit-media-controls-start-playback-button,
+.demo-hero-video::-webkit-media-controls-overlay-play-button,
+.demo-hero-video::-webkit-media-controls-timeline,
+.demo-hero-video::-webkit-media-controls-current-time-display,
+.demo-hero-video::-webkit-media-controls-time-remaining-display,
+.demo-hero-video::-webkit-media-controls-mute-button,
+.demo-hero-video::-webkit-media-controls-volume-slider,
+.demo-hero-video::-webkit-media-controls-fullscreen-button {
   display: none !important;
   opacity: 0 !important;
   pointer-events: none !important;
   -webkit-appearance: none !important;
 }
 
-/* Orthozent hero: background video without native controls */
-.ortho-hero-video {
-  appearance: none;
-  -webkit-appearance: none;
-  object-fit: cover;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  user-select: none;
-}
-
-.ortho-hero-video::-webkit-media-controls,
-.ortho-hero-video::-webkit-media-controls-enclosure,
-.ortho-hero-video::-webkit-media-controls-panel,
-.ortho-hero-video::-webkit-media-controls-play-button,
-.ortho-hero-video::-webkit-media-controls-start-playback-button,
-.ortho-hero-video::-webkit-media-controls-overlay-play-button,
-.ortho-hero-video::-webkit-media-controls-timeline,
-.ortho-hero-video::-webkit-media-controls-current-time-display,
-.ortho-hero-video::-webkit-media-controls-time-remaining-display,
-.ortho-hero-video::-webkit-media-controls-mute-button,
-.ortho-hero-video::-webkit-media-controls-volume-slider,
-.ortho-hero-video::-webkit-media-controls-fullscreen-button {
-  display: none !important;
-  opacity: 0 !important;
-  pointer-events: none !important;
-  -webkit-appearance: none !important;
-}
-
-.ale-hero-video {
-  appearance: none;
-  -webkit-appearance: none;
-  object-fit: cover;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  user-select: none;
-}
-
-.ale-hero-video::-webkit-media-controls,
-.ale-hero-video::-webkit-media-controls-enclosure,
-.ale-hero-video::-webkit-media-controls-panel,
-.ale-hero-video::-webkit-media-controls-play-button,
-.ale-hero-video::-webkit-media-controls-start-playback-button,
-.ale-hero-video::-webkit-media-controls-overlay-play-button,
-.ale-hero-video::-webkit-media-controls-timeline,
-.ale-hero-video::-webkit-media-controls-current-time-display,
-.ale-hero-video::-webkit-media-controls-time-remaining-display,
-.ale-hero-video::-webkit-media-controls-mute-button,
-.ale-hero-video::-webkit-media-controls-volume-slider,
-.ale-hero-video::-webkit-media-controls-fullscreen-button {
-  display: none !important;
-  opacity: 0 !important;
-  pointer-events: none !important;
-  -webkit-appearance: none !important;
-}
-
-.ale-jandra-brand .font-display {
+.clinic-demo .font-display {
   font-family: var(--font-cinzel), Georgia, serif;
 }
