@@ -1,4 +1,5 @@
 import { defineDemo } from '@/lib/clinic-demo/define-demo';
+import { DENTIST_MEDIA_PACK } from '@/lib/clinic-demo/media-packs';
 
 /** Migración Drop & Run de la demo Alejandra (contenido completo preservado). */
 export default defineDemo({
@@ -9,7 +10,7 @@ export default defineDemo({
     primary: '#C97D7D',
     accent: '#C5A059'
   },
-  logo: '/dra-alejandra/logo-ae.png',
+  logo: '/demo-packs/dentist/logo-alejandra.png',
   expiresAt: '2026-09-18T23:59:00-05:00',
   tagline: 'Odontología Estética',
   subbrand: 'Smile Maker',
@@ -21,16 +22,11 @@ export default defineDemo({
   email: 'recepcion@draalejandracusirramos.pe',
   mapsUrl: 'https://maps.google.com/?q=Dental+Office+Arequipa,+Peru',
   assets: {
-    doctorPhoto: '/dra-alejandra/doctor.jpg',
-    heroVideo: '/dra-alejandra/hero-video.mp4',
-    heroVideoWebm: '/dra-alejandra/hero-video.webm',
-    heroPoster: '/dra-alejandra/hero-poster.webp',
-    beforeAfter: {
-      before: '/dra-alejandra/before-after-before.webp',
-      after: '/dra-alejandra/before-after-after.webp',
-      width: 1200,
-      height: 600
-    }
+    doctorPhoto: DENTIST_MEDIA_PACK.doctorPhoto,
+    heroVideo: DENTIST_MEDIA_PACK.heroVideo,
+    heroVideoWebm: DENTIST_MEDIA_PACK.heroVideoWebm,
+    heroPoster: DENTIST_MEDIA_PACK.heroPoster,
+    beforeAfter: { ...DENTIST_MEDIA_PACK.beforeAfter }
   },
   services: [
     {
@@ -45,7 +41,7 @@ export default defineDemo({
         'Resultados naturales y armónicos'
       ],
       icon: 'whitening',
-      image: '/dra-alejandra/services/estetica.webp',
+      image: DENTIST_MEDIA_PACK.services.estetica,
       imageAlt: 'Diseño de sonrisa con carillas estéticas de alta precisión'
     },
     {
@@ -60,7 +56,7 @@ export default defineDemo({
         'Mantenimiento personalizado'
       ],
       icon: 'whitening',
-      image: '/dra-alejandra/services/blanqueamiento.jpg',
+      image: DENTIST_MEDIA_PACK.services.blanqueamiento,
       imageAlt: 'Blanqueamiento dental boutique con protocolo clínico de alta luminosidad'
     },
     {
@@ -75,7 +71,7 @@ export default defineDemo({
         'Materiales premium'
       ],
       icon: 'implant',
-      image: '/dra-alejandra/services/rehabilitacion.jpg',
+      image: DENTIST_MEDIA_PACK.services.rehabilitacion,
       imageAlt: 'Modelos dentales y planificación de rehabilitación estética de alta precisión'
     },
     {
@@ -90,7 +86,7 @@ export default defineDemo({
         'Plan integral personalizado'
       ],
       icon: 'align',
-      image: '/dra-alejandra/services/armonizacion.jpg',
+      image: DENTIST_MEDIA_PACK.services.armonizacion,
       imageAlt: 'Alineador transparente para armonización y alineación dental estética'
     }
   ],

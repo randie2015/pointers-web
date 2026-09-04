@@ -1,9 +1,10 @@
 import { defineDemo } from '@/lib/clinic-demo/define-demo';
+import { DENTIST_MEDIA_PACK } from '@/lib/clinic-demo/media-packs';
 
 /**
  * Clon dental de prueba Drop & Run.
  * Inputs mínimos: nombre, 2 HEX, logo, 4 servicios.
- * Reutiliza media placeholder de Alejandra solo para validar el pipeline.
+ * Media por defecto = pack Alejandra (videos + fotos reutilizables).
  */
 export default defineDemo({
   slug: 'clinica-ensayo',
@@ -13,7 +14,7 @@ export default defineDemo({
     primary: '#0F766E',
     accent: '#D4A373'
   },
-  logo: '/dra-alejandra/logo-ae.png',
+  logo: '/demo-packs/dentist/logo-ensayo.png',
   expiresAt: '2026-10-04T23:59:00-05:00',
   tagline: 'Odontología Integral',
   subbrand: 'Ensayo Dental',

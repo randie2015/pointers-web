@@ -1,3 +1,4 @@
+import { DENTIST_MEDIA_PACK } from '@/lib/clinic-demo/media-packs';
 import { buildDemoThemeStyle } from '@/lib/clinic-demo/theme';
 import type { DemoConfig, ResolvedDemo, ResolvedTreatment } from '@/lib/clinic-demo/types';
 
@@ -24,6 +25,13 @@ function defaultExpiresAt() {
   return date.toISOString();
 }
 
+const DEFAULT_SERVICE_IMAGES = [
+  DENTIST_MEDIA_PACK.services.estetica,
+  DENTIST_MEDIA_PACK.services.blanqueamiento,
+  DENTIST_MEDIA_PACK.services.rehabilitacion,
+  DENTIST_MEDIA_PACK.services.armonizacion
+] as const;
+
 function resolveTreatments(config: DemoConfig): ResolvedTreatment[] {
   const icons: ResolvedTreatment['icon'][] = ['whitening', 'whitening', 'implant', 'align'];
 
@@ -38,7 +46,7 @@ function resolveTreatments(config: DemoConfig): ResolvedTreatment[] {
         ? service.benefits
         : ['Plan personalizado', 'Resultados naturales', 'Atención cercana', 'Protocolo clínico'],
       icon: service.icon ?? icons[index] ?? 'general',
-      image: service.image,
+      image: service.image ?? DEFAULT_SERVICE_IMAGES[index],
       imageAlt: service.imageAlt ?? service.title
     };
   });
@@ -78,12 +86,12 @@ export function resolveDemo(config: DemoConfig): ResolvedDemo {
         content.disclaimer ??
         `Aviso de Demostración Privada (72 horas): Entorno interactivo temporal desarrollado por Pointers (pointers.marketing) con fines exclusivos de evaluación técnica para ${config.name}. Plataforma no indexada en Google y de acceso restringido. Derechos reservados a sus respectivos titulares.`,
       pointersUrl: POINTERS_URL,
-      logo: config.logo,
-      logoMark: config.logo,
-      doctorPhoto: assets.doctorPhoto ?? '/dra-alejandra/doctor.jpg',
-      heroVideo: assets.heroVideo ?? '/dra-alejandra/hero-video.mp4',
-      heroVideoWebm: assets.heroVideoWebm,
-      heroPoster: assets.heroPoster ?? '/dra-alejandra/hero-poster.webp'
+      logo: config.logo || DENTIST_MEDIA_PACK.logo,
+      logoMark: config.logo || DENTIST_MEDIA_PACK.logoMark,
+      doctorPhoto: assets.doctorPhoto ?? DENTIST_MEDIA_PACK.doctorPhoto,
+      heroVideo: assets.heroVideo ?? DENTIST_MEDIA_PACK.heroVideo,
+      heroVideoWebm: assets.heroVideoWebm ?? DENTIST_MEDIA_PACK.heroVideoWebm,
+      heroPoster: assets.heroPoster ?? DENTIST_MEDIA_PACK.heroPoster
     },
     contact: {
       phone: closer.phone,
@@ -166,10 +174,10 @@ export function resolveDemo(config: DemoConfig): ResolvedDemo {
         button: content.closingCta?.button ?? 'Contactar a Recepción por WhatsApp'
       },
       beforeAfter: {
-        before: assets.beforeAfter?.before ?? '/dra-alejandra/before-after-before.webp',
-        after: assets.beforeAfter?.after ?? '/dra-alejandra/before-after-after.webp',
-        width: assets.beforeAfter?.width ?? 1200,
-        height: assets.beforeAfter?.height ?? 600
+        before: assets.beforeAfter?.before ?? DENTIST_MEDIA_PACK.beforeAfter.before,
+        after: assets.beforeAfter?.after ?? DENTIST_MEDIA_PACK.beforeAfter.after,
+        width: assets.beforeAfter?.width ?? DENTIST_MEDIA_PACK.beforeAfter.width,
+        height: assets.beforeAfter?.height ?? DENTIST_MEDIA_PACK.beforeAfter.height
       }
     },
     about: {
