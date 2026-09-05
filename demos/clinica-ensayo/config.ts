@@ -1,10 +1,9 @@
 import { defineDemo } from '@/lib/clinic-demo/define-demo';
-import { DENTIST_MEDIA_PACK } from '@/lib/clinic-demo/media-packs';
 
 /**
  * Clon dental de prueba Drop & Run.
  * Inputs mínimos: nombre, 2 HEX, logo, 4 servicios.
- * Media por defecto = pack Alejandra (videos + fotos reutilizables).
+ * Media por defecto = DENTIST_MEDIA_PACK (videos + fotos reutilizables).
  */
 export default defineDemo({
   slug: 'clinica-ensayo',

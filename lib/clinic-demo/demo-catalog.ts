@@ -1,12 +1,10 @@
 import type { DemoConfig, DemoPreset } from '@/lib/clinic-demo/types';
-import alejandraConfig from '@/demos/alejandracusirramos/config';
 import clinicaEnsayoConfig from '@/demos/clinica-ensayo/config';
 import magrassLagreeConfig from '@/demos/magrass-lagree/config';
 import spaEnsayoConfig from '@/demos/spa-ensayo/config';
 
 /** Edge-safe registry (no React cache). Used by middleware + server. */
 export const DEMO_CONFIGS: DemoConfig[] = [
-  alejandraConfig,
   clinicaEnsayoConfig,
   magrassLagreeConfig,
   spaEnsayoConfig
