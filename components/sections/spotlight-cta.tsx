@@ -9,7 +9,7 @@ export function SpotlightCTA() {
   const t = useTranslations('aboutPage.cta');
 
   return (
-    <GradientCtaSection>
+    <GradientCtaSection id="cta-section">
       <GradientCtaContent title={t('title')} subtitle={t('subtitle')}>
         <MaskUpButton href={getContactUrl()} label={t('button')} className="w-full max-w-sm sm:w-auto" />
       </GradientCtaContent>

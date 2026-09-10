@@ -11,7 +11,7 @@ import { Inter } from 'next/font/google';
 import type { Metadata } from 'next';
 import '../globals.css';
 import { siteIconMetadata } from '@/lib/site-icons';
-import { SiteParticlesLayer } from '@/components/hero/site-particles-layer';
+import { GlobalCanvasBackground } from '@/components/backgrounds/GlobalCanvasBackground';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' });
 
@@ -88,7 +88,7 @@ export default async function LocaleLayout({
     <html lang={locale} className={inter.variable}>
       <body>
         <LocaleProvider initialLocale={locale as 'es' | 'en'}>
-          <SiteParticlesLayer />
+          <GlobalCanvasBackground />
           <div className="site-content-layer">
             <HashScrollHandler />
             <Header />

@@ -79,9 +79,10 @@ export function ContactPageContent() {
 
         <Reveal delay={0.1}>
           <div
-            id="formulario"
+            id="contact-form"
             className="relative mx-auto mt-10 max-w-3xl scroll-mt-28 overflow-hidden rounded-3xl border border-white/[0.08] px-6 py-8 sm:mt-12 sm:p-10 md:p-12"
           >
+            <span id="formulario" className="absolute -top-24 h-px w-px" aria-hidden />
             <VioletMagentaGradientBg />
             <div className="relative z-10">
               <h2 className="text-center font-display text-xl font-semibold text-white sm:text-2xl">

@@ -1,7 +1,8 @@
-/** Pointers WhatsApp: +51 908 553 032 */
-export const WHATSAPP_PHONE = (
-  process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.replace(/\D/g, '') ?? '51908553032'
-);
+/** Pointers WhatsApp: +51 904 330 335 → https://wa.me/51904330335 */
+const OFFICIAL_WHATSAPP = '51904330335';
+const envPhone = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.replace(/\D/g, '') ?? '';
+export const WHATSAPP_PHONE =
+  !envPhone || envPhone === '51908553032' ? OFFICIAL_WHATSAPP : envPhone;
 
 const WHATSAPP_MESSAGES = {
   es: 'Hola Pointers, quiero conversar sobre infraestructura comercial y desarrollo para mi marca.',
@@ -50,11 +51,11 @@ export const SERVICE_WHATSAPP_URLS = {
 } as const;
 
 export function getWhatsAppDisplayNumber() {
-  return process.env.NEXT_PUBLIC_WHATSAPP_DISPLAY ?? '+51 908 553 032';
+  return process.env.NEXT_PUBLIC_WHATSAPP_DISPLAY ?? '+51 904 330 335';
 }
 
 /** Anchor id del bloque de formulario en /contact */
-export const CONTACT_FORM_SECTION_ID = 'formulario';
+export const CONTACT_FORM_SECTION_ID = 'contact-form';
 
 export function getContactUrl(options?: { service?: ServiceWhatsAppSlug; plan?: ServicePlanKey }) {
   const params = new URLSearchParams();

@@ -1,11 +1,10 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { motion, useReducedMotion } from 'framer-motion';
 import { MaskUpButton } from '@/components/ui/mask-up-button';
-import { getContactUrl, getWhatsAppUrl } from '@/lib/site-config';
+import { getWhatsAppUrl } from '@/lib/site-config';
 import { AdminAccessIcon } from '@/components/admin/admin-access-icon';
-import { useLocale } from 'next-intl';
 
 export function Hero() {
   const t = useTranslations('hero');
@@ -55,7 +54,7 @@ export function Hero() {
           transition={{ duration: reduced ? 0 : 0.35, delay: reduced ? 0 : 0.1, ease: [0.22, 1, 0.36, 1] }}
           className="mt-10 flex flex-col items-center gap-3 sm:flex-row"
         >
-          <MaskUpButton href={getContactUrl()} label={t('cta')} />
+          <MaskUpButton href={getWhatsAppUrl(locale)} label={t('cta')} />
           <a
             href={getWhatsAppUrl(locale)}
             target="_blank"

@@ -1,13 +1,13 @@
 export const MAIN_ROUTES = [
   { href: '/servicios', labelKey: 'ecosystem' },
-  { href: '/#soluciones', labelKey: 'solutions' },
-  { href: '/contact#formulario', labelKey: 'contact' }
+  { href: '/#services', labelKey: 'solutions' },
+  { href: '/contact#contact-form', labelKey: 'contact' }
 ] as const;
 
 export const HOME_ANCHORS = [
-  { href: '/#soluciones', labelKey: 'solutions' },
+  { href: '/#services', labelKey: 'solutions' },
   { href: '/#proceso', labelKey: 'process' },
-  { href: '/contact#formulario', labelKey: 'talk' },
+  { href: '/contact#contact-form', labelKey: 'talk' },
   { href: '/#faq', labelKey: 'faq' }
 ] as const;
 

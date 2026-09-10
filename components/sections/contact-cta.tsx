@@ -6,12 +6,13 @@ import { MaskUpButton } from '@/components/ui/mask-up-button';
 import { GradientCtaContent, GradientCtaSection } from '@/components/ui/gradient-cta-section';
 import { getContactUrl } from '@/lib/site-config';
 
-/** Pre-formulario en Home — enlaza al formulario en /contact. WhatsApp solo vía botón flotante. */
-export function ContactCTA({ id = 'hablemos' }: { id?: string }) {
+/** CTA de cierre en Home — dispara Neural Mode vía #cta-section. */
+export function ContactCTA({ id = 'cta-section' }: { id?: string }) {
   const t = useTranslations('contact');
 
   return (
     <GradientCtaSection id={id}>
+      {id === 'cta-section' ? <span id="hablemos" className="absolute" aria-hidden /> : null}
       <Reveal>
         <GradientCtaContent
           eyebrow={t('eyebrow')}

@@ -2,7 +2,7 @@ import { formatWhatsAppText } from './format';
 import type { ContactFormData } from './schema';
 import type { RequestMetadata } from './metadata';
 
-const DEFAULT_NOTIFY_PHONE = '51908553032';
+const DEFAULT_NOTIFY_PHONE = '51904330335';
 
 function normalizePhone(value: string) {
   return value.replace(/\D/g, '');

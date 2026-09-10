@@ -17,7 +17,8 @@ export function ServicesHomePreview() {
   }[];
 
   return (
-    <section id="soluciones" className="relative z-[1] scroll-mt-24 py-20 md:py-28">
+    <section id="services" className="relative z-[1] scroll-mt-24 py-20 md:py-28">
+      <div id="soluciones" className="absolute -top-24 h-px w-px" aria-hidden />
       <div className="container-page">
         <Reveal>
           <SectionHeader eyebrow={t('eyebrow')} title={t('title')} subtitle={t('subtitle')} />

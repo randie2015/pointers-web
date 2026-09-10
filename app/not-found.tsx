@@ -4,7 +4,7 @@ import { LocaleProvider } from '@/i18n/locale-provider';
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
 import { WhatsAppFloat } from '@/components/whatsapp-float';
-import { SiteParticlesLayer } from '@/components/hero/site-particles-layer';
+import { GlobalCanvasBackground } from '@/components/backgrounds/GlobalCanvasBackground';
 import { NotFoundContent } from '@/components/pages/not-found-content';
 import { siteIconMetadata } from '@/lib/site-icons';
 import './globals.css';
@@ -23,7 +23,7 @@ export default function NotFoundPage() {
     <html lang="es" className={inter.variable}>
       <body>
         <LocaleProvider initialLocale="es">
-          <SiteParticlesLayer />
+          <GlobalCanvasBackground />
           <div className="site-content-layer">
             <Header />
             <main>

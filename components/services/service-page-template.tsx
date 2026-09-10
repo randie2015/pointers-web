@@ -123,7 +123,7 @@ export function ServicePageTemplate({ slug }: ServicePageTemplateProps) {
       />
 
       {/* 6. CTA final */}
-      <GradientCtaSection>
+      <GradientCtaSection id="cta-section">
         <Reveal>
           <GradientCtaContent title={content.cta.title} subtitle={content.cta.subtitle}>
             <MaskUpButton href={contactUrl} label={t('heroCta')} className="w-full max-w-sm sm:w-auto" />

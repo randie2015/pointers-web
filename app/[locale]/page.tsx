@@ -7,6 +7,7 @@ import { WhySection } from '@/components/sections/why-section';
 import { ContactCTA } from '@/components/sections/contact-cta';
 import { FaqSection } from '@/components/sections/faq-section';
 
+/** Canvas: Dot Grid en toda la página. Neural Mesh solo en #cta-section / #contact-form. */
 export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   setRequestLocale(locale);
@@ -17,7 +18,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <BrandTrustSection />
       <ProcessSection />
       <WhySection />
-      <ContactCTA />
+      <ContactCTA id="cta-section" />
       <FaqSection />
     </>
   );
