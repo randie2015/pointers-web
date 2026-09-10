@@ -54,8 +54,12 @@ async function sendViaCloudApi(phone: string, text: string) {
   return true;
 }
 
+const STALE_NOTIFY_PHONES = new Set(['51908553032']);
+
 export async function sendContactWhatsApp(data: ContactFormData, meta: RequestMetadata) {
-  const phone = normalizePhone(process.env.WHATSAPP_NOTIFY_TO ?? DEFAULT_NOTIFY_PHONE);
+  const configured = normalizePhone(process.env.WHATSAPP_NOTIFY_TO ?? '');
+  const phone =
+    !configured || STALE_NOTIFY_PHONES.has(configured) ? DEFAULT_NOTIFY_PHONE : configured;
   const text = formatWhatsAppText(data, meta);
 
   const sentCloud = await sendViaCloudApi(phone, text);

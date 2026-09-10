@@ -1,8 +1,6 @@
-/** Pointers WhatsApp: +51 904 330 335 → https://wa.me/51904330335 */
-const OFFICIAL_WHATSAPP = '51904330335';
-const envPhone = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.replace(/\D/g, '') ?? '';
-export const WHATSAPP_PHONE =
-  !envPhone || envPhone === '51908553032' ? OFFICIAL_WHATSAPP : envPhone;
+/** Pointers WhatsApp — único número público y de notificación. */
+export const WHATSAPP_PHONE = '51904330335';
+export const WHATSAPP_DISPLAY = '+51 904 330 335';
 
 const WHATSAPP_MESSAGES = {
   es: 'Hola Pointers, quiero conversar sobre infraestructura comercial y desarrollo para mi marca.',
@@ -51,10 +49,7 @@ export const SERVICE_WHATSAPP_URLS = {
 } as const;
 
 export function getWhatsAppDisplayNumber() {
-  const display = process.env.NEXT_PUBLIC_WHATSAPP_DISPLAY ?? '';
-  const digits = display.replace(/\D/g, '');
-  if (!digits || digits === '51908553032') return '+51 904 330 335';
-  return display;
+  return WHATSAPP_DISPLAY;
 }
 
 /** Anchor id del bloque de formulario en /contact */
