@@ -13,7 +13,7 @@ export default async function DashboardPage() {
   return (
     <div className="mx-auto max-w-5xl">
       <div className="mb-8">
-        <p className="text-sm font-medium text-[#39B8AD]">Panel principal</p>
+        <p className="text-sm font-medium text-[#BC2656]">Panel principal</p>
         <h1 className="mt-1 text-3xl font-bold tracking-tight text-white">Bienvenido al CMS</h1>
         <p className="mt-2 text-white/60">Gestiona el contenido del blog desde un solo lugar.</p>
       </div>
@@ -25,7 +25,7 @@ export default async function DashboardPage() {
         </div>
         <div className={cardClass}>
           <p className="text-sm text-white/50">Publicados</p>
-          <p className="mt-2 text-3xl font-bold text-[#39B8AD]">{metrics.published}</p>
+          <p className="mt-2 text-3xl font-bold text-[#BC2656]">{metrics.published}</p>
         </div>
         <div className={cardClass}>
           <p className="text-sm text-white/50">Borradores</p>
@@ -75,7 +75,7 @@ export default async function DashboardPage() {
         </div>
         <Link
           href="/admin/dashboard/blog"
-          className="inline-flex items-center rounded-xl bg-[#39B8AD] px-5 py-2.5 text-sm font-semibold text-white transition hover:brightness-105"
+          className="inline-flex items-center rounded-xl bg-[#BC2656] px-5 py-2.5 text-sm font-semibold text-white transition hover:brightness-105"
         >
           Nuevo artículo
         </Link>

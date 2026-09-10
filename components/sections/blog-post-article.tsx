@@ -26,7 +26,7 @@ export function BlogPostArticle({
   return (
     <article className="relative z-10 pt-28 pb-32">
       <div className="mx-auto px-4 md:px-8">
-        <div className="relative z-10 mx-auto my-8 max-w-3xl rounded-2xl bg-white p-6 shadow-lg md:p-12">
+        <div className="relative z-10 mx-auto my-8 max-w-3xl rounded-2xl border border-white/[0.08] bg-[#13161F] p-6 shadow-lg md:p-12">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <Link
               href="/blog"
@@ -41,7 +41,7 @@ export function BlogPostArticle({
 
           <header className="mt-8">
             <div className="flex flex-wrap items-center gap-3 text-xs">
-              <span className="rounded-lg bg-purple px-2.5 py-1 font-semibold text-white">
+              <span className="rounded-lg bg-brand px-2.5 py-1 font-semibold text-white">
                 {post.category}
               </span>
               <time className="text-muted-foreground">{formatPostDate(post.publishedAt, locale)}</time>
@@ -61,7 +61,7 @@ export function BlogPostArticle({
           </header>
 
           {post.imageUrl ? (
-            <div className="relative mt-10 aspect-[16/9] overflow-hidden rounded-3xl border border-border/80 bg-white shadow-sm">
+            <div className="relative mt-10 aspect-[16/9] overflow-hidden rounded-3xl border border-white/10 bg-[#0c0e14] shadow-sm">
               <Image
                 src={post.imageUrl}
                 alt={post.title}

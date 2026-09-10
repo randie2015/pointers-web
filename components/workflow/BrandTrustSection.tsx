@@ -14,7 +14,7 @@ function BrandLogo({ brand }: { brand: BrandLogo }) {
         alt={brand.name}
         fill
         sizes="(max-width: 768px) 160px, 224px"
-        className="object-contain object-center"
+        className="object-contain object-center brightness-0 invert opacity-70"
         draggable={false}
       />
     </div>
@@ -29,9 +29,9 @@ export function BrandTrustSection() {
   return (
     <section className="relative z-[1] py-20 md:py-28">
       <div className="container-page">
-        <div className="mobile-surface mx-auto max-w-6xl rounded-3xl bg-white px-6 py-14 shadow-md max-md:shadow-lg max-md:shadow-black/[0.08] md:px-10 md:py-16">
+        <div className="mobile-surface mx-auto max-w-6xl rounded-3xl border border-white/[0.08] bg-[#13161F] px-6 py-14 md:px-10 md:py-16">
           <Reveal>
-            <p className="mb-10 text-center text-2xl font-semibold tracking-tight text-gray-900 md:text-3xl">
+            <p className="mb-10 text-center text-2xl font-semibold tracking-tight text-[#F8FAFC] md:text-3xl">
               {t('title')}
             </p>
           </Reveal>

@@ -11,7 +11,7 @@ import { ServiceDeliverablesSection } from '@/components/services/service-delive
 import { FaqSection } from '@/components/sections/faq-section';
 import { GradientCtaContent, GradientCtaSection } from '@/components/ui/gradient-cta-section';
 import { SectionHeader } from '@/components/ui/section-header';
-import { SERVICE_PURPLE, SERVICE_TEAL } from '@/lib/service-brand';
+import { SERVICE_MAGENTA } from '@/lib/service-brand';
 import { SERVICE_DELIVERABLE_ICONS, type ServicePageContent } from '@/lib/service-page';
 import type { ServiceSlug } from '@/lib/services';
 import { getContactUrl } from '@/lib/site-config';
@@ -47,11 +47,11 @@ export function ServicePageTemplate({ slug }: ServicePageTemplateProps) {
         <div className="container-page">
           <Reveal>
             <div className="mx-auto max-w-4xl text-center">
-              <SectionBadge text={content.badge} variant="purple" />
-              <h1 className="h-display mt-4 text-[1.65rem] leading-[1.12] text-gray-900 sm:mt-5 sm:text-3xl md:text-5xl lg:text-6xl">
+              <SectionBadge text={content.badge} variant="brand" />
+              <h1 className="h-display mt-4 text-[1.65rem] leading-[1.12] text-[#F8FAFC] sm:mt-5 sm:text-3xl md:text-5xl lg:text-6xl">
                 {content.title}
               </h1>
-              <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-gray-600 sm:text-base md:mt-5 md:text-lg">
+              <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-[#94A3B8] sm:text-base md:mt-5 md:text-lg">
                 {content.subtitle}
               </p>
               <div className="mt-7 flex justify-center sm:mt-8">
@@ -63,7 +63,7 @@ export function ServicePageTemplate({ slug }: ServicePageTemplateProps) {
         <div
           className="pointer-events-none absolute inset-x-0 -top-32 mx-auto h-72 w-[min(900px,92vw)] rounded-full blur-3xl"
           style={{
-            background: `radial-gradient(circle at 30% 40%, ${SERVICE_PURPLE}33, transparent 55%), radial-gradient(circle at 70% 55%, ${SERVICE_TEAL}24, transparent 55%)`
+            background: `radial-gradient(circle at 50% 40%, ${SERVICE_MAGENTA}33, transparent 58%)`
           }}
         />
       </section>

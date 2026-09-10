@@ -4,7 +4,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Flame, Heart, Share2 } from 'lucide-react';
 
-const TEAL = '#39B8AD';
+const TEAL = '#BC2656';
 const MAGENTA = '#BC2656';
 
 type Phase = 'idle' | 'cursor' | 'publish' | 'viral' | 'hold' | 'reset';
@@ -172,7 +172,7 @@ export function SocialViralSimulator() {
     <div
       className="relative flex min-h-[280px] items-center justify-center overflow-hidden rounded-3xl border border-border/50 shadow-xl md:min-h-[340px]"
       style={{
-        backgroundColor: '#faf9f7',
+        backgroundColor: '#13161F',
         backgroundImage: `
           radial-gradient(circle at 50% 55%, rgba(188,38,86,0.08) 0%, transparent 50%),
           repeating-linear-gradient(0deg, transparent, transparent 11px, rgba(0,0,0,0.016) 11px, rgba(0,0,0,0.016) 12px),

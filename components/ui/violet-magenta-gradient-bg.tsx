@@ -1,18 +1,18 @@
 'use client';
 
 import { motion, useReducedMotion } from 'framer-motion';
-import { SERVICE_MAGENTA, SERVICE_PURPLE, SERVICE_PURPLE_DARK } from '@/lib/service-brand';
+import { SERVICE_MAGENTA } from '@/lib/service-brand';
+
+const STATIC = `radial-gradient(circle at 20% 20%, rgba(188,38,86,0.35) 0%, transparent 42%), linear-gradient(160deg, #13161F 0%, #0c0e14 55%, ${SERVICE_MAGENTA} 160%)`;
 
 const FRAMES = [
-  `linear-gradient(to bottom right, ${SERVICE_PURPLE} 0%, ${SERVICE_MAGENTA} 100%)`,
-  `linear-gradient(135deg, ${SERVICE_PURPLE} 0%, ${SERVICE_MAGENTA} 55%, ${SERVICE_PURPLE_DARK} 100%)`,
-  `linear-gradient(225deg, ${SERVICE_PURPLE_DARK} 0%, ${SERVICE_MAGENTA} 45%, ${SERVICE_PURPLE} 100%)`,
-  `linear-gradient(to bottom right, ${SERVICE_PURPLE} 0%, ${SERVICE_MAGENTA} 100%)`
+  STATIC,
+  `radial-gradient(circle at 80% 30%, rgba(188,38,86,0.28) 0%, transparent 46%), linear-gradient(200deg, #13161F 0%, #0c0e14 50%, ${SERVICE_MAGENTA} 170%)`,
+  `radial-gradient(circle at 40% 80%, rgba(188,38,86,0.22) 0%, transparent 48%), linear-gradient(140deg, #13161F 0%, #0c0e14 58%, ${SERVICE_MAGENTA} 165%)`,
+  STATIC
 ];
 
-const STATIC = `linear-gradient(to bottom right, ${SERVICE_PURPLE} 0%, ${SERVICE_MAGENTA} 100%)`;
-
-/** Degradado animado violeta ↔ magenta — todas las pantallas. */
+/** Dark surface with a restrained crimson radial — no pastel washes. */
 export function VioletMagentaGradientBg({ className = '' }: { className?: string }) {
   const reduced = useReducedMotion();
 
@@ -31,7 +31,7 @@ export function VioletMagentaGradientBg({ className = '' }: { className?: string
       aria-hidden
       className={`pointer-events-none absolute inset-0 ${className}`}
       animate={{ background: FRAMES }}
-      transition={{ duration: 10, repeat: Infinity, ease: 'linear' }}
+      transition={{ duration: 14, repeat: Infinity, ease: 'linear' }}
     />
   );
 }

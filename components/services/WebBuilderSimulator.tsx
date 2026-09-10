@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
 
-const TEAL = '#39B8AD';
+const TEAL = '#BC2656';
 
 type BlockId = 'nav' | 'hero' | 'grid' | 'footer';
 
@@ -67,7 +67,7 @@ function BlockThumbnail({
         'rounded-lg border px-2 py-1.5 transition-all duration-200',
         active && 'border-teal bg-teal/10 shadow-md ring-1 ring-teal/30',
         placed && 'opacity-40',
-        !active && !placed && 'border-border/80 bg-white'
+        !active && !placed && 'border-white/10 bg-[#0c0e14]'
       )}
     >
       <p className="text-[9px] font-semibold text-muted-foreground mb-1">{label}</p>
@@ -93,7 +93,7 @@ function BlockThumbnail({
 function GhostBlock({ id }: { id: BlockId }) {
   return (
     <motion.div
-      className="w-[140px] rounded-lg border-2 border-teal/50 bg-white/95 px-2 py-2 shadow-lg"
+      className="w-[140px] rounded-lg border-2 border-teal/50 bg-[#0c0e14] px-2 py-2 shadow-lg"
       initial={{ opacity: 0.85, scale: 0.96 }}
       animate={{ opacity: 0.92, scale: 1.02 }}
     >
@@ -125,7 +125,7 @@ function PlacedBlock({ id }: { id: BlockId }) {
     grid: (
       <div className="grid grid-cols-3 gap-1.5">
         {[1, 2, 3].map((i) => (
-          <div key={i} className="aspect-[4/3] rounded-md border border-teal/20 bg-white p-1 shadow-sm">
+          <div key={i} className="aspect-[4/3] rounded-md border border-teal/20 bg-[#0c0e14] p-1 shadow-sm">
             <div className="h-1 w-full rounded-full bg-muted mb-1" />
             <div className="h-4 rounded-sm" style={{ backgroundColor: `${TEAL}30` }} />
           </div>
@@ -242,9 +242,9 @@ export function WebBuilderSimulator() {
       </div>
 
       {/* Interior */}
-      <div className="relative flex min-h-[220px] rounded-b-xl bg-[#f4f4f5] md:min-h-[268px]">
+      <div className="relative flex min-h-[220px] rounded-b-xl bg-[#0c0e14] md:min-h-[268px]">
         {/* Panel lateral — biblioteca */}
-        <div className="w-[22%] shrink-0 border-r border-dashed border-zinc-300/80 bg-zinc-100/80 p-2">
+        <div className="w-[22%] shrink-0 border-r border-dashed border-white/10 bg-[#13161F] p-2">
           <p className="text-[8px] font-bold uppercase tracking-wider text-zinc-400 mb-2">Components</p>
           <div className="space-y-2">
             {LIBRARY.map((item) => (
@@ -262,11 +262,11 @@ export function WebBuilderSimulator() {
         {/* Lienzo */}
         <div className="relative flex-1 p-3">
           <div
-            className="relative h-full min-h-[190px] rounded-lg border-2 border-dashed border-zinc-300 bg-white/90 p-2 md:min-h-[230px]"
+            className="relative h-full min-h-[190px] rounded-lg border-2 border-dashed border-white/15 bg-[#0c0e14] p-2 md:min-h-[230px]"
             style={{
               backgroundImage: `
-                linear-gradient(to right, rgba(0,0,0,0.03) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(0,0,0,0.03) 1px, transparent 1px)
+                linear-gradient(to right, rgba(255,255,255,0.04) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255,255,255,0.04) 1px, transparent 1px)
               `,
               backgroundSize: '16px 16px'
             }}

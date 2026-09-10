@@ -1,45 +1,39 @@
 import type { ISourceOptions } from 'tsparticles-engine';
 
-const MAGENTA = '#BC2656';
-const MAGENTA_LIGHT = '#D4366F';
-const MAGENTA_DEEP = '#8E1D45';
-const MAGENTA_GLOW = '#E85A8A';
-const VIOLET = '#5E549D';
-const VIOLET_LIGHT = '#7A6FB8';
-const VIOLET_DEEP = '#4A4278';
+const NODE = '#E2E8F0';
+const LINK = '#94A3B8';
+const ACCENT = '#BC2656';
 
-/** Red dispersa de espacio abierto — sin gravedad ni centro de masa. */
 const SITE = {
-  mobile: 148,
-  desktop: 210,
-  linkDistance: { mobile: 92, desktop: 112 },
-  linkOpacity: { min: 0.1, max: 0.28 },
-  particleOpacity: { min: 0.12, max: 0.58 },
-  size: { mobile: [1.1, 3.8] as const, desktop: [1.2, 4.4] as const },
-  speed: { mobile: [0.55, 1.75] as const, desktop: [0.6, 2] as const }
+  mobile: 42,
+  desktop: 68,
+  linkDistance: { mobile: 108, desktop: 132 },
+  linkOpacity: { min: 0.04, max: 0.12 },
+  particleOpacity: { min: 0.08, max: 0.28 },
+  size: { mobile: [0.6, 1.6] as const, desktop: [0.7, 1.8] as const },
+  speed: { mobile: [0.12, 0.38] as const, desktop: [0.14, 0.42] as const }
 };
 
 export function createSiteParticlesOptions(isMobile: boolean): ISourceOptions {
   const cfg = SITE;
-  const colors = [MAGENTA, MAGENTA_LIGHT, MAGENTA_DEEP, MAGENTA_GLOW, VIOLET, VIOLET_LIGHT, VIOLET_DEEP];
 
   return {
     fullScreen: { enable: true, zIndex: 0 },
     background: { color: { value: 'transparent' } },
-    fpsLimit: 60,
+    fpsLimit: 45,
     detectRetina: true,
     particles: {
       number: {
         value: isMobile ? cfg.mobile : cfg.desktop,
         density: { enable: false }
       },
-      color: { value: colors },
+      color: { value: [NODE, ACCENT] },
       opacity: {
         value: cfg.particleOpacity,
         random: true,
         animation: {
           enable: true,
-          speed: 0.7,
+          speed: 0.25,
           minimumValue: cfg.particleOpacity.min,
           sync: false
         }
@@ -49,20 +43,14 @@ export function createSiteParticlesOptions(isMobile: boolean): ISourceOptions {
           min: isMobile ? cfg.size.mobile[0] : cfg.size.desktop[0],
           max: isMobile ? cfg.size.mobile[1] : cfg.size.desktop[1]
         },
-        random: true,
-        animation: {
-          enable: true,
-          speed: 0.9,
-          minimumValue: 0.6,
-          sync: false
-        }
+        random: true
       },
       links: {
         enable: true,
-        color: [MAGENTA, MAGENTA_LIGHT, VIOLET, VIOLET_LIGHT],
+        color: LINK,
         opacity: cfg.linkOpacity,
         distance: isMobile ? cfg.linkDistance.mobile : cfg.linkDistance.desktop,
-        width: 0.9
+        width: 0.6
       },
       move: {
         enable: true,
@@ -85,16 +73,16 @@ export function createSiteParticlesOptions(isMobile: boolean): ISourceOptions {
           mode: 'repulse',
           parallax: { enable: false, force: 0, smooth: 0 }
         },
-        onClick: { enable: true, mode: 'repulse' },
+        onClick: { enable: false, mode: 'repulse' },
         resize: true
       },
       modes: {
         repulse: {
-          distance: isMobile ? 100 : 125,
-          duration: 0.75,
-          factor: 0.8,
-          speed: 0.95,
-          maxSpeed: 40,
+          distance: isMobile ? 70 : 90,
+          duration: 0.4,
+          factor: 0.45,
+          speed: 0.55,
+          maxSpeed: 18,
           easing: 'ease-out-quad'
         }
       }

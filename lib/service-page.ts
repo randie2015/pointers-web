@@ -1,8 +1,6 @@
 import type { LucideIcon } from 'lucide-react';
 import {
-  BarChart3,
   BookOpen,
-  Calendar,
   Filter,
   Gauge,
   Layers,
@@ -13,8 +11,6 @@ import {
   Palette,
   Smartphone,
   Target,
-  Users,
-  Video,
   Zap
 } from 'lucide-react';
 import type { PricingTierKey } from '@/components/services/service-pricing-carousel';
@@ -40,8 +36,7 @@ export type ServicePageContent = {
 };
 
 export const SERVICE_DELIVERABLE_ICONS: Record<ServiceSlug, LucideIcon[]> = {
-  branding: [Palette, BookOpen, Layers, Target],
   'diseno-web': [Monitor, Smartphone, MousePointer, Gauge],
-  contenido: [Calendar, Video, Users, BarChart3],
-  'estrategia-digital': [Megaphone, Filter, Zap, LineChart]
+  'estrategia-digital': [Megaphone, Filter, Zap, LineChart],
+  branding: [Palette, BookOpen, Layers, Target]
 };

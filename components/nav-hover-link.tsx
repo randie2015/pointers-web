@@ -14,7 +14,9 @@ type NavLinkProps = {
 
 export function NavHoverLink({ href, label, onClick, className }: NavLinkProps) {
   const pathname = usePathname();
-  const active = pathname === href || (href !== '/' && pathname.startsWith(href));
+  const path = href.split('#')[0] || '/';
+  const active =
+    pathname === path || (path !== '/' && pathname.startsWith(path));
 
   return (
     <Link
@@ -27,20 +29,20 @@ export function NavHoverLink({ href, label, onClick, className }: NavLinkProps) 
       <motion.span
         className="pointer-events-none absolute inset-0 rounded-xl bg-white/0"
         initial={false}
-        whileHover={{ backgroundColor: 'rgba(255,255,255,0.12)' }}
-        whileTap={{ backgroundColor: 'rgba(255,255,255,0.18)', scale: 0.98 }}
+        whileHover={{ backgroundColor: 'rgba(188,38,86,0.16)' }}
+        whileTap={{ backgroundColor: 'rgba(188,38,86,0.24)', scale: 0.98 }}
         transition={{ duration: 0.2, ease: 'easeOut' }}
       />
       <span
         className={cn(
-          'relative z-[1] block text-sm font-medium text-white/90 transition-colors duration-200 group-hover:text-white max-md:text-base',
+          'relative z-[1] block text-sm font-medium text-white/70 transition-colors duration-200 group-hover:text-white max-md:text-base',
           active && 'text-white'
         )}
       >
         {label}
       </span>
       <motion.span
-        className="absolute bottom-1 left-1/2 z-[1] h-[2px] rounded-full bg-white"
+        className="absolute bottom-1 left-1/2 z-[1] h-[2px] rounded-full bg-[#BC2656]"
         initial={{ width: active ? '60%' : '0%', x: '-50%', opacity: active ? 1 : 0 }}
         whileHover={{ width: '65%', opacity: 1 }}
         transition={{ type: 'spring', stiffness: 420, damping: 28 }}

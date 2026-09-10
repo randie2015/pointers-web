@@ -1,15 +1,17 @@
 {
   "meta": {
-    "title": "Pointers | Agencia de Branding y Diseño Web Premium",
-    "description": "Especialistas en branding corporativo y desarrollo web de alto nivel. Construimos identidades visuales con estética limpia y experiencias digitales exclusivas para marcas exigentes.",
-    "keywords": "agencia de branding, diseño web premium, branding corporativo, desarrollo web, identidad visual, diseño UI/UX, estética minimalista, creación de marcas"
+    "title": "Pointers | Commercial infrastructure and B2B development",
+    "description": "Boutique firm for commercial infrastructure, high-performance web development and conversion systems for high-ticket B2B brands.",
+    "keywords": "commercial infrastructure, B2B web development, conversion systems, Next.js, sales funnels, brand architecture"
   },
   "nav": {
-    "about": "About",
-    "services": "Services",
+    "about": "Firm",
+    "ecosystem": "Ecosystem",
+    "solutions": "Solutions",
+    "services": "Ecosystem",
     "contact": "Contact",
     "blog": "Blog",
-    "cta": "Let's talk!"
+    "cta": "Talk to us"
   },
   "notFound": {
     "badge": "Error 404",
@@ -23,42 +25,37 @@
     "ariaLabel": "Contact us on WhatsApp"
   },
   "hero": {
-    "badge": "Update",
-    "badgeText": "Innovation, Strategy & Technology in one place",
-    "title": "Creativity inspired by modern solutions.",
-    "subtitle": "We design digital ecosystems that elevate brands and create impact.",
-    "cta": "Let's talk!"
+    "badge": "Pointers",
+    "badgeText": "Commercial infrastructure and B2B technology",
+    "title": "Commercial infrastructure, web development and conversion systems.",
+    "subtitle": "We design high-performance digital platforms and commercial architecture for brands that cannot afford to lose clients.",
+    "cta": "Start a conversation",
+    "secondaryCta": "WhatsApp"
   },
   "services": {
-    "eyebrow": "Our Services",
-    "title": "Digital solutions that will take your business to the next level",
-    "subtitle": "We combine strategy, design and technology to build solutions that truly work.",
-    "previewLink": "View service",
-    "previewCta": "View all services",
+    "eyebrow": "Solutions",
+    "title": "Three systems for brands that do not improvise growth.",
+    "subtitle": "High-performance development, commercial infrastructure and brand architecture. No filler. No volume-driven social.",
+    "previewLink": "View solution",
+    "previewCta": "Explore the ecosystem",
     "items": [
       {
-        "badge": "Branding & Visual Identity",
-        "title": "We design identities that inspire trust and create value.",
-        "description": "We define and develop brands that connect strategy, aesthetics and purpose to stand out in competitive environments.",
-        "tags": ["Visual identity design", "Digital branding", "Brand guidelines"]
+        "badge": "High-Performance Web & App Development",
+        "title": "Ultra-fast Next.js platforms, native bilingual support, conversion-first design.",
+        "description": "High-performance architectures with native i18n and interfaces built to convert — not to decorate.",
+        "tags": ["Next.js and performance", "Native bilingual i18n", "Conversion UX"]
       },
       {
-        "badge": "Web Design & Digital Experience",
-        "title": "Digital design focused on impact and performance.",
-        "description": "We create efficient, attractive web experiences designed to deliver unique value. Every project combines visual clarity, flow and purpose to connect brands with results.",
-        "tags": ["High-performance websites", "Strategic UX/UI design", "High-impact landing pages"]
+        "badge": "Commercial Infrastructure & Funnels",
+        "title": "Lead capture, booking automation and zero operational friction.",
+        "description": "Commercial systems that remove bottlenecks and turn demand into appointments, leads and closed deals.",
+        "tags": ["Lead capture", "Booking automation", "Frictionless funnels"]
       },
       {
-        "badge": "Content & Social Presence",
-        "title": "Content that drives connection and growth.",
-        "description": "We create content strategies and social management that strengthen your digital presence, connect with your audience and position your brand with authenticity and consistency.",
-        "tags": ["Content strategy", "Social media management", "Audiovisual production"]
-      },
-      {
-        "badge": "Digital Strategy & Advertising",
-        "title": "Digital strategies that convert.",
-        "description": "We design smart campaigns and automated systems that maximize reach, optimize resources and turn interactions into real results.",
-        "tags": ["Advertising campaigns (Meta / Google)", "Funnels & automation", "Digital consulting"]
+        "badge": "Brand Architecture & Positioning",
+        "title": "Identity and art direction that justify high tickets.",
+        "description": "Brand architecture and positioning for businesses that sell value, not discounts.",
+        "tags": ["Corporate identity", "High-ticket positioning", "Art direction"]
       }
     ]
   },
@@ -261,21 +258,21 @@
     ]
   },
   "cta": {
-    "title": "Modernize your digital presence",
-    "subtitle": "Tell us about your project and let's take the next step together.",
-    "button": "Let's talk!"
+    "title": "Let's build your commercial infrastructure",
+    "subtitle": "Tell us the bottleneck. We design the system.",
+    "button": "Start a conversation"
   },
   "contact": {
     "eyebrow": "Contact",
-    "title": "Modernize your digital presence",
-    "subtitle": "Tell us about your project and let's take the next step together.",
-    "pageTitle": "Get in touch with us",
-    "pageSubtitle": "Have questions or need digital solutions? Tell us about your project and we'll get back to you soon.",
+    "title": "Let's build your commercial infrastructure",
+    "subtitle": "Tell us the bottleneck. We design the system.",
+    "pageTitle": "Let's talk about your digital operation",
+    "pageSubtitle": "High-ticket projects, not generic quotes. Tell us which system you need and we'll respond with precision.",
     "emailLabel": "E-mail",
     "phoneLabel": "Phone",
-    "formTitle": "Send us a message",
-    "formSubtitle": "Fill out the form and we'll contact you shortly.",
-    "whatsappHint": "Prefer an immediate reply? Use the floating WhatsApp button:",
+    "formTitle": "Request a conversation",
+    "formSubtitle": "Fill out the form. If you prefer an immediate reply, use WhatsApp.",
+    "whatsappHint": "Prefer an immediate reply? Message us on WhatsApp:",
     "name": "First name",
     "lastName": "Last name",
     "email": "Email",
@@ -289,16 +286,15 @@
       "message": "Tell us what you'd like to build or improve"
     },
     "ctaButton": "Go to contact form",
-    "submit": "Let's talk!",
+    "submit": "Send request",
     "submitIdle": "Send request",
-    "submitSuccess": "Thank you! We'll get back to you soon.",
-    "submitError": "Oops... something went wrong, please try again.",
+    "submitSuccess": "Received. We'll be in touch shortly.",
+    "submitError": "It couldn't be sent. Please try again.",
     "retryHint": "Check your connection and try again.",
     "serviceOptions": {
-      "branding": "Branding & Visual Identity",
-      "diseno-web": "Web Design & Digital Experience",
-      "contenido": "Content & Social Presence",
-      "estrategia-digital": "Digital Strategy & Advertising",
+      "branding": "Brand Architecture & Positioning",
+      "diseno-web": "High-Performance Web & App Development",
+      "estrategia-digital": "Commercial Infrastructure & Funnels",
       "otro": "Other / Not sure yet"
     },
     "budgetOptions": {
@@ -342,7 +338,7 @@
     ]
   },
   "footer": {
-    "newsletter": "Subscribe to receive ideas and news from Pointers.",
+    "newsletter": "Commercial infrastructure and technology for high-ticket brands.",
     "emailPlaceholder": "Your email",
     "subscribe": "Subscribe",
     "links": "Links",
@@ -359,7 +355,8 @@
     }
   },
   "anchors": {
-    "services": "Our Services",
+    "services": "Ecosystem",
+    "solutions": "Solutions",
     "process": "Process",
     "why": "Why Pointers?",
     "talk": "Let's talk",
@@ -403,41 +400,35 @@
   },
   "servicesPage": {
     "meta": {
-      "title": "Services | Pointers",
-      "description": "Strategy, design and technology for brands seeking impact."
+      "title": "Ecosystem | Pointers",
+      "description": "High-performance web development, commercial infrastructure and brand architecture for high-ticket B2B businesses."
     },
     "hero": {
-      "eyebrow": "Our Services",
-      "title": "Strategy, design and technology for brands seeking impact.",
-      "subtitle": "We create identities, websites and digital experiences that deliver real results.",
-      "cta": "Book a free consultation"
+      "eyebrow": "Ecosystem",
+      "title": "Three systems. One execution standard.",
+      "subtitle": "Platforms, funnels and identity for brands that cannot afford to lose clients.",
+      "cta": "Start a conversation"
     },
     "offerings": {
-      "cta": "View service",
+      "cta": "View solution",
       "items": [
         {
-          "badge": "Branding & Visual Identity",
-          "title": "We design brands that inspire trust and create value.",
-          "description": "From concept to digital implementation, we create identities that connect purpose, aesthetics and strategy.",
-          "tags": ["Visual identity design", "Digital branding", "Brand guidelines"]
+          "badge": "High-Performance Web & App Development",
+          "title": "Next.js, native i18n and conversion-first design.",
+          "description": "Ultra-fast bilingual architectures built to turn demand into clients — not empty traffic.",
+          "tags": ["Next.js architectures", "Native bilingual support", "Direct conversion"]
         },
         {
-          "badge": "Web Design & Digital Experience",
-          "title": "Web development, strategic UX/UI and high-performance landing pages.",
-          "description": "We design attractive, efficient digital experiences where form and function align to maximize conversions.",
-          "tags": ["High-performance websites", "Strategic UX/UI design", "High-impact landing pages"]
+          "badge": "Commercial Infrastructure & Funnels",
+          "title": "Lead capture, bookings and the removal of operational friction.",
+          "description": "Systems that order the funnel: from first contact to booking or close, without unnecessary manual work.",
+          "tags": ["Lead capture", "Booking automation", "Frictionless funnel"]
         },
         {
-          "badge": "Content & Social Presence",
-          "title": "Content strategy, social management and audiovisual production to strengthen your brand.",
-          "description": "We drive the connection between brands and audiences with authentic, consistent and visually compelling communication.",
-          "tags": ["Content strategy", "Social media management", "Audiovisual production"]
-        },
-        {
-          "badge": "Digital Strategy & Advertising",
-          "title": "Ad campaigns, funnels and automation to scale your results.",
-          "description": "We design smart systems that optimize resources, increase reach and turn interactions into real results.",
-          "tags": ["Advertising campaigns (Meta / Google)", "Funnels & automation", "Digital consulting"]
+          "badge": "Brand Architecture & Positioning",
+          "title": "Corporate identity that justifies high tickets.",
+          "description": "Art direction and brand architecture exclusively for businesses that sell value, precision and results.",
+          "tags": ["Corporate identity", "Premium positioning", "Art direction"]
         }
       ]
     },
@@ -469,9 +460,9 @@
       ]
     },
     "cta": {
-      "title": "Your brand deserves strategy, coherence and presence.",
-      "subtitle": "Book a meeting with our team and discover how to transform your digital presence with strategy, design and technology.",
-      "button": "Book a free consultation"
+      "title": "Your operation deserves infrastructure, not patches.",
+      "subtitle": "Book a conversation and we will define the system your brand needs so you stop losing clients.",
+      "button": "Start a conversation"
     },
     "faq": {
       "eyebrow": "Frequently Asked Questions",
@@ -502,7 +493,7 @@
     }
   },
   "serviceDetail": {
-    "heroCta": "Book a consultation",
+    "heroCta": "Start a conversation",
     "problemSolutionEyebrow": "Problem & solution",
     "problemSolutionTitle": "We understand your challenge before we design",
     "problemSolutionSubtitle": "Clear diagnosis and a concrete proposal — nothing hidden.",
@@ -531,9 +522,9 @@
       "pointers": { "name": "Pointers", "tagline": "The complete experience" }
     },
     "branding": {
-      "badge": "Branding & Visual Identity",
-      "title": "We turn your business into an unforgettable brand.",
-      "subtitle": "Strategic visual identity that builds trust and value.",
+      "badge": "Brand Architecture & Positioning",
+      "title": "Brand architecture that justifies high tickets.",
+      "subtitle": "Corporate identity and art direction for businesses that sell value, not discounts.",
       "problem": {
         "title": "",
         "body": "Your brand looks inconsistent and fails to build trust. Improvised logos, mixed colors and scattered messaging make you compete without real differentiation."
@@ -600,9 +591,9 @@
       }
     },
     "diseno-web": {
-      "badge": "Web Design & Digital Experience",
-      "title": "Fast websites, optimized for Google and built to convert.",
-      "subtitle": "Web design and UX/UI focused on results.",
+      "badge": "High-Performance Web & App Development",
+      "title": "Ultra-fast Next.js platforms, bilingual and built to convert.",
+      "subtitle": "High-performance architectures with native i18n and conversion-first design.",
       "problem": {
         "title": "",
         "body": "Does your website fail to turn visits into customers? Slow sites, generic designs and confusing journeys push away people who already found you."
@@ -740,9 +731,9 @@
       }
     },
     "estrategia-digital": {
-      "badge": "Digital Strategy & Advertising",
-      "title": "Advertising that performs: more leads, less wasted spend.",
-      "subtitle": "Campaigns, funnels and data-driven automation.",
+      "badge": "Commercial Infrastructure & Funnels",
+      "title": "Commercial infrastructure that removes funnel friction.",
+      "subtitle": "Lead capture, booking automation and conversion systems without unnecessary manual work.",
       "problem": {
         "title": "",
         "body": "Do you invest in ads but don't see clear returns? Without strategy, targeting and tracking, your investment becomes pure spend."

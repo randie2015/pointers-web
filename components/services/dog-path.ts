@@ -8,6 +8,6 @@ export const DOG_PATHS = [
 
 export const COLORS = {
   magenta: '#BC2656',
-  violet: '#5E549D',
-  teal: '#39B8AD'
+  violet: '#BC2656',
+  teal: '#BC2656'
 } as const;

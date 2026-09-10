@@ -16,7 +16,7 @@ export function GradientCtaSection({ id, className, children }: GradientCtaSecti
   return (
     <section id={id} className={cn('relative z-[1] scroll-mt-24 py-12 sm:py-16 md:py-20', className)}>
       <div className="container-page">
-        <div className="relative overflow-hidden rounded-3xl px-6 py-14 text-white shadow-lg shadow-[#5E549D]/20 sm:px-10 sm:py-16 md:px-14 md:py-20">
+        <div className="relative overflow-hidden rounded-3xl border border-white/[0.08] px-6 py-14 text-white shadow-lg shadow-[#BC2656]/10 sm:px-10 sm:py-16 md:px-14 md:py-20">
           <VioletMagentaGradientBg />
           <div className="relative z-10">{children}</div>
         </div>

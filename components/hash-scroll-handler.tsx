@@ -42,15 +42,6 @@ function normalizePath(path: string) {
   return path.replace(/\/$/, '') || '/';
 }
 
-function isHomePath(path: string) {
-  const normalized = normalizePath(stripLocaleFromPath(path));
-  return normalized === '/';
-}
-
-function isServiciosHash(hash: string) {
-  return decodeURIComponent(hash.replace(/^#/, '')) === 'servicios';
-}
-
 export function HashScrollHandler() {
   const pathname = usePathname();
   const intlRouter = useIntlRouter();
@@ -83,10 +74,6 @@ export function HashScrollHandler() {
     prevRouteRef.current = routeWithoutLocale;
 
     const hash = window.location.hash;
-    if (hash && isServiciosHash(hash) && isHomePath(pathname)) {
-      intlRouter.replace('/servicios', { scroll: false });
-      return;
-    }
     if (hash) {
       scrollToHashWithRetry(hash);
       return;
@@ -109,12 +96,6 @@ export function HashScrollHandler() {
 
       if (!samePath || !url.hash) return;
 
-      if (isServiciosHash(url.hash)) {
-        event.preventDefault();
-        intlRouter.push('/servicios', { scroll: false });
-        return;
-      }
-
       event.preventDefault();
       scrollToHashWithRetry(url.hash);
     };
@@ -125,10 +106,6 @@ export function HashScrollHandler() {
 
   useEffect(() => {
     const onHashChange = () => {
-      if (isServiciosHash(window.location.hash) && isHomePath(window.location.pathname)) {
-        intlRouter.replace('/servicios', { scroll: false });
-        return;
-      }
       scrollToHashWithRetry(window.location.hash);
     };
 

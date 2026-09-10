@@ -205,7 +205,7 @@ export function BlogAdmin({
 
       <header className="mb-5 sm:mb-6">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#39B8AD] sm:text-sm">
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#BC2656] sm:text-sm">
             CMS · Blog
           </p>
           <h1 className="mt-2 text-2xl font-bold tracking-tight text-white sm:text-3xl">

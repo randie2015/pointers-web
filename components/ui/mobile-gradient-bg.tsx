@@ -4,20 +4,21 @@ import { motion, useReducedMotion } from 'framer-motion';
 import { useMediaQuery } from '@/lib/use-media-query';
 
 const MAGENTA = '#BC2656';
-const VIOLET = '#5E549D';
 
-/** Animated magenta ↔ violet gradient — mobile only. Desktop uses static background from parent. */
+/** Subtle crimson wash — mobile only. */
 export function MobileGradientBg({ className = '' }: { className?: string }) {
   const isMobile = useMediaQuery('(max-width: 767px)');
   const reduced = useReducedMotion();
 
   if (!isMobile) return null;
 
+  const background = `radial-gradient(circle at 30% 20%, ${MAGENTA}55 0%, transparent 55%), linear-gradient(160deg, #13161F 0%, #090A0F 70%)`;
+
   if (reduced) {
     return (
       <div
         className={`pointer-events-none absolute inset-0 ${className}`}
-        style={{ background: `linear-gradient(135deg, ${MAGENTA} 0%, ${VIOLET} 100%)` }}
+        style={{ background }}
         aria-hidden
       />
     );
@@ -29,13 +30,12 @@ export function MobileGradientBg({ className = '' }: { className?: string }) {
       aria-hidden
       animate={{
         background: [
-          `linear-gradient(135deg, ${MAGENTA} 0%, ${VIOLET} 55%, ${MAGENTA} 100%)`,
-          `linear-gradient(225deg, ${VIOLET} 0%, ${MAGENTA} 50%, ${VIOLET} 100%)`,
-          `linear-gradient(315deg, ${MAGENTA} 10%, ${VIOLET} 60%, ${MAGENTA} 100%)`,
-          `linear-gradient(135deg, ${MAGENTA} 0%, ${VIOLET} 55%, ${MAGENTA} 100%)`
+          background,
+          `radial-gradient(circle at 70% 30%, ${MAGENTA}40 0%, transparent 58%), linear-gradient(200deg, #13161F 0%, #090A0F 72%)`,
+          background
         ]
       }}
-      transition={{ duration: 10, repeat: Infinity, ease: 'linear' }}
+      transition={{ duration: 12, repeat: Infinity, ease: 'linear' }}
     />
   );
 }

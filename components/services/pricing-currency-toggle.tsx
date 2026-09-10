@@ -12,7 +12,7 @@ type PricingCurrencyToggleProps = {
 export function PricingCurrencyToggle({ value, onChange, className }: PricingCurrencyToggleProps) {
   return (
     <div
-      className={cn('inline-flex items-center rounded-full border border-border/70 bg-white p-1 shadow-sm', className)}
+      className={cn('inline-flex items-center rounded-full border border-white/10 bg-[#13161F] p-1', className)}
       role="group"
       aria-label="Moneda de precios"
     >
@@ -24,7 +24,7 @@ export function PricingCurrencyToggle({ value, onChange, className }: PricingCur
           aria-pressed={value === currency}
           className={cn(
             'touch-press rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-wide transition-all duration-300 ease-in-out sm:px-5 sm:text-sm',
-            value === currency ? 'bg-[#5E549D] text-white shadow-sm' : 'text-gray-600 hover:text-[#5E549D]'
+            value === currency ? 'bg-[#BC2656] text-white shadow-sm' : 'text-slate-400 hover:text-[#BC2656]'
           )}
         >
           {currency === 'USD' ? 'USD ($)' : 'PEN (S/)'}

@@ -4,9 +4,7 @@ import { useTranslations } from 'next-intl';
 import { Reveal } from '@/components/reveal';
 import { ServiceVisual } from '@/components/sections/service-visual';
 import { MaskUpButton } from '@/components/ui/mask-up-button';
-import { SERVICE_SLUGS } from '@/lib/services';
-
-const VARIANTS = ['branding', 'web', 'content', 'ads'] as const;
+import { SERVICE_SLUGS, serviceSlugToVariant } from '@/lib/services';
 
 export function ServicesOfferingsSection() {
   const t = useTranslations('servicesPage.offerings');
@@ -31,18 +29,18 @@ export function ServicesOfferingsSection() {
                 className={`grid gap-10 lg:grid-cols-2 lg:items-center lg:gap-16 ${reversed ? 'lg:[&>*:first-child]:order-2' : ''}`}
               >
                 <Reveal delay={0.05}>
-                  <ServiceVisual variant={VARIANTS[i]} />
+                  <ServiceVisual variant={serviceSlugToVariant(slug)} />
                 </Reveal>
                 <Reveal delay={0.1}>
-                  <span className="inline-block rounded-lg bg-purple px-3 py-1 text-xs font-semibold text-white">
+                  <span className="inline-block rounded-lg bg-[#BC2656] px-3 py-1 text-xs font-semibold text-white">
                     {item.badge}
                   </span>
-                  <h2 className="h-display mt-5 max-w-lg text-2xl md:text-4xl">{item.title}</h2>
-                  <p className="mt-5 leading-relaxed text-muted-foreground">{item.description}</p>
+                  <h2 className="h-display mt-5 max-w-lg text-2xl text-[#F8FAFC] md:text-4xl">{item.title}</h2>
+                  <p className="mt-5 leading-relaxed text-[#94A3B8]">{item.description}</p>
                   <ul className="mt-8 flex flex-col gap-3">
                     {item.tags.map((tag) => (
                       <li key={tag}>
-                        <span className="inline-block w-full rounded-xl bg-foreground px-5 py-3 text-center text-sm font-medium text-background sm:w-auto sm:text-left">
+                        <span className="inline-block w-full rounded-xl border border-white/10 bg-white/[0.04] px-5 py-3 text-center text-sm font-medium text-[#F8FAFC] sm:w-auto sm:text-left">
                           {tag}
                         </span>
                       </li>

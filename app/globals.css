@@ -3,21 +3,29 @@
 @tailwind utilities;
 
 :root {
-  --background: 0 0% 97%;
-  --foreground: 0 0% 8%;
-  --muted: 0 0% 94%;
-  --muted-foreground: 0 0% 40%;
-  --border: 0 0% 88%;
-  --accent: 338 72% 40%;
-  --brand: 338 72% 40%;
+  --background: 230 25% 5%;
+  --foreground: 210 40% 98%;
+  --muted: 225 24% 10%;
+  --muted-foreground: 215 16% 65%;
+  --border: 0 0% 100%;
+  --accent: 341 66% 44%;
+  --brand: 341 66% 44%;
   --brand-foreground: 0 0% 100%;
-  --teal: 174 58% 46%;
-  --purple: 262 52% 52%;
+  --teal: 341 66% 44%;
+  --purple: 341 66% 44%;
+  --surface: #13161f;
+  --obsidian: #090a0f;
+  --crimson: #bc2656;
 }
 
-* { border-color: hsl(var(--border)); }
+* {
+  border-color: rgba(255, 255, 255, 0.08);
+}
 
-html { scroll-behavior: auto; }
+html {
+  scroll-behavior: auto;
+  color-scheme: dark;
+}
 
 @keyframes loading-bar {
   0% { transform: scaleX(0.1); opacity: 0.6; }
@@ -26,11 +34,23 @@ html { scroll-behavior: auto; }
 }
 
 body {
-  background: #f6f6f4;
+  background: var(--obsidian);
   color: hsl(var(--foreground));
   font-feature-settings: "ss01", "cv11";
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+}
+
+body::before {
+  content: "";
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse 80% 55% at 50% -12%, rgba(188, 38, 86, 0.16), transparent 58%),
+    radial-gradient(ellipse 45% 35% at 88% 18%, rgba(188, 38, 86, 0.06), transparent 52%),
+    radial-gradient(ellipse 40% 30% at 8% 70%, rgba(188, 38, 86, 0.04), transparent 50%);
 }
 
 .particles-canvas-layer {
@@ -52,7 +72,7 @@ body {
 }
 
 .container-page { @apply mx-auto w-full max-w-[1280px] px-6 md:px-10; }
-.h-display { @apply font-display tracking-tightest leading-[1.05]; }
+.h-display { @apply font-display tracking-tightest leading-[1.05] text-foreground; }
 
 @layer components {
   .touch-press {
@@ -60,7 +80,7 @@ body {
   }
 
   .mobile-surface {
-    @apply max-md:rounded-2xl max-md:shadow-lg max-md:shadow-black/[0.08];
+    @apply max-md:rounded-2xl max-md:shadow-lg max-md:shadow-black/40;
   }
 
   .mobile-card-interactive {
@@ -68,15 +88,22 @@ body {
   }
 
   .mobile-btn-surface {
-    @apply max-md:shadow-lg max-md:shadow-black/10 touch-press;
+    @apply max-md:shadow-lg max-md:shadow-black/30 touch-press;
+  }
+
+  .surface-card {
+    background: var(--surface);
+    border: 1px solid rgba(255, 255, 255, 0.08);
   }
 
   .cta-button {
-    @apply border-2 border-transparent bg-teal text-white transition-colors duration-300;
+    @apply border-2 border-transparent bg-brand text-white transition-all duration-300;
+    box-shadow: 0 8px 24px rgba(188, 38, 86, 0.28);
   }
 
   .group:hover .cta-button:not(:disabled) {
-    @apply border-teal bg-white text-teal;
+    @apply border-brand/40 bg-[#d42e64] text-white;
+    box-shadow: 0 10px 28px rgba(188, 38, 86, 0.4);
   }
 
   .group:disabled .cta-button,
@@ -84,7 +111,6 @@ body {
     @apply opacity-70;
   }
 
-  /* Badge tallado — relieve con sombras CSS (sin imágenes) */
   .badge-carved {
     @apply inline-flex max-w-full items-center justify-center rounded-full border-0;
   }
@@ -94,17 +120,15 @@ body {
     box-shadow:
       inset 0 2px 4px rgba(0, 0, 0, 0.28),
       inset 0 -1px 1px rgba(255, 255, 255, 0.12),
-      0 2px 4px rgba(255, 255, 255, 0.35),
       0 4px 12px rgba(188, 38, 86, 0.38);
   }
 
   .badge-carved--purple {
-    @apply bg-[#5E549D] text-white;
+    @apply bg-[#BC2656] text-white;
     box-shadow:
       inset 0 2px 4px rgba(0, 0, 0, 0.28),
-      inset 0 -1px 1px rgba(255, 255, 255, 0.1),
-      0 2px 4px rgba(255, 255, 255, 0.3),
-      0 4px 12px rgba(94, 84, 157, 0.4);
+      inset 0 -1px 1px rgba(255, 255, 255, 0.12),
+      0 4px 12px rgba(188, 38, 86, 0.38);
   }
 
   .badge-carved--light {
@@ -112,7 +136,6 @@ body {
     box-shadow:
       inset 0 2px 4px rgba(0, 0, 0, 0.12),
       inset 0 -1px 2px rgba(255, 255, 255, 1),
-      0 2px 4px rgba(255, 255, 255, 0.5),
       0 3px 10px rgba(0, 0, 0, 0.18);
   }
 
@@ -170,7 +193,7 @@ body {
   .blog-content thead th,
   .blog-content tbody th,
   .blog-content tbody td {
-    @apply border-0 border-b border-border/80 bg-transparent px-3 py-3 text-left align-top;
+    @apply border-0 border-b border-white/10 bg-transparent px-3 py-3 text-left align-top;
   }
 
   .blog-content thead th,

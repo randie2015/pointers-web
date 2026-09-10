@@ -3,9 +3,9 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence, useInView } from 'framer-motion';
 
-const VIOLET = '#5E549D';
+const VIOLET = '#64748B';
 const MAGENTA = '#BC2656';
-const TEAL = '#39B8AD';
+const TEAL = '#BC2656';
 
 const FLIGHT_MS = 420;
 const HOLD_MS = 1600;
@@ -258,12 +258,12 @@ export function StrategyBullseye() {
   return (
     <div
       ref={containerRef}
-      className="relative mt-5 flex aspect-[4/3] w-full items-center justify-center overflow-hidden rounded-2xl border border-zinc-100 bg-zinc-50/80 shadow-md"
+      className="relative mt-5 flex aspect-[4/3] w-full items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-[#0c0e14] shadow-md"
       aria-hidden
     >
       <div className="pointer-events-none absolute inset-0 opacity-40">
-        <div className="absolute left-1/2 top-0 h-full w-px -translate-x-1/2 bg-zinc-200" />
-        <div className="absolute left-0 top-1/2 h-px w-full -translate-y-1/2 bg-zinc-200" />
+        <div className="absolute left-1/2 top-0 h-full w-px -translate-x-1/2 bg-white/10" />
+        <div className="absolute left-0 top-1/2 h-px w-full -translate-y-1/2 bg-white/10" />
       </div>
 
       <div className="relative flex items-center justify-center">

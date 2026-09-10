@@ -1,10 +1,8 @@
 import type { Container, ISourceOptions } from 'tsparticles-engine';
 
 const MAGENTA = '#BC2656';
-const MAGENTA_LIGHT = '#D4366F';
-const MAGENTA_DEEP = '#8E1D45';
-const MAGENTA_GLOW = '#E85A8A';
-const VIOLET = '#5E549D';
+const NODE = '#E2E8F0';
+const LINK = '#94A3B8';
 
 export type ParticlePreset = 'hero' | 'ambient';
 
@@ -36,10 +34,7 @@ export function createHeroParticlesOptions(
   preset: ParticlePreset = 'ambient'
 ): ISourceOptions {
   const cfg = PRESETS[preset];
-  const colors =
-    preset === 'hero'
-      ? [MAGENTA, MAGENTA_LIGHT, MAGENTA_DEEP, MAGENTA_GLOW, VIOLET, '#ffffff']
-      : ['#ffffff', MAGENTA, '#2a2a2a'];
+  const colors = [NODE, MAGENTA];
 
   return {
     fullScreen: { enable: false },
@@ -78,7 +73,7 @@ export function createHeroParticlesOptions(
       },
       links: {
         enable: true,
-        color: MAGENTA,
+        color: LINK,
         opacity: cfg.linkOpacity,
         distance: isMobile ? cfg.linkDistance.mobile : cfg.linkDistance.desktop,
         width: preset === 'hero' ? 1.2 : 1

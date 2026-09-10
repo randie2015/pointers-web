@@ -17,8 +17,8 @@ import {
 import { cn } from '@/lib/utils';
 
 const MAGENTA = '#BC2656';
-const VIOLET = '#5E549D';
-const TEAL = '#39B8AD';
+const VIOLET = '#64748B';
+const TEAL = '#BC2656';
 
 type BarConfig = {
   id: number;
@@ -50,7 +50,7 @@ function AbstractToggle({
     <button
       type="button"
       onClick={onToggle}
-      className="relative mx-auto flex h-10 w-[104px] items-center rounded-full border border-zinc-200/80 bg-zinc-100/90 p-1 shadow-inner transition-shadow hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#39B8AD] focus-visible:ring-offset-2"
+          className="relative mx-auto flex h-10 w-[104px] items-center rounded-full border border-white/10 bg-[#0c0e14] p-1 shadow-inner transition-shadow hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#BC2656] focus-visible:ring-offset-2 focus-visible:ring-offset-[#090A0F]"
       aria-pressed={active}
     >
       <motion.div
@@ -164,7 +164,7 @@ function KpiCard({
   return (
     <motion.div
       className={cn(
-        'flex items-center gap-2 rounded-xl border border-white/60 bg-white/70 px-2.5 py-2 shadow-lg backdrop-blur-md',
+        'flex items-center gap-2 rounded-xl border border-white/10 bg-[#0c0e14]/80 px-2.5 py-2 shadow-lg backdrop-blur-md',
         className
       )}
       initial={{ opacity: 0, y: 8 }}
@@ -201,7 +201,7 @@ export function StrategyDashboard() {
 
   return (
     <div
-      className="relative flex min-h-[280px] flex-col rounded-3xl bg-white p-5 shadow-2xl shadow-black/[0.08] md:min-h-[340px] md:p-6"
+      className="relative flex min-h-[280px] flex-col rounded-3xl border border-white/[0.08] bg-[#13161F] p-5 shadow-2xl shadow-black/30 md:min-h-[340px] md:p-6"
       aria-hidden
     >
       <div className="mb-6 flex justify-center pt-1">

@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
-import { routing } from '@/i18n/routing';
-import { SERVICE_SLUGS, isServiceSlug } from '@/lib/services';
+import { routing, redirect } from '@/i18n/routing';
+import { SERVICE_SLUGS, isLegacyServiceSlug, isServiceSlug } from '@/lib/services';
 import { ServicePageTemplate } from '@/components/services/service-page-template';
 
 export function generateStaticParams() {
@@ -32,6 +32,11 @@ export default async function ServiceDetailPage({
   params: Promise<{ locale: string; slug: string }>;
 }) {
   const { locale, slug } = await params;
+
+  if (isLegacyServiceSlug(slug)) {
+    redirect({ href: '/servicios/estrategia-digital', locale: locale as 'es' | 'en' });
+  }
+
   if (!isServiceSlug(slug)) notFound();
 
   setRequestLocale(locale);

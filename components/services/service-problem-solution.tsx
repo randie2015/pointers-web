@@ -39,14 +39,14 @@ export function ServiceProblemSolutionSection({
           <SectionHeader eyebrow={eyebrow} title={title} subtitle={subtitle} />
         </Reveal>
 
-        <div className="mt-10 overflow-hidden rounded-2xl border border-border/60 shadow-sm sm:mt-12 sm:rounded-3xl md:mt-14 md:grid md:grid-cols-2 md:gap-0">
+        <div className="mt-10 overflow-hidden rounded-2xl border border-white/[0.08] sm:mt-12 sm:rounded-3xl md:mt-14 md:grid md:grid-cols-2 md:gap-0">
           <Reveal delay={0.05}>
-            <article className="flex h-full min-h-[280px] flex-col border-b border-border/60 bg-zinc-50 p-6 sm:p-8 md:border-b-0 md:border-r md:p-10">
+            <article className="flex h-full min-h-[280px] flex-col border-b border-white/[0.08] bg-[#13161F] p-6 sm:p-8 md:border-b-0 md:border-r md:p-10">
               <ServiceSectionBadge label={problemLabel} className="mb-4 !justify-start sm:mb-5" />
-              <h3 className="font-display text-xl font-semibold leading-snug text-gray-900 sm:text-2xl md:text-3xl">
+              <h3 className="font-display text-xl font-semibold leading-snug text-[#F8FAFC] sm:text-2xl md:text-3xl">
                 {problemHeadline}
               </h3>
-              <p className="mt-4 text-sm leading-relaxed text-gray-600 sm:mt-5 sm:text-base md:text-lg md:leading-relaxed">
+              <p className="mt-4 text-sm leading-relaxed text-[#94A3B8] sm:mt-5 sm:text-base md:text-lg md:leading-relaxed">
                 {problemBody}
               </p>
             </article>

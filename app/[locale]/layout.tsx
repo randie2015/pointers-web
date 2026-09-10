@@ -19,7 +19,7 @@ const OG_IMAGE = {
   url: 'https://pointers.marketing/opengraph-image.png',
   width: 1200,
   height: 630,
-  alt: 'Pointers | Branding y Diseño Web'
+  alt: 'Pointers | Infraestructura comercial y desarrollo B2B'
 };
 
 export const dynamic = 'force-dynamic';
@@ -37,18 +37,17 @@ export async function generateMetadata({
   const isSpanish = locale === 'es';
 
   return {
-    title: 'Pointers | Agencia de Branding y Diseño Web Premium',
+    title: 'Pointers | Infraestructura comercial y desarrollo B2B',
     description:
-      'Especialistas en branding corporativo y desarrollo web de alto nivel. Construimos identidades visuales con estética limpia y experiencias digitales exclusivas para marcas exigentes.',
+      'Firma boutique de infraestructura comercial, desarrollo web de alto rendimiento y sistemas de conversión para marcas B2B de alto ticket.',
     keywords: [
-      'agencia de branding',
-      'diseño web premium',
-      'branding corporativo',
-      'desarrollo web',
-      'identidad visual',
-      'diseño UI/UX',
-      'estética minimalista',
-      'creación de marcas'
+      'infraestructura comercial',
+      'desarrollo web B2B',
+      'sistemas de conversión',
+      'Next.js',
+      'embudos comerciales',
+      'arquitectura de marca',
+      'plataformas de alto rendimiento'
     ],
     ...siteIconMetadata(),
     alternates: {
@@ -56,8 +55,9 @@ export async function generateMetadata({
       languages: { es: '/es', en: '/en', 'x-default': '/es' }
     },
     openGraph: {
-      title: 'Pointers | Agencia de Branding y Diseño Web Premium',
-      description: 'Especialistas en branding corporativo y desarrollo web de alto nivel.',
+      title: 'Pointers | Infraestructura comercial y desarrollo B2B',
+      description:
+        'Plataformas digitales de alto rendimiento y arquitectura comercial para marcas que no pueden permitirse perder clientes.',
       url: 'https://pointers.marketing',
       siteName: 'Pointers',
       images: [OG_IMAGE],
@@ -67,8 +67,9 @@ export async function generateMetadata({
     },
     twitter: {
       card: 'summary_large_image',
-      title: 'Pointers | Agencia de Branding y Diseño Web Premium',
-      description: 'Especialistas en branding corporativo y desarrollo web de alto nivel.',
+      title: 'Pointers | Infraestructura comercial y desarrollo B2B',
+      description:
+        'Plataformas digitales de alto rendimiento y arquitectura comercial para marcas que no pueden permitirse perder clientes.',
       images: [OG_IMAGE.url]
     }
   };

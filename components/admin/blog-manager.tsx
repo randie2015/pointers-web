@@ -165,7 +165,7 @@ export function BlogManager() {
     <div className="mx-auto max-w-6xl">
       <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <p className="text-sm font-medium text-[#39B8AD]">CMS · Blog</p>
+          <p className="text-sm font-medium text-[#BC2656]">CMS · Blog</p>
           <h1 className="mt-1 text-3xl font-bold tracking-tight text-white">Gestión del Blog</h1>
           <p className="mt-2 text-white/60">Administra artículos publicados y borradores.</p>
         </div>

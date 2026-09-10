@@ -229,11 +229,11 @@ export function BrandingPainter() {
 
   return (
     <div
-      className="relative min-h-[280px] overflow-hidden rounded-3xl border border-border/60 bg-[#faf9f7] p-4 shadow-xl shadow-black/[0.05] md:min-h-[340px] md:p-5"
+      className="relative min-h-[280px] overflow-hidden rounded-3xl border border-white/[0.08] bg-[#13161F] p-4 shadow-xl shadow-black/30 md:min-h-[340px] md:p-5"
       style={{
         backgroundImage: `
-          radial-gradient(circle at 20% 30%, rgba(188,38,86,0.04) 0%, transparent 45%),
-          radial-gradient(circle at 80% 70%, rgba(57,184,173,0.05) 0%, transparent 40%),
+          radial-gradient(circle at 20% 30%, rgba(188,38,86,0.12) 0%, transparent 45%),
+          radial-gradient(circle at 80% 70%, rgba(188,38,86,0.06) 0%, transparent 40%),
           repeating-linear-gradient(
             0deg,
             transparent,

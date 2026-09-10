@@ -40,12 +40,12 @@ export function MissionVisionCards({
       </Reveal>
       <Reveal delay={0.1}>
         <motion.article
-          className="group rounded-3xl bg-[#5E549D] p-8 shadow-md shadow-[#5E549D]/25 md:p-10"
-          whileHover={{ y: -6, boxShadow: '0 20px 40px rgba(94, 84, 157, 0.35)' }}
+          className="group rounded-3xl border border-white/[0.08] bg-[#13161F] p-8 md:p-10"
+          whileHover={{ y: -6, boxShadow: '0 20px 40px rgba(188, 38, 86, 0.18)' }}
           transition={{ type: 'spring', stiffness: 320, damping: 24 }}
         >
-          <p className="text-sm font-semibold uppercase tracking-wider text-white/90">{visionTitle}</p>
-          <p className="mt-4 text-lg leading-relaxed text-white md:text-xl">{visionBody}</p>
+          <p className="text-sm font-semibold uppercase tracking-wider text-[#F8FAFC]">{visionTitle}</p>
+          <p className="mt-4 text-lg leading-relaxed text-[#94A3B8] md:text-xl">{visionBody}</p>
         </motion.article>
       </Reveal>
     </div>
@@ -68,7 +68,7 @@ export function PillarCard({
   return (
     <Reveal delay={index * 0.04}>
       <motion.article
-        className="group h-full rounded-3xl border border-border/70 bg-white p-7 shadow-sm"
+        className="group h-full rounded-3xl border border-white/[0.08] bg-[#13161F] p-7"
         initial="rest"
         whileHover="hover"
         whileTap={{ scale: 0.98 }}
@@ -91,10 +91,10 @@ export function PillarCard({
         >
           <Icon className="h-6 w-6" aria-hidden />
         </motion.div>
-        <h3 className="mt-6 font-display text-2xl font-semibold tracking-tight text-gray-900 transition-colors duration-300 group-hover:text-[#BC2656]">
+        <h3 className="mt-6 font-display text-2xl font-semibold tracking-tight text-[#F8FAFC] transition-colors duration-300 group-hover:text-[#BC2656]">
           {title}
         </h3>
-        <p className="mt-3 text-sm leading-relaxed text-gray-600 md:text-base">{description}</p>
+        <p className="mt-3 text-sm leading-relaxed text-[#94A3B8] md:text-base">{description}</p>
       </motion.article>
     </Reveal>
   );
@@ -116,7 +116,7 @@ export function ValueCard({
   return (
     <Reveal delay={index * 0.06} y={20}>
       <motion.article
-        className="rounded-3xl border border-border/70 bg-white p-7 shadow-sm"
+        className="rounded-3xl border border-white/[0.08] bg-[#13161F] p-7"
         initial={{ opacity: 0, y: 24, scale: 0.96 }}
         whileInView={{ opacity: 1, y: 0, scale: 1 }}
         viewport={{ once: true, margin: '-60px', amount: 0.2 }}
@@ -140,10 +140,10 @@ export function ValueCard({
           >
             <Icon className="h-5 w-5" aria-hidden />
           </div>
-          <h3 className="font-display text-xl font-semibold tracking-tight text-gray-900 md:text-2xl">{title}</h3>
+          <h3 className="font-display text-xl font-semibold tracking-tight text-[#F8FAFC] md:text-2xl">{title}</h3>
         </motion.div>
         <motion.p
-          className="mt-4 text-sm leading-relaxed text-gray-600 md:text-base"
+          className="mt-4 text-sm leading-relaxed text-[#94A3B8] md:text-base"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}

@@ -11,7 +11,7 @@ import { HeaderLogo } from '@/components/header-logo';
 import { MaskUpButton } from '@/components/ui/mask-up-button';
 import { getContactUrl } from '@/lib/site-config';
 
-const PREFETCH_ROUTES = ['/', ...MAIN_ROUTES.map((r) => r.href.split('#')[0])] as const;
+const PREFETCH_ROUTES = ['/', '/servicios', '/contact', '/nosotros'] as const;
 
 export function Header() {
   const t = useTranslations('nav');
@@ -33,7 +33,7 @@ export function Header() {
   }, [pathname]);
 
   return (
-    <header className="sticky top-0 z-[100] bg-brand text-white">
+    <header className="sticky top-0 z-[100] border-b border-white/[0.08] bg-[#090A0F]/80 text-white backdrop-blur-xl">
       <div className="container-page flex h-[68px] items-center justify-between gap-8 md:h-[76px]">
         <Link href="/" prefetch className="touch-press flex shrink-0 items-center text-white active:opacity-90" aria-label="Pointers home">
           <HeaderLogo priority />
@@ -45,7 +45,7 @@ export function Header() {
               <NavHoverLink key={l.href} href={l.href} label={l.label} />
             ))}
           </nav>
-          <div className="ml-4 flex items-center gap-3 border-l border-white/20 pl-4">
+          <div className="ml-4 flex items-center gap-3 border-l border-white/10 pl-4">
             <LocaleSwitcher />
             <MaskUpButton href={getContactUrl()} label={t('cta')} size="compact" />
           </div>
@@ -55,7 +55,7 @@ export function Header() {
           <LocaleSwitcher />
           <button
             type="button"
-            className="touch-press rounded-xl p-2 text-white active:bg-white/15"
+            className="touch-press rounded-xl p-2 text-white active:bg-white/10"
             onClick={() => setOpen(!open)}
             aria-expanded={open}
             aria-label="Menu"
@@ -66,7 +66,7 @@ export function Header() {
       </div>
 
       {open && (
-        <div className="border-t border-white/15 bg-brand md:hidden">
+        <div className="border-t border-white/10 bg-[#090A0F] md:hidden">
           <nav className="container-page flex flex-col gap-1 py-6" aria-label="Mobile">
             {links.map((l) => (
               <NavHoverLink

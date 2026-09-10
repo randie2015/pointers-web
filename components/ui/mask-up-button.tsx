@@ -6,8 +6,8 @@ import type { AppRoute } from '@/lib/navigation';
 import { cn } from '@/lib/utils';
 import type { ReactNode } from 'react';
 
-/** Turquesa Pointers — hsl(174 58% 46%) / #39B8AD */
-export const POINTERS_TEAL = '#39B8AD';
+/** Pointers Crimson — #BC2656 */
+export const POINTERS_TEAL = '#BC2656';
 
 const SIZES = {
   default: { row: '3rem', px: 'px-6' },

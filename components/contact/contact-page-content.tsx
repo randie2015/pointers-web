@@ -7,7 +7,8 @@ import { Reveal } from '@/components/reveal';
 import { SectionBadge } from '@/components/ui/section-badge';
 import { ContactQualificationForm } from '@/components/contact/contact-qualification-form';
 import { VioletMagentaGradientBg } from '@/components/ui/violet-magenta-gradient-bg';
-import { getContactEmail, getWhatsAppDisplayNumber, WHATSAPP_PHONE } from '@/lib/site-config';
+import { getContactEmail, getWhatsAppDisplayNumber, WHATSAPP_PHONE, getWhatsAppUrl } from '@/lib/site-config';
+import { useLocale } from 'next-intl';
 
 function ContactChannelCard({
   icon: Icon,
@@ -23,11 +24,11 @@ function ContactChannelCard({
   return (
     <a
       href={href}
-      className="solid-block group flex flex-col items-center justify-center rounded-3xl bg-[#BC2656] px-6 py-10 text-center text-white shadow-lg shadow-[#BC2656]/25 transition duration-300 hover:brightness-105 active:scale-[0.98] sm:py-12"
+      className="solid-block group flex flex-col items-center justify-center rounded-3xl border border-white/[0.08] bg-[#13161F] px-6 py-10 text-center text-[#F8FAFC] transition duration-300 hover:border-[#BC2656]/40 hover:bg-[#BC2656] hover:text-white active:scale-[0.98] sm:py-12"
     >
-      <Icon className="h-8 w-8 sm:h-9 sm:w-9" strokeWidth={1.75} aria-hidden />
+      <Icon className="h-8 w-8 text-[#BC2656] transition group-hover:text-white sm:h-9 sm:w-9" strokeWidth={1.75} aria-hidden />
       <p className="mt-4 text-lg font-semibold sm:text-xl">{label}</p>
-      <p className="mt-2 break-all text-sm text-white/90 transition group-hover:text-white sm:text-base">
+      <p className="mt-2 break-all text-sm text-[#94A3B8] transition group-hover:text-white sm:text-base">
         {value}
       </p>
     </a>
@@ -36,6 +37,7 @@ function ContactChannelCard({
 
 export function ContactPageContent() {
   const t = useTranslations('contact');
+  const locale = useLocale() as 'es' | 'en';
   const searchParams = useSearchParams();
   const initialService = searchParams.get('servicio') ?? undefined;
   const initialPlan = searchParams.get('plan') ?? undefined;
@@ -49,10 +51,10 @@ export function ContactPageContent() {
         <Reveal>
           <div className="mx-auto max-w-3xl text-center">
             <SectionBadge text={t('eyebrow')} />
-            <h1 className="mt-5 font-display text-3xl font-bold tracking-tight text-gray-900 md:text-4xl lg:text-5xl">
+            <h1 className="mt-5 font-display text-3xl font-bold tracking-tight text-[#F8FAFC] md:text-4xl lg:text-5xl">
               {t('pageTitle')}
             </h1>
-            <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-gray-600 sm:text-base md:text-lg">
+            <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-[#94A3B8] sm:text-base md:text-lg">
               {t('pageSubtitle')}
             </p>
           </div>
@@ -78,14 +80,14 @@ export function ContactPageContent() {
         <Reveal delay={0.1}>
           <div
             id="formulario"
-            className="relative mx-auto mt-10 max-w-3xl scroll-mt-28 overflow-hidden rounded-3xl px-6 py-8 shadow-lg shadow-[#5E549D]/20 sm:mt-12 sm:p-10 md:p-12"
+            className="relative mx-auto mt-10 max-w-3xl scroll-mt-28 overflow-hidden rounded-3xl border border-white/[0.08] px-6 py-8 sm:mt-12 sm:p-10 md:p-12"
           >
             <VioletMagentaGradientBg />
             <div className="relative z-10">
               <h2 className="text-center font-display text-xl font-semibold text-white sm:text-2xl">
                 {t('formTitle')}
               </h2>
-              <p className="mt-2 text-center text-sm leading-relaxed text-white/90">{t('formSubtitle')}</p>
+              <p className="mt-2 text-center text-sm leading-relaxed text-white/80">{t('formSubtitle')}</p>
               <div className="mt-8">
                 <ContactQualificationForm initialService={initialService} initialPlan={initialPlan} />
               </div>
@@ -93,9 +95,16 @@ export function ContactPageContent() {
           </div>
         </Reveal>
 
-        <p className="mx-auto mt-8 max-w-3xl text-center text-sm text-gray-500">
+        <p className="mx-auto mt-8 max-w-3xl text-center text-sm text-slate-500">
           {t('whatsappHint')}{' '}
-          <span className="font-medium text-gray-700">{phoneDisplay}</span>
+          <a
+            href={getWhatsAppUrl(locale)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-medium text-[#BC2656] hover:underline"
+          >
+            {phoneDisplay}
+          </a>
         </p>
       </div>
     </section>

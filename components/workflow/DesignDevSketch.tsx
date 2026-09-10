@@ -4,8 +4,8 @@ import { useEffect, useRef, useState } from 'react';
 import { motion, useInView, animate } from 'framer-motion';
 
 const MAGENTA = '#BC2656';
-const VIOLET = '#5E549D';
-const TEAL = '#39B8AD';
+const VIOLET = '#64748B';
+const TEAL = '#BC2656';
 
 const DRAW_MS = 2800;
 const FILL_MS = 900;
@@ -177,9 +177,9 @@ export function DesignDevSketch() {
   return (
     <div
       ref={containerRef}
-      className="relative mt-5 aspect-[4/3] w-full overflow-hidden rounded-2xl border border-zinc-100 shadow-md"
+      className="relative mt-5 aspect-[4/3] w-full overflow-hidden rounded-2xl border border-white/10 shadow-md"
       style={{
-        backgroundColor: '#faf9f7',
+        backgroundColor: '#13161F',
         backgroundImage: `
           repeating-linear-gradient(0deg, transparent, transparent 11px, rgba(0,0,0,0.014) 11px, rgba(0,0,0,0.014) 12px),
           repeating-linear-gradient(90deg, transparent, transparent 11px, rgba(0,0,0,0.014) 11px, rgba(0,0,0,0.014) 12px)
@@ -220,7 +220,7 @@ export function DesignDevSketch() {
             key={`ghost-${i}`}
             d={d}
             fill="none"
-            stroke="#e5e7eb"
+            stroke="#334155"
             strokeWidth={2.2}
             strokeLinecap="round"
             strokeLinejoin="round"

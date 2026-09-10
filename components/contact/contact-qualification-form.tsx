@@ -13,7 +13,7 @@ import { InternationalPhoneInput } from '@/components/contact/international-phon
 import { isServiceSlug } from '@/lib/services';
 
 const inputClass =
-  'w-full rounded-xl border border-white/25 bg-white px-4 py-3.5 text-sm text-gray-900 shadow-sm outline-none transition placeholder:text-gray-400 focus:border-[#39B8AD] focus:ring-2 focus:ring-[#39B8AD]/25 max-md:min-h-[48px]';
+  'w-full rounded-xl border border-white/15 bg-[#0c0e14] px-4 py-3.5 text-sm text-[#F8FAFC] shadow-sm outline-none transition placeholder:text-slate-500 focus:border-[#BC2656] focus:ring-2 focus:ring-[#BC2656]/25 max-md:min-h-[48px]';
 
 function Field({
   label,
@@ -198,7 +198,7 @@ export function ContactQualificationForm({ initialService, initialPlan }: Contac
             disabled
             className={cn(
               'mobile-btn-surface flex h-12 w-full items-center justify-center rounded-full text-sm font-semibold text-white',
-              formStatus === 'error' ? 'bg-red-800' : 'bg-[#2d9d92]'
+              formStatus === 'error' ? 'bg-red-800' : 'bg-[#BC2656]'
             )}
           >
             {buttonLabel}

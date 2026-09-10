@@ -102,7 +102,7 @@ export function InternationalPhoneInput({
   return (
     <div
       className={cn(
-        'flex w-full overflow-hidden rounded-xl border border-white/25 bg-white shadow-sm transition focus-within:border-[#39B8AD] focus-within:ring-2 focus-within:ring-[#39B8AD]/25',
+        'flex w-full overflow-hidden rounded-xl border border-white/15 bg-[#0c0e14] shadow-sm transition focus-within:border-[#BC2656] focus-within:ring-2 focus-within:ring-[#BC2656]/25',
         disabled && 'pointer-events-none opacity-60',
         className
       )}
@@ -112,7 +112,7 @@ export function InternationalPhoneInput({
         value={country}
         onChange={(event) => handleCountryChange(event.target.value as CountryCode)}
         disabled={disabled}
-        className="max-w-[9.5rem] shrink-0 cursor-pointer border-0 border-r border-gray-200 bg-transparent py-3.5 pl-3 pr-2 text-sm text-gray-700 outline-none max-md:min-h-[48px]"
+        className="max-w-[9.5rem] shrink-0 cursor-pointer border-0 border-r border-white/10 bg-transparent py-3.5 pl-3 pr-2 text-sm text-slate-300 outline-none max-md:min-h-[48px]"
       >
         {PHONE_COUNTRY_OPTIONS.map((option) => (
           <option key={option.code} value={option.code}>
@@ -133,7 +133,7 @@ export function InternationalPhoneInput({
         onBlur={onBlur}
         disabled={disabled}
         placeholder={placeholder}
-        className="min-w-0 flex-1 border-0 bg-transparent px-3 py-3.5 text-sm text-gray-900 outline-none placeholder:text-gray-400 max-md:min-h-[48px]"
+        className="min-w-0 flex-1 border-0 bg-transparent px-3 py-3.5 text-sm text-[#F8FAFC] outline-none placeholder:text-slate-500 max-md:min-h-[48px]"
       />
     </div>
   );

@@ -4,8 +4,8 @@ import { useEffect, useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
 
 const MAGENTA = '#BC2656';
-const TEAL = '#39B8AD';
-const VIOLET = '#5E549D';
+const TEAL = '#BC2656';
+const VIOLET = '#64748B';
 
 const COLS = 9;
 const ROWS = 6;
@@ -146,7 +146,7 @@ function ScannerNode({
         animate={{
           width: revealed ? 22 : 6,
           height: revealed ? 22 : 6,
-          backgroundColor: revealed ? `${color}18` : '#e5e7eb',
+          backgroundColor: revealed ? `${color}18` : '#1e293b',
           boxShadow: revealed ? `0 0 14px ${MAGENTA}55` : 'none'
         }}
         transition={{ duration: 0.35 }}
@@ -225,7 +225,7 @@ export function DiscoveryScanner() {
 
   return (
     <div
-      className="relative mt-5 aspect-[4/3] w-full overflow-hidden rounded-2xl border border-zinc-100 bg-zinc-50/80 shadow-md"
+      className="relative mt-5 aspect-[4/3] w-full overflow-hidden rounded-2xl border border-white/10 bg-[#0c0e14] shadow-md"
       aria-hidden
     >
       {/* Grilla de conexiones */}
@@ -241,7 +241,7 @@ export function DiscoveryScanner() {
               y1={`${e.y1}%`}
               x2={`${e.x2}%`}
               y2={`${e.y2}%`}
-              stroke={nearLens ? `${TEAL}44` : '#e5e7eb'}
+              stroke={nearLens ? `${TEAL}44` : '#334155'}
               strokeWidth={nearLens ? 1.2 : 0.8}
               style={{ transition: 'stroke 0.3s ease' }}
             />

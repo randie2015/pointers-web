@@ -17,14 +17,14 @@ export function AboutPageContent() {
 
   const pillars = [
     { title: t('pillars.items.0.title'), description: t('pillars.items.0.description'), color: '#BC2656' },
-    { title: t('pillars.items.1.title'), description: t('pillars.items.1.description'), color: '#39B8AD' },
-    { title: t('pillars.items.2.title'), description: t('pillars.items.2.description'), color: '#5E549D' }
+    { title: t('pillars.items.1.title'), description: t('pillars.items.1.description'), color: '#BC2656' },
+    { title: t('pillars.items.2.title'), description: t('pillars.items.2.description'), color: '#BC2656' }
   ];
 
   const values = [
     { title: t('values.items.0.title'), description: t('values.items.0.description'), color: '#BC2656' },
-    { title: t('values.items.1.title'), description: t('values.items.1.description'), color: '#39B8AD' },
-    { title: t('values.items.2.title'), description: t('values.items.2.description'), color: '#5E549D' },
+    { title: t('values.items.1.title'), description: t('values.items.1.description'), color: '#BC2656' },
+    { title: t('values.items.2.title'), description: t('values.items.2.description'), color: '#BC2656' },
     { title: t('values.items.3.title'), description: t('values.items.3.description'), color: '#BC2656' }
   ];
 
@@ -42,10 +42,10 @@ export function AboutPageContent() {
           <Reveal>
             <div className="mx-auto max-w-4xl text-center">
               <SectionBadge text={t('hero.eyebrow')} />
-              <h1 className="h-display mt-5 text-3xl leading-tight text-gray-900 md:text-5xl lg:text-6xl">
+              <h1 className="h-display mt-5 text-3xl leading-tight text-[#F8FAFC] md:text-5xl lg:text-6xl">
                 {t('hero.title')}
               </h1>
-              <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-gray-600 md:text-lg">
+              <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-[#94A3B8] md:text-lg">
                 {t('hero.subtitle')}
               </p>
             </div>
@@ -56,7 +56,7 @@ export function AboutPageContent() {
           className="pointer-events-none absolute inset-x-0 -top-32 mx-auto h-72 w-[min(900px,92vw)] rounded-full blur-3xl"
           style={{
             background:
-              'radial-gradient(circle at 30% 40%, rgba(188,38,86,0.22), transparent 55%), radial-gradient(circle at 70% 55%, rgba(57,184,173,0.18), transparent 55%), radial-gradient(circle at 55% 20%, rgba(94,84,157,0.18), transparent 55%)'
+              'radial-gradient(circle at 50% 40%, rgba(188,38,86,0.22), transparent 58%)'
           }}
         />
       </section>
@@ -114,27 +114,27 @@ export function AboutPageContent() {
 
           <div className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-2">
             <Reveal delay={0.05}>
-              <article className="rounded-3xl border border-gray-200 bg-white p-8 shadow-sm">
-                <h3 className="mb-6 text-2xl font-semibold text-gray-800">{t('whyUs.others.title')}</h3>
-                <ul className="flex flex-col gap-6 text-sm leading-relaxed text-gray-600 md:text-base">
+              <article className="rounded-3xl border border-white/[0.08] bg-[#13161F] p-8">
+                <h3 className="mb-6 text-2xl font-semibold text-[#F8FAFC]">{t('whyUs.others.title')}</h3>
+                <ul className="flex flex-col gap-6 text-sm leading-relaxed text-[#94A3B8] md:text-base">
                   <li className="flex items-start gap-4">
-                    <X className="mt-0.5 h-6 w-6 shrink-0 text-gray-700" aria-hidden />
+                    <X className="mt-0.5 h-6 w-6 shrink-0 text-slate-500" aria-hidden />
                     <span>{t('whyUs.others.bullets.0')}</span>
                   </li>
                   <li className="flex items-start gap-4">
-                    <X className="mt-0.5 h-6 w-6 shrink-0 text-gray-700" aria-hidden />
+                    <X className="mt-0.5 h-6 w-6 shrink-0 text-slate-500" aria-hidden />
                     <span>{t('whyUs.others.bullets.1')}</span>
                   </li>
                   <li className="flex items-start gap-4">
-                    <X className="mt-0.5 h-6 w-6 shrink-0 text-gray-700" aria-hidden />
+                    <X className="mt-0.5 h-6 w-6 shrink-0 text-slate-500" aria-hidden />
                     <span>{t('whyUs.others.bullets.2')}</span>
                   </li>
                   <li className="flex items-start gap-4">
-                    <X className="mt-0.5 h-6 w-6 shrink-0 text-gray-700" aria-hidden />
+                    <X className="mt-0.5 h-6 w-6 shrink-0 text-slate-500" aria-hidden />
                     <span>{t('whyUs.others.bullets.3')}</span>
                   </li>
                   <li className="flex items-start gap-4">
-                    <X className="mt-0.5 h-6 w-6 shrink-0 text-gray-700" aria-hidden />
+                    <X className="mt-0.5 h-6 w-6 shrink-0 text-slate-500" aria-hidden />
                     <span>{t('whyUs.others.result')}</span>
                   </li>
                 </ul>
@@ -181,8 +181,8 @@ export function AboutPageContent() {
           <div className="mt-14 grid grid-cols-1 gap-8 md:grid-cols-3">
             {team.map((m, i) => (
               <Reveal key={m.name} delay={i * 0.06}>
-                <article className="group rounded-2xl bg-white p-4 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
-                  <div className="relative aspect-[4/5] overflow-hidden rounded-xl bg-gradient-to-br from-gray-100 to-gray-200">
+                <article className="group rounded-2xl border border-white/[0.08] bg-[#13161F] p-4 transition-all duration-300 hover:-translate-y-1 hover:border-[#BC2656]/40">
+                  <div className="relative aspect-[4/5] overflow-hidden rounded-xl bg-[#0c0e14]">
                     {'imageSrc' in m && m.imageSrc ? (
                       <Image
                         src={m.imageSrc}
@@ -193,7 +193,7 @@ export function AboutPageContent() {
                         priority={i === 0}
                       />
                     ) : (
-                      <div className="absolute inset-0 bg-gradient-to-br from-gray-100 via-gray-200 to-gray-100" />
+                      <div className="absolute inset-0 bg-[#0c0e14]" />
                     )}
 
                     {m.linkedin ? (
@@ -214,7 +214,7 @@ export function AboutPageContent() {
 
                   <div className="mt-4 flex items-start justify-between gap-3">
                     <div className="min-w-0">
-                      <p className="truncate text-lg font-semibold text-gray-900">{m.name}</p>
+                      <p className="truncate text-lg font-semibold text-[#F8FAFC]">{m.name}</p>
                       <p className="mt-1 truncate text-sm font-medium text-[#BC2656]">{m.role}</p>
                     </div>
                     {m.linkedin ? (

@@ -4,7 +4,7 @@ import { useMemo } from 'react';
 import { Check } from 'lucide-react';
 import { useLocale } from 'next-intl';
 import { MaskUpButton } from '@/components/ui/mask-up-button';
-import { SERVICE_MAGENTA, SERVICE_PURPLE, SERVICE_TEAL } from '@/lib/service-brand';
+import { SERVICE_MAGENTA } from '@/lib/service-brand';
 import { formatPricingDual } from '@/lib/pricing-currency';
 import { getContactUrl, type ServiceWhatsAppSlug } from '@/lib/site-config';
 import { cn } from '@/lib/utils';
@@ -59,9 +59,9 @@ function PlanCard({
       }
     : isPremium
       ? {
-          backgroundColor: SERVICE_PURPLE,
-          borderColor: SERVICE_PURPLE,
-          boxShadow: `0 8px 32px ${SERVICE_PURPLE}40`
+          backgroundColor: '#1a1e2a',
+          borderColor: 'rgba(188, 38, 86, 0.35)',
+          boxShadow: '0 8px 32px rgba(188, 38, 86, 0.12)'
         }
       : undefined;
 
@@ -73,15 +73,15 @@ function PlanCard({
         'relative flex h-full w-full min-w-0 flex-col rounded-2xl border p-6 text-left shadow-sm sm:rounded-3xl sm:p-7 md:p-8',
         'md:transition-all md:duration-300 md:ease-out md:hover:-translate-y-1 md:hover:shadow-lg',
         isTop && 'z-[1] text-white shadow-lg md:scale-[1.04] md:shadow-xl',
-        isPremium && 'text-white shadow-md',
-        !isColored && 'border-border/70 bg-white md:hover:border-[#5E549D]/40'
+        isPremium && 'text-[#F8FAFC] shadow-md',
+        !isColored && 'border-white/[0.08] bg-[#13161F] md:hover:border-[#BC2656]/40'
       )}
     >
       <div>
         <p
           className={cn(
             'text-xs font-semibold uppercase tracking-widest sm:text-sm',
-            isColored ? 'text-white/90' : 'text-[#5E549D]'
+            isColored ? 'text-white/90' : 'text-[#BC2656]'
           )}
         >
           {meta.name}
@@ -97,7 +97,7 @@ function PlanCard({
         <p
           className={cn(
             'mt-4 font-display text-xl font-bold leading-tight tracking-tight sm:text-2xl',
-            isColored ? 'text-white' : 'text-gray-900'
+            isColored ? 'text-white' : 'text-[#F8FAFC]'
           )}
         >
           {dualPrice?.usd ?? plan.price}
@@ -130,12 +130,11 @@ function PlanCard({
           {plan.features.map((feature, index) => (
             <li key={`${tier}-${index}`} className="flex items-start gap-3">
               <Check
-                className={cn('mt-0.5 h-4 w-4 shrink-0', isColored ? 'text-white' : 'text-[#39B8AD]')}
-                style={isColored ? undefined : { color: SERVICE_TEAL }}
+                className={cn('mt-0.5 h-4 w-4 shrink-0', isColored ? 'text-white' : 'text-[#BC2656]')}
                 aria-hidden
               />
               <span
-                className={cn('text-sm leading-relaxed', isColored ? 'text-white/90' : 'text-gray-700')}
+                className={cn('text-sm leading-relaxed', isColored ? 'text-white/90' : 'text-slate-300')}
               >
                 {feature}
               </span>

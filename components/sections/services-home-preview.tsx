@@ -17,26 +17,26 @@ export function ServicesHomePreview() {
   }[];
 
   return (
-    <section className="relative z-[1] scroll-mt-24 py-20 md:py-28">
+    <section id="soluciones" className="relative z-[1] scroll-mt-24 py-20 md:py-28">
       <div className="container-page">
         <Reveal>
           <SectionHeader eyebrow={t('eyebrow')} title={t('title')} subtitle={t('subtitle')} />
         </Reveal>
 
-        <div className="mt-14 grid gap-6 sm:grid-cols-2">
+        <div className="mt-14 grid gap-6 md:grid-cols-3">
           {items.map((item, i) => (
             <Reveal key={item.badge} delay={i * 0.05}>
               <Link
                 href={`/servicios/${SERVICE_SLUGS[i]}`}
                 prefetch
-                className="group mobile-card-interactive block h-full rounded-2xl border border-border/60 bg-white p-6 shadow-sm md:p-8 md:shadow-sm md:hover:-translate-y-1 md:hover:shadow-md"
+                className="group mobile-card-interactive surface-card block h-full rounded-2xl p-6 md:p-8 md:hover:-translate-y-1 md:hover:border-[#BC2656]/40"
               >
-                <SectionBadge text={item.badge} variant="purple" size="compact" />
-                <h3 className="h-display mt-4 text-xl md:text-2xl">{item.title}</h3>
-                <p className="mt-3 line-clamp-3 text-sm leading-relaxed text-muted-foreground md:text-base">
+                <SectionBadge text={item.badge} variant="brand" size="compact" />
+                <h3 className="h-display mt-4 text-xl text-[#F8FAFC] md:text-2xl">{item.title}</h3>
+                <p className="mt-3 line-clamp-4 text-sm leading-relaxed text-[#94A3B8] md:text-base">
                   {item.description}
                 </p>
-                <span className="mt-5 inline-block text-sm font-semibold text-[#39B8AD] group-hover:underline">
+                <span className="mt-5 inline-block text-sm font-semibold text-[#BC2656] group-hover:underline">
                   {t('previewLink')} →
                 </span>
               </Link>

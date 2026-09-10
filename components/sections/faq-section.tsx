@@ -9,7 +9,6 @@ import { SectionHeader } from '@/components/ui/section-header';
 import { cn } from '@/lib/utils';
 
 const MAGENTA = '#BC2656';
-const VIOLET = '#5E549D';
 
 const panelTransition = {
   height: { duration: 0.42, ease: [0.04, 0.62, 0.23, 0.98] as const },
@@ -30,21 +29,21 @@ function FaqItem({
   return (
     <div
       className={cn(
-        'mobile-surface overflow-hidden rounded-2xl bg-white shadow-sm shadow-black/[0.04] ring-1 ring-black/[0.05] transition-shadow duration-300 max-md:rounded-2xl',
-        isOpen && 'shadow-md shadow-black/[0.06] ring-brand/10'
+        'mobile-surface surface-card overflow-hidden rounded-2xl transition-shadow duration-300',
+        isOpen && 'shadow-md shadow-[#BC2656]/10'
       )}
     >
       <button
         type="button"
         onClick={onToggle}
-        className="touch-press flex w-full items-center justify-between gap-4 rounded-2xl px-6 py-5 text-left active:bg-zinc-50 md:px-7 md:py-6"
+        className="touch-press flex w-full items-center justify-between gap-4 rounded-2xl px-6 py-5 text-left active:bg-white/[0.03] md:px-7 md:py-6"
         aria-expanded={isOpen}
       >
-        <span className="pr-2 text-base font-medium leading-snug text-foreground md:text-lg">
+        <span className="pr-2 text-base font-medium leading-snug text-[#F8FAFC] md:text-lg">
           {question}
         </span>
         <motion.span
-          className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-zinc-100 text-muted-foreground"
+          className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/[0.06] text-slate-400"
           animate={{ rotate: isOpen ? 180 : 0 }}
           transition={{ duration: 0.38, ease: [0.22, 1, 0.36, 1] }}
         >
@@ -75,7 +74,7 @@ function FaqItem({
             }}
             className="overflow-hidden"
           >
-            <p className="px-6 pb-6 text-sm leading-relaxed text-muted-foreground md:px-7 md:pb-7 md:text-[15px]">
+            <p className="px-6 pb-6 text-sm leading-relaxed text-[#94A3B8] md:px-7 md:pb-7 md:text-[15px]">
               {answer}
             </p>
           </motion.div>
@@ -116,17 +115,14 @@ export function FaqSection({
         </Reveal>
 
         <div className="relative mx-auto mt-12 max-w-3xl md:mt-14">
-          {/* Acento degradado lateral — estilo Framer original */}
           <div
             className="pointer-events-none absolute -left-1 top-2 bottom-2 w-1 rounded-full md:-left-2 md:w-1.5"
-            style={{ background: `linear-gradient(180deg, ${MAGENTA} 0%, ${VIOLET} 100%)` }}
+            style={{ background: MAGENTA }}
             aria-hidden
           />
           <div
             className="pointer-events-none absolute -left-6 top-0 bottom-0 w-20 rounded-full opacity-40 blur-2xl md:-left-10 md:w-28"
-            style={{
-              background: `linear-gradient(180deg, ${MAGENTA}44 0%, ${VIOLET}33 100%)`
-            }}
+            style={{ background: `${MAGENTA}44` }}
             aria-hidden
           />
 

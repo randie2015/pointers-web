@@ -28,9 +28,9 @@ export function AboutFaqAccordion() {
           <div
             key={item.question}
             className={[
-              'rounded-2xl border border-gray-200 bg-white transition-colors',
-              'hover:border-gray-300',
-              isActive ? 'bg-gray-50/50' : ''
+              'rounded-2xl border border-white/[0.08] bg-[#13161F] transition-colors',
+              'hover:border-[#BC2656]/40',
+              isActive ? 'bg-white/[0.03]' : ''
             ].join(' ')}
           >
             <button
@@ -39,10 +39,10 @@ export function AboutFaqAccordion() {
               onClick={() => setActiveIndex((cur) => (cur === idx ? null : idx))}
               aria-expanded={isActive}
             >
-              <span className="pr-6 font-medium text-gray-900">{item.question}</span>
+              <span className="pr-6 font-medium text-[#F8FAFC]">{item.question}</span>
               <ChevronDown
                 className={[
-                  'h-5 w-5 shrink-0 text-gray-500 transition-transform duration-300',
+                  'h-5 w-5 shrink-0 text-slate-400 transition-transform duration-300',
                   isActive ? 'rotate-180' : ''
                 ].join(' ')}
                 aria-hidden
@@ -58,7 +58,7 @@ export function AboutFaqAccordion() {
                   transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
                   className="overflow-hidden"
                 >
-                  <div className="px-6 pb-6 pt-0 text-sm leading-relaxed text-gray-600 md:text-base">
+                  <div className="px-6 pb-6 pt-0 text-sm leading-relaxed text-[#94A3B8] md:text-base">
                     {item.answer}
                   </div>
                 </motion.div>

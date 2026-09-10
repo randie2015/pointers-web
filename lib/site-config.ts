@@ -4,15 +4,14 @@ export const WHATSAPP_PHONE = (
 );
 
 const WHATSAPP_MESSAGES = {
-  es: 'Hola Pointers, me gustaría obtener más información sobre sus servicios.',
-  en: 'Hi Pointers, I would like to get more information about your services.'
+  es: 'Hola Pointers, quiero conversar sobre infraestructura comercial y desarrollo para mi marca.',
+  en: 'Hi Pointers, I would like to discuss commercial infrastructure and development for my brand.'
 } as const;
 
 const SERVICE_MESSAGES = {
-  branding: 'Hola, estoy interesado en sus servicios de Branding e Identidad Visual',
-  'diseno-web': 'Hola, estoy interesado en sus servicios de Diseño Web y Experiencia Digital',
-  contenido: 'Hola, estoy interesado en sus servicios de Contenido y Presencia en Redes',
-  'estrategia-digital': 'Hola, estoy interesado en sus servicios de Estrategia Digital y Publicidad'
+  branding: 'Hola, estoy interesado en Brand Architecture & Positioning.',
+  'diseno-web': 'Hola, estoy interesado en High-Performance Web & App Development.',
+  'estrategia-digital': 'Hola, estoy interesado en Commercial Infrastructure & Funnels.'
 } as const;
 
 export type ServiceWhatsAppSlug = keyof typeof SERVICE_MESSAGES;
@@ -39,7 +38,7 @@ const PLAN_LABELS = {
 export type ServicePlanKey = keyof typeof PLAN_LABELS;
 
 export function getServicePlanWhatsAppUrl(slug: ServiceWhatsAppSlug, plan: ServicePlanKey) {
-  const message = `${SERVICE_MESSAGES[slug]}. Me interesa el plan ${PLAN_LABELS[plan]}.`;
+  const message = `${SERVICE_MESSAGES[slug]} Me interesa el plan ${PLAN_LABELS[plan]}.`;
   return buildWhatsAppUrl(message);
 }
 
@@ -47,7 +46,6 @@ export function getServicePlanWhatsAppUrl(slug: ServiceWhatsAppSlug, plan: Servi
 export const SERVICE_WHATSAPP_URLS = {
   branding: buildWhatsAppUrl(SERVICE_MESSAGES.branding),
   'diseno-web': buildWhatsAppUrl(SERVICE_MESSAGES['diseno-web']),
-  contenido: buildWhatsAppUrl(SERVICE_MESSAGES.contenido),
   'estrategia-digital': buildWhatsAppUrl(SERVICE_MESSAGES['estrategia-digital'])
 } as const;
 

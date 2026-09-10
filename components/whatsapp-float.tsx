@@ -1,9 +1,9 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useTranslations } from 'next-intl';
 import { useLocale } from 'next-intl';
 import { getWhatsAppUrl } from '@/lib/site-config';
+import { useTranslations } from 'next-intl';
 
 function WhatsAppIcon({ className }: { className?: string }) {
   return (
@@ -24,14 +24,14 @@ export function WhatsAppFloat() {
       rel="noopener noreferrer"
       aria-label={t('ariaLabel')}
       title={t('label')}
-      initial={{ opacity: 0, scale: 0.9 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ delay: 1, duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+      initial={{ opacity: 0, y: 8 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 1.2, duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
       whileHover={{ y: -2 }}
-      whileTap={{ scale: 0.95 }}
-      className="fixed bottom-6 right-6 z-[60] flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg shadow-black/10 transition-shadow hover:shadow-xl hover:shadow-black/15 sm:bottom-8 sm:right-8"
+      whileTap={{ scale: 0.96 }}
+      className="fixed bottom-6 right-6 z-[60] flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-[#13161F] text-[#F8FAFC] shadow-lg shadow-black/40 transition hover:border-[#BC2656]/50 hover:text-[#BC2656] sm:bottom-8 sm:right-8"
     >
-      <WhatsAppIcon className="h-7 w-7" />
+      <WhatsAppIcon className="h-5 w-5" />
     </motion.a>
   );
 }

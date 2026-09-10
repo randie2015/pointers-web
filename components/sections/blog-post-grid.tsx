@@ -48,7 +48,7 @@ export function BlogPostGrid({ posts, showAdminControls = false }: BlogPostGridP
         <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {posts.map((post, i) => (
             <Reveal key={post.id} delay={i * 0.06}>
-              <article className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-border/80 bg-white shadow-sm transition-all hover:border-brand/30 hover:shadow-lg">
+              <article className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-white/[0.08] bg-[#13161F] transition-all hover:border-brand/40 hover:shadow-lg hover:shadow-[#BC2656]/10">
                 {showAdminControls ? (
                   <div className="absolute right-3 top-3 z-20">
                     <BlogEditLink postId={post.id} label={t('editPost')} />
@@ -70,7 +70,7 @@ export function BlogPostGrid({ posts, showAdminControls = false }: BlogPostGridP
 
                   <div className="flex flex-1 flex-col p-6 md:p-7">
                     <div className="flex items-center justify-between gap-3 text-xs">
-                      <span className="rounded-lg bg-purple px-2.5 py-1 font-semibold text-white">
+                      <span className="rounded-lg bg-brand px-2.5 py-1 font-semibold text-white">
                         {post.category}
                       </span>
                       <time className="text-muted-foreground">

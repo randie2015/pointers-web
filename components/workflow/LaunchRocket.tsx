@@ -4,8 +4,8 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { motion, AnimatePresence, useInView } from 'framer-motion';
 
 const MAGENTA = '#BC2656';
-const VIOLET = '#5E549D';
-const TEAL = '#39B8AD';
+const VIOLET = '#64748B';
+const TEAL = '#BC2656';
 
 const IGNITE_MS = 700;
 const LIFTOFF_MS = 950;
@@ -23,7 +23,7 @@ type FlameParticle = {
 };
 
 function buildFlames(count: number): FlameParticle[] {
-  const colors = [MAGENTA, TEAL, MAGENTA, TEAL, '#e84a7a', '#5ed4c8'];
+  const colors = [MAGENTA, TEAL, MAGENTA, '#e84a7a', '#8E1D45', '#F8FAFC'];
   return Array.from({ length: count }, (_, i) => ({
     id: i,
     x: (Math.random() - 0.5) * 28,
@@ -38,13 +38,13 @@ function RocketSvg() {
     <svg width="56" height="88" viewBox="0 0 56 88" className="drop-shadow-lg" aria-hidden>
       <defs>
         <linearGradient id="rocketBody" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stopColor="#6d64a8" />
+          <stop offset="0%" stopColor="#334155" />
           <stop offset="50%" stopColor={VIOLET} />
-          <stop offset="100%" stopColor="#4a4378" />
+          <stop offset="100%" stopColor="#1e293b" />
         </linearGradient>
         <linearGradient id="rocketWindow" x1="0%" y1="0%" x2="100%" y2="100%">
           <stop offset="0%" stopColor={TEAL} />
-          <stop offset="100%" stopColor="#2a8a82" />
+          <stop offset="100%" stopColor="#8E1D45" />
         </linearGradient>
       </defs>
       {/* Aletas */}
@@ -209,7 +209,7 @@ export function LaunchRocket() {
   return (
     <div
       ref={containerRef}
-      className="relative mt-5 aspect-[4/3] w-full overflow-hidden rounded-2xl border border-zinc-100 bg-zinc-50/90 shadow-md"
+      className="relative mt-5 aspect-[4/3] w-full overflow-hidden rounded-2xl border border-white/10 bg-[#0c0e14] shadow-md"
       aria-hidden
     >
       {/* Estrellas sutiles */}

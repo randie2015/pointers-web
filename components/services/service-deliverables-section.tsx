@@ -37,17 +37,17 @@ export function ServiceDeliverablesSection({
             const Icon = icons[i] ?? icons[0];
             return (
               <Reveal key={item.title} delay={i * 0.05}>
-                <article className="mobile-surface group flex h-full flex-col rounded-2xl border border-border/60 bg-white p-5 transition-all duration-500 ease-in-out active:shadow-md sm:p-6 md:p-7 md:hover:-translate-y-1 md:hover:shadow-lg">
+                <article className="mobile-surface group flex h-full flex-col rounded-2xl border border-white/[0.08] bg-[#13161F] p-5 transition-all duration-500 ease-in-out active:shadow-md sm:p-6 md:p-7 md:hover:-translate-y-1 md:hover:border-[#BC2656]/40">
                   <div
                     className="flex h-11 w-11 items-center justify-center rounded-2xl sm:h-12 sm:w-12"
                     style={{ backgroundColor: `${SERVICE_MAGENTA}14`, color: SERVICE_MAGENTA }}
                   >
                     <Icon className="h-5 w-5 sm:h-6 sm:w-6" aria-hidden />
                   </div>
-                  <h3 className="mt-4 font-display text-base font-semibold text-gray-900 sm:mt-5 sm:text-lg">
+                  <h3 className="mt-4 font-display text-base font-semibold text-[#F8FAFC] sm:mt-5 sm:text-lg">
                     {item.title}
                   </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-gray-600">{item.description}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-[#94A3B8]">{item.description}</p>
                 </article>
               </Reveal>
             );
