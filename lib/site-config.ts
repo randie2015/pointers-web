@@ -51,7 +51,10 @@ export const SERVICE_WHATSAPP_URLS = {
 } as const;
 
 export function getWhatsAppDisplayNumber() {
-  return process.env.NEXT_PUBLIC_WHATSAPP_DISPLAY ?? '+51 904 330 335';
+  const display = process.env.NEXT_PUBLIC_WHATSAPP_DISPLAY ?? '';
+  const digits = display.replace(/\D/g, '');
+  if (!digits || digits === '51908553032') return '+51 904 330 335';
+  return display;
 }
 
 /** Anchor id del bloque de formulario en /contact */

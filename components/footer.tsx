@@ -3,7 +3,6 @@
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
-import { BrandLogo } from '@/components/brand-logo';
 import { HOME_ANCHORS, MAIN_ROUTES } from '@/lib/navigation';
 import { getContactEmail, getWhatsAppDisplayNumber, getWhatsAppUrl } from '@/lib/site-config';
 import { useLocale } from 'next-intl';
@@ -46,7 +45,15 @@ export function Footer() {
       <div className="container-page py-16 md:py-20">
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-10">
           <div className="lg:col-span-5">
-            <BrandLogo variant="horizontal-white" className="h-10 md:h-12" />
+            <Link href="/" prefetch className="inline-flex items-center" aria-label="Pointers home">
+              <img
+                src="/brand/logo-horizontal.svg"
+                alt="Pointers"
+                width={576}
+                height={103}
+                className="h-10 w-auto md:h-12"
+              />
+            </Link>
             <p className="mt-6 max-w-sm text-sm leading-relaxed text-slate-400">{t('newsletter')}</p>
 
             <div className="mt-5 flex flex-wrap gap-3">

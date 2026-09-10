@@ -3,9 +3,9 @@ import { cn } from '@/lib/utils';
 
 const LOGOS = {
   'horizontal-white': {
-    src: '/brand/logo-horizontal-white.png',
-    width: 1024,
-    height: 211,
+    src: '/brand/logo-horizontal.svg',
+    width: 576,
+    height: 103,
     alt: 'Pointers'
   },
   'horizontal-dark': {
