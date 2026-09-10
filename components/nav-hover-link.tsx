@@ -35,7 +35,7 @@ export function NavHoverLink({ href, label, onClick, className }: NavLinkProps) 
       />
       <span
         className={cn(
-          'relative z-[1] block text-sm font-medium text-white/70 transition-colors duration-200 group-hover:text-white max-md:text-base',
+          'relative z-[1] block text-sm font-medium text-white/70 transition-colors duration-200 group-hover:text-white max-md:text-base max-md:text-slate-200',
           active && 'text-white'
         )}
       >

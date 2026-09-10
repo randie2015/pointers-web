@@ -34,41 +34,59 @@ export function Header() {
   }, [pathname]);
 
   return (
-    <header className="sticky top-0 z-[100] border-b border-white/[0.08] bg-[#090A0F]/80 text-white backdrop-blur-xl">
-      <div className="container-page flex h-[68px] items-center justify-between gap-8 md:h-[76px]">
-        <Link href="/" prefetch className="touch-press flex shrink-0 items-center text-white active:opacity-90" aria-label="Pointers home">
-          <HeaderLogo priority />
-        </Link>
+    <header className="sticky top-0 z-[100] text-white">
+      <div className="relative">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute left-1/2 top-full z-0 h-14 w-[min(42rem,80%)] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#BC2656] opacity-10 blur-[100px]"
+        />
 
-        <div className="hidden items-center gap-1 md:flex">
-          <nav className="flex items-center gap-1" aria-label="Main">
-            {links.map((l) => (
-              <NavHoverLink key={l.href} href={l.href} label={l.label} />
-            ))}
-          </nav>
-          <div className="ml-4 flex items-center gap-3 border-l border-white/10 pl-4">
-            <LocaleSwitcher />
-            <MaskUpButton href={getWhatsAppUrl(locale)} label={t('cta')} size="compact" />
+        <div className="relative z-10 bg-[#090A0F]/50 backdrop-blur-xl">
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"
+          />
+
+          <div className="container-page relative flex h-[68px] items-center justify-between gap-8 md:h-[76px]">
+            <Link href="/" prefetch className="touch-press flex shrink-0 items-center text-white active:opacity-90" aria-label="Pointers home">
+              <HeaderLogo priority />
+            </Link>
+
+            <div className="hidden items-center gap-1 md:flex">
+              <nav className="flex items-center gap-1" aria-label="Main">
+                {links.map((l) => (
+                  <NavHoverLink key={l.href} href={l.href} label={l.label} />
+                ))}
+              </nav>
+              <div className="ml-4 flex items-center gap-3 border-l border-white/10 pl-4">
+                <LocaleSwitcher />
+                <MaskUpButton href={getWhatsAppUrl(locale)} label={t('cta')} size="compact" />
+              </div>
+            </div>
+
+            <div className="flex items-center gap-3 md:hidden">
+              <LocaleSwitcher />
+              <button
+                type="button"
+                className="touch-press rounded-xl p-2 text-white active:bg-white/10"
+                onClick={() => setOpen(!open)}
+                aria-expanded={open}
+                aria-label="Menu"
+              >
+                {open ? <X size={22} /> : <Menu size={22} />}
+              </button>
+            </div>
           </div>
-        </div>
-
-        <div className="flex items-center gap-3 md:hidden">
-          <LocaleSwitcher />
-          <button
-            type="button"
-            className="touch-press rounded-xl p-2 text-white active:bg-white/10"
-            onClick={() => setOpen(!open)}
-            aria-expanded={open}
-            aria-label="Menu"
-          >
-            {open ? <X size={22} /> : <Menu size={22} />}
-          </button>
         </div>
       </div>
 
       {open && (
-        <div className="border-t border-white/10 bg-[#090A0F] md:hidden">
-          <nav className="container-page flex flex-col gap-1 py-6" aria-label="Mobile">
+        <div className="relative z-10 overflow-hidden border-b border-white/5 bg-[#090A0F]/60 backdrop-blur-2xl md:hidden">
+          <div
+            aria-hidden
+            className="pointer-events-none absolute left-1/2 top-0 h-28 w-[75%] -translate-x-1/2 -translate-y-1/4 rounded-full bg-[#BC2656] opacity-15 blur-[80px]"
+          />
+          <nav className="container-page relative flex flex-col gap-1 py-6 text-slate-200" aria-label="Mobile">
             {links.map((l) => (
               <NavHoverLink
                 key={l.href}
