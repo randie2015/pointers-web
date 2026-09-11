@@ -24,9 +24,9 @@ export const metadata: Metadata = {
     siteName: 'Pointers',
     images: [
       {
-        url: 'https://pointers.marketing/opengraph-image.png',
+        url: '/opengraph-image',
         width: 1200,
-        height: 630,
+        height: 627,
         alt: 'Pointers | Infraestructura comercial y desarrollo B2B'
       }
     ],
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     title: 'Pointers | Infraestructura comercial y desarrollo B2B',
     description:
       'Plataformas digitales de alto rendimiento y arquitectura comercial para marcas que no pueden permitirse perder clientes.',
-    images: ['https://pointers.marketing/opengraph-image.png']
+    images: ['/opengraph-image']
   }
 };
 

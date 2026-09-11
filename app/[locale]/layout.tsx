@@ -12,15 +12,9 @@ import type { Metadata } from 'next';
 import '../globals.css';
 import { siteIconMetadata } from '@/lib/site-icons';
 import { GlobalCanvasBackground } from '@/components/backgrounds/GlobalCanvasBackground';
+import { OG_COPY, OG_THUMBNAIL_HEIGHT, OG_THUMBNAIL_WIDTH, resolveOgLocale } from '@/lib/og';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' });
-
-const OG_IMAGE = {
-  url: 'https://pointers.marketing/opengraph-image.png',
-  width: 1200,
-  height: 630,
-  alt: 'Pointers | Infraestructura comercial y desarrollo B2B'
-};
 
 export const dynamic = 'force-dynamic';
 
@@ -34,12 +28,22 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const isSpanish = locale === 'es';
+  const ogLocale = resolveOgLocale(locale);
+  const og = OG_COPY[ogLocale];
+  const isSpanish = ogLocale === 'es';
+  const ogImage = {
+    url: `/${ogLocale}/opengraph-image`,
+    width: OG_THUMBNAIL_WIDTH,
+    height: OG_THUMBNAIL_HEIGHT,
+    alt: og.alt
+  };
 
   return {
-    title: 'Pointers | Infraestructura comercial y desarrollo B2B',
+    title: og.alt,
     description:
-      'Firma boutique de infraestructura comercial, desarrollo web de alto rendimiento y sistemas de conversión para marcas B2B de alto ticket.',
+      ogLocale === 'es'
+        ? 'Firma boutique de infraestructura comercial, desarrollo web de alto rendimiento y sistemas de conversión para marcas B2B de alto ticket.'
+        : 'Boutique firm for commercial infrastructure, high-performance web development and conversion systems for high-ticket B2B brands.',
     keywords: [
       'infraestructura comercial',
       'desarrollo web B2B',
@@ -55,22 +59,20 @@ export async function generateMetadata({
       languages: { es: '/es', en: '/en', 'x-default': '/es' }
     },
     openGraph: {
-      title: 'Pointers | Infraestructura comercial y desarrollo B2B',
-      description:
-        'Plataformas digitales de alto rendimiento y arquitectura comercial para marcas que no pueden permitirse perder clientes.',
+      title: og.alt,
+      description: og.description,
       url: 'https://pointers.marketing',
       siteName: 'Pointers',
-      images: [OG_IMAGE],
+      images: [ogImage],
       locale: isSpanish ? 'es_PE' : 'en_US',
       alternateLocale: isSpanish ? ['en_US'] : ['es_PE'],
       type: 'website'
     },
     twitter: {
       card: 'summary_large_image',
-      title: 'Pointers | Infraestructura comercial y desarrollo B2B',
-      description:
-        'Plataformas digitales de alto rendimiento y arquitectura comercial para marcas que no pueden permitirse perder clientes.',
-      images: [OG_IMAGE.url]
+      title: og.alt,
+      description: og.description,
+      images: [ogImage.url]
     }
   };
 }
