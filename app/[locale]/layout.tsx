@@ -32,7 +32,7 @@ export async function generateMetadata({
   const og = OG_COPY[ogLocale];
   const isSpanish = ogLocale === 'es';
   const ogImage = {
-    url: `/${ogLocale}/opengraph-image`,
+    url: '/opengraph-image',
     width: OG_THUMBNAIL_WIDTH,
     height: OG_THUMBNAIL_HEIGHT,
     alt: og.alt
