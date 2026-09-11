@@ -54,6 +54,10 @@ function rewriteDemo(request: NextRequest, slug: string, rest = '') {
 export default async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
+  if (pathname.includes('/opengraph-image') || pathname.includes('/twitter-image')) {
+    return NextResponse.next();
+  }
+
   const localizedDemoMatch = pathname.match(/^\/(es|en)\/([^/]+)(\/.*)?$/);
   if (localizedDemoMatch && isDemoSlug(localizedDemoMatch[2])) {
     return rewriteDemo(request, localizedDemoMatch[2], localizedDemoMatch[3] ?? '');

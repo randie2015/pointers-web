@@ -1,5 +1,3 @@
-import { readFile } from 'node:fs/promises';
-import { join } from 'node:path';
 import { ImageResponse } from 'next/og';
 import {
   OG_COPY,
@@ -30,17 +28,18 @@ function toDataUri(svg: string, mime = 'image/svg+xml') {
 }
 
 async function loadLogoSrc() {
-  const svg = (await readFile(join(process.cwd(), 'public/brand/logo-horizontal.svg'), 'utf8'))
+  const svg = (
+    await fetch(new URL('../assets/brand/logo-horizontal.svg', import.meta.url)).then((res) => res.text())
+  )
     .replace(/<style>[\s\S]*?<\/style>/, '')
     .replace(/class="cls-1"/g, 'fill="#ffffff"');
   return toDataUri(svg);
 }
 
 async function loadFonts() {
-  const fontDir = join(process.cwd(), 'assets/fonts');
   const [medium, regular] = await Promise.all([
-    readFile(join(fontDir, 'inter-latin-500-normal.woff')),
-    readFile(join(fontDir, 'inter-latin-400-normal.woff'))
+    fetch(new URL('../assets/fonts/inter-latin-500-normal.woff', import.meta.url)).then((res) => res.arrayBuffer()),
+    fetch(new URL('../assets/fonts/inter-latin-400-normal.woff', import.meta.url)).then((res) => res.arrayBuffer())
   ]);
 
   return [
