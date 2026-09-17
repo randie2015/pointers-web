@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
+import { HeaderLogo } from '@/components/header-logo';
 import { HOME_ANCHORS, MAIN_ROUTES } from '@/lib/navigation';
 import { getContactEmail, getWhatsAppDisplayNumber, getWhatsAppUrl } from '@/lib/site-config';
 import { useLocale } from 'next-intl';
@@ -46,13 +47,7 @@ export function Footer() {
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-10">
           <div className="lg:col-span-5">
             <Link href="/" prefetch className="inline-flex items-center" aria-label="Pointers home">
-              <img
-                src="/brand/logo-horizontal.svg"
-                alt="Pointers"
-                width={576}
-                height={103}
-                className="h-10 w-auto md:h-12"
-              />
+              <HeaderLogo className="h-10 sm:h-10 md:h-12" />
             </Link>
             <p className="mt-6 max-w-sm text-sm leading-relaxed text-slate-400">{t('newsletter')}</p>
 
