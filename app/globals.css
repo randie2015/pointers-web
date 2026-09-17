@@ -25,7 +25,7 @@
 html {
   scroll-behavior: auto;
   color-scheme: dark;
-  background: #090a0f;
+  background: #0b090c;
 }
 
 @keyframes loading-bar {
@@ -49,9 +49,20 @@ body::before {
   inset: 0;
   z-index: -2;
   background:
-    radial-gradient(ellipse 80% 55% at 50% -12%, rgba(188, 38, 86, 0.10), transparent 58%),
-    radial-gradient(ellipse 45% 35% at 88% 18%, rgba(188, 38, 86, 0.04), transparent 52%),
-    radial-gradient(ellipse 40% 30% at 8% 70%, rgba(188, 38, 86, 0.03), transparent 50%);
+    radial-gradient(ellipse 80% 55% at 50% -12%, rgba(188, 38, 86, 0.16), transparent 58%),
+    radial-gradient(ellipse 45% 35% at 88% 18%, rgba(188, 38, 86, 0.08), transparent 52%),
+    radial-gradient(ellipse 40% 30% at 8% 70%, rgba(188, 38, 86, 0.07), transparent 50%),
+    #0b090c;
+}
+
+@media (max-width: 767px) {
+  body::before {
+    background:
+      radial-gradient(ellipse 90% 70% at 50% 8%, rgba(188, 38, 86, 0.24), transparent 64%),
+      radial-gradient(ellipse 55% 40% at 90% 22%, rgba(188, 38, 86, 0.12), transparent 54%),
+      radial-gradient(ellipse 50% 38% at 8% 78%, rgba(188, 38, 86, 0.12), transparent 52%),
+      #0b090c;
+  }
 }
 
 #tsparticles,

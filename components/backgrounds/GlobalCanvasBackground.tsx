@@ -3,8 +3,8 @@
 import { useEffect, useRef } from 'react';
 
 const CRIMSON = { r: 188, g: 38, b: 86 };
-const GRID_GAP = 20;
-const MOBILE_GAP = 32;
+const GRID_GAP = 14;
+const MOBILE_GAP = 16;
 /** Exponential tau ≈ 1.8–2.0s to settle (95% ≈ 3τ). */
 const MORPH_TAU = 650;
 const IDLE_MS = 1600;
@@ -225,7 +225,7 @@ export function GlobalCanvasBackground() {
       lightX = lerp(lightX, target.x, follow);
       lightY = lerp(lightY, target.y, follow);
 
-      const glowRadius = (touch ? 120 : 176) * (1 - morph * 0.55);
+      const glowRadius = (touch ? 210 : 200) * (1 - morph * 0.55);
       const connectDist = touch ? 86 : 118;
       const connectDistSq = connectDist * connectDist;
       const time = reduced ? 0 : now;
@@ -235,9 +235,9 @@ export function GlobalCanvasBackground() {
 
       if (morph < 0.92) {
         const glow = ctx.createRadialGradient(lightX, lightY, 0, lightX, lightY, glowRadius);
-        const power = (1 - morph) * (reduced ? 0.35 : 1);
-        glow.addColorStop(0, rgba(CRIMSON.r, CRIMSON.g, CRIMSON.b, 0.22 * power));
-        glow.addColorStop(0.45, rgba(CRIMSON.r, CRIMSON.g, CRIMSON.b, 0.07 * power));
+        const power = (1 - morph) * (reduced ? 0.35 : touch ? 1.55 : 1.15);
+        glow.addColorStop(0, rgba(CRIMSON.r, CRIMSON.g, CRIMSON.b, 0.5 * power));
+        glow.addColorStop(0.35, rgba(CRIMSON.r, CRIMSON.g, CRIMSON.b, 0.2 * power));
         glow.addColorStop(1, rgba(CRIMSON.r, CRIMSON.g, CRIMSON.b, 0));
         ctx.fillStyle = glow;
         ctx.fillRect(lightX - glowRadius, lightY - glowRadius, glowRadius * 2, glowRadius * 2);
@@ -269,7 +269,7 @@ export function GlobalCanvasBackground() {
         const distSq = dx * dx + dy * dy;
         const hot = morph < 0.85 && distSq < glowRadiusSq && distSq > 0 ? (1 - Math.sqrt(distSq) / glowRadius) ** 2 * (1 - morph) : 0;
         const size = 0.75 + hot * 1.05 + t * 0.35;
-        ctx.fillStyle = hot > 0.04 ? rgba(255, 255, 255, 0.08 + hot * 0.92) : rgba(255, 255, 255, 0.09 + t * 0.08);
+        ctx.fillStyle = hot > 0.04 ? rgba(255, 255, 255, 0.18 + hot * 0.82) : rgba(255, 255, 255, 0.16 + t * 0.08);
         ctx.fillRect(node.x - size, node.y - size, size * 2, size * 2);
       }
 
