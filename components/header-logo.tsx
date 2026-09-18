@@ -16,6 +16,7 @@ export function HeaderLogo({ className, priority }: HeaderLogoProps) {
       alt="Pointers"
       width={LOGO_WIDTH}
       height={LOGO_HEIGHT}
+      sizes="180px"
       unoptimized
       priority={priority}
       className={cn('block h-8 w-auto shrink-0 brightness-0 invert sm:h-9 md:h-10', className)}

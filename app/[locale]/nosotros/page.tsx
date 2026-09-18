@@ -2,8 +2,6 @@ import type { Metadata } from 'next';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { AboutPageContent } from '@/components/nosotros/about-page-content';
 
-export const dynamic = 'force-dynamic';
-
 export async function generateMetadata({
   params
 }: {

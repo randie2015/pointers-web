@@ -16,8 +16,6 @@ import { OG_COPY, OG_THUMBNAIL_HEIGHT, OG_THUMBNAIL_WIDTH, resolveOgLocale } fro
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' });
 
-export const dynamic = 'force-dynamic';
-
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }

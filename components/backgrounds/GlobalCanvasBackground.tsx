@@ -76,6 +76,8 @@ export function GlobalCanvasBackground() {
     let height = 0;
     let dpr = 1;
     let gap = GRID_GAP;
+    let touch = false;
+    let visible = true;
     let nodes: Node[] = [];
     let linkers: Node[] = [];
     let running = true;
@@ -88,10 +90,10 @@ export function GlobalCanvasBackground() {
     let lightY = pointer.y;
 
     const rebuild = () => {
-      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      touch = isTouchDevice() || window.innerWidth < 768;
+      dpr = Math.min(window.devicePixelRatio || 1, touch ? 1.25 : 2);
       width = window.innerWidth;
       height = window.innerHeight;
-      const touch = isTouchDevice() || width < 768;
       gap = touch ? MOBILE_GAP : GRID_GAP;
       canvas.width = Math.max(1, Math.floor(width * dpr));
       canvas.height = Math.max(1, Math.floor(height * dpr));
@@ -206,10 +208,9 @@ export function GlobalCanvasBackground() {
     const onScroll = () => resolveMode();
 
     const tick = (now: number) => {
-      if (!running) return;
+      if (!running || !visible) return;
       const dt = Math.min(32, now - lastTime);
       lastTime = now;
-      const touch = isTouchDevice() || width < 768;
 
       if (reduced) {
         morph = morphTarget;
@@ -334,7 +335,28 @@ export function GlobalCanvasBackground() {
     rebuild();
     bindSections();
     mutations.observe(document.body, { childList: true, subtree: true });
-    raf = window.requestAnimationFrame(tick);
+
+    const startLoop = () => {
+      if (!running) return;
+      lastTime = performance.now();
+      raf = window.requestAnimationFrame(tick);
+    };
+
+    const onVisibility = () => {
+      visible = document.visibilityState === 'visible';
+      window.cancelAnimationFrame(raf);
+      if (visible && running) startLoop();
+    };
+
+    let idleId = 0;
+    let startTimer = 0;
+    if (typeof window.requestIdleCallback === 'function') {
+      idleId = window.requestIdleCallback(startLoop, { timeout: 450 });
+    } else {
+      startTimer = window.setTimeout(startLoop, 0);
+    }
+
+    document.addEventListener('visibilitychange', onVisibility);
 
     window.addEventListener('resize', rebuild);
     window.addEventListener('scroll', onScroll, { passive: true });
@@ -349,10 +371,16 @@ export function GlobalCanvasBackground() {
 
     return () => {
       running = false;
+      visible = false;
       window.cancelAnimationFrame(raf);
       window.clearTimeout(bindTimer);
+      window.clearTimeout(startTimer);
+      if (idleId && typeof window.cancelIdleCallback === 'function') {
+        window.cancelIdleCallback(idleId);
+      }
       observer.disconnect();
       mutations.disconnect();
+      document.removeEventListener('visibilitychange', onVisibility);
       window.removeEventListener('resize', rebuild);
       window.removeEventListener('scroll', onScroll);
       window.removeEventListener('pointermove', onPointerMove);

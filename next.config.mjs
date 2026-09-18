@@ -19,8 +19,7 @@ const nextConfig = {
       'lucide-react',
       'react-tsparticles',
       'tsparticles'
-    ],
-    staleTimes: { dynamic: 0, static: 0 }
+    ]
   }
 };
 
